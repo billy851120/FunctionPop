@@ -4,6 +4,7 @@ var indexRouter = require('./routes/index');
 var customRouter = require('./routes/custom');
 var shopCartRouter = require('./routes/shop_cart');
 var memberRouter = require('./routes/member');
+var productRouter = require('./routes/product');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use('/', indexRouter);
 app.use('/custom', customRouter);
 app.use('/shop_cart', shopCartRouter);
 app.use('/member', memberRouter);
+app.use('/product', productRouter);
 
 app.listen(3000, function () {
   console.log('run');

@@ -30,7 +30,8 @@
 </head>
 
 <body class="page-container">
-    <!-- 導覽列 -->
+    <div class="wrapper">
+        <!-- 導覽列 -->
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
         <div class="container">
             <a href="index.html" class="navbar-brand"><img class="fnicon" src="/img/index/logo.png" alt=""></a>
@@ -265,7 +266,12 @@
         </div>
 
     </div>
-    <!-- <%- include("footer.ejs") %> -->
+        <div class="push"></div>
+    </div>  
+    <footer class="footer">
+        <%- include("footer.ejs") %>
+    </footer>  
+    
 </body>
 
 <script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- font_awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <%- include("navbar.ejs") %>
+        <!-- 現在位置 -->
+    <section class="mt-5 py-5">
+        <div class="container mt-2 pt-2">
+            <span>首頁</span> | <span>產品</span> | <span> <a href="#">Micah 草編真皮厚底涼鞋 - 石灰白</a></span>
+        </div>
+        <div class="container mt-2 pt-2">
+            <i class="fas fa-truck-container">icon</i>
+        </div>
+    </section>
+
+    <!-- 38. Single Product -->
+    <section class="container single-product my-2 pt-2">
+        <div class="row mt-5">
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <img class="img-fluid w-100 pb-1" src="/img/product/featured1.jpeg" alt="" id="mainImg">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img class="small-img" src="/img/product/featured2.jpeg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="/img/product/featured3.jpeg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="/img/product/featured4.jpeg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="/img/product/clothes1.jpeg" alt="" width="100%">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-2 col-12">
+                <h6>Men/Shoes</h6>
+                <h3>Men's Fashion</h3>
+                <h4 class="pt-4">Micah 草編真皮厚底涼鞋 - 石灰白</h4>
+                <h6>商品編號 abc-60920313_white</h6>
+                <h2>NTD:<span>499</span></h2>
+                <p>Color (Choose)</p>
+                <p></p>
+                <span>Size:</span>
+                <span class="sizeflexBox mx-auto py-3">
+                    <button style="width: 40px; height: 50px;">34</button>
+                    <button style="width: 30px; height: 50px;">35</button>
+                    <button style="width: 20px; height: 50px;">36</button>
+                    <button style="width: 10px; height: 50px;">37</button>
+                </span>
+                <br><br>
+                <span>數量：</span><input type="number" value="1">
+                <button class="buy-btn">Add To Cart</button>
+                <h4 class="mt-5 mb-5">Product Details</h4>
+                
+                <!-- Product Describe -->
+                <div>
+                    <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px;">商品描述</h5>
+                </div>
+                <div>
+                    <p>&emsp;&emsp;俐落的剪裁與熱情洋溢的豔橘色，是最具衝擊性的搭配。本季的橘色大素面高跟拖鞋就是為特立獨行的性格女性設計。沉穩大氣中使用輕巧的貓跟與隱藏的夾趾細節，在造型上給予穿者不同表達的面相，實用上也給予足部大幅支撐，是經典涼鞋款中的革新者。</p>
+                </div>
+
+                <!-- Product info Detail -->
+                <div>
+                    <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px;">商品資訊</h5>
+                </div>
+                <ul>
+                    <li>透氣內裡<br></li>
+                    <li>材質：天然PU合成皮<br></li>
+                    <li>跟高：7.5 公分<br></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 23. Related Products -->
+    <section id="related-products" class="my-5 pb-5">
+        <div class="container text-center mt-5 py-5">
+            <h3>搭配商品</h3>
+            <hr class="mx-auto">
+        </div>
+
+        <div class="row mx-auto container-fluid">
+            <!-- Featured List -->
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="/img/product/featured1.jpeg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">人字拖</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="/img/product/featured2.jpeg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">休閒剪裁運動衫</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="/img/product/featured3.jpeg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">平蚊洋裝</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="/img/product/featured4.jpeg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">草帽</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+        </div>
+    </section>
+        <div class="push"></div>
+    </div>  
+    <footer class="footer">
+        <%- include("footer.ejs") %>
+    </footer>  
+
+    
+
+   
+
+
+
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+
+    <!-- 40. Small Img -->
+    <script>
+        var mainImg = document.getElementById("mainImg");
+        var smallImg = document.getElementsByClassName("small-img");
+
+        for (let i = 0; i < 4; i++) {
+            smallImg[i].onclick = function () {
+                mainImg.src = smallImg[i].src;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
