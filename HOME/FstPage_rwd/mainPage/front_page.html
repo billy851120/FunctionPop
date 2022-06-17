@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”viewport” content=”width=device-width”>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/jquery.min.js"></script>
+    <script src="../_js/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./pageone.css">
+    </link>
+    <link rel="stylesheet" href="./pagetwo.css">
+    </link>
+    <link rel="stylesheet" href="./pagethree.css">
+    </link>
+    <link rel="stylesheet" href="./spin.css">
+    </link>
+    <link rel="stylesheet" href="./navbar.css">
+    </link>
+
+    <title>function.pop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-container {
+            position: relative;
+            top: 0;
+            transition: all 1000ms ease;
+            touch-action: none;
+
+        }
+    </style>
+
+</head>
+
+<body class="page-container">
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><img class="fnicon" src="../img/logo.png" alt=""></a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#home-section" class="nav-link">Women</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#explore-head-section" class="nav-link">Men</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    <a href="#author-head-section" class="nav-link">Accessory</a>
+                </li> -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            Accessory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Apple</a>
+                            <a class="dropdown-item" href="#">Bee</a>
+                            <a class="dropdown-item" href="#">Cat</a>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+    </nav>
+    <div class="pr-2 icondiv" id="navbar_li">
+        <form class=" my-2 ml-auto">
+            <input class="form-control mr-sm-2 search_input" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn  my-2 my-sm-0 search_button" type="submit"></button>
+        </form>
+        <div class="mt-4 icon_posi">
+            <p style="text-align: right;">
+                <a class="pl-2" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-person-circle" viewBox="0 0 16 16" style="color: rgb(255, 255, 255);">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg></a>
+                <a class="pl-2" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16" style="color: rgb(255, 255, 255);">
+                        <path
+                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg>
+                </a>
+                <a class="pl-2 " href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16" style="color: rgb(255, 255, 255);">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 第一面 -->
+    <div class="pageone gg" id="pageone">
+        <img class="chili" src="../img/bg_chili.png" alt="">
+        <img class="logo_word" src="../img/logo_word.png" alt="">
+    </div>
+
+    <div id="drag-container">
+        <div id="spin-container">
+
+            <img src="../img/fashion1.jpg" alt="" style="object-fit: cover;">
+            <img src="../img/fashion2.jpg" alt="" style="object-fit: cover;">
+            <img src="../img/fashion3.jpg" alt="" style="object-fit: cover;">
+            <img src="../img/fashion4.jpg" alt="" style="object-fit: cover;">
+            <img src="../img/fashion5.jpg" alt="" style="object-fit: cover;">
+            <img src="../img/image_9.png" alt="" style="object-fit: cover;">
+
+            <p style="font-size:1.5rem">Function.Pop</p>
+        </div>
+        <div id="ground"></div>
+    </div>
+
+    <!-- 第二面 STORIES -->
+    <div class="pagetwo gg" id="pagetwo">
+
+
+        <p class="stories">STORIES</p>
+
+        <!-- 線 -->
+        <div class="link-top"></div>
+
+        <div class="row pagetwo_pic_div">
+
+            <div class="col col-8 col-sm-7 col-md-4 col-lg-3 col_3_margin_left">
+
+                <div class="row ">
+
+                    <div class="pagetwo_outpicdiv seci"><img class="pagetwo_outpic" src="../img/fashion1.jpg" alt="">
+                    </div>
+                    <div class="pagetwo_text">
+                        <p>Guests Attending Exquisite Gucci
+                            A PHOTO GALLERY ></p>
+                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                    </div>
+                </div>
+
+                <div class="row secii">
+                    <div class="pagetwo_outpicdiv "><img class="pagetwo_outpic" src="../img/fashion2.jpg" alt="">
+                    </div>
+                    <div class="pagetwo_text">
+                        <p>Exquisite Beauty
+                            THE MAKEUP AT THE SHOW ></p>
+                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-3 col-sm-6 col-md-4 col-lg-3 small_hide">
+                <img src="../img/fashion3.jpg" alt="" style="width: 87%; object-fit:cover;">
+                <div class="pagetwo_text">
+                    <p>Fashioning Masculinities
+                        THE ART OF MENSWEAR ></p>
+                    <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                </div>
+            </div>
+
+            <div class="col col-8 col-sm-7 col-md-4 col-lg-3 col_3_margin_right">
+
+                <div class="row down_up">
+                    <div class="pagetwo_outpicdiv"><img class="pagetwo_outpic" src="../img/fashion4.jpg" alt="">
+                    </div>
+                    <div class="pagetwo_text">
+                        <p>Fashioning Masculinities
+                            THE ART OF MENSWEAR ></p>
+                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                    </div>
+                </div>
+
+                <div class="row down_upi">
+                    <div class="pagetwo_outpicdiv"><img class="pagetwo_outpic" src="../img/fashion5.jpg" alt="">
+                    </div>
+                    <div class="pagetwo_text">
+                        <p>Magical Mirrors
+                            EXQUISITE GUCCI></p>
+                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 第三面 + footer -->
+    <div class="pagethree gg" id="pagethree">
+
+        <div class="row coupon">
+            <div class="col col-9 col-lg-3 left_12_5">
+                <figure class="figure">
+                    <img src="../img/coupond.png" class="figure-img img-fluid threeimg">
+                </figure>
+            </div>
+            <div class="col col-9 col-lg-3">
+                <figure class="figure ttt">
+                    <img src="../img/coupond.png" class="figure-img img-fluid threeimg">
+                </figure>
+            </div>
+            <div class="col col-9 col-lg-3 right_12_5 ">
+                <figure class="figure ttt">
+                    <img src="../img/coupond.png" class="figure-img img-fluid threeimg">
+                </figure>
+            </div>
+        </div>
+
+
+        <div class="row pagethreemiddle" id="pagethreemiddle">
+
+            <div class="col-4 middle_left">
+                <div class="Belt_color" id="belt">
+                    <span>BELT</span>
+                </div>
+
+                <div class="pagethree_middle_pic">
+                    <img src="../img/belt.png" class="img-fluid">
+                </div>
+
+            </div>
+
+            <div class="col-4">
+                <div class="pagethree_middle_pic">
+                    <img src="../img/glasses.png" class="img-fluid">
+                </div>
+
+                <div class="Glass_color" id="glass">
+                    <span>GLASSES</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="row pagethree_down">
+            <div class="col-2 downi" id="downi">
+                <h5 class="smallfont">免運費</h5>
+                <h6 class="smallfont">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。</h6>
+            </div>
+            <div class="col-2 downii" id="downii">
+                <h5 class="smallfont">運輸時效快</h5>
+                <h6 class="smallfont">港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。</h6>
+            </div>
+            <div class="col-2 downiii" id="downiii">
+                <h5 class="smallfont">輕鬆退換貨</h5>
+                <h6 class="smallfont">自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。</h6>
+            </div>
+
+            <div class="smalltext" id="smalltext">
+                <h6 class="smallfont">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。</h6>
+            </div>
+        </div>
+
+        <footer></footer>
+    </div>
+</body>
+
+<script>
+    // console.log(window.screen.height);
+    console.log(window.innerWidth);
+    // console.log(document.documentElement.clientHeight);
+    $(document).ready(function () {
+        var hei = document.documentElement.clientHeight;
+        console.log(hei);
+        $("#pageone").css("height", `${hei}px`);
+        $("#pagetwo").css("top", `${hei}px`);
+        $("#pagetwo").css("height", `${hei}px`);
+        $("#pagethree").css("top", `${hei * 2}px`);
+        $("#pagethree").css("height", `${hei}px`);
+
+
+        $(".coupon").css("top", "14%");
+        $("#pagethreemiddle").css("height", hei * (0.4));
+        $("#belt").css("height", "38%");
+        $("#glass").css("height", "38%");
+
+        var wid = document.documentElement.clientWidth;
+        if ((wid <= 450) && (hei <= 700)) {
+
+            $(".secii").css("margin-top", `-120px`);
+            $(".down_up").css("top", `239px`);
+            $(".down_upi").css("top", `145px`);
+
+            $(".downi").css("height", `80px`);
+            $(".smallfont").css("fontSize", `0.5rem`);
+            $(".downii").css("height", `80px`);
+            $(".downiii").css("height", `80px`);
+
+        }
+
+        // if((wid <= 767.98) && (hei <= 850)){
+        //     $(".down_upi").css("visibility","hidden");
+        // }else{
+        //     $(".down_upi").css("visibility","visible");
+        // }
+
+    }
+    )
+
+</script>
+
+<!-- <script src="./mousescroll.js"></script> -->
+<script src="./scrollii.js"></script>
+<script src="./spin.js"></script>
+
+
+
+<script>
+
+    downi.onclick = function () {
+        document.getElementById("smalltext").innerText = "港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。";
+        document.getElementById("smalltext").style.backgroundColor = "#f0ffff";
+    }
+    downii.onclick = function () {
+        document.getElementById("smalltext").innerText = "港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。";
+        document.getElementById("smalltext").style.backgroundColor = "#c5e8e8";
+    }
+    downiii.onclick = function () {
+        document.getElementById("smalltext").innerText = "自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。";
+        document.getElementById("smalltext").style.backgroundColor = "#abcece";
+    }
+</script>
+
+</html>
