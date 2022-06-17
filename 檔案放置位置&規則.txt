@@ -1,0 +1,36 @@
+-------------檔案更新&存放位置
+
+///HTML檔案
+HTML檔案幫我把副檔名改.ejs，並放置views資料夾
+
+//js檔案
+放置在public/js資料夾，依照該頁面名稱放置資料夾，若沒有該頁面名稱就創建一個
+
+//css檔案
+把css的檔名更改成，_檔名.scss，放置public/scss資料夾，依照該分頁名稱存放
+
+//img檔案
+放置在public/img資料夾，依照該頁面名稱放置資料夾，若沒有該頁面名稱就創建一個
+
+
+
+-------------專案規則
+1.在<body>欄位添加以下代碼，並把原body的內容放置 *****內容 的位置
+<div class="wrapper">
+<%- include("navbar.ejs") %>
+        *****內容
+    <div class="push"></div>
+</div>  
+<footer class="footer">
+    <%- include("footer.ejs") %>
+</footer>  
+
+
+2.引入檔案
+
+js引入
+/js/分頁名稱/xxx.js
+
+css引入
+所有css最後會彙整成一個all.css，裡面包含bootstrap4.6.0，因此統一使用all.css檔案
+/css/all.css

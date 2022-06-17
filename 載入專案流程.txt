@@ -1,0 +1,14 @@
+專案載入流程
+
+1.先到vs code透過git把專案存入電腦
+
+2.開啟function_pop資料夾，右鍵點擊Project在整合式終端機中開啟
+
+3.輸入命令字元npm i 
+
+4.輸入命令字元npm start
+
+5.到頁面輸入網址localhost:3000
+
+6.透過路由器看一下自己的頁面
+localhost:3000/home/ 頁面名稱
