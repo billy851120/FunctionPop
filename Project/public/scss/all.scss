@@ -1,0 +1,34 @@
+// Bootstrap 4.6.1
+// Custom.scss
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+
+
+//layout樣式
+@import"_main.scss";
+
+//header樣式
+@import"components/navbar/_all.scss";
+
+
+//footer樣式
+@import"components/footer/_fpop.scss";
+
+
+
+
+// index樣式
+@import "./pages/index/pageone";
+@import "./pages/index/pagetwo";
+@import "./pages/index/pagethree";
+@import "./pages/index/spin";
+@import "./pages/index/navbar";
+
+
+//shop_cart樣式
+@import "./pages/shop_cart/shop_cart";
+
+
+// member樣式
+@import"./pages/member/jquery-ui.scss";

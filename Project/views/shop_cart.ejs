@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%- title %></title>
+    <link rel="stylesheet"  type="text/css" href="/css/all.css" />
+    <script src="/js/shop_cart/jquery.js"></script>
+    <script src="/js/shop_cart/cookie.js"></script>
+    <script
+      src="https://kit.fontawesome.com/93e1c8f0af.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include("navbar.ejs") %>
+
+    <table>
+      <thead>
+        <th colspan=""></th>
+      </thead>
+    </table>
+    <!-- outline_class  oib oig oi  oir-->
+
+    <div class="container">
+      <div class="cart_content">
+        <div class="row content_text">
+          <div class="col-9" style="padding: 0">
+            <div class="row cart_banner">
+              <div class="col-12 top_link">
+                <ul class="">
+                  <li><a href="/">首頁</a></li>
+                  <li>
+                    <a href="#">購物車</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12 mid">
+                <h6><b style="font-size: 0.9em">購物車</b></h6>
+              </div>
+              <div class="col-12 cart-step">
+                <ul>
+                  <li>
+                    <span>1</span>
+                    查看購物車
+                  </li>
+                  <li>
+                    <span>2</span>
+                    訂單確認
+                  </li>
+                  <li>
+                    <span>3</span>
+                    訂單完成
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+        <div class="row content_pid">
+          <div class="col-9">
+            <div class="cart container-fluid">
+              <div class="row">
+                <div class="col-2">
+                  <input type="checkbox" class="to_ck" checked />全選
+                </div>
+
+                <div class="col-3">商品名稱</div>
+
+                <div class="col-2">金額</div>
+                <div class="col-2">數量</div>
+                <div class="col">小計</div>
+                <div class="col"></div>
+              </div>
+            </div>
+            <div id="css_tbody" class="container-fluid css_tbody"></div>
+          </div>
+          <div class="col-3" style="padding: 0">
+            <div class="div cart_Order">
+              <div style="text-align: center"><p>訂單確認</p></div>
+              <div class="py-2">
+                <p>
+                  <b>總計商品件數:</b>
+                  <span class="float-end"
+                    ><span id="total_count">0</span> 件</span
+                  >
+                </p>
+                <p>
+                  <b>小計:</b
+                  ><span class="float-end"
+                    >NT$<span id="total_price">0</span></span
+                  >
+                </p>
+                <p>
+                  <b>運費:</b><span class="float-end">NT$<span>0</span></span>
+                </p>
+              </div>
+              <div class="py-3">
+                只差NT$ <span>0</span>，即可享有免費標準運送。
+              </div>
+              <div class="pt-2 mb-4">
+                <p>
+                  <b>總額:</b><span class="float-end">NT$<span>0</span></span>
+                </p>
+              </div>
+              <div class="text-center" id="buy">
+                <button>結帳</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/shop_cart/server.js"></script>
+    <script src="/js/shop_cart/cart.js"></script>
+    <script src="/js/shop_cart/bootstrap.js"></script>
+  </body>
+</html>
