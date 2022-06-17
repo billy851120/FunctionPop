@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link href="../fpop_css/admin.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <link rel="stylesheet" href="../fpop_css/fpop.css">
+    <script src="../_js/bootstrap.min.js"></script>
+    <link rel="icon" href="/img/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop 後台管理</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Sidebar -->
+    <div class="fpop-sidebar  w3-bar-block " style="width: 200px;">
+        <div class="" style="margin:20px auto ; width: 145px;">
+            <a href="./Backstage_index.html">
+                <img src="../img/logo_white.svg" width="40px" height="40px">
+                <img class="sidebar-brand-text" src="../img/logo_text_white.svg" width="100px" height="30px">
+            </a>
+        </div>
+        <hr class="ml-3 mr-3 fpop-hr">
+        <div class="sidebar-heading ml-4 mt-4 pb-3">後台系統</div>
+        <!-- ------------------------------ -->
+        <a class="fp-item" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                    <path
+                        d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                    <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                    <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
+                <span>訂單管理</span>
+            </li>
+        </a>
+        <div class="collapse" id="collapseExample">
+            <div class="bg-white fpop-inner rounded">
+                <p class="fpop-header">訂單 :</p>
+                <a href="./orderMgat_num.html" class="fpop-item">訂單編號</a>
+                <a href="./orderMgat__refund.html" class="fpop-item">退貨 / 退款</a>
+            </div>
+        </div>
+        <a class="fp-item" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+            aria-controls="collapseTwo">
+            <li class="bi bi-bag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                </svg>
+                <span>商品管理</span>
+            </li>
+        </a>
+        <!-- class="collapse" id="collapseExample" -->
+        <div class="collapse show" id="collapseTwo">
+            <div class="bg-white fpop-inner rounded">
+                <p class="fpop-header">商品 :</p>
+                <a href="./item_all.html" class="fpop-item ">所有商品</a>
+                <a href="./item_shelf.html" class="fpop-item fpop-text">上架商品</a>
+                <a href="./item_del.html" class="fpop-item">新增/刪除 商品</a>
+            </div>
+        </div>
+        <a class="fp-item" data-bs-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false"
+            aria-controls="collapseThree">
+            <li class="bi bi-bag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path
+                        d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                </svg>
+                <span>庫存管理</span>
+            </li>
+        </a>
+
+        <div class="collapse" id="collapseThree">
+            <div class="bg-white fpop-inner rounded">
+                <p class="fpop-header">庫存 :</p>
+                <a href="./stockMgat_all.html" class="fpop-item">庫存數量</a>
+            </div>
+        </div>
+        <a class="fp-item" data-bs-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false"
+        aria-controls="collapseFour">
+        <li class="bi bi-person-video2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-video2" viewBox="0 0 16 16">
+                <path d="M10 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                <path d="M2 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2ZM1 3a1 1 0 0 1 1-1h2v2H1V3Zm4 10V2h9a1 1 0 0 1 1 1v9c0 .285-.12.543-.31.725C14.15 11.494 12.822 10 10 10c-3.037 0-4.345 1.73-4.798 3H5Zm-4-2h3v2H2a1 1 0 0 1-1-1v-1Zm3-1H1V8h3v2Zm0-3H1V5h3v2Z"/>
+              </svg>
+              <span>會員管理</span>
+        </li>
+    </a>
+
+    <div class="collapse" id="collapseFour">
+        <div class="bg-white fpop-inner rounded">
+            <p class="fpop-header">會員 :</p>
+            <a href="member.html" class="fpop-item">會員資料</a>
+        </div>
+    </div>
+        <hr class="ml-3 mr-3 fpop-hr">
+
+
+    </div>
+
+    <!-- navbar -->
+    <div>
+        <!-- navbar-top -->
+        <nav class="sticky-top fpop-navbar row" style="margin-left:200px;">
+            <!-- search -->
+            <form class="d-none d-sm-inline-block navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-1" placeholder="搜尋" aria-label="Search"
+                        style="height: 45px;">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" style="height: 45px;width: 45px;">
+                            <i class="bi bi-search pt-0 mt-0" style="color: #ffffff"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- search end -->
+
+            <!-- userDropdown -->
+            <div class="dropdown  ml-auto mt-3">
+                <a class=" dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    管理員<i class="bi bi-person-fill" style="color: #ffc107">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                    </i>
+                </a>
+                <ul class="dropdown-menu mt-4" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">設定</a></li>
+                    <li><a class="dropdown-item" href="#">其他</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                <path fill-rule="evenodd"
+                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                            </svg>登出</i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- userDropdown end-->
+        </nav>
+        <!-- navbar-top end-->
+    </div>
+   <!-- navbar end-->
+
+<!-- ---------------------------------------------------------------------- -->
+
+    <!-- Main Content -->
+    <div class="fpop-main p-5" >
+        <h2>我是上架</h2>
+        <p>The sidebar with is set with "style="width:25%".</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+        <p>The left margin of the page content is set to the same value.</p>
+
+    </div>
+    <!-- Main Content end-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

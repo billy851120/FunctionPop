@@ -1,5 +1,5 @@
 /* navbar hover color */
-.navbar-light .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link {
     padding: 0 20px;
     color: #000;
     transition: 0.4s ease;
@@ -19,7 +19,7 @@
     margin-left: 5px;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: orange !important;
 }
 
@@ -29,7 +29,7 @@
     box-sizing: border-box;
 }
 
-.nav-buttons{
+.nav-buttons {
     margin-left: 40%;
 }
 
@@ -39,7 +39,7 @@
     padding-bottom: 2rem !important;
     top: 0;
     left: 0;
-    box-shadow: 0 5px 10px rgb(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -108,25 +108,25 @@ button:hover {
 
 /* navbar small */
 @media only screen and (max-width: 900px) {
-    .nav-buttons{
+    .nav-buttons {
         margin: 10px;
     }
 }
 
-.nav-buttons ul{
+.nav-buttons ul {
     margin: 1rem;
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
 }
 
-#home{
+#home {
     background-image: url("../imgs/yamagata_temple.jpeg");
     width: 100%;
     height: 100vh;
     background-size: cover;
-    background-position-x:center;
-    background-position-y:center;
+    background-position-x: center;
+    background-position-y: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -159,7 +159,7 @@ button:hover {
 
 /* 21. New section */
 
-#new .one img{
+#new .one img {
     width: 100%;
     height: 100%;
     background-position: center;
@@ -180,7 +180,7 @@ button:hover {
     font-size: bold;
     transition: 0.4s ease;
     opacity: 0.5;
-    background-color: rgb(1,1,1);
+    background-color: rgb(1, 1, 1);
     width: 100%;
     height: 100%;
 }
@@ -191,7 +191,7 @@ button:hover {
 }
 
 /* Put word-block in the center of img1 */
-#new .one:nth-child(1) .details{
+#new .one:nth-child(1) .details {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -200,7 +200,7 @@ button:hover {
 }
 
 /* Put word-block in the center of img2 */
-#new .one:nth-child(2) .details{
+#new .one:nth-child(2) .details {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -209,7 +209,7 @@ button:hover {
 }
 
 /* Put word-block in the center of img3 */
-#new .one:nth-child(3) .details{
+#new .one:nth-child(3) .details {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -229,7 +229,7 @@ button:hover {
     transition: 0.3s all;
 }
 
-.product:hover img{
+.product:hover img {
     opacity: 0.7;
 }
 
@@ -268,8 +268,8 @@ hr {
     width: 100%;
     height: 60vh;
     background-size: cover;
-    background-position-x:center;
-    background-position-y:center;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
@@ -278,7 +278,7 @@ hr {
     align-items: flex-start;
 }
 
-#banner h1{
+#banner h1 {
     color: #fff;
 }
 
@@ -286,7 +286,7 @@ hr {
     color: #fff;
 }
 
-#banner button{
+#banner button {
     background-color: coral;
 }
 
@@ -400,7 +400,7 @@ footer p {
     flex-wrap: wrap;
 }
 
-.cart th{
+.cart th {
     text-align: left;
     padding: 5px 10px;
     color: #fff;
@@ -439,12 +439,12 @@ footer p {
     font-size: 15px;
 }
 
-.cart .product-info p{
+.cart .product-info p {
     margin: 3px;
 }
 
 /* 44. Total Design */
-.cart-total{
+.cart-total {
     display: flex;
     /* justify-self: flex-end; */
     justify-content: flex-end;
@@ -539,7 +539,8 @@ th:last-child {
     background-color: #fb774b;
 }
 
-.account-info #orders-btn,#logout-btn {
+.account-info #orders-btn,
+#logout-btn {
     color: #fb774b;
     text-decoration: none;
 }
@@ -570,7 +571,7 @@ th:last-child {
     padding: 10px 20px;
 }
 
-.orders td img{
+.orders td img {
     width: 80px;
     height: 80px;
     margin-right: 10px;
@@ -602,49 +603,3 @@ th:last-child {
 #contact span {
     color: #fb774b;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

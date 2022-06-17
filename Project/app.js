@@ -1,10 +1,9 @@
 var express = require('express');
 
-var indexRouter = require('./routes/index');
-var customRouter = require('./routes/custom');
-var shopCartRouter = require('./routes/shop_cart');
-var memberRouter = require('./routes/member');
-var productRouter = require('./routes/product');
+//前台模組
+var home = require('./routes/home.js');
+// 後台模組
+var admin = require('./routes/admin.js');
 
 var app = express();
 
@@ -16,11 +15,13 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 
-app.use('/', indexRouter);
-app.use('/custom', customRouter);
-app.use('/shop_cart', shopCartRouter);
-app.use('/member', memberRouter);
-app.use('/product', productRouter);
+//前台路由器
+app.use('/home', home);
+//後台路由器
+app.use('/admin', admin);
+
+//預設路由，前台index
+app.use('/', home);
 
 app.listen(3000, function () {
   console.log('run');
