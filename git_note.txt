@@ -24,5 +24,6 @@ Terminal 不會顯示任何內容
 On branch master
 nothing to commit, working tree clean
 
-
+7. git push
+上傳檔案至github
 
