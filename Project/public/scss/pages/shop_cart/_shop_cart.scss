@@ -200,3 +200,18 @@
     background-color: #ccc;
     height: 300px;
 }
+
+.ct_form input {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+.ct_form div {
+    margin-bottom: 20px;
+}
+
+.ct_form span {
+    width: 14%;
+    display: inline-block;
+}

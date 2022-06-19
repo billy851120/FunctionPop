@@ -62,21 +62,65 @@
             </div>
             <div class="col-3"></div>
           </div>
-          <div class="row content_pid">
+          <div class="row content_text">
             <div class="col-9">
-              <div class="cart container-fluid">
-                <div class="row fz-dark">
-                  <div class="col-2">
-                    <input type="checkbox" class="to_ck" checked />全選
+              <div class="row ">
+                <div class="col-12  ">
+                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
+                    <h6 class="flex-grow-1 fw-600">1. 運送</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
                   </div>
-                  <div class="col-3">商品名稱</div>
-                  <div class="col-2">金額</div>
-                  <div class="col-2">數量</div>
-                  <div class="col">小計</div>
-                  <div class="col"></div>
+                </div>
+                <div class="col-12  ">
+                  <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
+                    <form action="" method="post" class="ct_form ">
+                      <div>
+                        <span>
+                          收件人* :
+                        </span>
+                        <input type="text" style="width:130px ;" name="ct_rec" placeholder="姓名"><br>
+                      </div>
+                      <div>
+                        <span>
+                          通訊地址* :
+                        </span>
+                        <input type="text" style="width:70px; margin-right:25px;" name="ct_addr_l" placeholder=""><input type="text"
+                          name="ct_addr_r" placeholder="地址"><br>
+                      </div>
+                      <div>
+                        <span>
+                          手機號碼* :
+                        </span>
+                        <input type="text" style="width:150px ;" name="ct_pho" placeholder=""><br>
+                      </div>
+                      <div>
+                        <span>
+                          電子郵件* :
+                        </span>
+                        <input type="text" style="width:150px ;" name="ct_mail" placeholder="123@gmail.com">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-12  ">
+                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-5">
+                    <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div>
+                    <p>選擇付款方式</p>
+                  </div>
+                  <div><span>信用卡/簽帳金融卡</span><span>貨到付款</span></div>
+                  <div class="d-flex">
+                    <div class="mr-3 border" style="height: 21px; width:50px;"><img src="/img/shop_cart/mas.png" style="width: 100%;"  alt=""></div>
+                    <div class="mr-3 border" style="height: 21px; width:50px;"><img  src="/img/shop_cart/visa.png"  style="width: 100%;" alt=""></div>
+                    <div class="border" style="height: 21px; width:50px;"><img src="/img/shop_cart/paypal.png"  style="width: 100%;" alt=""></div>
+                  </div>
+                  <div></div>
+                  <div></div>
+
                 </div>
               </div>
-              <div id="css_tbody" class="container-fluid css_tbody"></div>
             </div>
             <div class="col-3" style="padding: 0">
               <div class="div cart_Order">
@@ -110,45 +154,9 @@
             </div>
           </div>
         </div>
-        <hr style="border-top: 0.9px solid #000;">
-        <div class="container">
-          <div class="row">
-            <div style="font-weight: 900;" class="col text-center mb-5 mt-2 ">熱門商品</div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="owl-carousel owl-theme">
-                <div class="item">
-                  <div class="img"></div>
-                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
-                  <p>NT $ 1,500</p>
-                </div>
-                <div class="item">
-                  <div class="img"></div>
-                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
-                  <p>NT $ 1,500</p>
-                </div>
-                <div class="item">
-                  <div class="img"></div>
-                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
-                  <p>NT $ 1,500</p>
-                </div>
-                <div class="item">
-                  <div class="img"></div>
-                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
-                  <p>NT $ 1,500</p>
-                </div>
-                <div class="item">
-                  <div class="img"></div>
-                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
-                  <p>NT $ 1,500</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="push"></div>
+  </div>
+  <div class="push"></div>
   </div>
   <footer class="footer">
     <%- include("footer.ejs") %>
