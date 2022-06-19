@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function.pop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./assets/css/TonyCss.css">
+</head>
+<body>
+    <!-- 0. Navbar -->
+
+    <!-- 1. Breadcrumb -->
+    <section>
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#"><span>女裝</span></a></li>
+                <li><a href="#"><span>鞋子</span></a></li>
+                <li><a href="#"><span>草編真皮厚底涼鞋 - 石灰白</span></a></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 2. Single Product -->
+    <section class="container single-product mt-2 pt-2">
+        <div class="row mt-2">
+            <!-- 2.1 Left Side Photo -->
+            <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-2">
+                <img id="mainImg" class="img-fluid w-100 py-2 px-2" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
+                <div class="small-img-group">
+                    <div class="small-img-col">
+                        <img class="small-img" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="./assets/imgs/FP1_80100002_black_0.jpg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="./assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="" width="100%">
+                    </div>
+                    <div class="small-img-col">
+                        <img class="small-img" src="./assets/imgs/FP1_80100004_lightblue_0.jpg" alt="" width="100%">
+                    </div>
+                </div>
+            </div>
+            <!-- 2.2 Right Side Words -->
+            <div class="col-lg-7 col-md-12 col-sm-12 py-3 px-5" id="product_describe">
+                <h3>女裝 | 鞋子</h3>
+                <hr style="background-color: #395D6C; height: 2px;">
+                <h5 style="color: gray;">女裝時尚</h5>
+                <br>
+                <h4>Micah 草編真皮厚底涼鞋 - 石灰白</h4>
+                <p>商品編號 abc-60920313_white</p>
+                <h6>價　格： $ <span>499</span> 元</h6>
+                <h6>顏　色：米白色</h6>
+                <span style="color: red;">顏色選單</span><img src="" alt="">
+                <br>
+                <br>
+                <h6>尺　寸：28</h6>
+                <span style="color: red;">尺寸選單</span><img src="" alt="">
+                <span class="sizeflexBox mx-auto py-3">
+                    <button style="width: 40px; height: 40px;">34</button>
+                    <button style="width: 40px; height: 40px;">35</button>
+                    <button style="width: 40px; height: 40px;">36</button>
+                    <button style="width: 40px; height: 40px;">37</button>
+                </span>
+                <br>
+                <br>
+                <span>數　量：</span><input type="number" value="1">
+                <button class="my_button buy-btn">Add To Cart></button>
+                <br>
+                <br>
+                <!-- Product Describe -->
+                <div>
+                    <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">商品描述</h5>
+                </div>
+                <div>
+                    <p>&emsp;&emsp;俐落的剪裁與熱情洋溢的豔橘色，是最具衝擊性的搭配。本季的橘色大素面高跟拖鞋就是為特立獨行的性格女性設計。沉穩大氣中使用輕巧的貓跟與隱藏的夾趾細節，在造型上給予穿者不同表達的面相，實用上也給予足部大幅支撐，是經典涼鞋款中的革新者。</p>
+                </div>
+
+                <br>
+                <!-- Product info Detail -->
+                <div>
+                    <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px;">商品資訊</h5>
+                </div>
+                <ul>
+                    <li>透氣內裡<br></li>
+                    <li>材質：天然PU合成皮<br></li>
+                    <li>跟高：7.5 公分<br></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Relative Product -->
+    <section class="container" id="related-products" class="pt-5 mt-2">
+        <div class="text-center mt-4 pt-2">
+            <h2>相關商品</h2>
+            <hr class="mx-auto">
+        </div>
+        <div class="row mx-auto container-fluid">
+            <!-- Featured List -->
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">人字拖</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">休閒剪裁運動衫</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">平蚊洋裝</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">草帽</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 4. Hot Product -->
+    <section class="container" id="related-products" class="pt-5 mt-2">
+        <div class="text-center mt-4 pt-2">
+            <h2>熱銷商品</h2>
+            <hr class="mx-auto">
+        </div>
+        <div class="row mx-auto container-fluid">
+            <!-- Featured List -->
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">人字拖</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">休閒剪裁運動衫</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">平蚊洋裝</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+            <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="">
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h5 class="p-name">草帽</h5>
+                <h4 class="p-price">$499</h4>
+                <button class="my_button buy-btn">Buy Now</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 5. Footer -->
+
+    
+
+
+
+    <!-- Bootstrap setting -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/myJs.js"></script>
+</body>
+</html>
