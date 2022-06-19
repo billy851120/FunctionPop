@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%- title %></title>
     <link rel="stylesheet"  type="text/css" href="/css/all.css" />
-    <script src="/js/shop_cart/jquery.js"></script>
+    <link rel="stylesheet" href="/Plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
     <script src="/js/shop_cart/cookie.js"></script>
     <script
       src="https://kit.fontawesome.com/93e1c8f0af.js"
       crossorigin="anonymous"
     ></script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -29,18 +31,19 @@
             <div class="col-9" style="padding: 0">
               <div class="row cart_banner">
                 <div class="col-12 top_link">
-                  <ul class="">
+                  <ul class="cart-link">
                     <li><a href="/">首頁</a></li>
                     <li>
                       <a href="#">購物車</a>
                     </li>
                   </ul>
                 </div>
-                <div class="col-12 mid">
-                  <h6><b style="font-size: 0.9em">購物車</b></h6>
+                <div class="col-12 mid mb-3">
+                  <h6  style="font-size: 1.2em;
+                  font-weight: 900;">購物車</h6>
                 </div>
                 <div class="col-12 cart-step">
-                  <ul>
+                  <ul class="fz-dark">
                     <li>
                       <span>1</span>
                       查看購物車
@@ -62,13 +65,11 @@
           <div class="row content_pid">
             <div class="col-9">
               <div class="cart container-fluid">
-                <div class="row">
+                <div class="row fz-dark">
                   <div class="col-2">
                     <input type="checkbox" class="to_ck" checked />全選
                   </div>
-  
                   <div class="col-3">商品名稱</div>
-  
                   <div class="col-2">金額</div>
                   <div class="col-2">數量</div>
                   <div class="col">小計</div>
@@ -112,6 +113,43 @@
             </div>
           </div>
         </div>
+
+        <hr style="border-top: 0.9px solid #000;">
+
+        <div class="container">
+          <div class="row">
+            <div style="font-weight: 900;" class="col text-center mb-5 mt-2 ">熱門商品</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="owl-carousel owl-theme">
+                <div class="item"><div class="img"></div>
+              <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+            <p>NT $ 1,500</p></div>
+                
+                <div class="item"><div class="img"></div>
+              <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+            <p>NT $ 1,500</p></div>
+                
+                <div class="item"><div class="img"></div>
+              <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+            <p>NT $ 1,500</p></div>
+                <div class="item"><div class="img"></div>
+              <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+            <p>NT $ 1,500</p></div>
+                
+                <div class="item"><div class="img"></div>
+              <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+            <p>NT $ 1,500</p></div>
+                
+             
+                
+                
+                
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
           <div class="push"></div>
       </div>  
@@ -120,9 +158,11 @@
       </footer>  
 
     
-
+      <script src="/js/shop_cart/jquery.js"></script>
+<script src="/Plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="/js/shop_cart/server.js"></script>
     <script src="/js/shop_cart/cart.js"></script>
+    <script src="/js/shop_cart/owl.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   </body>
 </html>
