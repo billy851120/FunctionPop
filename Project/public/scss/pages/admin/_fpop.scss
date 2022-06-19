@@ -18,14 +18,14 @@
 
 }
 
-p {
+.footer p {
     font-size: 10px;
 }
 
-label {
-    font-weight: 600;
-    margin: 0.5rem 0 0;
-}
+// label {
+//     font-weight: 600;
+//     margin: 0.5rem 0 0;
+// }
 
 
 #btnB {
@@ -95,7 +95,7 @@ select[id^="birth"] {
 
 button:hover {
     opacity: 0.8;
-    
+
 }
 
 
@@ -164,12 +164,14 @@ span.psw {
     margin: 5px 0 30px 0;
     padding: 0 10px;
 }
+
 input:valid+span:after {
     position: absolute;
     content: '✓';
     padding-left: 5px;
     color: #009000;
 }
+
 .fpop-sidebar {
     height: 100%;
     width: 200px;
@@ -194,9 +196,9 @@ input:valid+span:after {
     outline: 0
 }
 
-span {
-    color: white;
-}
+//  span {
+//     color: white;
+// }
 
 .fpop-inner {
     white-space: nowrap;
@@ -245,6 +247,7 @@ body {
     border: none;
 
 }
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -267,9 +270,10 @@ body {
     height: 80px;
     margin-left: 200px;
 }
-* {
-    text-decoration: none !important;
-}
+
+// * {
+//     text-decoration: none !important;
+// }
 
 .fpop-item:hover {
     background-color: #dddfeb;
@@ -287,15 +291,19 @@ body {
     background: rgba(90, 92, 105, .5);
     line-height: 46px
 }
-.fpop-text{
-    color: #fcbd02!important;
+
+.fpop-text {
+    color: #fcbd02 !important;
 }
-.fpop-main{
+
+.fpop-main {
     margin-left: 200px;
 }
-.fp-item > li > span{
+
+.fp-item>li>span {
     padding: 15px;
 }
+
 .footerMell>div>div>a {
     color: white;
     font-size: small;

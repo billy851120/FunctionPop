@@ -37,12 +37,12 @@
     max-width: 550px;
     left: 5%;
   }
+
   .logo_word {
     top: 15%;
     right: 13%;
   }
 }
-
 @media screen and (max-width: 980px) {
   .chili {
     -o-object-fit: contain;
@@ -54,17 +54,18 @@
     max-width: 500px;
     min-width: 400px;
   }
+
   .logo_word {
     right: 13%;
     top: 18%;
   }
 }
-
 @media screen and (max-width: 500px) {
   .chili {
     top: 5%;
     width: 80%;
   }
+
   .logo_word {
     top: 20%;
   }

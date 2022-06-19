@@ -18,7 +18,7 @@
 
 }
 
-p {
+.footer p {
     font-size: 10px;
 }
 
@@ -108,7 +108,7 @@ img.avatar {
     padding: 16px;
 }
 
-span.psw {
+span .psw {
     float: right;
     padding-top: 16px;
 }
@@ -196,9 +196,9 @@ input:valid+span:after {
     outline: 0
 }
 
-span {
-    color: white;
-}
+// span {
+//     color: white;
+// }
 
 .fpop-inner {
     white-space: nowrap;
@@ -271,9 +271,9 @@ body {
     margin-left: 200px;
 }
 
-* {
-    text-decoration: none !important;
-}
+// * {
+//     text-decoration: none !important;
+// }
 
 .fpop-item:hover {
     background-color: #dddfeb;
