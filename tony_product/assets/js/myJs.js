@@ -7,3 +7,18 @@ var mainImg = document.getElementById("mainImg");
             }
         }
 
+
+
+// Filter for Category
+
+
+
+// Filter for Price
+
+
+
+
+
+
+
+
