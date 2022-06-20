@@ -10928,6 +10928,10 @@ h3 {
   font-weight: 600;
 }
 
+a {
+  text-decoration: none;
+}
+
 html,
 body {
   margin: 0;
