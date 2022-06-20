@@ -27,3 +27,8 @@ nothing to commit, working tree clean
 7. git push
 上傳檔案至github
 
+
+
+/////// Others 
+
+git log 查詢歷史更改紀錄
