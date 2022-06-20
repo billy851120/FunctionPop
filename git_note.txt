@@ -31,4 +31,4 @@ nothing to commit, working tree clean
 
 /////// Others 
 
-git log 查詢歷史更改紀錄
+git log
