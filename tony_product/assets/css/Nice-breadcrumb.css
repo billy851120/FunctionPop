@@ -1,0 +1,75 @@
+.breadcrumb {
+  padding: 0px;
+  background: #D4D4D4;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.breadcrumb li.home a {
+  background: #545454;
+  color: white;
+  padding-left: 15px;
+}
+
+.breadcrumb li.home a:after {
+  border-left: 30px solid #545454;
+}
+
+.breadcrumb li.home a span:before {
+  content: " ";
+}
+
+.breadcrumb li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 0 10px 45px;
+  position: relative;
+  float: left;
+}
+
+.breadcrumb li a:before {
+  content: " ";
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}
+
+.breadcrumb li a:after {
+  content: " ";
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(0, 0%, 83%, 1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  z-index: 2;
+}
+
+.breadcrumb li a:hover:after {
+  border-left-color: #74381d !important;
+}
+
+.breadcrumb li.active a {
+  background: #A54F29;
+  color: white;
+}
+
+.breadcrumb li.active a:after {
+  border-left: 30px solid #A54F29;
+}
+
+.breadcrumb li a:hover {
+  background: #74381d;
+  color: white;
+}
+
+.fas.fa-home {
+  /*float: left;*/
+}
+

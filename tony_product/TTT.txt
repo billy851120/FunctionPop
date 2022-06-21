@@ -1,0 +1,15 @@
+// Git
+
+// FIRST TIME TO DOWNLOAD
+git clone
+
+// RENEW
+git pull
+
+
+
+
+git remote
+
+git puth
+

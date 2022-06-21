@@ -5,7 +5,7 @@
 
 
 
-//layout樣式
+// //layout樣式
 @import"_main.scss";
 
 //header樣式
@@ -21,22 +21,22 @@
 // index樣式
 @import "./pages/index/pageone";
 @import "./pages/index/pagetwo";
-@import "./pages/index/pagethree";
+// @import "./pages/index/pagethree";
 @import "./pages/index/spin";
 @import "./pages/index/navbar";
 
 
-//shop_cart樣式
+// //shop_cart樣式
 @import "./pages/shop_cart/shop_cart";
 
 
-// member樣式
+// // member樣式
 @import"./pages/member/jquery-ui.scss";
 
-//product樣式
-@import"./pages/product/style";
+// //product樣式
+// @import"./pages/product/style";
 
 
 //admin樣式
-@import"./pages/admin/admin.min.css";
-@import"./pages/admin/fpop.css";
+// @import"./pages/admin/admin.min.scss";
+@import"./pages/admin/fpop.scss";

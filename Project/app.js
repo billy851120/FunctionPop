@@ -1,4 +1,6 @@
 var express = require('express');
+var ejs = require('ejs');
+var bodyParser = require('body-parser');
 
 //前台模組
 var home = require('./routes/home.js');
@@ -7,6 +9,7 @@ var admin = require('./routes/admin.js');
 
 var app = express();
 
+app.use(bodyParser.json());
 // Web伺服器的靜態檔案置於 public 資料夾
 app.use(express.static('public'));
 

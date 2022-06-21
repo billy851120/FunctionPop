@@ -87,11 +87,12 @@
 
 .cart-step ul li span {
     color: #fff;
-    background-color: #000;
+    background-color: #858796;
     border-radius: 50%;
     display: inline-block;
     width: 20px;
     transform: scale(0.8);
+    font-weight: 700;
 }
 
 .cart-step ul li+li::before {
@@ -117,7 +118,11 @@
 }
 
 .content_text {
-    margin: 40px 0;
+    // margin: 40px 0;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #cart_tb thead tr {
@@ -175,4 +180,94 @@
 
 .del:hover {
     color: #000;
+}
+
+.fz-dark {
+    color: #858796;
+}
+
+.cart-link a {
+    color: #000;
+}
+
+.cart_content {
+    margin-bottom: 50px;
+}
+
+.owl-carousel .img {
+    max-width: 100%;
+    width: 100%;
+    background-color: #ccc;
+    height: 300px;
+}
+
+.ct_form input {
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 8px 5px;
+}
+
+.ct_form div {
+    margin-bottom: 20px;
+}
+
+.ct_form span {
+    width: 14%;
+    display: inline-block;
+}
+
+.cars {
+    height: 32px;
+    width: 53px;
+
+    border-radius: 5px;
+}
+
+.payCh {
+    border: 1px solid #000;
+    padding: 8px 7px;
+    border-radius: 5px;
+}
+
+.payCh+.payCh {
+    margin-left: 20px;
+}
+
+.pay-content>div {
+    margin-bottom: 20px;
+
+}
+
+.pay-content input {
+    border-radius: 5px;
+    padding: 8px 5px;
+}
+
+#cart-submit {
+    background-color: #53AA35;
+    color: #fff;
+    padding: 5px 40px;
+    border-radius: 5px;
+    border: none;
+    margin: auto;
+    display: block;
+
+}
+
+.cart_cho {
+    position: relative;
+    height: 14px;
+    width: 14px;
+}
+
+.cart_cho:checked::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/shop_cart/check.png);
 }

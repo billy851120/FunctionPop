@@ -1,0 +1,34 @@
+1. git clone 
+
+從GITHUB下載專案內容
+
+
+2. git status
+
+查看檔案變動情況
+出現"Untracked files" 為檔案未被追蹤 => 新增檔案
+出現"Changes not staged for commit"為變更文件更改檔案
+出現"Changes not staged for commit" => 刪除之檔案
+
+3.  git add <檔名>  或是 git add --all
+Terminal 不會顯示任何內容
+
+4. git status
+此時出現"Changes to be committed" (綠色字體)
+
+5. git commit -m "<內容>"
+放在索引的檔案即將會被提交成一個新版本
+
+6. git status
+此時出現以下內容
+On branch master
+nothing to commit, working tree clean
+
+7. git push
+上傳檔案至github
+
+
+
+/////// Others 
+
+git log
