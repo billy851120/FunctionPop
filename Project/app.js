@@ -1,5 +1,15 @@
 var express = require('express');
 
+// Connect SQL
+var mysql = require('mysql')
+
+mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"",
+    database:"functionpop"
+})
+
 //前台模組
 var home = require('./routes/home.js');
 // 後台模組
@@ -25,4 +35,19 @@ app.use('/', home);
 
 app.listen(3000, function () {
   console.log('run');
+});
+
+// SQL
+app.get('/', function (req,res) {
+  
+  var con = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"",
+    database:"functionpop"
+  })
+  
+  con.query("SELECT * FROM products",(err,result)=>{
+    res.render('home/product',{result:result});
+  })
 });

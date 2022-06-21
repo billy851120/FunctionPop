@@ -14501,7 +14501,7 @@ body {
 /* Banner */
 /* 25. Banner */
 #banner {
-  background-image: url("../imgs/background.png");
+  background-image: url("../img/product/background.png");
   width: 100%;
   height: 45vh;
   background-size: cover;
@@ -14559,10 +14559,12 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.5s ease;
+  border-radius: 5px;
 }
 
 .my_button:hover {
-  background-color: coral;
+  background-color: #FFE200;
+  color: #1F3746;
 }
 
 

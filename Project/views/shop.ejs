@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="./assets/css/TonyCss.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.css" />
+
     <!-- <link rel="stylesheet" href="./assets/css/Nice-breadcrumb.css"> -->
 </head>
 <body>
@@ -41,15 +43,15 @@
         <!-- 2. New Product -->
         <section id="new_product" class="mt-2 pt-2 mx-auto w-50">
             <!-- Main topic -->
-            <div class="container mt-2 pt-2">
+            <div class="container mt-2 pt-2 mx-auto">
                 <h3 class="text-center">新品上市</h3>
-                <hr class="my_hr">
+                <hr class="my_hr mx-auto">
                 <p class="text-center">本月新品</p>
             </div>
             <!-- 2.2 Image -->
             <div class="row mx-auto container">
                 <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
+                    <img class="img-fluid mb-3" src="img/product/FP1_80100001_beige_0.jpg" alt="">
                     <h5>條紋T-shirt</h5>
                     <p>$499</p>
                     <button class="my_button buy-btn">Buy Now</button>
@@ -184,8 +186,31 @@
                             </div>
                             <!-- Imgs Start -->
                             <div class="row mx-auto container">
+
+                                <!-- Database connect -->
+                                
+                                <% result.forEach(function(item) { %>
+                                
+                            
+                                <!-- <% result.for(i=0;i<=list.length;i++){%> -->
+
                                 <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
+                                    <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
+                                    <h5><%= item.product_name %></h5>
+                                    <p>$<%= item.product_price %></p>
+                                    <button class="my_button buy-btn">Buy Now</button>
+                                </div>
+
+                                <% }) %>
+
+                                <!-- <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                                    <img class="img-fluid mb-3" src="/img/product/featured1.jpeg" alt="">
+                                    <h5>條紋T-shirt</h5>
+                                    <p>$499</p>
+                                    <button class="my_button buy-btn">Buy Now</button>
+                                </div>
+                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                                    <img class="img-fluid mb-3" src="/img/product/featured1.jpeg" alt="">
                                     <h5>條紋T-shirt</h5>
                                     <p>$499</p>
                                     <button class="my_button buy-btn">Buy Now</button>
@@ -243,19 +268,7 @@
                                     <h5>條紋T-shirt</h5>
                                     <p>$499</p>
                                     <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
+                                </div> -->
                                 <!-- Pagination -->
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination mt-2 justify-content-end">
@@ -288,5 +301,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/myJs.js"></script>
+    <script src="js/product/myJs.js"></script>
+    <script src="js/product/jquery.min.js"></script>
 </body>
 </html>
