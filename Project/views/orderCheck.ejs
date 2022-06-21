@@ -83,8 +83,8 @@
                         <span>
                           通訊地址* :
                         </span>
-                        <input type="text" style="width:70px; margin-right:25px;" name="ct_addr_l" placeholder=""><input type="text"
-                          name="ct_addr_r" placeholder="地址"><br>
+                        <input type="text" style="width:70px; margin-right:25px;" name="ct_addr_l" placeholder=""><input
+                          type="text" name="ct_addr_r" placeholder="地址"><br>
                       </div>
                       <div>
                         <span>
@@ -102,23 +102,41 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-5">
+                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
                     <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
                   </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 pay-content">
                   <div>
-                    <p>選擇付款方式</p>
+                    <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
                   </div>
-                  <div><span>信用卡/簽帳金融卡</span><span>貨到付款</span></div>
+                  <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value=""> 信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="">貨到付款</span></div>
                   <div class="d-flex">
-                    <div class="mr-3 border" style="height: 21px; width:50px;"><img src="/img/shop_cart/mas.png" style="width: 100%;"  alt=""></div>
-                    <div class="mr-3 border" style="height: 21px; width:50px;"><img  src="/img/shop_cart/visa.png"  style="width: 100%;" alt=""></div>
-                    <div class="border" style="height: 21px; width:50px;"><img src="/img/shop_cart/paypal.png"  style="width: 100%;" alt=""></div>
+                    <div class="mr-3 cars"><img src="/img/shop_cart/mas.png" style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                    </div>
+                    <div class="mr-3 cars"><img src="/img/shop_cart/visa.png" style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                    </div>
+                    <div class="cars"><img src="/img/shop_cart/paypal.png" style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                    </div>
                   </div>
-                  <div></div>
-                  <div></div>
-
+                  <div>
+                    <input type="text" style="width: 191px;" placeholder="信用卡號碼*">
+                  </div>
+                  <div>
+                    <span>有效日期* : </span><select name="" id="">
+                      <option>月</option>
+                    </select> / <select name="" id="">
+                      <option>日</option>
+                    </select> <input type="text" style="width: 58px; text-align: center; margin-left: 10px;"  placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
+                  </div>
+                </div>
+                <div class="col-12" style="border-top: 1px solid #000;">
+                  <div class="mt-3 mb-5">
+                    <input type="checkbox"><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
+                  </div>
+                  <div>
+                  <button id="cart-submit" style="text-align: center;">確認訂單</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,13 +148,13 @@
                 <div class="py-2">
                   <p>
                     <b>總計商品件數:</b>
-                    <span class="float-end"><span id="total_count">0</span> 件</span>
+                    <span class="float-right"><span id="total_count">0</span> 件</span>
                   </p>
                   <p>
-                    <b>小計:</b><span class="float-end">NT$<span id="total_price">0</span></span>
+                    <b>小計:</b><span class="float-right">NT$<span id="total_price">0</span></span>
                   </p>
                   <p>
-                    <b>運費:</b><span class="float-end">NT$<span>0</span></span>
+                    <b>運費:</b><span class="float-right">NT$<span>0</span></span>
                   </p>
                 </div>
                 <div class="py-3">
@@ -144,7 +162,7 @@
                 </div>
                 <div class="pt-2 mb-4">
                   <p>
-                    <b>總額:</b><span class="float-end">NT$<span>0</span></span>
+                    <b>總額:</b><span class="float-right">NT$<span>0</span></span>
                   </p>
                 </div>
                 <div class="text-center" id="buy">
