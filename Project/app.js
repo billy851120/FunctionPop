@@ -29,17 +29,3 @@ app.use('/', home);
 app.listen(3000, function () {
   console.log('run');
 });
-
-// SQL
-app.get('/', function (req, res) {
-  var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'functionpop',
-  });
-
-  con.query('SELECT * FROM products', (err, result) => {
-    res.render('home/product', { result: result });
-  });
-});
