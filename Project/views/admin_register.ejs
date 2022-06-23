@@ -3,18 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../_css/bootstrap.css">
-    <link rel="stylesheet" href="../fpop_css/fpop.css">
-    <script src="../_js/jquery.min.js"></script>
-    <!-- <script src="../_js/popper.min.js"></script> -->
-    <link rel="icon" href="/img/black_icon.png" type="image/gif" sizes="16x16">
-
-    <script src="../_js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/all.css">
+    <script src="/js/admin/bootstrap.min.js"></script>
+    <script src="/js/admin/jquery.min.js"></script>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
     <title>function.pop</title>
     <style>
-        input {
+        .fpop_inp {
             height: 35px;
             width: 100%;
             border: 1px solid #acacac;
@@ -34,93 +29,18 @@
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light badge-light"
-        style="box-shadow: 5px 1px 5px rgba(105, 105, 105, 0.25);">
-        <a class="navbar-brand" href="#" style="padding-left:35%; "><img src="../img/logo_black.svg" width="50px"
-                height="50px">
-            <img src="../img/logo_text_black.svg" width="150px" height="50px"></a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <form class="form-inline  ">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                    style="width: 150px;height: 35px;">
-                <button class="btn  my-sm-0" type="submit" style="font-size: 0.9em;"></button>
-
-            </form>
-            <ul class="navbar-nav">
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="document.getElementById('id01').style.display='block'"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                            class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg>
-                        <div id="id01" class="modal">
-                            <form class="modal-content animate" action="/action_page.php" method="post">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id01').style.display='none'"
-                                        class="close">&times;</span>
-                                    <img src="../img/logo_black.svg" width="50px" height="50px">
-                                    <img src="../img/logo_text_black.svg" width="150px" height="50px">
-                                    <h5 style="font-weight: 700;margin-top: 20px;">會員登入</h5>
-                                </div>
-
-                                <div class="fp_container">
-                                    <input type="text" placeholder="電子郵件*" name="email" required>
-                                    <input type="password" placeholder="密碼*" name="psw" required>
-                                    <button id="loginbtn" type="submit">登入</button>
-                                    <button id="registerbtn" type="button">註冊帳號</button>
-                                </div>
-
-                            </form>
-                        </div>
-
-                        <script>
-                            registerbtn.onclick = function () {
-
-                            }
-                            var modal = document.getElementById('id01');
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                        </script>
-                    </a>
-
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                            <path
-                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                        </svg></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="30"
-                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg></a>
-                </li>
-
-            </ul>
-        </div>
-        <br>
-
-
+    <nav>
+        <%- include("navbar.ejs") %>
     </nav>
-    <div class="" style="margin: 0px auto 100px; border: 1px solid #acacac;
+    <div style="margin: 0px auto 100px; border: 1px solid #acacac;
     ">
         <div id="text_login">
             <h6 style="font-weight: 600;text-align: center;">註冊新帳號</h6>
             <p style="text-align: center;">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
             <p style="opacity: 0.6;">*星號欄位必填</p>
             <label>姓名*:</label>
-            <input id="userName" type="text" placeholder="名字*">
-            <input type="text" placeholder="姓氏">
+            <input class="fpop_inp" id="userName" type="text" placeholder="名字*">
+            <input class="fpop_inp" type="text" placeholder="姓氏">
             <label id="birth">生日*:</label>
             <select name="" id="birthDay">
                 <Option id value selected>日</Option>
@@ -233,7 +153,7 @@
             <!-- <div class="invalid-feedback">必填</div> -->
             <br>
             <label for="userPhone">連絡電話*：</label>
-            <input type="tel" id="userPhone" name="userPhone" pattern="^(09)[0-9]{8}$" placeholder="連絡電話">
+            <input class="fpop_inp" type="tel" id="userPhone" name="userPhone" pattern="^(09)[0-9]{8}$" placeholder="連絡電話">
             <br>限定輸入大寫或小寫英文以及數字，字元最少要7個以上。<br>
             <label for="gender">性別*:</label>
             <select id="gender" name="testcard">
@@ -241,17 +161,13 @@
                 <option name="gender" value="male">男性</option>
                 <option name="gender" value="intersex">不說</option>
             </select>
-            <input type="text" name="email" placeholder="電子郵件*">
-            <input class="psw" type="password" placeholder="密碼*" pattern="[a-zA-Z0-9]{7,}">
-            <input type="password" placeholder="確認密碼*" pattern="[a-zA-Z0-9]{7,}">
+            <input class="fpop_inp" type="text" name="email" placeholder="電子郵件*">
+            <input class="fpop_inp" class="psw" type="password" placeholder="密碼*" pattern="[a-zA-Z0-9]{7,}">
+            <input class="fpop_inp" type="password" placeholder="確認密碼*" pattern="[a-zA-Z0-9]{7,}">
             <button style="border: 0px;" type="submit" value="註冊新帳號" id="btnB">註冊新帳號
 
         </div>
     </div>
-
-
-
-
     <br>
     <br>
     <br>
@@ -267,76 +183,9 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <footer>
-        <div class="footerMell" style="background-color: rgb(49, 49, 49);">
-            <div class="row  text-light" style="padding: 50px 70px 0px 70px;align-self: center">
-                <div class="col-lg-3 col-md-6  col-sm-6">
-                    <p>開始購物</p>
-                    <a href="">我的帳號</a><br>
-                    <a href="">運送 & 訂單追蹤</a><br>
-                    <a href="">退貨 & 換貨</a><br>
-                    <a href="">優惠活動</a><br>
-                </div>
-                <div class="col-lg-3 col-md-6  col-sm-6">
-                    <p>客戶服務</p>
-                    <a href="">訂單狀況</a><br>
-                    <a href="">會員專區</a><br>
-                    <a href="">常見問題</a><br>
-                    <a href="">聯絡我們</a><br>
-                </div>
-                <div class="col-lg-3 col-md-6  col-sm-6">
-                    <p>關於我們</p>
-                    <a href="">門市據點</a><br>
-                    <a href="">品牌故事</a><br>
-                    <a href="">永續經營</a><br>
-                    <a href="">聯盟行銷</a><br>
-                </div>
-                <div class="col-lg-3 col-md-6  col-sm-6">
-                    <p>關注我們</p>
-                    <a href=""> <img src="/img/icon/fb.png" style="width: 27px;height: 27px;"></a>
-                    <a href=""> <img src="/img/icon/ig.png" style="width: 27px;height: 27px;"></a>
-                    <a href=""> <img src="/img/icon/yout.png" style="width: 27px;height: 27px;"></a>
-                    <a href=""> <img src="/img/icon/pin.png" style="width: 27px;height: 27px;"></a>
-                    <a href=""> <img src="/img/icon/tw.png" style="width: 27px;height: 27px;"></a>
-                    <a href=""> <img src="/img/icon/line.png" style="width: 27px;height: 27px;"></a>
-                    <hr>
-                    <p>我們支持以下付款方式</p>
-                    <img src="/img/icon/visa.png" style="width: 35px;height: 20px;">
-                    <img src="/img/icon/paypal.png" style="width: 35px;height: 20px;">
-                    <img src="/img/icon/mas.png" style="width: 35px;height: 20px;">
-                </div>
-            </div>
-            <div class="container text-center" style="height: 80px;padding: 10px;">
-                <hr>
-                <p style="color: #6c6c6c;font-size: 1px;">©function.pop, all rights reserved | 使用條款 | 隱私權政策 | Cookie政策
-                </p>
-            </div>
-        </div>
-    </footer>
+    <footer class="footer">
+        <%- include("footer.ejs") %>
+      </footer>
 </body>
 
 </html>
