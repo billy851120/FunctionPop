@@ -39,13 +39,13 @@ localhost:3000/xxxxx
 
 庫存頁
 /admin/goods
-/admin/goods/admin_goods_11
-/admin/goods/admin_goods_item_all
-/admin/goods/admin_goods_item_del
-/admin/goods/admin_goods_item_shelf
-/admin/goods/admin_goods_login
-/admin/goods/admin_goods_member
-/admin/goods/admin_goods_orderMgat__refund
-/admin/goods/admin_goods_orderMgat_num
-/admin/goods/admin_goods_register
-/admin/goods/admin_goods_stockMgat_all
+/admin/goods/admin_11
+/admin/goods/admin_item_all
+/admin/goods/admin_item_del
+/admin/goods/admin_item_shelf
+/admin/goods/admin_login
+/admin/goods/admin_member
+/admin/goods/admin_orderMgat__refund
+/admin/goods/admin_orderMgat_num
+/admin/goods/admin_register
+/admin/goods/admin_stockMgat_all
