@@ -1,14 +1,6 @@
 var express = require('express');
-
-// Connect SQL
-var mysql = require('mysql')
-
-mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database:"functionpop"
-})
+var ejs = require('ejs');
+var bodyParser = require('body-parser');
 
 //前台模組
 var home = require('./routes/home.js');
@@ -17,6 +9,7 @@ var admin = require('./routes/admin.js');
 
 var app = express();
 
+app.use(bodyParser.json());
 // Web伺服器的靜態檔案置於 public 資料夾
 app.use(express.static('public'));
 
@@ -35,19 +28,4 @@ app.use('/', home);
 
 app.listen(3000, function () {
   console.log('run');
-});
-
-// SQL
-app.get('/', function (req,res) {
-  
-  var con = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database:"functionpop"
-  })
-  
-  con.query("SELECT * FROM products",(err,result)=>{
-    res.render('home/product',{result:result});
-  })
 });

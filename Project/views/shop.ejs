@@ -195,7 +195,18 @@
                                 <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
                                     <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
                                     <h5><%= item.product_name %></h5>
-                                    <p>$<%= item.product_price %></p>
+
+
+                                    <% if(item.product_special_offer){ %>
+
+                                        <span>$<strong style="color: red;"> <%= item.product_special_offer %></strong></span>
+                                        <span style="text-decoration: line-through;">$<strong><%= item.product_price %></strong> </span>
+
+                                    <% }else{ %>
+                                        <p>$<strong><%= item.product_price %></strong> </p>
+
+                                    <% } %>
+
                                     <button class="my_button buy-btn">Buy Now</button>
                                 </div>
 
