@@ -192,7 +192,7 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div onclick="window.location.href='/home/product/single_product/<%= item.product_image %>';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                                <div onclick="window.location.href='/home/product/single_product/<%= item.product_id %>';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
                                     <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
                                     <h5><%= item.product_name %></h5>
                                     <p><%- item.rows %></p>
