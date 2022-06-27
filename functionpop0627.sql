@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-06-24 03:55:53
+-- 產生時間： 2022-06-27 12:23:31
 -- 伺服器版本： 10.4.24-MariaDB
--- PHP 版本： 7.4.29
+-- PHP 版本： 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,79 +28,41 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customer_id` (
+  `id` int(11) NOT NULL,
   `cName` varchar(20) NOT NULL,
   `cBirth` varchar(10) NOT NULL,
   `cgender` enum('M','F','X') NOT NULL,
   `cAccount` varchar(50) NOT NULL,
   `cPhone` varchar(10) DEFAULT NULL,
   `cAddr` varchar(50) DEFAULT NULL,
-  `cCreated` datetime DEFAULT NULL ON UPDATE current_timestamp()
+  `cPassword` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `customer_id`
 --
 
-INSERT INTO `customer_id` (`cName`, `cBirth`, `cgender`, `cAccount`, `cPhone`, `cAddr`, `cCreated`) VALUES
-('吳文華', '1969-02-15', 'X', 'werre34455@superstar.com', '0918979999', '宜蘭縣三星鄉忠平路22號', '0000-00-00 00:00:00'),
-('張金鳳', '1978-12-04', 'F', 'wcd516222@superstar.com', '0907454512', '高雄市大社區民族路20號', '0000-00-00 00:00:00'),
-('徐博美', '1995-12-18', 'F', 'crqqqt37476al@superstar.com', '0907458865', '苗栗縣公館鄉仁愛路11號', '0000-00-00 00:00:00'),
-('徐洋洋', '1987-11-19', 'M', 'lasvsfbd2vnla@superstar.com', '0918885456', '彰化縣埔心鄉仁五路35號', '0000-00-00 00:00:00'),
-('徐豪彬', '1978-11-30', 'F', '199822wwdca@superstar.com', '0917785456', '臺中市北區崇德路10號', '0000-00-00 00:00:00'),
-('李文婷', '1987-03-15', 'M', 'qzaqz11@superstar.com', '0916551742', '高雄市大寮區會昭街30號', '0000-00-00 00:00:00'),
-('李豐瑤', '1972-04-11', 'F', 'qaz5151ne@superstar.com', '0946777535', '臺北市南港區重陽路21號', '0000-00-00 00:00:00'),
-('林柯基', '1994-02-18', 'X', 'pekkffk3434ky@superstar.com', '0916556883', '臺中市北區天津一街16號', '0000-00-00 00:00:00'),
-('柯韋志', '1985-04-12', 'F', 'lovek5n45ie@superstar.com', '0914258868', '  嘉義市西區泰瑞一街12號', '0000-00-00 00:00:00'),
-('楊維瑞', '1977-07-07', 'F', 'zhsdwsxedcr3ng@superstar.com', '0956688366', ' 雲林縣元長鄉中洽3號', '0000-00-00 00:00:00'),
-('潘勝敬', '1970-08-28', 'M', 'ig34FH25n45ie@superstar.com', '0914558868', ' 雲林縣西螺鎮廣興路3號', '0000-00-00 00:00:00'),
-('王八博', '1983-09-06', 'M', 'fdppp3g43trhs@superstar.com', '0918978888', '屏東縣內埔鄉東川18號', '0000-00-00 00:00:00'),
-('簡靖君', '1997-08-06', 'F', 'eldfs44446ven@superstar.com', '0988588876', '宜蘭縣冬山鄉寶慶二路33號', '0000-00-00 00:00:00'),
-('蔡偉平', '1983-05-05', 'M', 'elBBB4446ven@superstar.com', '0944588876', '臺中市石岡區廣華街32號', '0000-00-00 00:00:00'),
-('賴勝寧', '1999-08-28', 'M', 'ihgff354gfhne@superstar.com', '0946888535', '台北市建國路177號6樓', '0000-00-00 00:00:00'),
-('趙文豪', '1985-05-02', 'M', 'jiSSlunsdf@superstar.com', '0924881111', '臺南市東區裕和路23號', '0000-00-00 00:00:00'),
-('陳天寧', '1986-10-01', 'M', 'ivybfh2235bfb@superstar.com', '0955881230', '新北市蘆洲區長樂路3號', '0000-00-00 00:00:00'),
-('黃君幸', '1975-07-01', 'F', 'wsx435bfb@superstar.com', '0957272230', '桃園市新屋區清華路4號', '0000-00-00 00:00:00'),
-('黃好輪', '1984-10-17', 'M', 'zhsdg5gbgr3ng@superstar.com', '0951988366', '台北市三民路1巷10號', '0000-00-00 00:00:00'),
-('黃楚輪', '1988-12-07', 'M', 'jindfvglunsdf@superstar.com', '0958881111', '新北市三峽區金敏7號', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `customer_pwd`
---
-
-CREATE TABLE `customer_pwd` (
-  `id` int(11) NOT NULL,
-  `cName` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `Account` varchar(60) CHARACTER SET utf8 NOT NULL,
-  `Password` varchar(60) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `customer_pwd`
---
-
-INSERT INTO `customer_pwd` (`id`, `cName`, `Account`, `Password`) VALUES
-(1, '簡靖君', 'eldfs44446ven@superstar.com', '354366'),
-(2, '黃楚輪', 'jindfvglunsdf@superstar.com', '63463t'),
-(3, '潘勝敬', 'ig34FH25n45ie@superstar.com', '235ytr'),
-(4, '賴勝寧', 'ihgff354gfhne@superstar.com', '357211'),
-(5, '陳天寧', 'ivybfh2235bfb@superstar.com', '156517'),
-(6, '黃好輪', 'zhsdg5gbgr3ng@superstar.com', 'v52747'),
-(7, '徐洋洋', 'lasvsfbd2vnla@superstar.com', '4g2bsw'),
-(8, '徐博美', 'crqqqt37476al@superstar.com', '2g2bdb'),
-(9, '林柯基', 'pekkffk3434ky@superstar.com', '4v216u'),
-(10, '王八博', 'fdppp3g43trhs@superstar.com', '1821w6'),
-(11, '蔡偉平', 'elBBB4446ven@superstar.com', '1821ww'),
-(12, '趙文豪', 'jiSSlunsdf@superstar.com', '15v1ww'),
-(13, '柯韋志', 'lovek5n45ie@superstar.com', '15v1ww'),
-(14, '李豐瑤', 'qaz5151ne@superstar.com', '1svvww'),
-(15, '黃君幸', 'wsx435bfb@superstar.com', '1s855w'),
-(16, '楊維瑞', 'zhsdwsxedcr3ng@superstar.com', '1s8sv5'),
-(17, '徐豪彬', '199822wwdca@superstar.com', '1s8sv6'),
-(18, '張金鳳', 'wcd516222@superstar.com', 'sfdfdf'),
-(19, '李文婷', 'qzaqz11@superstar.com', '4bfdmd'),
-(20, '吳文華', 'werre34455@superstar.com', 'sfdf33');
+INSERT INTO `customer_id` (`id`, `cName`, `cBirth`, `cgender`, `cAccount`, `cPhone`, `cAddr`, `cPassword`) VALUES
+(1, '徐豪彬', '1978-11-30', 'F', '199822wwdca@superstar.com', '0917785456', '臺中市北區崇德路10號', '1s8sv6'),
+(2, '徐博美', '1995-12-18', 'F', 'crqqqt37476al@superstar.com', '0907458865', '苗栗縣公館鄉仁愛路11號', '2g2bdb'),
+(3, '蔡偉平', '1983-05-05', 'M', 'elBBB4446ven@superstar.com', '0944588876', '臺中市石岡區廣華街32號', '1821ww'),
+(4, '簡靖君', '1997-08-06', 'F', 'eldfs44446ven@superstar.com', '0988588876', '宜蘭縣冬山鄉寶慶二路33號', '354366'),
+(5, '王八博', '1983-09-06', 'M', 'fdppp3g43trhs@superstar.com', '0918978888', '屏東縣內埔鄉東川18號', '1821w6'),
+(6, '潘勝敬', '1970-08-28', 'M', 'ig34FH25n45ie@superstar.com', '0914558868', ' 雲林縣西螺鎮廣興路3號', '235ytr'),
+(7, '賴勝寧', '1999-08-28', 'M', 'ihgff354gfhne@superstar.com', '0946888535', '台北市建國路177號6樓', '357211'),
+(8, '陳天寧', '1986-10-01', 'M', 'ivybfh2235bfb@superstar.com', '0955881230', '新北市蘆洲區長樂路3號', '156517'),
+(9, '黃楚輪', '1988-12-07', 'M', 'jindfvglunsdf@superstar.com', '0958881111', '新北市三峽區金敏7號', '63463t'),
+(10, '趙文豪', '1985-05-02', 'M', 'jiSSlunsdf@superstar.com', '0924881111', '臺南市東區裕和路23號', '15v1ww'),
+(11, '徐洋洋', '1987-11-19', 'M', 'lasvsfbd2vnla@superstar.com', '0918885456', '彰化縣埔心鄉仁五路35號', '4g2bsw'),
+(12, '柯韋志', '1985-04-12', 'F', 'lovek5n45ie@superstar.com', '0914258868', '  嘉義市西區泰瑞一街12號', '15v1ww'),
+(13, '林柯基', '1994-02-18', 'X', 'pekkffk3434ky@superstar.com', '0916556883', '臺中市北區天津一街16號', '4v216u'),
+(14, '李豐瑤', '1972-04-11', 'F', 'qaz5151ne@superstar.com', '0946777535', '臺北市南港區重陽路21號', '1svvww'),
+(15, '李文婷', '1987-03-15', 'M', 'qzaqz11@superstar.com', '0916551742', '高雄市大寮區會昭街30號', '4bfdmd'),
+(16, '張金鳳', '1978-12-04', 'F', 'wcd516222@superstar.com', '0907454512', '高雄市大社區民族路20號', 'sfdfdf'),
+(17, '吳文華', '1969-02-15', 'X', 'werre34455@superstar.com', '0918979999', '宜蘭縣三星鄉忠平路22號', 'sfdf33'),
+(18, '黃君幸', '1975-07-01', 'F', 'wsx435bfb@superstar.com', '0957272230', '桃園市新屋區清華路4號', '1s855w'),
+(19, '黃好輪', '1984-10-17', 'M', 'zhsdg5gbgr3ng@superstar.com', '0951988366', '台北市三民路1巷10號', 'v52747'),
+(20, '楊維瑞', '1977-07-07', 'F', 'zhsdwsxedcr3ng@superstar.com', '0956688366', ' 雲林縣元長鄉中洽3號', '1s8sv5');
 
 -- --------------------------------------------------------
 
@@ -241,14 +203,8 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `produ
 -- 資料表索引 `customer_id`
 --
 ALTER TABLE `customer_id`
-  ADD PRIMARY KEY (`cName`);
-
---
--- 資料表索引 `customer_pwd`
---
-ALTER TABLE `customer_pwd`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cName` (`cName`);
+  ADD UNIQUE KEY `cAccount` (`cAccount`);
 
 --
 -- 資料表索引 `orders`
@@ -279,9 +235,9 @@ ALTER TABLE `products`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `customer_pwd`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `customer_id`
 --
-ALTER TABLE `customer_pwd`
+ALTER TABLE `customer_id`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
@@ -307,16 +263,6 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- 已傾印資料表的限制式
---
-
---
--- 資料表的限制式 `customer_pwd`
---
-ALTER TABLE `customer_pwd`
-  ADD CONSTRAINT `customer_pwd_ibfk_1` FOREIGN KEY (`cName`) REFERENCES `customer_id` (`cName`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
