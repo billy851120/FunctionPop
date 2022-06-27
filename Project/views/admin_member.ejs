@@ -18,25 +18,38 @@
 
     <!-- Main Content -->
     <div class="fpop-main p-5">
-        <nav  aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
+              <li class="breadcrumb-item"><a href="#">會員管理</a></li>
+              <li class="breadcrumb-item active" aria-current="page">會員資料</li>
             </ol>
-        </nav>
-    <table>
-        <thead>
-            <th>#</th>
-            <th>姓名</th>
-            <th>生日</th>
-            <th>性別</th>
-            <th>信箱</th>
-            <th>電話</th>
-            <th>地址</th>
-            <!-- <th>#</th> -->
-        </thead>
-        <tbody>     
-        </tbody>
-    </table>
+          </nav>
+        <table class="table table-hover">
+            <thead>
+                <th>#</th>
+                <th>姓名</th>
+                <th>生日</th>
+                <th>性別</th>
+                <th>信箱</th>
+                <th>電話</th>
+                <th>地址</th>
+            </thead>
+            <tbody>
+                <% data.forEach((item ,index) => { %>
+                    <tr>
+                        <td><%= index+1%></td>
+                        <td><%= item.cName%></td>
+                        <td><%= item.cBirth%></td>
+                        <td><%= item.cgender%></td>
+                        <td><%= item.cAccount%></td>
+                        <td><%= item.cPhone%></td>
+                        <td><%= item.cAddr%></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="#">next</a>
     </div>
     <!-- Main Content end-->
 

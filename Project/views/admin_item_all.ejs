@@ -31,22 +31,29 @@
       </nav>
     <h2>我是所有商品</h2>
 
-    <p>The sidebar with is set with "style="width:25%".</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
-    <p>The left margin of the page content is set to the same value.</p>
+    <table class="table table-hover">
+        <thead>
+            <th>#</th>
+            <th>產品名稱</th>
+            <th>類別</th>
+            <th>尺寸</th>
+            <th>敘述</th>
+            <th>價格</th>
+        </thead>
+        <tbody>
+            <% data.forEach((item ,index) => { %>
+                <tr>
+                    <td><%= index+1%></td>
+                    <td><%= item.product_name%></td>
+                    <td><%= item.product_category%></td>
+                    <td><%= item.product_gender%></td>
+                    <td><%= item.product_description%></td>
+                    <td><%= item.product_price%> $</td>
 
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </div>
 <!-- Main Content end-->
 
