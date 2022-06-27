@@ -7,8 +7,10 @@
     <title>function.pop</title>
     <link rel="stylesheet" href="/css/all.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../public/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
     <!-- <link rel="stylesheet" href="./assets/css/TonyCss.css"> -->
+    
+
 </head>
 <body>
     <!-- 0. Wraper -->
@@ -17,16 +19,18 @@
         <%- include("navbar.ejs") %>
 
         <!-- 2. Breadcrumb -->
+        <%  result.forEach(function(item) { %>
         <section>
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="#"><span>女裝</span></a></li>
-                    <li><a href="#"><span>鞋子</span></a></li>
-                    <li><a href="#"><span>草編真皮厚底涼鞋 - 石灰白</span></a></li>
+                    <li><a href="#"><span><%= item.product_gender %></span></a></li>
+                    <li><a href="#"><span><%= item.product_category %></span></a></li>
+                    <li><a href="#"><span><%= item.product_name %></span></a></li>
                 </ol>
             </div>
         </section>
+        <% }); %>
 
         <!-- 3. Single Product -->
         <section class="container single-product mt-2 pt-2">
@@ -54,13 +58,13 @@
                 </div>
 
                 <div class="col-lg-7 col-md-12 col-sm-12 py-3 px-5" id="product_describe">
-                    <h3>女裝 | 鞋子</h3>
+                    <h3><%= item.product_gender %> | <%= item.product_category %></h3>
                     <hr style="background-color: #395D6C; height: 2px;">
-                    <h5 style="color: gray;">女裝時尚</h5>
+                    <h5 style="color: gray;">時尚</h5>
                     <br>
-                    <h4>Micah 草編真皮厚底涼鞋 - 石灰白</h4>
-                    <p>商品編號 abc-60920313_white</p>
-                    <h6>價　格： $ <span>499</span> 元</h6>
+                    <h4><%= item.product_name %></h4>
+                    <p>商品編號 <%= item.product_code %></p>
+                    <h6>價　格： $ <span><%= item.product_price %></span> 元</h6>
                     <h6>顏　色：米白色</h6>
                     <span style="color: red;">顏色選單</span><img src="" alt="">
                     <br>
@@ -76,7 +80,7 @@
                     <br>
                     <br>
                     <span>數　量：</span><input type="number" value="1">
-                    <button class="my_button buy-btn">Add To Cart></button>
+                    <button class="my_button buy-btn">Add To Cart</button>
                     <br>
                     <br>
 
@@ -84,7 +88,7 @@
                         <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 10px;">商品描述</h5>
                     </div>
                     <div>
-                        <p>&emsp;&emsp;俐落的剪裁與熱情洋溢的豔橘色，是最具衝擊性的搭配。本季的橘色大素面高跟拖鞋就是為特立獨行的性格女性設計。沉穩大氣中使用輕巧的貓跟與隱藏的夾趾細節，在造型上給予穿者不同表達的面相，實用上也給予足部大幅支撐，是經典涼鞋款中的革新者。</p>
+                        <p>&emsp;&emsp;<%= item.product_description %></p>
                     </div>
 
                     <br>
@@ -93,9 +97,7 @@
                         <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px;">商品資訊</h5>
                     </div>
                     <ul>
-                        <li>透氣內裡<br></li>
-                        <li>材質：天然PU合成皮<br></li>
-                        <li>跟高：7.5 公分<br></li>
+                        <li><%- item.product_composition  %></li>
                     </ul>
                 </div>
 
@@ -232,6 +234,13 @@
 
         </section>
     </div>
+
+
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
     <!-- 5. Footer -->
     <footer class="footer">
         <%- include("footer.ejs") %>
@@ -248,5 +257,15 @@
     <script src="../public/js/product/myJs.js"></script>
     <!-- <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/myJs.js"></script> -->
+    <script>
+        var mainImg = document.getElementById("mainImg");
+        var smallImg = document.getElementsByClassName("small-img");
+
+        for (let i = 0; i < 4; i++) {
+            smallImg[i].onclick = function () {
+                mainImg.src = smallImg[i].src;
+            }
+        }
+    </script>
 </body>
 </html>

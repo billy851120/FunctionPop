@@ -4,6 +4,7 @@ var router = express.Router();
 
 router.get('/', function (rqs, res) {
   db.exec('SELECT * FROM products', [], (result, fields) => {
+    console.log(result);
     res.render('shop', { result: result });
   });
 });
