@@ -48,7 +48,8 @@
             text-align: right;
             font-size: 5px;
             color: #d83838;
-            visibility: hidden;
+            /* visibility: hidden; */
+            /* visibility:visible; */
         }
     </style>
 </head>
@@ -63,19 +64,23 @@
         <p style="text-align: center;">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
         <p style="opacity: 0.6;text-align: center;">*星號欄位必填</p>
         <form id="form">
+
             <label>姓名*:</label>
-            <p class="inp_Err" id="nameErr">請填寫姓名欄位*</p>
+            <p class="inp_Err" style="visibility: hidden" id="nameErr">請填寫姓名欄位*</p>
             <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
+
+
             <label>生日*:</label>
-            <p class="inp_Err" id="birthErr">請填寫生日欄位*</p>
+            <p class="inp_Err" style="visibility: hidden" id="birthErr">請填寫生日欄位*</p>
             <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
             <label>性別*:</label>
+            <p class="inp_Err" style="visibility: hidden" id="genderErr">請填寫性別欄位*</p>
             <select class="fpop_inp" id="gender" name="cgender">
                 <option name="gender" value="F">女性</option>
                 <option name="gender" value="M">男性</option>
                 <option name="gender" value="X">不說</option>
             </select>
-            <label>電子郵件*:</label>
+            <!-- <label>電子郵件*:</label>
             <p class="inp_Err" id="accountErr">請填寫電子郵件欄位*</p>
             <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
             <label>連絡電話*：</label>
@@ -85,7 +90,7 @@
 
             <label>通訊地址*：</label>
             <input class="fpop_inp" type="text" name="cAddr" placeholder="通訊地址*"><br>
-            <button class="btn btn-dark" type="button" id="submit">註冊會員</button>
+            <button class="btn btn-dark" id="submit">註冊會員</button> -->
         </form>
     </div>
 
@@ -94,93 +99,68 @@
         $("#cName").on('input', function () {
             if (!($("#cName").val() == '')) {
                 $("#cName").addClass("inp_right")
-                $("inp_Err").css('visibility', 'hidden')
-            } else {
-                $("#cName").remove("inp_right")
+                $("#nameErr").css('visibility', 'hidden')
             }
         })
         $("#cBirth").on('input', function () {
             if (!($("#cBirth").val() == '')) {
                 $("#cBirth").addClass("inp_right")
-                $("inp_Err").css('visibility', 'hidden')
-            } else {
-                $("#cBirth").remove("inp_right")
+                $("#birthErr").css('visibility', 'hidden')
             }
         })
-        $("#cAccount").on('input', function () {
-            if (!($("#cAccount").val() == '')) {
-                $("#cAccount").addClass("inp_right")
-                $("inp_Err").css('visibility', 'hidden')
-            } else {
-                $("#cAccount").remove("inp_right")
-
+        $("#gender").on('select', function () {
+            if (!($("#gender").val() == '')) {
+                $("#gender").addClass("inp_right")
+                $("#genderErr").css('visibility', 'hidden')
             }
-            $("#cPhone").on('input', function () {
-                if (!($("#cPhone").val() == '')) {
-                    $("#cPhone").addClass("inp_right")
-                    $("inp_Err").css('visibility', 'hidden')
-                } else {
-                    $("#cPhone").remove("inp_right")
+        })
 
-                }
-            })
-            function checkInputInfo() {
-                var x = document.getElementById("cName").value;
-                var y = document.getElementById("cBirth").value;
-                var z = document.getElementById("cAccount").value;
-                var p = document.getElementById("cAccount").value;
-                if (x == null || x == "") {
-                    alert("姓名必須填寫")
-                    $("#cName").addClass("fpop_inperro")
-                    $("#nameErr").css('visibility', 'visible')
-                    return false
-                }
-                if (y == null || y == "") {
-                    alert("生日必須填寫")
-                    $("#cBirth").addClass("fpop_inperro")
-                    $("#birthErr").css('visibility', 'visible')
-                    return false
-                }
-                if (z == null || z == "") {
-                    alert("電子郵件必須填寫")
-                    $("#cAccount").addClass("fpop_inperro")
-                    $("#accountErr").css('visibility', 'visible')
-                    return false
-                }
+        function checkInputInfo() {
+            var x = $("cName").value;
+            var y = $("cBirth").value;
+            if (x == null || x == "") {
+                $("#cName").addClass("fpop_inperro")
+                $("#nameErr").css('visibility', 'visible')
+                // return false
+            } 
+            if (y == null || y == "") {
+                $("#cBirth").addClass("fpop_inperro")
+                $("#birthErr").css('visibility', 'visible')
+                return false
+            }
+            return true
+        }
 
-                return true
-            };
+        // 關鍵字 serializeArray() ,stringify()
 
-            // 關鍵字 serializeArray() ,stringify()
+        $("#submit").on('click', function () {
+            if (!checkInputInfo()) {
 
-            $('#submit').on('click', function () {
-                if (!checkInputInfo()) {
-
-                    // alert("資料輸入有誤");
-                    return
+                // alert("資料輸入有誤");
+                return false
+            }
+            var data = $('#form').serializeArray()
+            JSONData = serializeToJSON(data)
+            $.ajax({
+                url: "http://localhost:3000/admin/goods/register",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSONData,
+                success: function (res) {
+                    alert("新增成功!");
+                },
+                error: function () {
+                    alert("新增失敗!");
                 }
-                var data = $('#form').serializeArray()
-                JSONData = serializeToJSON(data)
-                $.ajax({
-                    url: "http://localhost:3000/admin/goods/register",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSONData,
-                    success: function (res) {
-                        alert("新增成功!");
-                    },
-                    error: function () {
-                        alert("新增失敗!");
-                    }
-                });
-                function serializeToJSON(data) {
-                    var values = {};
-                    for (index in data) {
-                        values[data[index].name] = data[index].value;
-                    }
-                    return JSON.stringify(values)
+            });
+            function serializeToJSON(data) {
+                var values = {};
+                for (index in data) {
+                    values[data[index].name] = data[index].value;
                 }
-            })
+                return JSON.stringify(values)
+            }
+        })
 
 
     </script>
