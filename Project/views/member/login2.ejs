@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/all.css">
+    <script src="/js/member/jquery.min.js"></script>
+    <script src="/js/member/popper.min.js"></script>
+    <style>
+        *{
+            /* padding: 0;
+            margin: 0; */
+            box-sizing: border-box;
+        }
+        body{
+            background-color: white
+        }
+        .row-box{
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 12px 12px 22px grey;
+        }
+        img{
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+        .btn1{
+            border: none;
+            outline: none;
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn1:hover{
+            background-color: white;
+            color: black;
+            border: 1px solid;
+
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../navbar.ejs") %>
+
+    <section class="Form my-4 mx-5">
+        <div class="container">            
+            <div class="row row-box no-gutters">
+                <div class="col-lg-5">
+                    <img src="/img/index/f3.jpg" alt="">
+                </div>
+                <% if(!memberprofile) {%>
+                <div class="col-lg-7 px-5 pt-5">
+                     
+                    <h1 class="font-weight-blod py-3">FunctionPOP</h1>
+                    <h4>Sign into your account</h4>
+                    <% if (errorMessage.length > 0) { %>
+                        <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
+                          <%= errorMessage %>
+                        </div>
+                        <% } %>
+                    <form action="/home/member/login" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="text" placeholder="Email-Address" name="cAccount" class="form-control my-3 p-4">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="password" placeholder="Password" name="cPassword" class="form-control my-3 p-4 ">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn1 mt-3 mb-5">Login</button>
+                            </div>
+                        </div>
+                        <a href="#">Forgot password</a>
+                        <p>Don't have an account? <a href="#">Register</a> </p>
+                    </form>
+                </div> 
+              <% } else { %>
+                <div class="col-lg-7 px-5 pt-5 text-center  align-items-end border border-success">
+                    <h1 class="font-weight-blod py-3">您已登入 </h1> 
+                    <p class="font-weight-blod py-3">是否登出？</p> 
+                     <a href="/home/member/logout" class="btn btn-outline-dark d-block">Logout</a> 
+                </div>
+            
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <%- include("../footer.ejs") %>
+    </footer>
+
+</body>
+
+</html>

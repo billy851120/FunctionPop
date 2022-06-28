@@ -1,3 +1,4 @@
+
 .pagetwo {
     background-image: url(../img/background.jpg);
     background-repeat: no-repeat;
@@ -9,18 +10,18 @@
     z-index: -600;
     /* height: auto; */
     overflow: hidden;
-
+    
 }
 
-// .row {
-//     display: flex;
-//     flex-wrap: wrap;
-// }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-// .col {
-//     flex-grow: 1;
-//     margin: 10px auto;
-// }
+.col {
+    flex-grow: 1;
+    margin: 10px auto;
+}
 
 .yy .figure img {
     width: 100%;
@@ -40,7 +41,7 @@
     position: absolute;
     top: 0;
     left: 0;
-
+    
 }
 
 figcaption {

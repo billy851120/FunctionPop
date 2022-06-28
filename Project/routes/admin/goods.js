@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../../dataBase');
 var router = express.Router();
+router.use(bodyParser.json());
 
 
 
@@ -11,10 +12,14 @@ router.get('/', function (rqs, res) {
     res.render('admin_index', { data: result });
   });
 });
-router.use(bodyParser.json());
 router.get('/member', function (rqs, res) {
   db.exec('SELECT * FROM customer_id', [], (result, fields) => {
     res.render('admin_member', { data: result });
+  });
+});
+router.get('/item_all', function (rqs, res) {
+  db.exec('SELECT * FROM products', [], (result, fields) => {
+    res.render('admin_item_all', { data: result });
   });
 });
 
