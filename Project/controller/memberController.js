@@ -8,6 +8,10 @@ var memberController = {
         })
 
     },
+
+    login:(req,res)=>{
+        res.render('member/login');
+    },
     frame7: (rqs, res) => {
         res.render('frame7', { title: '會員資料｜我的最愛' });
     },

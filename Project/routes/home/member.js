@@ -4,6 +4,8 @@ var memberController=require('../../controller/memberController')
 
 router.get('/memberData', memberController.personalData);
 
+router.get('/login',memberController.login);
+
 router.get('/memberData', function (rqs, res) {
   res.render('memberData', { title: '會員資料｜我的最愛' });
 });
