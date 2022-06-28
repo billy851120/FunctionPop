@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>assd</title>
+    <title><%- title %></title>
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
     <link
       rel="stylesheet"
@@ -67,8 +67,6 @@
             <div class="col-3"></div>
           </div>
           <div class="row content_pid">
-                
-
             <div class="col-9">
               <div class="cart container-fluid">
                 <div class="row fz-dark">
@@ -81,26 +79,9 @@
                   <div class="col">小計</div>
                   <div class="col"></div>
                 </div>
-                
-              <div id="css_tbody" class="container-fluid css_tbody">
-                <% cart.forEach(function(item){ %>
-                <div class="row">
-                  <div class="col-2">
-                    <input type="checkbox"  checked />
-                  </div>
-                  <div class="col-3"><%- item.name %></div>
-                  <div><img src="/img/product/<%= item.image %>" alt="" style="width: 30px;"></div>
-                  <div class="col-2"><%- item.price %></div>
-                  <div class="col-2">1</div>
-                  <div class="col"><%- item.price %></div>
-                  <div class="col">DELITE</div>
-                </div>
-                <% }); %>
               </div>
-              </div>
+              <div id="css_tbody" class="container-fluid css_tbody"></div>
             </div>
-
-
             <div class="col-3" style="padding: 0">
               <div class="div cart_Order">
                 <div style="text-align: center">
@@ -148,16 +129,34 @@
             </div>
           </div>
           <div class="row">
-            
             <div class="col">
-              
-                <div class="owl-carousel owl-theme">
-                  <div class="item">
-                    <div class="img"></div>
-                  </div>
+              <div class="owl-carousel owl-theme">
+                <div class="item">
+                  <div class="img"></div>
+                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+                  <p>NT $ 1,500</p>
                 </div>
-                
-              
+                <div class="item">
+                  <div class="img"></div>
+                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+                  <p>NT $ 1,500</p>
+                </div>
+                <div class="item">
+                  <div class="img"></div>
+                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+                  <p>NT $ 1,500</p>
+                </div>
+                <div class="item">
+                  <div class="img"></div>
+                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+                  <p>NT $ 1,500</p>
+                </div>
+                <div class="item">
+                  <div class="img"></div>
+                  <h6>Micah 草編真皮厚底涼鞋 - 石灰白</h6>
+                  <p>NT $ 1,500</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

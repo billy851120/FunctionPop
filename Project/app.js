@@ -1,6 +1,7 @@
 var express = require('express');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 //前台模組
 var home = require('./routes/home.js');

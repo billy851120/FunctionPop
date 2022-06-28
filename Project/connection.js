@@ -31,6 +31,32 @@ app.set('view engine','ejs');
 
 app.listen(8080);
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(session({secret:"secret"}));
+
+function isProductInCart(cart,id) {
+  for (let i = 0; i < cart.length; i++) {
+    if(cart[i].id == id){
+        return true;
+    }
+  }
+
+  return false;
+}
+
+
+function calculateTotal(cart,req) {
+    total = 0;
+    for(let i = 0 ; i <cart.length; i++){
+        // if we are offering a discounted price 
+        if(cart[i].price){
+            total = total + (cart[i].price*cart[i].quantity);
+        }else{
+            total = total + (cart[i].price*cart[i].quantity);
+        }
+    }
+    req.session.total = total;
+    return total;
+}
 
 // Localhost 8080
 app.get('/', function (req,res) {
@@ -48,4 +74,44 @@ app.get('/', function (req,res) {
 
     // res.send("Hello !! ");
     // res.render('pages/index');
+});
+
+
+app.post('/add_to_cart', function(req,res){
+
+    var code = req.body.code;
+    var name = req.body.name;
+    var image = req.body.image;
+    var price = req.body.price;
+    var quantity = req.body.quantity;
+    var product = {code:code, name:name, image:image, price:price, quantity:quantity};
+
+    if(req.session.cart){
+        var cart = req.session.cart;
+
+        if(!isProductInCart(cart,id)){
+            cart.push(product);
+        }
+    }else{
+
+        req.session.cart = {product};
+        var cart = req.session.cart;
+    }
+
+
+    // Calculate total
+    calculateTotal(cart,req);
+
+    // return to cart page
+    res.redirect('/shop_cart');
+
+});
+
+app.get('/shop_cart',function (req,res) {
+    
+    var cart = req.session.cart;
+    var total = req.session.total;
+
+    res.render('shop_cart', {cart:cart, total:total});
+
 });
