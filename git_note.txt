@@ -1,4 +1,5 @@
 1. git clone 
+// Second time => git pull 
 
 從GITHUB下載專案內容
 

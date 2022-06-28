@@ -18,6 +18,7 @@ var numOfPages = 5, //取得section的數量
     }
 function scrollPage() {
     //滑鼠滾動
+    console.log(curPage);
     $(document).on("mousewheel DOMMouseScroll", function (e) {
         if (scrollLock) return;
         if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
@@ -52,11 +53,11 @@ function pagination() {
         });
 
     }
-    // $body.stop().animate({
-    //     scrollTop: dd.eq(curPage).offset().top-500
-    // }, 1000, 'swing', function () {
-    //     scrollLock = false;
-    // });
+    if((curPage == 2)||(curPage == 3)){
+        doAnimateShow();
+    }else{
+        doAnimateHide();
+    }
 };
 
 function navigateUp() {
@@ -73,5 +74,20 @@ function navigateDown() {
 
 
 $(function () {
+    document.getElementById("story").style.top = "-100px";
     scrollPage();
 });
+console.log(curPage);
+
+function doAnimateShow() {
+    document.getElementById("story").style.top = "15px";
+}
+
+function doAnimateHide() {
+    document.getElementById("story").style.top = "-100px";
+    event.cancelBubble=true;
+}
+
+// document.getElementById("boxclose").onclick = doAnimateHide;
+
+// document.onclick = doAnimateShow;

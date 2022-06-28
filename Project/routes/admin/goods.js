@@ -3,9 +3,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../../dataBase');
 var router = express.Router();
-var events = require(`events`);
-var emitter = new events.EventEmitter();
-// var { Success, Error } = require('../../response')
 router.use(bodyParser.json());
 
 
@@ -34,10 +31,6 @@ router.get('/register', function (req, res) {
   res.render('admin_register', { title: '後台管理系統' });
 });
 
-
-router.get('/11', function (rqs, res) {
-  res.render('admin_11', { title: '後台管理系統' });
-});
 router.get('/item_all', function (rqs, res) {
   res.render('admin_item_all', { title: '後台管理系統' });
 });
@@ -67,29 +60,33 @@ router.get('/stockMgat_all', function (rqs, res) {
 //---------------會員註冊
 
 router.post('/register', function (req, res) {
-  res.render('admin_register');
+  // res.render('admin_register');
   var body = req.body;
   var sql = "INSERT INTO customer_id(cName,cBirth,cgender,cAccount,cPhone,cAddr) values(?,?,?,?,?,?)";    //    向user這個表裡寫入資料
   var data = [body.cName, body.cBirth, body.cgender, body.cAccount, body.cPhone, body.cAddr];
-  db.exec(sql, data, function(results, fields){
-    console.log(body);
-  //   if(results.insertId){
-  //     res.end(
-  //         JSON.stringify(new Success('insert success'))
-  //     )
-  // } else {
-  //     res.end(
-  //         JSON.stringify(new Error('insert failed'))
-  //     )
-  // }
-    // if (results.insertId) {
-    //   console.log(err.message);    //    輸出資料庫錯誤資訊
-    //   res.status(201).send("新增失敗");
-    // }else{
-    //   console.log("新增成功");    //    輸出資料庫錯誤資訊
-    //   res.status(200).send("成功");
-    // }
+  db.exec(sql, data, function(results, fields,err){
+    console.log("請求...");
+    if(err){
+      console.log("失敗 sqlMessage:"+err.sqlMessage);
+       return res.status(400).json({
+        success:false,
+        error : "壞了"
+  
+      })
+    }else{ 
+      console.log("成功");
+      return res.status(200).send("智障")
+  }
+  
   });
+  // if(!body){
+    // return res.status(400).json({
+    //   success:false,
+    //   error : "壞了"
+
+    // })
+  // }
+
 })
 //---------------
 
