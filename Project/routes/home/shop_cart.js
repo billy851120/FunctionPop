@@ -1,9 +1,11 @@
 var express = require('express');
-var app = express();
 var fs = require("fs");
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var db = require('../../dataBase');
+router.use(bodyParser.json());
+
 
 
 function isProductInCart(cart,id) {
@@ -67,12 +69,14 @@ router.post('/', function(req,res){
     // res.end()
 });
 
+
+
 router.get('/',function (req,res) {
     
     var cart = req.session.cart;
     var total = req.session.total;
-    console.log(cart,total);
-    console.log(req.session);
+    // console.log(cart,total);
+    // console.log(req.session);
 
 
     res.render('shop_cart', {cart:cart, total:total});
@@ -81,9 +85,26 @@ router.get('/',function (req,res) {
 router.get('/orderCheck', function (rqs, res) {
   res.render('orderCheck', { title: '訂單確認' });
 });
-// router.get('/lab',function(rqs,res){
-//   res.render('lab',{title:"sss"})
-// })
+router.post('/orderCheck/add',function(req,res){
+    var cart = req.session.cart;
+    var total = req.session.total;
+    var orderLise =  req.body;
+    var date = new Date();
+    // console.log(orderLise);
+    // console.log(cart);
+    // console.log(total);
+
+
+    var sql = "INSERT INTO orders (order_id,order_cost,order_status,user_id,user_phone,user_city,user_address,order_date) VALUES(?,?,?,?,?,?,?,?); ";
+    var data = [0,0,0,0,orderLise.phone,'郵遞區號',orderLise.address,date]
+
+    db.exec(sql,data,function(result, fields){
+        console.log(result);
+    })
+
+    res.redirect('back')
+})
+
 
 module.exports = router;
 

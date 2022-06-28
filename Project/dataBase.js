@@ -14,7 +14,7 @@ exports.exec = (sql, data, callback) => {
     if (err) {
       console.log(err);
     }
-    callback(results, fields,err);
+    callback(results, fields);
   });
   connection.end();
 };

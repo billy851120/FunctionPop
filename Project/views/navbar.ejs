@@ -1,35 +1,83 @@
-<link rel="icon" href="/img/logo/logo_black.svg" type="image/gif" sizes="16x16" />
+<link
+  rel="icon"
+  href="/img/logo/logo_black.svg"
+  type="image/gif"
+  sizes="16x16"
+/>
 
 <!-- 最top導覽列 -->
-<nav class="container navbar navbar-light sticky-top" style="background-color: #ffffff; height: 90px">
+<nav
+  class="container navbar navbar-light sticky-top"
+  style="background-color: #ffffff; height: 90px"
+>
   <a class="navbar-brand pl-4" href="#">
-    <img src="/img/logo/logo_black.svg" alt="" style="width: 50px; height: 50px" />
-    <img src="/img/logo/logo_text_black.svg" alt="" id="logo_text" style="width: 140px; height: 70px" />
+    <img
+      src="/img/logo/logo_black.svg"
+      alt=""
+      style="width: 50px; height: 50px"
+    />
+    <img
+      src="/img/logo/logo_text_black.svg"
+      alt=""
+      id="logo_text"
+      style="width: 140px; height: 70px"
+    />
   </a>
   <div class="row pr-2" style="height: 75px" id="navbar_li">
     <form class="navbar-nav mt-4 mr-auto" id="search__input">
-      <input class="search__input mr-sm-2" type="search" placeholder="搜尋" style="width: 120px; position: relative" />
+      <input
+        class="search__input mr-sm-2"
+        type="search"
+        placeholder="搜尋"
+        style="width: 120px; position: relative"
+      />
     </form>
     <div class="mt-4" style="width: 120px">
       <p style="text-align: right">
         <a class="pl-2" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle"
-            viewBox="0 0 16 16" style="color: rgb(0, 0, 0)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-person-circle"
+            viewBox="0 0 16 16"
+            style="color: rgb(0, 0, 0)"
+          >
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-            <path fill-rule="evenodd"
-              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-          </svg></a>
-        <a class="pl-2" href="/shop_cart"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-            fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16" style="color: rgb(0, 0, 0)">
             <path
-              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+              fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+            /></svg
+        ></a>
+        <a class="pl-2" href="/home/shop_cart"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-cart2"
+            viewBox="0 0 16 16"
+            style="color: rgb(0, 0, 0)"
+          >
+            <path
+              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+            />
           </svg>
         </a>
         <a class="pl-2" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-heart"
-            viewBox="0 0 16 16" style="color: rgb(0, 0, 0)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="30"
+            fill="currentColor"
+            class="bi bi-heart"
+            viewBox="0 0 16 16"
+            style="color: rgb(0, 0, 0)"
+          >
             <path
-              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+            />
           </svg>
         </a>
       </p>
@@ -38,20 +86,41 @@
 </nav>
 <!-- 產品分類導覽列 -->
 <div class="container" style="font-size: 12px">
-  <nav class="navbar navbar-expand-md navbar-dark rounded" style="background-color: rgb(0, 0, 0)">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10"
-      aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+  <nav
+    class="navbar navbar-expand-md navbar-dark rounded"
+    style="background-color: rgb(0, 0, 0)"
+  >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsExample10"
+      aria-controls="navbarsExample10"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+    <div
+      class="collapse navbar-collapse justify-content-md-center"
+      id="navbarsExample10"
+    >
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link font-weight-bold" href="#">新品上市<span class="sr-only">(current)</span></a>
+          <a class="nav-link font-weight-bold" href="#"
+            >新品上市<span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">WOMEN</a>
+          <a
+            class="nav-link dropdown-toggle"
+            id="dropdown10"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >WOMEN</a
+          >
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
             <a class="dropdown-item" href="#">服飾</a>
             <a class="dropdown-item" href="#">鞋品</a>
@@ -59,8 +128,14 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">MEN</a>
+          <a
+            class="nav-link dropdown-toggle"
+            id="dropdown10"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >MEN</a
+          >
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
             <a class="dropdown-item" href="#">服飾</a>
             <a class="dropdown-item" href="#">鞋品</a>
@@ -68,8 +143,14 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">ACCESSORY</a>
+          <a
+            class="nav-link dropdown-toggle"
+            id="dropdown10"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >ACCESSORY</a
+          >
           <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -79,6 +160,4 @@
       </ul>
     </div>
   </nav>
-
-
 </div>
