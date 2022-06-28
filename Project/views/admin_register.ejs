@@ -80,17 +80,17 @@
                 <option name="gender" value="M">男性</option>
                 <option name="gender" value="X">不說</option>
             </select>
-            <!-- <label>電子郵件*:</label>
+            <label>電子郵件*:</label>
             <p class="inp_Err" id="accountErr">請填寫電子郵件欄位*</p>
             <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
-            <label>連絡電話*：</label>
+            <!-- <label>連絡電話*：</label>
             <p class="inp_Err" id="phoneErr">請填寫連絡電話欄位*</p>
             <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
 
             <label>通訊地址*：</label>
-            <input class="fpop_inp" type="text" name="cAddr" placeholder="通訊地址*"><br>
-            <button class="btn btn-dark" id="submit">註冊會員</button> -->
+            <input class="fpop_inp" type="text" name="cAddr" placeholder="通訊地址*"><br> -->
+            <button class="btn btn-dark" id="submit">註冊會員</button>
         </form>
     </div>
 
@@ -108,34 +108,29 @@
                 $("#birthErr").css('visibility', 'hidden')
             }
         })
-        $("#gender").on('select', function () {
-            if (!($("#gender").val() == '')) {
-                $("#gender").addClass("inp_right")
-                $("#genderErr").css('visibility', 'hidden')
-            }
-        })
+
 
         function checkInputInfo() {
-            var x = $("cName").value;
-            var y = $("cBirth").value;
+            var x = $("#cName").val();
+            var y = $("#cBirth").val();
+            var b = true;
             if (x == null || x == "") {
                 $("#cName").addClass("fpop_inperro")
                 $("#nameErr").css('visibility', 'visible')
-                // return false
-            } 
+                b = false
+            }
             if (y == null || y == "") {
                 $("#cBirth").addClass("fpop_inperro")
                 $("#birthErr").css('visibility', 'visible')
-                return false
+                b = false
             }
-            return true
+            return b
         }
 
         // 關鍵字 serializeArray() ,stringify()
 
         $("#submit").on('click', function () {
             if (!checkInputInfo()) {
-
                 // alert("資料輸入有誤");
                 return false
             }
@@ -147,9 +142,11 @@
                 contentType: "application/json; charset=utf-8",
                 data: JSONData,
                 success: function (res) {
+                    console.log('dddddd '+res);
                     alert("新增成功!");
                 },
                 error: function () {
+                    console.log('dddddd ');
                     alert("新增失敗!");
                 }
             });

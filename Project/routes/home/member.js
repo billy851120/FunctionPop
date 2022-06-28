@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var memberController=require('../../controller/memberController')
 
-router.get('/frame6', function (rqs, res) {
-  res.render('frame6', { title: '會員資料｜我的最愛' });
+router.get('/memberData', memberController.personalData);
+
+router.get('/memberData', function (rqs, res) {
+  res.render('memberData', { title: '會員資料｜我的最愛' });
 });
 router.get('/frame7', function (rqs, res) {
   res.render('frame7', { title: '會員資料｜我的最愛' });

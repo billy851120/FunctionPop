@@ -2,19 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet"  type="text/css" href="/css/all.css" />
-    <script src="/js/index/jquery.min.js"></script>
-    <script src="/js/index//popper.min.js"></script>
-    <script src="/js/index//bootstrap.min.js"></script>
 
-    <title>
-        <%- title %>
-    </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”viewport” content=”width=device-width”>
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- <link rel="stylesheet" href="/scss/pages/home/bootstrap.scss"> -->
+    <script src="/js/home/jquery.min.js"></script>
+    <script src="/js/home/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="/scss/pages/home/pageone.scss">
+    </link>
+    <link rel="stylesheet" href="/scss/pages/home/pagetwo.scss">
+    </link>
+    <link rel="stylesheet" href="/scss/pages/home/pagethree.scss">
+    </link>
+    <link rel="stylesheet" href="/scss/pages/home/spin.scss">
+    </link>
+    <link rel="stylesheet" href="/scss/pages/home/navbar.scss">
+    </link> -->
+
+    <title>function.pop</title>
     <style>
-            * {
+        * {
             margin: 0;
             padding: 0;
         }
@@ -27,14 +40,19 @@
 
         }
     </style>
+
 </head>
 
 <body class="page-container">
-    <div class="wrapper">
-        <!-- 導覽列 -->
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
+
+        <div class="storytitle" id="story">
+            <p class="stories">STORIES</p>
+            <hr width="130px" style="background-color: yellow; position: relative; top: -18px;left: 5px;">
+        </div>
+
         <div class="container">
-            <a href="index.html" class="navbar-brand"><img class="fnicon" src="/img/index/logo.png" alt=""></a>
+            <a href="index.ejs" class="navbar-brand"><img class="fnicon" src="/img/home/logo.png" alt=""></a>
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -71,7 +89,7 @@
     </nav>
     <div class="pr-2 icondiv" id="navbar_li">
         <form class=" my-2 ml-auto">
-            <input class="form-control mr-sm-2 search_input" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2 tysearch_input" type="search" placeholder="Search" aria-label="Search">
             <button class="btn  my-2 my-sm-0 search_button" type="submit"></button>
         </form>
         <div class="mt-4 icon_posi">
@@ -83,7 +101,7 @@
                         <path fill-rule="evenodd"
                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                     </svg></a>
-                <a class="pl-2" href="/shop_cart"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                <a class="pl-2" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                         fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16" style="color: rgb(255, 255, 255);">
                         <path
                             d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
@@ -99,27 +117,23 @@
             </p>
         </div>
     </div>
-    
-    
-
-    
 
 
     <!-- 第一面 -->
     <div class="pageone gg" id="pageone">
-        <img class="chili" src="/img/index/bg_chili.png" alt="">
-        <img class="logo_word" src="/img/index/logo_word.png" alt="">
+        <img class="chili" src="/img/home/bg_chili.png" alt="">
+        <img class="logo_word" src="/img/home/logo_word.png" alt="">
     </div>
 
     <div id="drag-container">
         <div id="spin-container">
 
-            <img src="/img/index/fashion1.jpg" alt="" style="object-fit: cover;">
-            <img src="/img/index/fashion2.jpg" alt="" style="object-fit: cover;">
-            <img src="/img/index/fashion3.jpg" alt="" style="object-fit: cover;">
-            <img src="/img/index/fashion4.jpg" alt="" style="object-fit: cover;">
-            <img src="/img/index/fashion5.jpg" alt="" style="object-fit: cover;">
-            <img src="/img/index/image_9.png" alt="" style="object-fit: cover;">
+            <img src="/img/home/fashion1.jpg" alt="" style="object-fit: cover;">
+            <img src="/img/home/fashion2.jpg" alt="" style="object-fit: cover;">
+            <img src="/img/home/fashion3.jpg" alt="" style="object-fit: cover;">
+            <img src="/img/home/fashion4.jpg" alt="" style="object-fit: cover;">
+            <img src="/img/home/fashion5.jpg" alt="" style="object-fit: cover;">
+            <img src="/img/home/image_9.png" alt="" style="object-fit: cover;">
 
             <p style="font-size:1.5rem">Function.Pop</p>
         </div>
@@ -129,69 +143,69 @@
     <!-- 第二面 STORIES -->
     <div class="pagetwo gg" id="pagetwo">
 
+        <!-- <div class="storytitle">
+            <p class="stories">STORIES</p>
+            <hr width="130px" style="background-color: yellow; position: relative; top: -18px;left: 5px;">
+        </div> -->
 
-        <p class="stories">STORIES</p>
 
-        <!-- 線 -->
-        <div class="link-top"></div>
+        <div style="position: relative; width: 75%; margin: 150px auto 0 auto;" id="pagetwoin">
 
-        <div class="row pagetwo_pic_div">
+            <div class="row">
 
-            <div class="col col-8 col-sm-7 col-md-4 col-lg-3 col_3_margin_left">
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" id="rowtwo">
 
-                <div class="row ">
+                    <figure class="figure">
+                        <img class="figure-img img-fluid" src="/img/home/fashion1.jpg" alt="" id="getpagetwoimg">
+                        <figcaption class="d-none d-md-block">
+                            <p>Guests Attending Exquisite Gucci
+                                A PHOTO GALLERY ></p>
+                            <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                        </figcaption>
+                    </figure>
 
-                    <div class="pagetwo_outpicdiv seci"><img class="pagetwo_outpic" src="/img/index/fashion1.jpg" alt="">
-                    </div>
-                    <div class="pagetwo_text">
-                        <p>Guests Attending Exquisite Gucci
-                            A PHOTO GALLERY ></p>
-                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
-                    </div>
+                    <figure class="figure downpic">
+                        <img class="figure-img img-fluid" src="/img/home/fashion4.jpg" alt="">
+                        <figcaption class="d-none d-md-block">
+                            <p>Exquisite Beauty of neputon
+                                THE MAKEUP AT THE SHOW ></p>
+                            <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                        </figcaption>
+                    </figure>
                 </div>
 
-                <div class="row secii">
-                    <div class="pagetwo_outpicdiv "><img class="pagetwo_outpic" src="/img/index/fashion2.jpg" alt="">
-                    </div>
-                    <div class="pagetwo_text">
-                        <p>Exquisite Beauty
-                            THE MAKEUP AT THE SHOW ></p>
-                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
-                    </div>
+                <div class="col col-3 d-none d-xl-block midpic yy">
+                    <figure class="figure">
+                        <img class="figure-img img-fluid" src="/img/home/redas.png" alt="" style="height: 100%;">
+                        <figcaption>
+                            <p>Fashioning Masculinities
+                                THE ART OF MENSWEAR ></p>
+                            <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                        </figcaption>
+                    </figure>
+
+                </div>
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy">
+                    <figure class="figure">
+                        <img class="figure-img img-fluid" src="/img/home/fashion2.jpg" alt="">
+                        <figcaption class="d-none d-md-block">
+                            <p>Fashioning Masculinities
+                                THE ART OF MENSWEAR ></p>
+                            <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="figure downpic">
+                        <img class="figure-img img-fluid" src="/img/home/fashion5.jpg" alt="">
+                        <figcaption class="d-none d-md-block">
+                            <p>Magical Mirrors Lucas develope
+                                EXQUISITE GUCCI></p>
+                            <p>打敗濕悶熱,夏季必備涼感穿搭</p>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
 
-            <div class="col col-3 col-sm-6 col-md-4 col-lg-3 small_hide">
-                <img src="/img/index/fashion3.jpg" alt="" style="width: 87%; object-fit:cover;">
-                <div class="pagetwo_text">
-                    <p>Fashioning Masculinities
-                        THE ART OF MENSWEAR ></p>
-                    <p>打敗濕悶熱,夏季必備涼感穿搭</p>
-                </div>
-            </div>
-
-            <div class="col col-8 col-sm-7 col-md-4 col-lg-3 col_3_margin_right">
-
-                <div class="row down_up">
-                    <div class="pagetwo_outpicdiv"><img class="pagetwo_outpic" src="/img/index/fashion4.jpg" alt="">
-                    </div>
-                    <div class="pagetwo_text">
-                        <p>Fashioning Masculinities
-                            THE ART OF MENSWEAR ></p>
-                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
-                    </div>
-                </div>
-
-                <div class="row down_upi">
-                    <div class="pagetwo_outpicdiv"><img class="pagetwo_outpic" src="/img/index/fashion5.jpg" alt="">
-                    </div>
-                    <div class="pagetwo_text">
-                        <p>Magical Mirrors
-                            EXQUISITE GUCCI></p>
-                        <p>打敗濕悶熱,夏季必備涼感穿搭</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -200,118 +214,269 @@
     <!-- 第三面 + footer -->
     <div class="pagethree gg" id="pagethree">
 
-        <div class="row coupon">
-            <div class="col col-9 col-lg-3 left_12_5">
+        <div class="row coupon row_class">
+            <div class="col col-8 col-md-3 automid col_class">
                 <figure class="figure">
-                    <img src="/img/index/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
-            <div class="col col-9 col-lg-3">
+            <div class="col col-9 col-md-3 automid d-none d-md-block col_class" style="margin:0 ;">
                 <figure class="figure ttt">
-                    <img src="/img/index/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
-            <div class="col col-9 col-lg-3 right_12_5 ">
+            <div class="col col-9 col-md-3 automid  d-none d-md-block col_class">
                 <figure class="figure ttt">
-                    <img src="/img/index/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
         </div>
 
 
-        <div class="row pagethreemiddle" id="pagethreemiddle">
+        <div class="row" style="position: relative;width: 45%;margin: 60px auto;">
+            <div class="col-6 thirdhei">
 
-            <div class="col-4 middle_left">
-                <div class="Belt_color" id="belt">
-                    <span>BELT</span>
+                <div class="row">
+                    <div class="col-12 third_tit">
+                        <p>皮帶</p>
+                    </div>
                 </div>
 
-                <div class="pagethree_middle_pic">
-                    <img src="/img/index/belt.png" class="img-fluid">
+                <div class="row">
+                    <div class="col-12 re col-sm-12 col-md-6 col-xl-4">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/belt1.jpg" class="figure-img img-fluid  ooo"
+                                style="margin: 0;">
+                        </figure>
+                    </div>
+                    <div class="col-4 re col-md-6 col-xl-4 d-none d-md-block">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/belt2.jpg" class="figure-img img-fluid" style="margin: 0;">
+                        </figure>
+                    </div>
+                    <div class="col-4 re col-xl-4 d-none d-xl-block">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/belt3.jpg" class="figure-img img-fluid" style="margin: 0;">
+                        </figure>
+                    </div>
                 </div>
-
             </div>
-
-            <div class="col-4">
-                <div class="pagethree_middle_pic">
-                    <img src="/img/index/glasses.png" class="img-fluid">
+            <div class="col-6  thirdhei" style="margin-left:-1px">
+                <div class="row">
+                    <div class="col-12  third_tit">
+                        <p>眼鏡</p>
+                    </div>
                 </div>
-
-                <div class="Glass_color" id="glass">
-                    <span>GLASSES</span>
+                <div class="row">
+                    <div class="col-12 re col-sm-12 col-md-6 col-xl-4">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/glasses2.jpg" class="figure-img img-fluid" style="margin: 0;">
+                        </figure>
+                    </div>
+                    <div class="col-4 re col-md-6 col-xl-4  d-none d-md-block">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/glasses1.jpg" class="figure-img img-fluid" style="margin: 0;">
+                        </figure>
+                    </div>
+                    <div class="col-4 re col-xl-4 d-none d-xl-block">
+                        <figure class="figure">
+                            <img src="/img/home/Accessory/glasses3.jpg" class="figure-img img-fluid" style="margin: 0;">
+                        </figure>
+                    </div>
                 </div>
 
             </div>
         </div>
 
 
+        <div style="position: relative; width: 85%; margin: 50px auto;" id="thirdmargin">
+            <div class="row zzz row_class">
+                <div class="col-lg-4">
+                    <img src="/img/home/icon/ico1.png" alt="">
+                    <h2>免運費</h2>
+                    <p>港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。 </p>
+                </div>
 
-        <div class="row pagethree_down">
-            <div class="col-2 downi" id="downi">
-                <h5 class="smallfont">免運費</h5>
-                <h6 class="smallfont">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。</h6>
-            </div>
-            <div class="col-2 downii" id="downii">
-                <h5 class="smallfont">運輸時效快</h5>
-                <h6 class="smallfont">港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。</h6>
-            </div>
-            <div class="col-2 downiii" id="downiii">
-                <h5 class="smallfont">輕鬆退換貨</h5>
-                <h6 class="smallfont">自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。</h6>
-            </div>
+                <div class="col-lg-4" style="position:relative ; top: 15px;">
+                    <img src="/img/home/icon/ico2.png" alt="">
+                    <h2>運輸時效快</h2>
+                    <p>港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p>
+                </div>
 
-            <div class="smalltext" id="smalltext">
-                <h6 class="smallfont">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。</h6>
+                <div class="col-lg-4">
+                    <img src="/img/home/icon/ico3.png" alt="">
+                    <h2>輕鬆退換貨</h2>
+                    <p>自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p>
+                </div>
+
             </div>
         </div>
+
+        <!-- <footer class="footer">
+            <%- include("footer.ejs") %>
+        </footer>  -->
+
 
     </div>
-        <div class="push"></div>
-    </div>  
-    <footer class="footer">
-        <%- include("footer.ejs") %>
-    </footer>  
-    
 </body>
 
 <script>
     // console.log(window.screen.height);
     console.log(window.innerWidth);
-    // console.log(document.documentElement.clientHeight);
+    // console.log($(window).width());
+    // console.log(document.documentElement.clientWidth);
+
     $(document).ready(function () {
+
         var hei = document.documentElement.clientHeight;
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
         $("#pagetwo").css("top", `${hei}px`);
-        $("#pagetwo").css("height", `${hei}px`);
-        $("#pagethree").css("top", `${hei * 2}px`);
-        $("#pagethree").css("height", `${hei}px`);
+        $("#pagetwo").css("min-height", `${hei}px`);
+        $("#pagethree").css("min-height", `${hei}px`);
+
+        console.log($("#pageone").css("height") + "vvv");
+        console.log($("#pagetwo").css("height") + "qqq");
 
 
-        $(".coupon").css("top", "14%");
-        $("#pagethreemiddle").css("height", hei * (0.4));
-        $("#belt").css("height", "38%");
-        $("#glass").css("height", "38%");
 
-        var wid = document.documentElement.clientWidth;
-        if ((wid <= 450) && (hei <= 700)) {
+        console.log($("#rowtwo").css("height"))
+        var pagetwopichei = parseInt($("#rowtwo").css("height"));
+        // var wid = document.documentElement.clientWidth;
+        $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
+        $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
 
-            $(".secii").css("margin-top", `-120px`);
-            $(".down_up").css("top", `239px`);
-            $(".down_upi").css("top", `145px`);
+        $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
+        $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
+        $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`);
 
-            $(".downi").css("height", `80px`);
-            $(".smallfont").css("fontSize", `0.5rem`);
-            $(".downii").css("height", `80px`);
-            $(".downiii").css("height", `80px`);
-
+        // console.log((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850))
+        if (window.innerWidth < 1600) {
+            $("#pagetwoin").css("margin-top", "150px");
+        }
+        if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+            $("#pagetwoin").css("margin-top", "220px");
+        }
+        if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
+            $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
+            $(".downpic").css("left","15px");
+            $("#pagetwoin").css("margin-top", "120px");
+        }
+        else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
+            $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 150}px`);
+        }
+        if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
+            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+            $(".downpic").css("left", `15px`);
+            $("#pagetwoin").css("height", `${pagetwopichei * 4.5}px`);
+        } else if ((window.innerWidth < 768) && (document.documentElement.clientHeight >= 850)) {
+            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+            $("#pagetwoin").css("margin-top", "150px");
+        }
+        if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
+            $(".storytitle").css("top", "9%");
+            $(".figure-img").css("margin-bottom", "0px");
+            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+            $("#pagetwoin").css("margin-top", "170px");
+        } else if (window.innerWidth < 577) {
+            $(".storytitle").css("top", "8%");
+            $(".figure-img").css("margin-bottom", "0px");
+            $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
         }
 
-        // if((wid <= 767.98) && (hei <= 850)){
-        //     $(".down_upi").css("visibility","hidden");
-        // }else{
-        //     $(".down_upi").css("visibility","visible");
-        // }
+
+        if (window.innerWidth >= 577) {
+            $(".storytitle").css("top", "15px");
+        }
+        if (window.innerWidth >= 768) {
+            $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
+        }
+        if (window.innerWidth >= 1200) {
+            $("#pagetwoin").css("height", `${pagetwopichei}px`);
+        }
+        if (window.innerWidth >= 1450) {
+            $("#pagetwoin").css("margin-top", "150px");
+        }
+        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+            $("#pagetwoin").css("margin-top", "100px");
+        }
+        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
+            $("#thirdmargin").css("margin-top", "0px");
+        }
+        var thirdpagetop = parseInt($("#pagetwo").css("height")) + hei;
+        $("#pagethree").css("top", `${thirdpagetop}px`);
+
+
+        //螢幕變動自動刷新
+        window.addEventListener('resize', start);
+
+        function start() {
+
+
+            var pagetwopichei = parseInt($("#rowtwo").css("height"));
+            $(".downpic img").css("height", `${$("#getpagetwoimg").css("height")}`);
+            $(".downpic img").css("width", `${$("#getpagetwoimg").css("width")}`);
+            //外面兩張圖對其中間圖的下方 
+            $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`)
+
+            //page 3 中間區塊大小 
+            $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
+            $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
+
+            if (window.innerWidth < 1600) {
+                $("#pagetwoin").css("margin-top", "150px");
+            }
+            if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+                $("#pagetwoin").css("margin-top", "220px");
+            }
+            if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
+                $(".downpic").css("left","15px");
+                $("#pagetwoin").css("margin-top", "120px");
+            }
+            else if (window.innerWidth < 1200) {
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 150}px`);
+            }
+            if ((window.innerWidth < 768) && (document.documentElement.clientHeight < 850)) {
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+                $("#pagetwoin").css("height", `${pagetwopichei * 4.5}`);
+            } else if (window.innerWidth < 768) {
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
+                $("#pagetwoin").css("margin-top", "150px");
+            }
+            if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
+                $(".storytitle").css("top", "9%");
+                $(".figure-img").css("margin-bottom", "0px");
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+                $("#pagetwoin").css("margin-top", "170px");
+            } else if (window.innerWidth < 577) {
+                $(".storytitle").css("top", "8%");
+                $(".figure-img").css("margin-bottom", "0px");
+                $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
+            }
+
+
+            if (window.innerWidth >= 577) {
+                $(".storytitle").css("top", "15px");
+            }
+            if (window.innerWidth >= 768) {
+                $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
+            }
+            if (window.innerWidth >= 1200) {
+                $("#pagetwoin").css("height", `${pagetwopichei}px`);
+            }
+            if (window.innerWidth >= 1450) {
+                $("#pagetwoin").css("margin-top", "150px");
+            }
+            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+                $("#pagetwoin").css("margin-top", "100px");
+            }
+            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
+                $("#thirdmargin").css("margin", "10px auto");
+            }
+            var thirdpagetop = parseInt($("#pagetwo").css("height")) + hei;
+            $("#pagethree").css("top", `${thirdpagetop}px`);
+        }
 
     }
     )
@@ -319,28 +484,8 @@
 </script>
 
 <!-- <script src="./mousescroll.js"></script> -->
-<script src="./scrollii.js"></script>
-<script src="./spin.js"></script>
+<script src="/js/home/scrollii.js"></script>
+<script src="/js/home/spin.js"></script>
 
-
-
-<script>
-
-    downi.onclick = function () {
-        document.getElementById("smalltext").innerText = "港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。";
-        document.getElementById("smalltext").style.backgroundColor = "#f0ffff";
-    }
-    downii.onclick = function () {
-        document.getElementById("smalltext").innerText = "港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。";
-        document.getElementById("smalltext").style.backgroundColor = "#c5e8e8";
-    }
-    downiii.onclick = function () {
-        document.getElementById("smalltext").innerText = "自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。";
-        document.getElementById("smalltext").style.backgroundColor = "#abcece";
-    }
-</script>
-
-<script src="/js/index/mousescroll.js"></script>
-<script src="/js/index/spin.js"></script>
 
 </html>
