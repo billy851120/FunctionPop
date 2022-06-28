@@ -77,7 +77,7 @@ $(function () {
     document.getElementById("story").style.top = "-100px";
     scrollPage();
 });
-console.log(curPage);
+// console.log(curPage);
 
 function doAnimateShow() {
     document.getElementById("story").style.top = "15px";
