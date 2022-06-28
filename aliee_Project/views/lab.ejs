@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <!-- <link rel="stylesheet" href="../../node_modules/animate.css/animate.css" /> -->
+
+    <script src="/js//shop_cart/cookie.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+
+    <style>
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, -100%, 0);
+        }
+        50% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOutUp {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(0, -100%, 0);
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      .pcount {
+      }
+      .pcount a {
+        border: 1px solid #000;
+        padding: 3px;
+      }
+      .number {
+        width: 50px;
+        text-align: center;
+      }
+      .pid {
+        text-align: center;
+      }
+      .pcolor a:hover {
+        border: 1px solid #f00;
+      }
+      .pcolor-active {
+        border: 1px solid #f00;
+      }
+      .psize button {
+        width: 30px;
+      }
+      .psize-active {
+        background-color: #000;
+        color: #fff;
+      }
+      .fadeInDown {
+        animation-name: fadeInDown;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+      }
+      .fadeOutUp {
+        animation-name: fadeOutUp;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+      }
+      .al {
+        border: 1px solid #000;
+        width: 30%;
+        text-align: center;
+        padding: 20px 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mycar">
+      <a href="cart.html">我的購物車</a><i id="cart_count">0</i>
+    </div>
+    <div class="container">
+      <div class="shop">
+        <div class="row">
+          <div class="col">
+            <ul style="display: flex; justify-content: space-between">
+              <li class="pid">
+                <img src="../img/001.png" width="100" alt="" />
+                <p class="pname">商品1</p>
+                <p class="pdesc">產品描述</p>
+
+                <div class="pcolor">
+                  <a href="#">藍</a>
+                  <a href="#">紅</a>
+                  <a href="#">綠</a>
+                </div>
+                <div class="psize">
+                  <button>S</button>
+                  <button>M</button>
+                  <button>L</button>
+                  <button>XL</button>
+                </div>
+                <p class="price"><span>550</span>元</p>
+                <div class="pcount">
+                  <a href="#" class="sub">-</a>
+                  <input type="text" value="1" class="number" />
+                  <a href="#" class="add">+</a>
+                </div>
+                <a href="#" class="buy" data-pid="p001">加入購物車</a>
+              </li>
+              <li class="pid">
+                <img src="../img/005.png" width="100" alt="" />
+                <p class="pname">商品2</p>
+                <p class="pdesc">產品描述</p>
+                <div class="pcolor">
+                  <a href="#">藍</a>
+                  <a href="#">紅</a>
+                  <a href="#">綠</a>
+                </div>
+                <div class="psize">
+                  <button>S</button>
+                  <button>M</button>
+                  <button>L</button>
+                  <button>XL</button>
+                </div>
+                <p class="price"><span>550</span>元</p>
+                <div class="pcount">
+                  <a href="#" class="sub">-</a>
+                  <input type="text" value="1" class="number" />
+                  <a href="#" class="add">+</a>
+                </div>
+                <a href="#" class="buy" data-pid="p002">加入購物車</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // $('a').siblings
+    </script>
+    <script src="/js/shop_cart/server.js"></script>
+    <script src="/js/shop_cart/index.js"></script>
+    <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+  </body>
+</html>

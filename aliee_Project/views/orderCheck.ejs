@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%- title %>
+  </title>
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <link rel="stylesheet" href="../node_modules/OwlCarousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../node_modules/OwlCarousel/dist/assets/owl.theme.default.min.css">
+  <script src="/js/shop_cart/cookie.js"></script>
+  <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <%- include("navbar.ejs") %>
+      <table>
+        <thead>
+          <th colspan=""></th>
+        </thead>
+      </table>
+      <!-- outline_class  oib oig oi  oir-->
+      <div class="container">
+        <div class="cart_content">
+          <div class="row content_text">
+            <div class="col-9" style="padding: 0">
+              <div class="row cart_banner">
+                <div class="col-12 top_link">
+                  <ul class="cart-link">
+                    <li><a href="/">首頁</a></li>
+                    <li>
+                      <a href="#">購物車</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 mid mb-3">
+                  <h6 style="font-size: 1.2em;
+                  font-weight: 900;">購物車</h6>
+                </div>
+                <div class="col-12 cart-step">
+                  <ul class="fz-dark">
+                    <li>
+                      <span>1</span>
+                      查看購物車
+                    </li>
+                    <li style="color: #000;">
+                      <span style="background-color: #000;">2</span>
+                      訂單確認
+                    </li>
+                    <li>
+                      <span>3</span>
+                      訂單完成
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row content_text">
+            <div class="col-9">
+              <div class="row ">
+                <div class="col-12  ">
+                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
+                    <h6 class="flex-grow-1 fw-600">1. 運送</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
+                  </div>
+                </div>
+                <div class="col-12  ">
+                  <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
+                    <form action="" method="post" class="ct_form ">
+                      <div>
+                        <span>
+                          收件人* :
+                        </span>
+                        <input type="text" style="width:130px ;" name="ct_rec" placeholder="姓名"><br>
+                      </div>
+                      <div>
+                        <span>
+                          通訊地址* :
+                        </span>
+                        <input type="text" style="width:70px; margin-right:25px;" name="ct_addr_l" placeholder=""><input
+                          type="text" name="ct_addr_r" placeholder="地址"><br>
+                      </div>
+                      <div>
+                        <span>
+                          手機號碼* :
+                        </span>
+                        <input type="text" style="width:150px ;" name="ct_pho" placeholder=""><br>
+                      </div>
+                      <div>
+                        <span>
+                          電子郵件* :
+                        </span>
+                        <input type="text" style="width:150px ;" name="ct_mail" placeholder="123@gmail.com">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-12  ">
+                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
+                    <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
+                  </div>
+                </div>
+                <div class="col-12 pay-content">
+                  <div>
+                    <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
+                  </div>
+                  <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value=""> 信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="">貨到付款</span></div>
+                  <div class="d-flex">
+                    <div class="mr-3 cars"><img src="/img/shop_cart/mas.png" style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                    </div>
+                    <div class="mr-3 cars"><img src="/img/shop_cart/visa.png" style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                    </div>
+                    <div class="cars"><img src="/img/shop_cart/paypal.png" style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <input type="text" style="width: 191px;" placeholder="信用卡號碼*">
+                  </div>
+                  <div>
+                    <span>有效日期* : </span><select name="" id="">
+                      <option>月</option>
+                    </select> / <select name="" id="">
+                      <option>日</option>
+                    </select> <input type="text" style="width: 58px; text-align: center; margin-left: 10px;"  placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
+                  </div>
+                </div>
+                <div class="col-12" style="border-top: 1px solid #000;">
+                  <div class="mt-3 mb-5">
+                    <input type="checkbox"><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
+                  </div>
+                  <div>
+                  <button id="cart-submit" style="text-align: center;">確認訂單</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3" style="padding: 0">
+              <div class="div cart_Order">
+                <div style="text-align: center">
+                  <p>訂單確認</p>
+                </div>
+                <div class="py-2">
+                  <p>
+                    <b>總計商品件數:</b>
+                    <span class="float-right"><span id="total_count">0</span> 件</span>
+                  </p>
+                  <p>
+                    <b>小計:</b><span class="float-right">NT$<span id="total_price">0</span></span>
+                  </p>
+                  <p>
+                    <b>運費:</b><span class="float-right">NT$<span>0</span></span>
+                  </p>
+                </div>
+                <div class="py-3">
+                  只差NT$ <span>0</span>，即可享有免費標準運送。
+                </div>
+                <div class="pt-2 mb-4">
+                  <p>
+                    <b>總額:</b><span class="float-right">NT$<span>0</span></span>
+                  </p>
+                </div>
+                <div class="text-center" id="buy">
+                  <button>結帳</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="push"></div>
+  </div>
+  <footer class="footer">
+    <%- include("footer.ejs") %>
+  </footer>
+
+
+  <script src="/js/shop_cart/jquery.js"></script>
+  <!-- <script src="../node_modules/OwlCarousel/dist/owl.carousel.min.js"></script> -->
+  <script src="../node_modules/OwlCarousel/dist/owl.carousel.min.js"></script>
+  <script src="/js/shop_cart/server.js"></script>
+  <script src="/js/shop_cart/cart.js"></script>
+  <script src="/js/shop_cart/owl.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+
+</html>

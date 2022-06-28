@@ -1,0 +1,74 @@
+
+.pagethree {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    z-index: -600;
+    /* height: auto; */
+    /* overflow: hidden; */
+}
+
+.coupon {
+    position: relative;
+    /* top: 15%; */
+    width: 75%;
+    margin: 120px auto 0 auto;
+    /* border: 1px rebeccapurple solid; */
+}
+
+.automid {
+    margin: 0 auto;
+}
+
+
+.third_tit {
+    background: radial-gradient(ellipse 65% 35% at center, rgb(237, 228, 159), rgb(118, 106, 106));
+    /* border: 1px black solid; */
+    display: flex;
+    align-items: center;
+
+}
+
+.third_tit p {
+    font-size: 3rem;
+    margin: auto;
+    /* text-align: center; */
+
+}
+
+.thirdhei {
+    border: 1px black solid;
+}
+
+.zzz {
+    text-align: center;
+    color: white;
+
+}
+
+.col-lg-4 h2 {
+    padding-top: 10px;
+}
+
+.col-lg-4 p {
+    text-align: left;
+    padding: 20px;
+}
+
+@media screen and (max-width:768px) {
+    .coupon {
+        /* border: 1px red solid; */
+        margin-top: 100px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .third_tit p {
+        font-size: 2rem;
+    }
+}

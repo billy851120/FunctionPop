@@ -1,0 +1,29 @@
+.bg-gary {
+    background: #EEEEEE;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -283px;
+    /* 等於footer的高度 */
+}
+
+.footer,
+.push {
+    height: 283px;
+}
