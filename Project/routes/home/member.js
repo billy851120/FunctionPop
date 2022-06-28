@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var memberStatus = require('../../models/home/memberStatus');
 var memberController=require('../../controller/memberController')
 
 router.get('/memberData', memberController.personalData);
