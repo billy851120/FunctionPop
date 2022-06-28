@@ -24,7 +24,15 @@
         <!-- content -->
         <%- include("navbar.ejs") %>
             <div class="container">
-               
+               <div class="row">
+                <div class="col-6">
+                    你好！
+                </div>
+                <div class="col-6 text-right">
+                     <a class="btn btn-outline-dark my-2 my-sm-0" href="/login">登入</a>
+                     <a class="btn btn-outline-warning my-2 my-sm-0" href="/register">註冊</a>
+                </div>
+               </div>
                 <!-- 左邊選單列 -->
                 <div class="row pb-3 mt-5">
                     <div class="col-2">
@@ -39,22 +47,22 @@
                         <form action="">
                             <p>我的資料：</p>
                             <div class="row">
-                                <label class="col-12" for="userName">姓名*：<input class="rounded mr-2" type="text"
+                                <label class="col-12" for="userName">姓名：<input class="rounded mr-2" type="text"
                                         name="userName" id="userName">
                                 </label>
-                                <label class="col-12" for="userBirthday">生日*：<input class="rounded mr-2" type="text"
+                                <label class="col-12" for="userBirthday">生日：<input class="rounded mr-2" type="text"
                                         name="userBirthday" id="userBirthday">
                                 </label>
-                                <label class="col-12" for="userBirthday">性別*：<select class="rounded mr-2"
+                                <label class="col-12" for="userBirthday">性別：<select class="rounded mr-2"
                                         id="userBirthday">
                                         　<option value="Man">男</option>
                                         　<option value="Women">女</option>
                                     </select>
                                 </label>
-                                <label class="col-12" for="userBirthday">聯絡電話*：<input class="rounded mr-2" type="text"
+                                <label class="col-12" for="userBirthday">聯絡電話：<input class="rounded mr-2" type="text"
                                         name="userPhone" id="userPhone">
                                 </label>
-                                <label class="col-lg-12" for="userAddress_City">居住地址*：<select class="rounded mr-2"
+                                <label class="col-lg-12" for="userAddress_City">居住地址：<select class="rounded mr-2"
                                         id="userAddress_City">
                                         　<option value="Keelung">基隆市</option>
                                         　<option value="New_Taipei">新北市</option>
@@ -94,7 +102,7 @@
                                     </select>
                                 </label>
                                 <hr class="col-12">
-                                <label class="col-12" for="userEmail">電子郵件*：<input class="rounded mr-2" type="text"
+                                <label class="col-12" for="userEmail">電子郵件：<input class="rounded mr-2" type="text"
                                         name="userEmail" id="userEmail">
                                 </label>
                             </div>

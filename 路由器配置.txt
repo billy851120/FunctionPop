@@ -14,7 +14,7 @@ localhost:3000/xxxxx
 
 會員頁面
 /home/member
-/home/member/frame6
+/home/member/memberData
 /home/member/frame7
 /home/member/frame8
 /home/member/frame9

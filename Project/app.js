@@ -24,7 +24,7 @@ app.use('/home', home);
 app.use('/admin', admin);
 
 //預設路由，前台index
-app.use('/', home);
+// app.use('/', home);
 
 app.listen(3000, function () {
   console.log('run');
