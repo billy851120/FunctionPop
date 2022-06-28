@@ -8,11 +8,11 @@ mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"",
-    database:"node_project"
+    database:"functionpop"
 })
 
 
-// Create the loval server
+// Create the local server
 var app = express();
 
 // Connect (Important !!)

@@ -10,11 +10,11 @@ exports.exec = (sql, data, callback) => {
   });
   connection.connect();
 
-  connection.query(sql, data, function (err, results, fields) {
+  connection.query(sql, data, function (err, results, fields ) {
     if (err) {
       console.log(err);
     }
-    callback(results, fields);
+    callback(results, fields,err);
   });
   connection.end();
 };

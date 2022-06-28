@@ -3,7 +3,7 @@ localhost:3000/xxxxx
 
 ----------------------前台
 首頁
-/
+//
 /home/index
 
 客製化團服
@@ -27,25 +27,16 @@ localhost:3000/xxxxx
 
 ---------------------後台
 
-會員頁
-/admin/user/
-/admin/user/admin_user_lab_01(orderby)
-/admin/user/admin_user_lab_02(choose)
-/admin/user/admin_user_lab_03(delete)
-/admin/user/admin_user_lab
-/admin/user/admin_user_login_page
-/admin/user/admin_user_server_side
-
 
 庫存頁
 /admin/goods
-/admin/goods/admin_goods_11
-/admin/goods/admin_goods_item_all
-/admin/goods/admin_goods_item_del
-/admin/goods/admin_goods_item_shelf
-/admin/goods/admin_goods_login
-/admin/goods/admin_goods_member
-/admin/goods/admin_goods_orderMgat__refund
-/admin/goods/admin_goods_orderMgat_num
-/admin/goods/admin_goods_register
-/admin/goods/admin_goods_stockMgat_all
+/admin/goods/11
+/admin/goods/item_all
+/admin/goods/item_del
+/admin/goods/item_shelf
+/admin/goods/login
+/admin/goods/member
+/admin/goods/orderMgat__refund
+/admin/goods/orderMgat_num
+/admin/goods/register
+/admin/goods/stockMgat_all
