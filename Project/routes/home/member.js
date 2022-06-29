@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var memberController=require('../../controller/memberController')
+var memberController=require('../../controller/memberController');
+
+function redirectBack(req, res, next) {
+  res.redirect('back');
+}
 
 router.get('/memberData', memberController.personalData);
 
 router.get('/login',memberController.login);
 
-router.post('/login',memberController.handlelogin);
+router.post('/login',memberController.handlelogin,redirectBack);
+
+router.get('/logout',memberController.logout)
 
 router.get('/memberData', function (rqs, res) {
   res.render('memberData', { title: '會員資料｜我的最愛' });

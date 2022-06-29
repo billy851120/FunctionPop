@@ -9,6 +9,7 @@ router.get('/' ,function(req,res){
 })
     
 router.post('/', function (req, res) {
+  console.log("statusCode:"+res.statusCode);
     var body = req.body;
     var sql = "INSERT INTO customer_id(cName,cBirth,cgender,cAccount,cPhone,cAddr) values(?,?,?,?,?,?)";    //    向user這個表裡寫入資料
     var data = [body.cName, body.cBirth, body.cgender, body.cAccount, body.cPhone, body.cAddr];

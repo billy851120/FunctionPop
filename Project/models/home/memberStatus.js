@@ -1,19 +1,21 @@
-var db=require('../../dataBase');
+var db = require('../../dataBase');
 
-var memberModel={
+var memberModel = {
     personalData: (cb) => {
-       
+
     },
 
-    getMemberData:(cAccount,cPassword,cb)=>{
-        db.exec('select * from customer_id where cAccount = ?', [cAccount], (err, result) => {
-            console.log(`result : ${result[0]}`);
+    getMemberData: (cAccount, cb) => {
+        db.exec('select * from customer_id where cAccount = ?', [cAccount], (result, err, zzz) => {
+            console.log('result.........');
+            console.log(result);
+            console.log(`cName : ${result[0].cName}`);
             console.log(`cPassword : ${result[0].cPassword}`);
             if (err) return cb(err);
-            cb(null, result[0]);
+            cb(result[0]);
         });
     }
 
 }
 
-module.exports=memberModel;
+module.exports = memberModel;

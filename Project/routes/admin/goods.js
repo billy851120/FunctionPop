@@ -6,8 +6,29 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 
+
+router.get('/', function (rqs, res) {
+  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
+    res.render('admin_index', { data: result });
+  });
+});
+router.get('/member', function (rqs, res) {
+  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
+    res.render('admin_member', { data: result });
+  });
+});
+router.get('/item_all', function (rqs, res) {
+  db.exec('SELECT * FROM products', [], (result, fields) => {
+    res.render('admin_item_all', { data: result });
+  });
+});
+
 router.get('/item_all', function (rqs, res) {
   res.render('admin_item_all', { title: '後台管理系統' });
+});
+
+router.get('/', function (rqs, res) {
+  res.render('admin_index',[]);
 });
 router.get('/item_del', function (rqs, res) {
   res.render('admin_item_del', { title: '後台管理系統' });
@@ -20,6 +41,10 @@ router.get('/login', function (rqs, res) {
 });
 router.get('/member', function (rqs, res) {
   res.render('admin_member', { title: '後台管理系統' });
+  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
+    res.render('admin_member', { data: result });
+  });
+  
 });
 router.get('/orderMgat__refund', function (rqs, res) {
   res.render('admin_orderMgat__refund', { title: '後台管理系統' });
@@ -34,26 +59,7 @@ router.get('/stockMgat_all', function (rqs, res) {
 
 
 
-//------------------------------------------------
 
 
-
-router.get('/', function (rqs, res) {
-  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
-    res.render('admin_index', { data: result });
-  });
-});
-router.get('/member', function (rqs, res) {
-  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
-    res.render('admin_member', { data: result });
-  });
-});
-
-router.get('/item_all', function (rqs, res) {
-  db.exec('SELECT * FROM products', [], (result, fields) => {
-    res.render('admin_item_all', { data: result });
-
-  });
-});
 
 module.exports = router;
