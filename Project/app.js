@@ -14,8 +14,7 @@ app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: true
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.isLogin = req.session.isLogin;
-  res.locals.username = req.session.username;
-  res.locals.nickname = req.session.nickname;
+  res.locals.memberprofile = req.session.memberprofile;
   res.locals.errorMessage = req.flash('errorMessage');
   // 將 moment 和 shortDateFormat 放到 locals 全域環境中
   res.locals.moment = moment;

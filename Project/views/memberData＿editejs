@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %></title>
+    <link rel="stylesheet" href="/css/all.css">
+    <script src="/js/member/jquery.min.js"></script>
+    <script src="/js/member/popper.min.js"></script>
+
+    <style>
+
+
+
+    </style>
+</head>
+
+<body>
+
+        <!-- content -->
+        <%- include("navbar.ejs") %>
+            <div class="container">
+                <%- include("template/loginbar") %>
+                <% if (errorMessage.length > 0) { %>
+                    <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
+                      <%= errorMessage %>
+                    </div>
+                    <% } %>
+
+                 
+                <!-- 左邊選單列 -->
+                <div class="row pb-3 mt-5">
+                    <div class="col-2">
+                        <p><a href="#" class="nav-link font-weight-bold  text-dark">個人資料</a></p>
+                        <p><a href="" class="nav-link text-dark">訂單&退貨</a></p>
+                        <p><a href="" class="nav-link text-dark">我的最愛</a></p>
+                    </div>
+                    <!-- 右邊資訊欄 -->
+
+                <% if(memberprofile) { %> 
+
+                    <div class="col-10">
+                        <p class="text-center">個人資料</p>
+                        <hr>
+                        <form action="">
+                            <p>我的資料：</p>
+                            <div class="row">
+                                <label class="col-12" for="userName">姓名：<input class="rounded mr-2" type="text"
+                                        name="userName" id="userName">
+                                </label>
+                                <label class="col-12" for="userBirthday">生日：<input class="rounded mr-2" type="text"
+                                        name="userBirthday" id="userBirthday">
+                                </label>
+                                <label class="col-12" for="userBirthday">性別：<select class="rounded mr-2"
+                                        id="userBirthday">
+                                        　<option value="Man">男</option>
+                                        　<option value="Women">女</option>
+                                    </select>
+                                </label>
+                                <label class="col-12" for="userBirthday">聯絡電話：<input class="rounded mr-2" type="text"
+                                        name="userPhone" id="userPhone">
+                                </label>
+                                <label class="col-lg-12" for="userAddress_City">居住地址：<select class="rounded mr-2"
+                                        id="userAddress_City">
+                                        　<option value="Keelung">基隆市</option>
+                                        　<option value="New_Taipei">新北市</option>
+                                        　<option value="Taipei">臺北市</option>
+                                        　<option value="Taoyuan">桃園市</option>
+                                        　<option value="Hsinchu_County">新竹縣</option>
+                                        　<option value="Hsinchu_City">新竹市</option>
+                                        　<option value="Miaoli_City">苗栗市</option>
+                                        　<option value="Miaoli_County">苗栗縣</option>
+                                        　<option value="Taichung">臺中市</option>
+                                        　<option value="Changhua_County">彰化縣</option>
+                                        　<option value="Changhua_City">彰化市</option>
+                                        　<option value="Nantou_City">南投市</option>
+                                        　<option value="Nantou_County">南投縣</option>
+                                        　<option value="Yunlin">雲林縣</option>
+                                        　<option value="Chiayi_County">嘉義縣</option>
+                                        　<option value="Chiayi_City">嘉義市</option>
+                                        　<option value="Tainan">臺南市</option>
+                                        　<option value="Kaohsiung">高雄市</option>
+                                        　<option value="Pingtung_County">屏東縣</option>
+                                        　<option value="Pingtung_County">屏東縣</option>
+                                        　<option value="Pingtung_City">屏東市</option>
+                                        　<option value="Yilan_County">宜蘭縣</option>
+                                        　<option value="Yilan_City">宜蘭市</option>
+                                        　<option value="Hualien_County">花蓮縣</option>
+                                        　<option value="Hualien_City">花蓮市</option>
+                                        　<option value="Taitung_City">臺東市</option>
+                                        　<option value="Taitung_County">臺東縣</option>
+                                        　<option value="Penghu">澎湖縣</option>
+                                        　<option value="Lüdao">綠島</option>
+                                        　<option value="Lanyu">蘭嶼</option>
+                                        　<option value="Kinmen">金門縣</option>
+                                        　<option value="Matsu">馬祖</option>
+                                        　<option value="Lienchiang">連江縣</option>
+                                        <input class="rounded mr-2 w-75" type="text" name="userAddress_Detail"
+                                            id="userAddress_Detail">
+                                    </select>
+                                </label>
+                                <hr class="col-12">
+                                <label class="col-12" for="userEmail">電子郵件：<input class="rounded mr-2" type="text"
+                                        name="userEmail" id="userEmail">
+                                </label>
+                            </div>
+                        </form>
+                    </div>        
+                <% } else { %>
+                        <div class="alert alert-warning col-10 text-center align-self-center " role="alert">請先登入</div>
+                 <%   } %>      
+                </div>
+            </div>
+   
+    
+    <!-- footer -->
+    <footer class="footer">
+        <%- include("footer.ejs") %>
+    </footer>
+</body>
+
+</html>
