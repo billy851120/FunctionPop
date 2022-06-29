@@ -20,7 +20,8 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "orm": "^7.1.0"
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
