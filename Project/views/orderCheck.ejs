@@ -77,26 +77,26 @@
                         <span>
                           收件人* :
                         </span>
-                        <input type="text" style="width:130px ;" name="name" placeholder="姓名" ><br>
+                        <input type="text" style="width:130px ;" name="name" placeholder="姓名" required><br>
                       </div>
                       <div>
                         <span>
                           通訊地址* :
                         </span>
-                        <input type="text" style="width:70px; margin-right:25px;" name="address" placeholder=""><input
-                          type="text" name="address" placeholder="地址" ><br>
+                        <input type="text" style="width:70px; margin-right:25px;" name="city" placeholder="" required><input
+                          type="text" name="address" placeholder="地址" required><br>
                       </div>
                       <div>
                         <span>
                           手機號碼* :
                         </span>
-                        <input type="text" pattern="[0-9]{10}" style="width:150px ;" name="phone" placeholder="" ><br>
+                        <input type="text" pattern="[0-9]{10}" style="width:150px ;" name="phone" placeholder="" required><br>
                       </div>
                       <div>
                         <span>
                           電子郵件* :
                         </span>
-                        <input type="text" style="width:150px ;" name="email" placeholder="123@gmail.com" >
+                        <input type="text" style="width:150px ;" name="email" placeholder="123@gmail.com" required>
                       </div>
                     </div>
 
@@ -137,10 +137,10 @@
                       placeholder="CVN *" ><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
                   </div>
                   <div class="mt-3 mb-5">
-                    <input type="checkbox" ><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
+                    <input type="checkbox" required><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
                   </div>
                 </div>
-                <button type="submit"  id="cart-submit" style="text-align: center;">訂單確認</button>
+                <button type="submit"  id="cart-submit" style="text-align: center;" >訂單確認</button>
               </form>
 
 
