@@ -71,6 +71,7 @@
         </thead>
       </table>
       <!-- outline_class  oib oig oi  oir-->
+      <p id="o_id" style="display:none;"><%- o_id %></p>
       <div class="container">
         <div class="cart_content">
           <div class="row content_text">
@@ -353,14 +354,39 @@
         return checkOrder;
       }
 
+       function addZero (num){
+        if(num<10){
+          num.toString();
+          return "0" + num;
+        }else{
+          return num;
+        }
+      }
+      function addZero2(num){
+        let len = 5;
+        num = num.toString();
+        while(num.length < len){
+          num = '0'+num;
+        }
+        return num ;
+      }
+
         
  $('#cart-submit').on('click', function () {
     if(!checkInputInfo()){
-      // let date = new Date();
-      // let year = toString(date.getFullYear());
-      // let month =toString(date.getMonth() +1) ;
+     
+      let date = new Date();
+      let year = date.getFullYear().toString().substr(2,3);
+      let month =date.getMonth()+1;
+      let Z_month = addZero(month);
+      let day = date.getDate();
+      let Z_day = addZero(day);
+      let now_orderId =  $('#o_id').html();
+      let Z_orderId = addZero2(now_orderId);
 
-      //  console.log(year );
+      let orderList = year + Z_month + Z_day + Z_orderId;
+      console.log(orderList);
+
       
       alert('請填寫資料');
       return false;

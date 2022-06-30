@@ -77,7 +77,9 @@ router.get('/', function (req, res) {
   res.render('shop_cart', { cart: cart, total: total });
 });
 router.get('/orderCheck', function (rqs, res) {
-  res.render('orderCheck', { title: '訂單確認' });
+  db.exec('SELECT * FROM `orders` order by order_id DESC limit 1',[],function(result,fields){
+    res.render('orderCheck', { title: '訂單確認',o_id: result[0].order_id });
+  })
 });
 router.post('/orderCheck/add', function (req, res) {
   var cart = req.session.cart;
