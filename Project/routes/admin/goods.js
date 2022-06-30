@@ -35,47 +35,51 @@ router.get('/item_shelf', function (rqs, res) {
     res.render('admin_item_shelf', { data: result });
   });
 });
-// router.get('/login', function (rqs, res) {
-//   res.render('admin_login', { title: '後台管理系統' });
-// });
-router.get("/login", function (req, res) {
+router.get('/login', function (rqs, res) {
   res.render('admin_login', { title: '後台管理系統' });
+});
+router.post("/login", function (req, res) {
+  // res.render('admin_login', { title: '後台管理系統' });
+  var body = req.body;
 
+  // console.log("start login...ss)
 
-  console.log("安0 0 0 0 0 0安")
- 
-  console.log(req.query)
-  // console.log(res.query)
-  emitter.on("ok", function () {
-    return res.end("註冊成功");    //    向前臺返回資料
-  });
+  // console.log("date:"+req.query)
+  // // console.log(res.query)
   emitter.on("false", function () {
-    return res.end("使用者名稱已存在");    //    向前臺返回資料
+    return res.end("資料庫判斷有誤");    //    向前臺返回資料
   });
-  emitter.on("lastok", function () {
-    return res.end("使用者名稱已存在");    //    向前臺返回資料
+  emitter.on("ok", function () {
+    return res.end("輸入帳密錯誤");    //    向前臺返回資料
+  });
+  emitter.on("success", function () {
+    return res.end("成功");    //    向前臺返回資料
   });
 
-  var sql = "select * from customer_id where cAccount =' "+ req.query.cAccount +" ' and cPassword='" + req.query.cPassword + "'";    //    在資料庫裡面查詢使用者名稱跟密碼
-  db.exec(sql, function (results, fields, err) {  //    執行sql語句，並返回結果
+  var sql = "select * from customer_id where cAccount ='" + body.cAccount + "' and cPassword='" + body.cPassword + "';";    //    在資料庫裡面查詢使用者名稱跟密碼
+  db.exec(sql, [], function (results, fields, err) {  //    執行sql語句，並返回結果
     console.log("results");
     console.log(sql);
-
-    // console.log(results);
+    console.log(results);
 
     if (err) {
-      console.log("第1個錯誤");
-      console.log(err.RowDataPacket);
-      emitter.emit("false");   //    資料庫錯誤
-    }else if (fields == 0) {
-      emitter.emit("ok"); 
-      console.log("第2個錯誤");   //    資料庫裡面沒找到配對的內容返回引數
+      console.log("資料庫錯誤");
+      emitter.emit("false");
+
+      return
+    }
+    if (results.length == 0) {
+      console.log("資料庫裡面沒找到配對的內容返回引數");
+      emitter.emit("ok");
+
     } else {
-      emitter.emit("lastok"); 
-      console.log("已經成功");    //返回登入成功
+      console.log("success");
+      // emitter.emit("success");
+      res.redirect('/admin/goods');
+      
     }
   });
-  
+
 })
 // router.get('/login', function (rqs, res) {
 //   res.render('admin_login', { title: '後台管理系統' });
