@@ -356,12 +356,17 @@
         
  $('#cart-submit').on('click', function () {
     if(!checkInputInfo()){
+      // let date = new Date();
+      // let year = toString(date.getFullYear());
+      // let month =toString(date.getMonth() +1) ;
+
+      //  console.log(year );
       
       alert('請填寫資料');
-      return fales;
+      return false;
     }else if(!$('#orderList input[name="agree"]').prop('checked')){
         alert('請勾選同意條款');
-      return fales;
+      return false;
     }
     else{
       var data = $('#orderList').serializeArray();
