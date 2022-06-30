@@ -12,7 +12,53 @@
   <script src="/js/shop_cart/cookie.js"></script>
   <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
   <script src="/js/shop_cart/jquery.js"></script>
+  <style>
+    .fpop_inp {
+      height: 35px;
+      border: 1px solid #888;
+      border-radius: 6px;
+      font-size: 10px;
+      margin: 10px 0;
+      padding: 8px 5px;
+    }
 
+    .fpop_inp:focus {
+      background-color: #ececec;
+    }
+
+    .footerMell>div>div>a {
+      color: white;
+      font-size: small;
+
+    }
+
+   .fpop_inperro {
+      height: 35px;
+      border: 1px solid #d83838;
+      border-radius: 6px;
+      font-size: 10px;
+      margin: 10px 0;
+      padding: 0 10px;
+    }
+
+    .inp_right {
+      border: 1px solid #33a51d;
+      border-radius: 6px;
+      background-color: azure;
+    }
+
+    .inp_Err {
+      font-size: 5px;
+      color: #d83838;
+      margin-left: 20px;
+    }
+
+    .regText {
+      opacity: 0.6;
+      text-align: center;
+      font-size: 15px;
+    }
+  </style>
 
 </head>
 
@@ -71,83 +117,97 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <form id="orderList"  class="ct_form" >
+                  <form id="orderList" class="ct_form" target="frameName">
                     <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
                       <div>
                         <span>
                           收件人* :
                         </span>
-                        <input type="text" style="width:130px ;" name="name" placeholder="姓名" required><br>
+                        <input class="fpop_inp"  type="text" style="width:130px ;" name="name" placeholder="姓名" ><span
+                          class="inp_Err" style="visibility: hidden;" id="nameErr">請填寫姓名欄位*</span><br>
                       </div>
                       <div>
                         <span>
                           通訊地址* :
                         </span>
-                        <input type="text" style="width:70px; margin-right:25px;" name="city" placeholder="" required><input
-                          type="text" name="address" placeholder="地址" required><br>
+                        <input class="fpop_inp" type="text" style="width:70px; margin-right:25px;" name="city" placeholder=""
+                          ><input class="fpop_inp" type="text" name="address" placeholder="地址" ><span class="inp_Err"
+                          style="visibility: hidden;" id="addressErr">請填寫地址欄位*</span>
+                          <span class="inp_Err"
+                          style="visibility: hidden;" id="addressErr2">請填寫有效郵遞區號*</span><br>
                       </div>
                       <div>
                         <span>
                           手機號碼* :
                         </span>
-                        <input type="text" pattern="[0-9]{10}" style="width:150px ;" name="phone" placeholder="" required><br>
+                        <input class="fpop_inp" type="text"  style="width:150px ;" name="phone" placeholder=""
+                          ><span class="inp_Err" style="visibility: hidden;" id="phoneErr">請填寫手機欄位*</span><br>
                       </div>
                       <div>
                         <span>
                           電子郵件* :
                         </span>
-                        <input type="text" style="width:150px ;" name="email" placeholder="123@gmail.com" required>
+                        <input class="fpop_inp" type="text" style="width:150px ;" name="email" placeholder="123@gmail.com" >
+                        <span
+                          class="inp_Err" style="visibility: hidden;" id="emailErr">請填寫電子郵件欄位*</span>
+                        <span class="inp_Err" style="visibility: hidden;" id="emailErr2">請輸入有效的郵箱地址*</span>
                       </div>
                     </div>
 
 
                     <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
-                    <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
-                  </div>
-                  <div>
-                    <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
-                  </div>
-                  <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="信用卡/簽帳金融卡" > 信用卡/簽帳金融卡 <img
-                        src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input type="radio"
-                        class="cart_cho" name="cart_cho" value="貨到付款">貨到付款</span></div>
-                  <div class="d-flex">
-                    <div class="mr-3 cars"><img src="/img/shop_cart/mas.png"
-                        style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                      <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
                     </div>
-                    <div class="mr-3 cars"><img src="/img/shop_cart/visa.png"
-                        style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                    <div>
+                      <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
                     </div>
-                    <div class="cars"><img src="/img/shop_cart/paypal.png"
-                        style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                    <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="信用卡/簽帳金融卡">
+                        信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input
+                          type="radio" class="cart_cho" name="cart_cho" value="貨到付款">貨到付款</span></div>
+                    <div class="d-flex">
+                      <div class="mr-3 cars"><img src="/img/shop_cart/mas.png"
+                          style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                      </div>
+                      <div class="mr-3 cars"><img src="/img/shop_cart/visa.png"
+                          style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                      </div>
+                      <div class="cars"><img src="/img/shop_cart/paypal.png"
+                          style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <input type="text" style="width: 191px;" name="cart_num" placeholder="信用卡號碼*" >
-                  </div>
-                  <div>
-                    <span>有效日期* : </span><select name="cart_date" id="" >
-                      <option>月</option>
-                      <% for(let i =1;i <= 12;i++){ %>
-                        <option value="<%- i %>"><%- i %></option>
-                        <% } %>
-                    </select> / <select name="cart_date" id="">
-                      <option>日</option>
+                    <div>
+                      <input type="text" style="width: 191px;" name="cart_num" placeholder="信用卡號碼*">
+                    </div>
+                    <div>
+                      <span>有效日期* : </span><select name="cart_date" id="">
+                        <option>月</option>
+                        <% for(let i=1;i <=12;i++){ %>
+                          <option value="<%- i %>">
+                            <%- i %>
+                          </option>
+                          <% } %>
+                      </select> / <select name="cart_date" id="">
+                        <option>日</option>
 
-                    </select> <input type="text" name="cart_CVN" style="width: 58px; text-align: center; margin-left: 10px;"
-                      placeholder="CVN *" ><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
-                  </div>
-                  <div class="mt-3 mb-5">
-                    <input type="checkbox" required><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
-                  </div>
+                      </select> <input class="fpop_inp" type="text" name="cart_CVN"
+                        style="width: 58px; text-align: center; margin-left: 10px;"
+                        placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
+                    </div>
+                    <div class="mt-3 mb-5">
+                      <label for="agree">
+                        <input type="checkbox" name="agree" id="agree">我同意Function.pop的條款與條件， 以及隱私權政策。
+                      </label>
+                      
+                    </div>
                 </div>
-                <button type="submit"  id="cart-submit" style="text-align: center;" >訂單確認</button>
-              </form>
+                <button  id="cart-submit" style="text-align: center;">訂單確認</button>
+                </form>
 
 
-              <!-- <iframe src="" style="display: none;" frameborder="0" name="frameName"></iframe> -->
-              <div>
-              </div>
-             
+                <iframe src="" style="display: none;" frameborder="0" name="frameName"></iframe>
+                <div>
+                </div>
+
               </div>
             </div>
             <div class="col-3" style="padding: 0">
@@ -188,10 +248,10 @@
     <%- include("footer.ejs") %>
   </footer>
   <script>
-    $( document ).ready(function() {
-      function serializeToJSON(data){
+    $(document).ready(function () {
+      function serializeToJSON(data) {
         values = {};
-        for(index in data){
+        for (index in data) {
           //把data的name跟value結合並放進values的物件裡
           values[data[index].name] = data[index].value;
         }
@@ -199,41 +259,146 @@
 
       }
 
-      $('#cart-submit').on('click',function(){
-        var data = $('#orderList').serializeArray();
+      $('#orderList input[name="name"]').on('input',function(){
+        if(!$('#orderList input[name="name"]').val() == ""){
+          $('#orderList input[name="name"]').addClass('inp_right');
+          $("#nameErr").css('visibility','hidden');
+        }
+      })
+      $('#orderList input[name="city"]').on('input',function(){
+        if(!$('#orderList input[name="city"]').val() == ""){
+          $('#orderList input[name="city"]').addClass('inp_right');
+          $("#addressErr").css('visibility','hidden');
+        }
+      })
+      $('#orderList input[name="address"]').on('input',function(){
+        if(!$('#orderList input[name="address"]').val() == ""){
+          $('#orderList input[name="address"]').addClass('inp_right');
+          $("#addressErr").css('visibility','hidden');
+        }
+      })
+      
+      $('#orderList input[name="phone"]').on('input',function(){
+        if(!$('#orderList input[name="phone"]').val() == ""){
+          $('#orderList input[name="phone"]').addClass('inp_right');
+          $("#phoneErr").css('visibility','hidden');
+        }
+      })
+      $('#orderList input[name="email"]').on('input',function(){
+        if(!$('#orderList input[name="email"]').val() == ""){
+          $('#orderList input[name="email"]').addClass('inp_right');
+          $("#emailErr").css('visibility','hidden');
+        }
+      })
+
+     
+          function checkInputInfo(){
+        var name = $('#orderList input[name="name"]').val();
+        var city = $('#orderList input[name="city"]').val();
+        var address = $('#orderList input[name="address"]').val();
+        var phone = $('#orderList input[name="phone"]').val();
+        var email = $('#orderList input[name="email"]').val();
+
+        var cityFormat = /(^[1-9]d{3})||(^[1-9]d{5})/;
+        var phoneFormat = /^09[0-9]{8}$/;
+        var emailFormat = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var checkOrder = true;
+
+        if (name == null || name == "") {
+          $('#orderList input[name="name"]').addClass('fpop_inperro');
+          $('#nameErr').css('visibility', 'visible');
+          checkOrder = false;
+        }
+        if (city == null || city == "") {
+          $('#orderList input[name="city"]').addClass('fpop_inperro');
+          $('#addressErr').css('visibility', 'visible');
+          checkOrder = false;
+        }else if (!cityFormat.test(city)) {
+          $('#orderList input[name="city"]').addClass('fpop_inperro');
+          $('#orderList input[name="city"]').removeClass("inp_right");
+          $("#addressErr").css('visibility', 'hidden');
+          $("#addressErr2").css('visibility', 'visible');
+          checkOrder = false;
+        }
+        if (address == null || address == "") {
+          $('#orderList input[name="address"]').addClass('fpop_inperro');
+          $('#addressErr').css('visibility', 'visible');
+          checkOrder = false;
+
+        }
+        if (phone == null || phone == "") {
+          $('#orderList input[name="phone"]').addClass('fpop_inperro');
+          $('#phoneErr').css('visibility', 'visible')
+          checkOrder = false;
+        } else if (!phoneFormat.test(phone)) {
+          $('#orderList input[name="phone"]').addClass('fpop_inperro');
+          $('#orderList input[name="phone"]').removeClass("inp_right");
+          $("#phoneErr").css('visibility', 'hidden');
+          $("#phoneErr2").css('visibility', 'visible');
+          checkOrder = false;
+        }
+
+        if (email == null || email == "") {
+          $('#orderList input[name="email"]').addClass('fpop_inperro');
+          $('#emailErr').css('visibility', 'visible');
+          checkOrder = false;
+        } else if (!emailFormat.test(email)) {
+          $('#orderList input[name="email"]').addClass('fpop_inperro');
+          $('#orderList input[name="email"]').removeClass("inp_right");
+          $("#emailErr").css('visibility', 'hidden');
+          $("#emailErr2").css('visibility', 'visible');
+          checkOrder = false;
+        }
+        
+        return checkOrder;
+      }
+
+        
+ $('#cart-submit').on('click', function () {
+    if(!checkInputInfo()){
+      
+      alert('請填寫資料');
+      return fales;
+    }else if(!$('#orderList input[name="agree"]').prop('checked')){
+        alert('請勾選同意條款');
+      return fales;
+    }
+    else{
+      var data = $('#orderList').serializeArray();
         JSONData = serializeToJSON(data);
-        // console.log(JSONData);
+        console.log(JSONData);
 
-        $('#orderList input[required]').each(function(idx,ele){
-          console.log(idx,ele.value)
+        
+
+
+        $.ajax({
+          url:"/home/shop_cart/orderCheck/add",
+          type:"POST",
+          contentType:"application/json; charset=utf-8",
+          data:JSONData,
+          success:function(res){
+            var res = JSON.parse(res);
+
+            if(res.errno === 1){
+              alert('新增成功');
+            }else if (res.errno === 0){
+              alert("新增失敗");
+            }
+          },
+          error:function(){
+            alert("系統錯誤")
+          }
+
+
         })
+    }
+        
 
-        // $.ajax({
-        //   url:"/home/shop_cart/orderCheck/add",
-        //   type:"POST",
-        //   contentType:"application/json; charset=utf-8",
-        //   data:JSONData,
-        //   success:function(res){
-        //     var res = JSON.parse(res);
+      })
 
-        //     if(res.errno === 1){
-        //       alert('新增成功');
-        //     }else if (res.errno === 0){
-        //       alert("新增失敗");
-        //     }
-        //   },
-        //   error:function(){
-        //     alert("系統錯誤")
-        //   }
+    });
 
 
-        // })
-
-    })
-    
-});
-
-    
   </script>
 
 
