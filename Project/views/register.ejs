@@ -49,6 +49,11 @@
             font-size: 5px;
             color: #d83838;
         }
+        .regText{
+            opacity: 0.6;
+            text-align: center;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -57,17 +62,18 @@
     <nav>
         <%- include("navbar.ejs") %>
     </nav>
-    <div style="margin: 0px auto 100px; width: 300px;">
-        <h6 style="font-weight: 600;text-align: center;">註冊新帳號</h6>
-        <p style="text-align: center;">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
-        <p style="opacity: 0.6;text-align: center;">*星號欄位必填</p>
-        <form id="form">
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="regist">
+        <h2 style="font-weight: 600;text-align: center;">註冊新帳號</h2>
+        <p class="regText" >儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
+        <p class="regText" >*星號欄位必填</p>
+        <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
             <label>姓名*:</label>
             <p class="inp_Err" style="visibility: hidden" id="nameErr">請填寫姓名欄位*</p>
             <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
-
-
             <label>生日*:</label>
             <p class="inp_Err" style="visibility: hidden" id="birthErr">請填寫生日欄位*</p>
             <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
@@ -81,27 +87,22 @@
             <label>電子郵件*:</label>
             <p class="inp_Err" style="visibility:hidden" id="accountErr">請填寫電子郵件欄位*</p>
             <p class="inp_Err" style="visibility:hidden" id="accountErr2">請輸入有效的郵箱地址*</p>
+            <p class="inp_Err" style="visibility:hidden" id="accountErr3">電子郵件已註冊過，麻煩重新輸入*</p>
             <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
-
-
             <label>連絡電話*：</label>
             <p class="inp_Err" style="visibility:hidden" id="phoneErr">請填寫連絡電話欄位*</p>
             <p class="inp_Err" style="visibility:hidden" id="phoneErr2">請填寫有效電話*</p>
             <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*">
-
-
             <label>通訊地址*：</label>
             <p class="inp_Err" style="visibility:hidden" id="addrErr">請填寫連絡通訊欄位*</p>
             <input class="fpop_inp" type="text" id="cAddr" name="cAddr" placeholder="通訊地址*"><br>
-
-            <button class="btn btn-dark" id="submit">註冊會員</button>
-
-
-        </form>
+            <label>密碼*：</label>
+            <p class="inp_Err" style="visibility:hidden" id="cpasswordErr">請填寫密碼欄位*</p>
+            <input class="fpop_inp" type="password" id="cPassword" name="cPassword" placeholder="密碼*"><br>
+            <button  class="btn btn-dark" id="register">註冊</button>
+        </div>
     </div>
-
     <script>
- 
         $("#cName").on('input', function () {
             if (!($("#cName").val() == '')) {
                 $("#cName").addClass("inp_right")
@@ -132,6 +133,13 @@
                 $("#phoneErr").css('visibility', 'hidden')
             }
         })
+        $("#cPassword").on('input', function () {
+            if (!$("#cPassword").val() == '') {
+                $("#cPassword").addClass("inp_right")
+                $("#cpasswordErr").css('visibility', 'hidden')
+            }
+        })
+
 
         function checkInputInfo() {
             var x = $("#cName").val();
@@ -139,107 +147,108 @@
             var p = $("#cPhone").val();
             var a = $("#cAddr").val();
             var e = $("#cAccount").val();
+            var pas = $("#cPassword").val();
             var phoneFormat = /^09[0-9]{8}$/;
             var emailFormat = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             var b = true;
-            console.log("check ing");
             if (x == null || x == "") {
                 $("#cName").addClass("fpop_inperro")
                 $("#nameErr").css('visibility', 'visible')
                 b = false
-                console.log("check cName error");
             }
             if (y == null || y == "") {
                 $("#cBirth").addClass("fpop_inperro")
                 $("#birthErr").css('visibility', 'visible')
                 b = false
-                console.log("check cBirth error");
             }
             if (a == null || a == "") {
                 $("#cAddr").addClass("fpop_inperro")
                 $("#addrErr").css('visibility', 'visible')
                 b = false
-                console.log("check cAddr error");
             }
 
             if (e == null || e == "") {
                 $("#cAccount").addClass("fpop_inperro")
                 $("#accountErr").css('visibility', 'visible')
                 b = false
-                console.log("check cAccount error");
             } else if (!emailFormat.test(e)) {
                 $("#cAccount").addClass("fpop_inperro")
                 $("#cAccount").removeClass("inp_right")
                 $("#accountErr").css('visibility', 'hidden')
                 $("#accountErr2").css('visibility', 'visible')
                 b = false
-                console.log("check cAccount emailFormat error");
             }
             if (p == null || p == "") {
                 $("#cPhone").addClass("fpop_inperro")
                 $("#phoneErr").css('visibility', 'visible')
                 b = false
-                console.log("check cPhone error");
             } else if (!phoneFormat.test(p)) {
                 $("#cPhone").addClass("fpop_inperro")
                 $("#cPhone").removeClass("inp_right")
                 $("#phoneErr").css('visibility', 'hidden')
                 $("#phoneErr2").css('visibility', 'visible')
                 b = false
-                console.log("check cPhone phoneFormat error");
             }
-
-            console.log("check break");
-
+            if (a == null || a == "") {
+                $("#cPassword").addClass("fpop_inperro")
+                $("#cpasswordErr").css('visibility', 'visible')
+                b = false
+            }
             return b
         }
 
-        // 關鍵字 serializeArray() ,stringify()
 
-        var isClick = false
 
-        $("#submit").on('click', function () {
-            console.log("btn  isClick:"+isClick);
-            if(isClick){
-                return
-            }
-            isClick = true;
-
+        $("#register").click(function () {
             if (!checkInputInfo()) {
                 alert("資料輸入有誤");
                 return false
             }
-            console.log("start post...");
-            var data = $('#form').serializeArray()
-            JSONData = serializeToJSON(data)
             $.ajax({
-                url: "http://localhost:3000/home/register",
+                url: "/register",
                 type: "POST",
-                contentType: "application/json; charset=utf-8",
-                data: JSONData,
-                
-                error: function (data) {
-                    console.log("error  :"+data);
-                    alert("此帳號已有人使用!");
-                    isClick = false;
+                data: {
+                    cName: $("#cName").val(),
+                    cBirth: $("#cBirth").val(),
+                    cgender: $("#gender").val(),
+                    cAccount: $("#cAccount").val(),
+                    cPhone: $("#cPhone").val(),
+                    cAddr: $("#cAddr").val(),
+                    cPassword: $("#cPassword").val(),
                 },
-                success: function (data) {  
-                    console.log("success  :"+data);   
-                    alert("註冊成功!");
-                    isClick = false;
+                success: function (data) {    //    alert後臺的返回值
+                    alert(data);
+                },
+                error: function () {
+                    alert(`訪問失敗`);
                 }
-            });
-
-            function serializeToJSON(data) {
-                var values = {};
-                for (index in data) {
-                    values[data[index].name] = data[index].value;
-                }
-                return JSON.stringify(values)
-            }
-        
-        })
+            })
+        });
     </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <footer class="footer">
         <%- include("footer.ejs") %>
