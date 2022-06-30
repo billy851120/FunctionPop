@@ -88,7 +88,12 @@
                     <h6>信箱 : <span id="email"></span></h6>
                   </div>
                   <div>
-                    <%- cart %>
+                    <% cart.forEach(function(item){ %>
+                      
+                      <p>商品碼 : <span><%- item.code %>    </span> 商品名稱 : <span><%- item.name %>   </span> 數量 : <span><%- item.quantity %>    </span> 金額 : <span><%- item.price %></span></p>
+                      
+  
+                   <% }) %>
                   </div>
                 </div>
                 
