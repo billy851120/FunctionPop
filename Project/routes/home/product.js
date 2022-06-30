@@ -17,37 +17,188 @@ router.use(bodyParser.urlencoded({extended:true}));
 
 
 
+// Female Product
 
 
-
-router.get('/', function (rqs, res) {
-  db.exec('SELECT * FROM products', [], (result, fields) => {
+router.get('/Female', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female"', [], (result, fields) => {
     // console.log(result);
     res.render('shop', { result: result });
   });
 });
-router.get('/single_product/:id', function (rqs, res) {
+
+
+// Male Product 
+
+router.get('/Male', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Male"', [], (result, fields) => {
+    // console.log(result);
+    res.render('shop', { result: result });
+  });
+});
+
+// Male
+
+router.get('/Male/single_product/:id', function (rqs, res) {
   
 
   db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
-      // res.render('single_product', { result:JSON.stringify(rows) });
-      // console.log(rows)
       res.render('single_product', { result:rows });
 });
+});
 
-  // db.exec('SELECT * FROM products', [], (result, fields) => {
-  //   res.render('single_product', { result: result });
-  // });
+// Female
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  
+
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 
+// 
+// 
+
+
+// 1.1 Male Product shirts
+router.get('/Male/%E4%B8%8A%E8%A1%A3', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Male" AND product_category = "上衣"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Male/shirts/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 1.2 Male Product pants
+router.get('/Male/%E4%B8%8B%E8%91%97', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Male" AND product_category = "下著"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Male/pants/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 1.3 Male Product bags
+router.get('/Male/%E5%8C%85', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Male" AND product_category = "包"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Male/bags/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 1.4 Male Product shoes
+router.get('/Male/%E9%9E%8B', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Male" AND product_category = "鞋"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Male/shoes/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
 });
 
 
 
+// 2.1 Female Product shirts
+router.get('/Female/%E4%B8%8A%E8%A1%A3', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female" AND product_category = "上衣"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 2.2 Female Product dresses
+router.get('/Female/%E6%B4%8B%E8%A3%9D', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female" AND product_category = "洋裝"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
+
+
+// 2.3 Female Product skirts
+router.get('/Female/%E8%A3%99%E5%AD%90', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female" AND product_category = "裙子"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
 
 
 
+// 2.4 Female Product skirts
+router.get('/Female/%E9%9E%8B', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female" AND product_category = "鞋"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
 
 
 
+// 2.5 Female Product hats
+router.get('/Female/%E5%B8%BD%E5%AD%90', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = "Female" AND product_category = "帽子"', [], (result, fields) => {
+    res.render('shop', { result: result });
+  });
+});
+
+
+router.get('/Female/single_product/:id', function (rqs, res) {
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
+});
+});
 
 
 

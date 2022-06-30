@@ -1,13 +1,21 @@
 //路由器配置
 localhost:3000/xxxxx
 
-----------------------前台
+----------------------前台 0630 更新
 首頁
 //
 /home/index
 
 客製化團服
 /home/custom
+
+商品頁面
+/home/product/Male
+/home/product/Female
+/home/product/Male/single_product/?
+/home/product/Female/single_product/?
+
+
 
 購物車
 /home/shop_cart

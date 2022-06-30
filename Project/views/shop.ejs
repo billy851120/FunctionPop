@@ -29,26 +29,14 @@
             </div>
         </section> -->
 
-        <!-- 1. Breadcrumb -->
-        <section>
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="#">男裝</a></li>
-                </ol>
-            </div>
-        </section>
-        
 
         <!-- 2. New Product -->
-        <section id="new_product" class="mt-2 pt-2 mx-auto w-50">
-            <!-- Main topic -->
+        <!-- <section id="new_product" class="mt-2 pt-2 mx-auto w-50">
             <div class="container mt-2 pt-2 mx-auto">
                 <h3 class="text-center">新品上市</h3>
                 <hr class="my_hr mx-auto">
                 <p class="text-center">本月新品</p>
             </div>
-            <!-- 2.2 Image -->
             <div class="row mx-auto container">
                 <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
                     <img class="img-fluid mb-3" src="img/product/FP1_80100001_beige_0.jpg" alt="">
@@ -78,16 +66,28 @@
                     <button class="my_button buy-btn">Buy Now</button>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- 3. banner -->
-        <section id="banner" class="my-0 py-0 w-75 mx-auto">
+        <div class="container">
+            <section id="banner" class="my-0 py-0 w-100 mx-auto">
+                <div class="container">
+                    <h4>function.pop 周年慶</h4>
+                    <h1>Summer Collection <br> Up to 30% OFF</h1>
+                    <Button class="text-uppercase my_button">Log In</Button>
+                </div>
+            </section>
+        </div>
+
+        <!-- 1. Breadcrumb -->
+        <!-- <section>
             <div class="container">
-                <h4>function.pop 周年慶</h4>
-                <h1>Summer Collection <br> Up to 30% OFF</h1>
-                <Button class="text-uppercase my_button">Log In</Button>
+                <ol class="breadcrumb">
+                    <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li><a href="#"><%= result.product_gender %></a></li>
+                </ol>
             </div>
-        </section> 
+        </section> -->
 
         <!-- 4. Left side || Right Side -->
         <section>
@@ -117,10 +117,10 @@
                                                         name="productType">
                                                     <label class="form-check-label" for="clothes_checkbox">Clothes</label>
                                                 </div>
-                                                <div class="form-check">
+                                                <div class="form-check" onclick="">
                                                     <input class="form-check-input" type="checkbox" id="shoes_checkbox"
                                                         name="productType">
-                                                    <label class="form-check-label" for="shoes_checkbox">Shoes</label>
+                                                    <label class="form-check-label" for="shoes_checkbox">pants</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="acessories_checkbox"
@@ -194,7 +194,7 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div onclick="window.location.href='/home/product/single_product/<%= item.product_id %>';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                                <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
                                     <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
                                     <h5><%= item.product_name %></h5>
                                     <p><%- item.rows %></p>
