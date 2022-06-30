@@ -1,21 +1,5 @@
-/* .nav_class {
-    padding-left: 10%;
-    padding-right: 10%;
-} */
-
-/* .search_input {
-    position: relative;
-    width: 200px !important;
-    height: 35px;
-    
-} */
-
-/* .search_button {
-    font-size: 0.9em;
-} */
-
 .pageone {
-    background-image: url(../img/background.png);
+    background-image: url(../img/home/background.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -23,42 +7,25 @@
     position: absolute;
     width: 100%;
     z-index: -511;
-}
-
-.chili {
+  }
+  
+  .chili {
     position: absolute;
     top: 5%;
     left: 9%;
     width: 31%;
     min-width: 200px;
     mix-blend-mode: lighten;
-}
-
-.logo_word {
+  }
+  
+  .logo_word {
     position: absolute;
     top: 13%;
     right: 25%;
     opacity: 0.8;
-}
-
-/* @media screen and (max-width:1600px) {
-    .search_input {
-        width: 150px !important;
-    }
-}
-
-@media screen and (max-width:1400px) {
-    .search_input {
-        left: 15px;
-        width: 120px !important;
-    }
-}
-@media screen and (max-width:1100px) {
-    .search_input {
-        visibility: collapse;
-    }
-} */
-@media screen and (max-width:1250px) {
+  }
+  
+  @media screen and (max-width:1250px) {
     .chili{
         object-fit: contain;
         top: 4%;
@@ -70,8 +37,8 @@
         top: 15%;
         right: 13%;
     }
-}
-@media screen and (max-width:980px) {
+  }
+  @media screen and (max-width:980px) {
     .chili{
         object-fit: contain;
         /* display: block; */
@@ -85,8 +52,8 @@
         right: 13%;
         top: 18%;
         }
-}
-@media screen and (max-width:600px) {
+  }
+  @media screen and (max-width:600px) {
     .chili{
         top: 5%;
         width: 80%;
@@ -96,14 +63,14 @@
     .logo_word {
     top: 20%;
     }
-
-}
-
-@media screen and (max-width: 400px) {
+  
+  }
+  
+  @media screen and (max-width: 400px) {
     .pageone{
         width: 100%;
         right: 0%;
-
+  
     }
     .chili{
         object-fit: contain;
@@ -113,5 +80,5 @@
     .logo_word {
     top: 20%;
     }
-
-}
+  
+  }
