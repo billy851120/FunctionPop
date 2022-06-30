@@ -118,7 +118,7 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <form id="orderList" class="ct_form" target="frameName">
+                  <form  action="/home/shop_cart/orderFinish" id="orderList" class="ct_form" >
                     <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
                       <div>
                         <span>
@@ -200,13 +200,12 @@
                       </label>
                       
                     </div>
-                    <input type="text" id="newOrderList" value="">
+                    <input type="hidden" name="newOrderList" id="newOrderList" value="">
                 </div>
                 <button  id="cart-submit" style="text-align: center;">訂單確認</button>
                 </form>
 
 
-                <iframe src="" style="display: none;" frameborder="0" name="frameName"></iframe>
                 <div>
                 </div>
 
@@ -376,6 +375,16 @@
  $('#cart-submit').on('click', function () {
     if(!checkInputInfo()){
      
+      
+
+      
+      alert('請填寫資料');
+      return false;
+    }else if(!$('#orderList input[name="agree"]').prop('checked')){
+        alert('請勾選同意條款');
+      return false;
+    }
+    else{
       let date = new Date();
       let year = date.getFullYear().toString().substr(2,3);
       let month =date.getMonth()+1;
@@ -386,17 +395,8 @@
       let Z_orderId = addZero2(now_orderId);
 
       let orderList = year + Z_month + Z_day + Z_orderId;
-      console.log(orderList);
       $("#newOrderList").prop("value",orderList);
 
-      
-      alert('請填寫資料');
-      return false;
-    }else if(!$('#orderList input[name="agree"]').prop('checked')){
-        alert('請勾選同意條款');
-      return false;
-    }
-    else{
       var data = $('#orderList').serializeArray();
         JSONData = serializeToJSON(data);
         console.log(JSONData);
@@ -412,9 +412,9 @@
           success:function(res){
             var res = JSON.parse(res);
 
-            if(res.errno === 1){
+            if(res.error === 1){
               alert('新增成功');
-            }else if (res.errno === 0){
+            }else if (res.error === 0){
               alert("新增失敗");
             }
           },
