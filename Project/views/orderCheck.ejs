@@ -202,28 +202,32 @@
       $('#cart-submit').on('click',function(){
         var data = $('#orderList').serializeArray();
         JSONData = serializeToJSON(data);
-        console.log(JSONData);
+        // console.log(JSONData);
 
-        $.ajax({
-          url:"/home/shop_cart/orderCheck/add",
-          type:"POST",
-          contentType:"application/json; charset=utf-8",
-          data:JSONData,
-          success:function(res){
-            var res = JSON.parse(res);
-
-            if(res.errno === 1){
-              alert('新增成功');
-            }else if (res.errno === 0){
-              alert("新增失敗");
-            }
-          },
-          error:function(){
-            alert("系統錯誤")
-          }
-
-
+        $('#orderList input[required]').each(function(idx,ele){
+          console.log(idx,ele.value)
         })
+
+        // $.ajax({
+        //   url:"/home/shop_cart/orderCheck/add",
+        //   type:"POST",
+        //   contentType:"application/json; charset=utf-8",
+        //   data:JSONData,
+        //   success:function(res){
+        //     var res = JSON.parse(res);
+
+        //     if(res.errno === 1){
+        //       alert('新增成功');
+        //     }else if (res.errno === 0){
+        //       alert("新增失敗");
+        //     }
+        //   },
+        //   error:function(){
+        //     alert("系統錯誤")
+        //   }
+
+
+        // })
 
     })
     
