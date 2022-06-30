@@ -17,24 +17,20 @@
       <%- include("navbar.ejs") %>
 
       <!-- 2. Breadcrumb -->
+
+
       <% result.forEach(function(item) { %>
       <section>
         <div class="container">
-          <ol class="breadcrumb">
-            <li class="homepage">
-              <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
-            </li>
-            <li>
-              <a href="#"><span><%= item.product_gender %></span></a>
-            </li>
-            <li>
-              <a href="#"><span><%= item.product_category %></span></a>
-            </li>
-            <li>
-              <a href="#"><span><%= item.product_name %></span></a>
-            </li>
-          </ol>
-        </div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i>首頁</a></li>
+                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>"><span><%= item.product_gender %></span></a></li>
+                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>/<%= item.product_category %>"><span><%= item.product_category %></span></a></li>
+                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>"><span><%= item.product_name %></span></a></li>
+            </ol>
+          </div>
+        </nav>
       </section>
       <% }); %>
 
@@ -45,7 +41,7 @@
 
           <% result.forEach(function(item) { %>
 
-          <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-2">
+          <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-4">
             <img
               id="mainImg"
               class="img-fluid w-100 py-2 px-2"
@@ -98,8 +94,8 @@
             <br />
             <h4><%= item.product_name %></h4>
             <p>商品編號 <%= item.product_code %></p>
-            <h6>價　格： $ <span><%= item.product_price %></span> 元</h6>
-            <h6>顏　色：米白色</h6>
+            <p>價　格： $ <span><%= item.product_price %></span> 元</p>
+            <p>顏　色：米白色</p>
             <span style="color: red">顏色選單</span><img src="" alt="" />
             <br />
             <br />
@@ -149,7 +145,7 @@
             <br />
 
             <div>
-              <h5
+              <h3
                 style="
                   border-bottom: 1px solid #000;
                   padding-bottom: 10px;
@@ -157,7 +153,7 @@
                 "
               >
                 商品描述
-              </h5>
+              </h3>
             </div>
             <div>
               <p>&emsp;&emsp;<%= item.product_description %></p>
@@ -166,9 +162,9 @@
             <br />
 
             <div>
-              <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px">
+              <h3 style="border-bottom: 1px solid #000; padding-bottom: 10px">
                 商品資訊
-              </h5>
+              </h3>
             </div>
             <ul>
               <li><%- item.product_composition %></li>
