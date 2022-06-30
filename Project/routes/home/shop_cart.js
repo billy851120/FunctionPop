@@ -84,12 +84,12 @@ router.post('/orderCheck/add', function (req, res) {
   var total = req.session.total;
   var orderLise = req.body;
   var date = new Date();
-  // console.log(orderLise);
-  // console.log(cart);
-  // console.log(total);
+  console.log(orderLise);
+  console.log(cart);
+  console.log(total);
 
   var sql =
-    'INSERT INTO orders (order_id,user_name,user_phone,user_email,user_city,user_address ,order_date) VALUES(?,?,?,?,?,?,?); ';
+    'INSERT INTO orders (order_id,user_name,user_phone,user_email,user_city,user_address ,order_update,order_upload	) VALUES(?,?,?,?,?,?,?,?); ';
   var data = [
     '',
     orderLise.name,
@@ -98,6 +98,7 @@ router.post('/orderCheck/add', function (req, res) {
     orderLise.city,
     orderLise.address,
     '',
+    "",
   ];
 
   db.exec(sql, data, function (result, fields) {
