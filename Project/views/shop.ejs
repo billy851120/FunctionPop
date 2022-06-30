@@ -167,13 +167,15 @@
                         <section>
                             <div class="flexbox pt-2 mt-2">
                                 <div class="inputBox" style="font-size: 20px;">
-                                    <span>排序: </span>
-                                    <select name="" id="">
-                                        <option value="">價格：高到低</option>
-                                        <option value="">價格：低到高</option>
-                                        <option value="">評價：高到低</option>
-                                        <option value="">評價：低到高</option>
-                                    </select>
+                                    <label>
+                                        <span>排序: </span>
+                                        <select name="" id="selectMode">
+                                            <option value="1">價格：高到低</option>
+                                            <option value="2">價格：低到高</option>
+                                            <option value="3">評價：高到低</option>
+                                            <option value="4">評價：低到高</option>  
+                                        </select>
+                                    </label>
                                 </div>
                             </div>
                         </section>
@@ -213,72 +215,7 @@
 
                                 <% }); %>
 
-                                <!-- <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="/img/product/featured1.jpeg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="/img/product/featured1.jpeg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div>
-                                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100001_beige_0.jpg" alt="">
-                                    <h5>條紋T-shirt</h5>
-                                    <p>$499</p>
-                                    <button class="my_button buy-btn">Buy Now</button>
-                                </div> -->
+                                
                                 <!-- Pagination -->
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination mt-2 justify-content-end">
@@ -313,5 +250,52 @@
     <script src="./assets/js/myJs.js"></script>
     <script src="js/product/myJs.js"></script>
     <script src="js/product/jquery.min.js"></script>
+    <script>
+        let select = document.querySelector("#selectMode");
+        select.addEventListener("change", selectFun);
+
+        function selectFun() {
+            const switchValue = this.value;
+
+            switch (switchValue) {
+            case "1":
+                option_01();
+                break;
+            case "2":
+                option_02();
+                break;
+            case "3":
+                option_03();
+                break;
+            case "4":
+                option_04();
+                break;
+            default:
+                return;
+            }
+        }
+
+        function option_01() {
+            var item = ""
+            item.sort(function(a,b) {
+                return a.product_price > b.product_price;
+            })
+            alert(item);
+        }
+        
+        function option_02() {
+            alert("選到 option_02");
+        }
+        
+        function option_03() {
+            alert("選到 option_03");
+        }
+        
+        function option_04() {
+            alert("選到 option_04");
+        }
+    </script>
+
+
 </body>
 </html>

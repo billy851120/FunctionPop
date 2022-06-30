@@ -6,19 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>assd</title>
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <link
-      rel="stylesheet"
-      href="../node_modules/OwlCarousel/dist/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../node_modules/OwlCarousel/dist/assets/owl.theme.default.min.css"
-    />
     <script src="/js/shop_cart/cookie.js"></script>
     <script
       src="https://kit.fontawesome.com/93e1c8f0af.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/js/shop_cart/jquery.js"></script>
   </head>
 
   <body>
@@ -67,11 +60,9 @@
             <div class="col-3"></div>
           </div>
           <div class="row content_pid">
-                
-
             <div class="col-9">
               <div class="cart container-fluid">
-                <div class="row fz-dark">
+                <div class="row fz-dark cart_title">
                   <div class="col-2">
                     <input type="checkbox" class="to_ck" checked />全選
                   </div>
@@ -81,25 +72,71 @@
                   <div class="col">小計</div>
                   <div class="col"></div>
                 </div>
-                
-              <div id="css_tbody" class="container-fluid css_tbody">
-                <% cart.forEach(function(item){ %>
-                <div class="row">
-                  <div class="col-2">
-                    <input type="checkbox"  checked />
-                  </div>
-                  <div class="col-3"><%- item.name %></div>
-                  <div><img src="/img/product/<%= item.image %>" alt="" style="width: 30px;"></div>
-                  <div class="col-2"><%- item.price %></div>
-                  <div class="col-2">1</div>
-                  <div class="col"><%- item.price %></div>
-                  <div class="col">DELITE</div>
-                </div>
-                <% }); %>
               </div>
+
+              <div id="css_tbody" class="container-fluid css_tbody">
+                <% if(cart){ %> <% cart.forEach(function(item){ %>
+                <div class="row">
+                  <div class="col-2 css_tb d-flex">
+                    <div>
+                      <input type="checkbox" class="ck" checked />
+                    </div>
+                    <div
+                      style="
+                        max-height: 134px;
+                        max-width: 93px;
+                        height: 100%;
+                        width: 100%;
+                      "
+                    >
+                      <img
+                        class="pImg"
+                        style="width: 100%; height: 100%"
+                        src="/img/product/<%- item.image %>"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="col-3 css_tb align-self-center">
+                    <p class="pDesc" style="margin-bottom: 10px">
+                      <%- item.name %>
+                    </p>
+                    <p class="pColor">顏色:</p>
+                    <p class="pSize">尺寸:</p>
+                  </div>
+                  <div class="col-2 css_tb price align-self-center">
+                    NT$<%- item.price %>
+                  </div>
+                  <div class="col-2 css_tb pCount align-self-center">
+                    <a
+                      href="#"
+                      class="sub"
+                      style="padding: 2px; border: 1px solid #000"
+                      >-</a
+                    >
+                    <input
+                      type="text"
+                      id="number"
+                      value="0"
+                      style="width: 25px; text-align: center"
+                    />
+                    <a
+                      href="#"
+                      class="add"
+                      style="padding: 2px; border: 1px solid #000"
+                      >+</a
+                    >
+                  </div>
+                  <div class="col css_tb to_price align-self-center">NT$</div>
+                  <div class="col css_tb align-self-center">
+                    <a href="#" class="del"
+                      ><i class="fa-solid fa-trash-can"></i
+                    ></a>
+                  </div>
+                </div>
+                <% }); %> <% } %>
               </div>
             </div>
-
 
             <div class="col-3" style="padding: 0">
               <div class="div cart_Order">
@@ -133,9 +170,13 @@
                     ><span class="float-right">NT$<span>0</span></span>
                   </p>
                 </div>
-                <div class="text-center" id="buy">
-                  <button>結帳</button>
-                </div>
+                <form
+                  action="/home/shop_cart/orderCheck"
+                  class="text-center"
+                  id="buy"
+                >
+                  <button type="submit">結帳</button>
+                </form>
               </div>
             </div>
           </div>
@@ -148,16 +189,12 @@
             </div>
           </div>
           <div class="row">
-            
             <div class="col">
-              
-                <div class="owl-carousel owl-theme">
-                  <div class="item">
-                    <div class="img"></div>
-                  </div>
+              <div class="owl-carousel owl-theme">
+                <div class="item">
+                  <div class="img"></div>
                 </div>
-                
-              
+              </div>
             </div>
           </div>
         </div>
@@ -166,11 +203,10 @@
     </div>
     <footer class="footer"><%- include("footer.ejs") %></footer>
 
-    <script src="/js/shop_cart/jquery.js"></script>
-    <script src="../node_modules/OwlCarousel/dist/owl.carousel.min.js"></script>
+    <script src="/js/shop_cart/owl.carousel.js"></script>
     <script src="/js/shop_cart/server.js"></script>
     <script src="/js/shop_cart/cart.js"></script>
     <script src="/js/shop_cart/owl.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/shop_cart/bootstrap.js"></script>
   </body>
 </html>

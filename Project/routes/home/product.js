@@ -52,4 +52,5 @@ router.get('/single_product/:id', function (rqs, res) {
 
 
 
+
 module.exports = router;

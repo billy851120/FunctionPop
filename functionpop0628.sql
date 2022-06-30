@@ -78,7 +78,7 @@ CREATE TABLE `orders` (
   `user_phone` int(11) NOT NULL,
   `user_city` varchar(255) NOT NULL,
   `user_address` varchar(255) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp()
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -94,7 +94,7 @@ CREATE TABLE `order_items` (
   `product_name` varchar(255) NOT NULL,
   `product_image` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT current_timestamp()
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

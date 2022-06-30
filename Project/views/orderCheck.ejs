@@ -9,10 +9,10 @@
     <%- title %>
   </title>
   <link rel="stylesheet" type="text/css" href="/css/all.css" />
-  <link rel="stylesheet" href="../node_modules/OwlCarousel/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="../node_modules/OwlCarousel/dist/assets/owl.theme.default.min.css">
   <script src="/js/shop_cart/cookie.js"></script>
   <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+  <script src="/js/shop_cart/jquery.js"></script>
+
 
 </head>
 
@@ -71,73 +71,83 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
-                    <form action="" method="post" class="ct_form ">
+                  <form id="orderList"  class="ct_form" >
+                    <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
                       <div>
                         <span>
                           收件人* :
                         </span>
-                        <input type="text" style="width:130px ;" name="ct_rec" placeholder="姓名"><br>
+                        <input type="text" style="width:130px ;" name="name" placeholder="姓名" required><br>
                       </div>
                       <div>
                         <span>
                           通訊地址* :
                         </span>
-                        <input type="text" style="width:70px; margin-right:25px;" name="ct_addr_l" placeholder=""><input
-                          type="text" name="ct_addr_r" placeholder="地址"><br>
+                        <input type="text" style="width:70px; margin-right:25px;" name="city" placeholder="" required><input
+                          type="text" name="address" placeholder="地址" required><br>
                       </div>
                       <div>
                         <span>
                           手機號碼* :
                         </span>
-                        <input type="text" style="width:150px ;" name="ct_pho" placeholder=""><br>
+                        <input type="text" pattern="[0-9]{10}" style="width:150px ;" name="phone" placeholder="" required><br>
                       </div>
                       <div>
                         <span>
                           電子郵件* :
                         </span>
-                        <input type="text" style="width:150px ;" name="ct_mail" placeholder="123@gmail.com">
+                        <input type="text" style="width:150px ;" name="email" placeholder="123@gmail.com" required>
                       </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="col-12  ">
-                  <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
+                    </div>
+
+
+                    <div style="border-radius: 5px;" class="d-flex bg-gary px-4 py-2 align-items-center mb-4">
                     <h6 class="flex-grow-1 fw-600">2. 付款</h6><span style="font-size: 0.7em;">*星號欄位必填</span>
                   </div>
-                </div>
-                <div class="col-12 pay-content">
                   <div>
                     <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
                   </div>
-                  <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value=""> 信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="">貨到付款</span></div>
+                  <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="信用卡/簽帳金融卡" > 信用卡/簽帳金融卡 <img
+                        src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input type="radio"
+                        class="cart_cho" name="cart_cho" value="貨到付款">貨到付款</span></div>
                   <div class="d-flex">
-                    <div class="mr-3 cars"><img src="/img/shop_cart/mas.png" style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                    <div class="mr-3 cars"><img src="/img/shop_cart/mas.png"
+                        style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
                     </div>
-                    <div class="mr-3 cars"><img src="/img/shop_cart/visa.png" style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                    <div class="mr-3 cars"><img src="/img/shop_cart/visa.png"
+                        style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
                     </div>
-                    <div class="cars"><img src="/img/shop_cart/paypal.png" style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                    <div class="cars"><img src="/img/shop_cart/paypal.png"
+                        style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
                     </div>
                   </div>
                   <div>
-                    <input type="text" style="width: 191px;" placeholder="信用卡號碼*">
+                    <input type="text" style="width: 191px;" name="cart_num" placeholder="信用卡號碼*" >
                   </div>
                   <div>
-                    <span>有效日期* : </span><select name="" id="">
+                    <span>有效日期* : </span><select name="cart_date" id="" >
                       <option>月</option>
-                    </select> / <select name="" id="">
+                      <% for(let i =1;i <= 12;i++){ %>
+                        <option value="<%- i %>"><%- i %></option>
+                        <% } %>
+                    </select> / <select name="cart_date" id="">
                       <option>日</option>
-                    </select> <input type="text" style="width: 58px; text-align: center; margin-left: 10px;"  placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
+
+                    </select> <input type="text" name="cart_CVN" style="width: 58px; text-align: center; margin-left: 10px;"
+                      placeholder="CVN *" ><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
                   </div>
-                </div>
-                <div class="col-12" style="border-top: 1px solid #000;">
                   <div class="mt-3 mb-5">
-                    <input type="checkbox"><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
-                  </div>
-                  <div>
-                  <button id="cart-submit" style="text-align: center;">確認訂單</button>
+                    <input type="checkbox" required><span>我同意Function.pop的條款與條件， 以及隱私權政策。</span>
                   </div>
                 </div>
+                <button type="submit"  id="cart-submit" style="text-align: center;" >訂單確認</button>
+              </form>
+
+
+              <!-- <iframe src="" style="display: none;" frameborder="0" name="frameName"></iframe> -->
+              <div>
+              </div>
+             
               </div>
             </div>
             <div class="col-3" style="padding: 0">
@@ -165,9 +175,7 @@
                     <b>總額:</b><span class="float-right">NT$<span>0</span></span>
                   </p>
                 </div>
-                <div class="text-center" id="buy">
-                  <button>結帳</button>
-                </div>
+
               </div>
             </div>
           </div>
@@ -179,15 +187,57 @@
   <footer class="footer">
     <%- include("footer.ejs") %>
   </footer>
+  <script>
+    $( document ).ready(function() {
+      function serializeToJSON(data){
+        values = {};
+        for(index in data){
+          //把data的name跟value結合並放進values的物件裡
+          values[data[index].name] = data[index].value;
+        }
+        return JSON.stringify(values);
+
+      }
+
+      $('#cart-submit').on('click',function(){
+        var data = $('#orderList').serializeArray();
+        JSONData = serializeToJSON(data);
+        console.log(JSONData);
+
+        $.ajax({
+          url:"/home/shop_cart/orderCheck/add",
+          type:"POST",
+          contentType:"application/json; charset=utf-8",
+          data:JSONData,
+          success:function(res){
+            var res = JSON.parse(res);
+
+            if(res.errno === 1){
+              alert('新增成功');
+            }else if (res.errno === 0){
+              alert("新增失敗");
+            }
+          },
+          error:function(){
+            alert("系統錯誤")
+          }
 
 
-  <script src="/js/shop_cart/jquery.js"></script>
-  <!-- <script src="../node_modules/OwlCarousel/dist/owl.carousel.min.js"></script> -->
-  <script src="../node_modules/OwlCarousel/dist/owl.carousel.min.js"></script>
+        })
+
+    })
+    
+});
+
+    
+  </script>
+
+
+  <script src="/js/shop_cart/owl.carousel.js"></script>
   <script src="/js/shop_cart/server.js"></script>
   <script src="/js/shop_cart/cart.js"></script>
   <script src="/js/shop_cart/owl.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/js/shop_cart/bootstrap.js"></script>
 </body>
 
 </html>
