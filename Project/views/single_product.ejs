@@ -10,108 +10,187 @@
     <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
     <!-- <link rel="stylesheet" href="./assets/css/TonyCss.css"> -->
     <style>
-        /* My hr tag */
-        .my_hr {
-            width: 130px;
-            background-color: orange; 
-            height: 3px;
+      /* My hr tag */
+      .my_hr {
+        width: 130px;
+        background-color: orange;
+        height: 3px;
+      }
+
+      .my_product {
+        cursor: pointer;
+        margin-bottom: 2rem;
+      }
+
+      .my_product img {
+        transition: 0.3s all;
+      }
+
+      .my_product:hover img {
+        opacity: 0.7;
+      }
+
+      /* 24. Featured Design */
+      .my_product .buy-btn {
+        color: #ffe200;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: 0.3s all;
+        background-color: #395d6c;
+      }
+
+      .my_product:hover .buy-btn {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+
+      .my_button {
+        font-size: 0.8rem;
+        font-weight: 900;
+        outline: none;
+        border: none;
+        background-color: #1d1d1d;
+        color: aliceblue;
+        padding: 13px 30px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.5s ease;
+      }
+
+      .my_button:hover {
+        background-color: coral;
+      }
+
+      /*  */
+      /* Product Detail Page */
+      /*  */
+      #mainImg {
+        border: 2px solid gray;
+      }
+
+      .small-img-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .small-img-col {
+        flex-basis: 23%;
+        cursor: pointer;
+        margin-top: 12px;
+        opacity: 0.6;
+      }
+
+      .small-img-col:hover {
+        opacity: 0.9;
+      }
+
+      /* 39. Single Product Design */
+      .single-product input {
+        width: 50px;
+        height: 40px;
+        padding-left: 10px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .single-product input:focus {
+        outline: none;
+      }
+
+      .single-product .buy-btn {
+        background-color: #fb774b;
+        opacity: 1;
+        transition: 0.4s all;
+      }
+
+      .single-product .buy-btn:hover {
+        background-color: #222222;
+      }
+
+      /* Ryan新增 */
+
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, -100%, 0);
         }
-
-        .my_product {
-            cursor: pointer;
-            margin-bottom: 2rem;
+        50% {
+          transform: translate3d(0, 0, 0);
         }
-
-        .my_product img {
-            transition: 0.3s all;
+        100% {
+          opacity: 1;
         }
-
-        .my_product:hover img{
-            opacity: 0.7;
+      }
+      @keyframes fadeOutUp {
+        0% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
         }
-
-        /* 24. Featured Design */
-        .my_product .buy-btn {
-            color: #FFE200;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.3s all;
-            background-color: #395D6C;
+        50% {
+          transform: translate3d(0, -100%, 0);
         }
-
-        .my_product:hover .buy-btn {
-            transform: translateY(0px);
-            opacity: 1;
+        100% {
+          opacity: 0;
         }
+      }
 
-        .my_button {
-            font-size: 0.8rem;
-            font-weight: 900;
-            outline: none;
-            border: none;
-            background-color: #1d1d1d;
-            color: aliceblue;
-            padding: 13px 30px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.5s ease;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-        .my_button:hover {
-            background-color: coral;
-        }
-
-
-        /*  */
-        /* Product Detail Page */
-        /*  */
-        #mainImg {
-            border: 2px solid gray;
-        }
-
-
-        .small-img-group {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .small-img-col {
-            flex-basis: 23%;
-            cursor: pointer;
-            margin-top: 12px;
-            opacity: 0.6;
-        }
-
-        .small-img-col:hover {
-            opacity: 0.9;
-        }
-
-
-
-        /* 39. Single Product Design */
-        .single-product input {
-            width: 50px;
-            height: 40px;
-            padding-left: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-
-        .single-product input:focus {
-            outline: none;
-        }
-
-        .single-product .buy-btn {
-            background-color: #fb774b;
-            opacity: 1;
-            transition: 0.4s all;
-        }
-
-        .single-product .buy-btn:hover {
-            background-color: #222222;
-        }
-
-
+      a {
+        text-decoration: none;
+      }
+      .pcount {
+      }
+      .pcount a {
+        border: 1px solid #000;
+        padding: 3px;
+      }
+      .number {
+        width: 50px;
+        text-align: center;
+      }
+      .pid {
+        text-align: center;
+      }
+      .pcolor a:hover {
+        border: 1px solid #f00;
+      }
+      .pcolor-active {
+        border: 1px solid #f00;
+      }
+      .psize button {
+        width: 30px;
+      }
+      .psize-active {
+        background-color: #000;
+        color: #fff;
+      }
+      .fadeInDown {
+        animation-name: fadeInDown;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+      }
+      .fadeOutUp {
+        animation-name: fadeOutUp;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+      }
+      .al {
+        z-index: 9999;
+        border: 1px solid #000;
+        width: 30%;
+        text-align: center;
+        padding: 20px 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 0;
+      }
     </style>
   </head>
   <body>
@@ -122,16 +201,31 @@
 
       <!-- 2. Breadcrumb -->
 
-
       <% result.forEach(function(item) { %>
       <section>
         <div class="container">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/home"><i class="fas fa-home"></i>首頁</a></li>
-                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>"><span><%= item.product_gender %></span></a></li>
-                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>/<%= item.product_category %>"><span><%= item.product_category %></span></a></li>
-                <li class="breadcrumb-item"><a href="/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>"><span><%= item.product_name %></span></a></li>
+              <li class="breadcrumb-item">
+                <a href="/home"><i class="fas fa-home"></i>首頁</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/home/product/<%= item.product_gender %>"
+                  ><span><%= item.product_gender %></span></a
+                >
+              </li>
+              <li class="breadcrumb-item">
+                <a
+                  href="/home/product/<%= item.product_gender %>/<%= item.product_category %>"
+                  ><span><%= item.product_category %></span></a
+                >
+              </li>
+              <li class="breadcrumb-item">
+                <a
+                  href="/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>"
+                  ><span><%= item.product_name %></span></a
+                >
+              </li>
             </ol>
           </nav>
         </div>
@@ -199,23 +293,81 @@
             <h4><%= item.product_name %></h4>
             <p>商品編號 <%= item.product_code %></p>
             <p>價　格： $ <span><%= item.product_price %></span> 元</p>
-            <p>顏　色：米白色</p>
-            <span style="color: red">顏色選單</span><img src="" alt="" />
+            <p>顏　色： <span id="cho_color">米白色</span></p>
+            <span style="color: red">顏色選單</span>
+            <span class="colorflexBox mx-auto py-3">
+              <input
+                type="radio"
+                value="WH"
+                name="color_ch"
+                style="width: 40px; height: 40px"
+                data-col="白"
+                checked
+              />白
+              <input
+                type="radio"
+                value="BK"
+                name="color_ch"
+                data-col="黑"
+                style="width: 40px; height: 40px"
+              />黑
+            </span>
             <br />
             <br />
-            <h6>尺　寸：28</h6>
+            <h6>尺　寸：<span id="cho_size">M</span></h6>
             <span style="color: red">尺寸選單</span><img src="" alt="" />
             <span class="sizeflexBox mx-auto py-3">
-              <button style="width: 40px; height: 40px">34</button>
-              <button style="width: 40px; height: 40px">35</button>
-              <button style="width: 40px; height: 40px">36</button>
-              <button style="width: 40px; height: 40px">37</button>
+              <input
+                type="radio"
+                value="S"
+                name="size_ch"
+                style="width: 40px; height: 40px"
+              />S
+              <input
+                type="radio"
+                value="M"
+                name="size_ch"
+                style="width: 40px; height: 40px"
+                checked
+              />M
+              <input
+                type="radio"
+                value="L"
+                name="size_ch"
+                style="width: 40px; height: 40px"
+              />L
+              <input
+                type="radio"
+                value="XL"
+                name="size_ch"
+                style="width: 40px; height: 40px"
+              />XL
             </span>
             <br />
             <br />
             <span>數　量：</span>
+            <div class="col-2 css_tb pCount align-self-center">
+              <a
+                href="javascript:"
+                class="q_sub"
+                style="padding: 2px; border: 1px solid #000"
+                >-</a
+              >
+              <input
+                type="text"
+                id="number"
+                value="1"
+                style="width: 25px; text-align: center"
+              />
+              <a
+                href="javascript:"
+                class="q_add"
+                style="padding: 2px; border: 1px solid #000"
+                >+</a
+              >
+            </div>
 
-            <form action="/home/shop_cart" method="post">
+            <form id="p_single" target="frameName">
               <input
                 type="hidden"
                 name="code"
@@ -231,19 +383,28 @@
                 name="image"
                 value="<%= item.product_image %>"
               />
+              <input type="hidden" name="size" value="" />
+              <input type="hidden" name="color" value="" />
               <input
                 type="hidden"
                 name="price"
                 value="<%= item.product_price %>"
               />
-              <input type="hidden" name="quantity" value="1" />
+              <input type="hidden" name="quantity" value="" />
               <input
+                id="addCart"
                 type="submit"
-                value="Add to cart"
+                value="加入購物車"
                 class="btn btn-primary"
                 style="width: 100px"
               />
             </form>
+            <iframe
+              src=""
+              frameborder="0"
+              style="display: none"
+              name="frameName"
+            ></iframe>
 
             <br />
             <br />
@@ -475,6 +636,150 @@
           mainImg.src = smallImg[i].src;
         };
       }
+
+      $(document).ready(function () {
+        $(".colorflexBox ").find("input[checked]").addClass("pcolor-active");
+
+        $(".colorflexBox input").on("click", function () {
+          $("#cho_color").html(this.dataset.col);
+          $("#p_single input[name='color']").val(this.value);
+          $(".colorflexBox input").removeClass("pcolor-active");
+          $(this).addClass("pcolor-active");
+        });
+        $(".sizeflexBox ").find("input[checked]").addClass("psize-active");
+
+        $(".sizeflexBox input").on("click", function () {
+          $("#cho_size").html(this.value);
+          $("#p_single input[name='size']").val(this.value);
+          $(".sizeflexBox input").removeClass("psize-active");
+          $(this).addClass("psize-active");
+        });
+        $(".q_sub,.q_add").on("click", function () {
+          let quantity = $("#number").val();
+          $("#p_single input[name='quantity']").val(quantity);
+        });
+
+        //商品增加
+        $(".q_add").click(function () {
+          var num = 0;
+          num++;
+
+          var Count = parseInt($(this).siblings("#number").val());
+          var to_Count = parseInt(Count + num);
+          $(this).siblings("#number").val(to_Count);
+          let quantity = $("#number").val();
+          $("#p_single input[name='quantity']").val($("#number").val());
+
+          // $(this).siblings("#number").val();
+        });
+
+        //商品減少
+        $(".q_sub").click(function () {
+          var Count = parseInt($(this).siblings("#number").val());
+          Count--;
+
+          if (Count < 1) {
+            Count = 1;
+          } else {
+            $(this).siblings("#number").val(Count);
+            $("#p_single input[name='quantity']").val($("#number").val());
+          }
+        });
+
+        function serializeToJSON(data) {
+          values = {};
+          for (idx in data) {
+            values[data[idx].name] = data[idx].value;
+          }
+          return JSON.stringify(values);
+        }
+
+        $("#addCart").on("click", function () {
+          var pSize = $(".sizeflexBox ").find(" .psize-active").val();
+          var pColor = $(".colorflexBox ").find(".pcolor-active").val();
+          var pColor_ch = false;
+          var pSize_ch = false;
+
+          $(".sizeflexBox ")
+            .find("input")
+            .each(function (idx, ele) {
+              if ($(ele).hasClass("psize-active")) {
+                pSize_ch = true;
+              }
+            });
+          $(".colorflexBox ")
+            .find("input")
+            .each(function (idx, ele) {
+              if ($(ele).hasClass("pcolor-active")) {
+                pColor_ch = true;
+              }
+            });
+
+          console.log(pColor_ch);
+          console.log(pSize_ch);
+
+          // // console.log(pSize_ch);
+          // //判斷尺寸和顏色是否選擇
+          if (pColor_ch && pSize_ch) {
+            var data = $("#p_single").serializeArray();
+            // console.log(data);
+            JSONData = serializeToJSON(data);
+            console.log(JSONData);
+
+            var addTo_cart = document.createElement("div");
+            addTo_cart.innerHTML = "已加入購物車";
+            $(addTo_cart).attr("class", "al fadeInDown");
+            document.querySelector(".sticky-top").appendChild(addTo_cart);
+            console.log(addTo_cart);
+
+            setTimeout(function () {
+              $(addTo_cart).attr("class", "al fadeOutUp");
+            }, 2000);
+            setTimeout(function () {
+              $(addTo_cart).remove();
+            }, 2200);
+
+            $.ajax({
+              url: "/home/shop_cart/orderCheck/add",
+              type: "POST",
+              contentType: "application/json; charset=utf-8",
+              data: JSONData,
+              success: function (res) {
+                var res = JSON.parse(res);
+
+                if (res.error === 1) {
+                  alert("新增成功");
+                } else if (res.error === 0) {
+                  alert("新增失敗");
+                }
+              },
+              error: function () {
+                alert("系統錯誤");
+              },
+            });
+
+            //   // var a = getAllData();
+            //   ccount.innerHTML = getTotalCount();
+            //   // console.log('商品1' + a[0].pCount);
+            //   // console.log('商品2' + a[1].pCount);
+          } else {
+            if ($(".al").length == 0) {
+              var al = document.createElement("div");
+              console.log(al);
+              al.innerHTML = "請選擇尺寸";
+              $(al).attr("class", "al fadeInDown");
+              document.body.appendChild(al);
+            }
+
+            setTimeout(function () {
+              $(al).attr("class", "al fadeOutUp");
+            }, 2000);
+            setTimeout(function () {
+              $(al).remove();
+            }, 2200);
+          }
+        });
+      });
     </script>
   </body>
 </html>
