@@ -1,5 +1,5 @@
 .pagethree {
-  background-image: url(../img/background.jpg);
+  background-image: url(../img/home/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -26,12 +26,8 @@
 .third_tit {
   background: radial-gradient(ellipse 65% 35% at center, rgb(237, 228, 159), rgb(118, 106, 106));
   /* border: 1px black solid; */
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .third_tit p {
@@ -69,4 +65,4 @@
   .third_tit p {
     font-size: 2rem;
   }
-}
+}/*# sourceMappingURL=pagethree.css.map */

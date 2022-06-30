@@ -1,5 +1,5 @@
 .pagetwo {
-  background-image: url(../img/background.jpg);
+  background-image: url(../img/home/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -9,21 +9,6 @@
   z-index: -600;
   /* height: auto; */
   overflow: hidden;
-}
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.col {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin: 10px auto;
 }
 
 .yy .figure img {
@@ -43,8 +28,9 @@
 
 .downpic {
   position: absolute;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
+  /* top: 0; */
+  left: 10px;
 }
 
 figcaption {
@@ -57,8 +43,7 @@ figcaption {
   font-family: "Dorsa";
   font-size: 20px;
   font-weight: lighter;
-  -webkit-transform: scale(1, 4);
-          transform: scale(1, 4);
+  transform: scale(1, 4);
   line-height: 60px;
   letter-spacing: 0.5em;
   color: #FFFFFF;
@@ -71,7 +56,6 @@ figcaption {
   /* border: 1px black solid; */
   left: 46%;
   text-align: center;
-  -webkit-transition: top 2s ease-out;
   transition: top 2s ease-out;
 }
 
@@ -96,4 +80,4 @@ figcaption {
     /* top: 8%; */
     left: 32.5%;
   }
-}
+}/*# sourceMappingURL=pagetwo.css.map */

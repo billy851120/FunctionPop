@@ -1,18 +1,5 @@
-/* .nav_class {
-    padding-left: 10%;
-    padding-right: 10%;
-} */
-/* .search_input {
-    position: relative;
-    width: 200px !important;
-    height: 35px;
-
-} */
-/* .search_button {
-    font-size: 0.9em;
-} */
 .pageone {
-  background-image: url(../img/background.png);
+  background-image: url(../img/home/background.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -38,23 +25,6 @@
   opacity: 0.8;
 }
 
-/* @media screen and (max-width:1600px) {
-    .search_input {
-        width: 150px !important;
-    }
-}
-
-@media screen and (max-width:1400px) {
-    .search_input {
-        left: 15px;
-        width: 120px !important;
-    }
-}
-@media screen and (max-width:1100px) {
-    .search_input {
-        visibility: collapse;
-    }
-} */
 @media screen and (max-width: 1250px) {
   .chili {
     -o-object-fit: contain;
@@ -115,4 +85,4 @@
   .logo_word {
     top: 20%;
   }
-}
+}/*# sourceMappingURL=pageone.css.map */
