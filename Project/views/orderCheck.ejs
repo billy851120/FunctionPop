@@ -200,6 +200,7 @@
                       </label>
                       
                     </div>
+                    <input type="text" id="newOrderList" value="">
                 </div>
                 <button  id="cart-submit" style="text-align: center;">訂單確認</button>
                 </form>
@@ -386,6 +387,7 @@
 
       let orderList = year + Z_month + Z_day + Z_orderId;
       console.log(orderList);
+      $("#newOrderList").prop("value",orderList);
 
       
       alert('請填寫資料');
