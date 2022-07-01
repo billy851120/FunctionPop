@@ -51,7 +51,7 @@ router.post('/', function (req, res) {
     var cart = req.session.cart;
 
     if (!isProductInCart(cart, code)) {
-      console.log(cart);
+      // console.log(cart);
       cart.push(product);
     }
   } else {
@@ -77,16 +77,21 @@ router.get('/', function (req, res) {
   res.render('shop_cart', { cart: cart, total: total });
 });
 router.get('/orderCheck', function (rqs, res) {
-  res.render('orderCheck', { title: '訂單確認' });
+  db.exec(
+    'SELECT * FROM `orders` order by order_id DESC limit 1',
+    [],
+    function (result, fields) {
+      res.render('orderCheck', { title: '訂單確認', o_id: result[0].order_id });
+    }
+  );
 });
 router.post('/orderCheck/add', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
   var orderLise = req.body;
-  var date = new Date();
-  console.log(orderLise);
-  console.log(cart);
-  console.log(total);
+  // console.log(orderLise);
+  // console.log(cart);
+  // console.log(total);
 
   var sql =
     'INSERT INTO orders (order_id,user_name,user_phone,user_email,user_city,user_address ,order_update,order_upload	) VALUES(?,?,?,?,?,?,?,?); ';
@@ -98,14 +103,23 @@ router.post('/orderCheck/add', function (req, res) {
     orderLise.city,
     orderLise.address,
     '',
-    "",
+    '',
   ];
 
   db.exec(sql, data, function (result, fields) {
-    console.log(result);
+    console.log('新增一筆訂單');
   });
 
-  res.redirect('back');
+  res.redirect('/orderFinish');
+});
+router.get('/orderFinish', function (req, res) {
+  var cart = req.session.cart;
+  var total = req.session.total;
+  var orderLise = req.body;
+  console.log(cart);
+  console.log(total);
+  console.log(orderLise);
+  res.render('orderFinish', { title: '訂單完成', cart: cart, total: total });
 });
 
 module.exports = router;

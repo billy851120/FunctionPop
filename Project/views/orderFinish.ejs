@@ -62,19 +62,38 @@
           <div class="row content_text">
             <div class="col-9">
               <div class="row">
+                <div class="col-12 text-center mb-3" >
+                  <div ><img src="/img/shop_cart/Finish.png" alt=""></div>
+                </div>
+                <div class="col-12 text-center mb-2" >
+                  <p >已經收到您的訂單</p>
+                </div>
+                <div class="col-12 text-center mb-3" >
+                  <h6>訂單編號 : <span id="newOrder"></span></h6>
+                </div>
+                <div class="col-12 text-center mb-3" >
+                  <p style="color: red; font-size: 0.6em;">請拍照或儲存以便日後查詢</p>
+                </div>
                 <div class="col-12">
                   <div
                     style="border-radius: 5px"
                     class="d-flex bg-gary px-4 py-2 align-items-center mb-4"
                   >
-                    <h6 class="flex-grow-1 fw-600">1. 運送</h6>
-                    <span style="font-size: 0.7em">*星號欄位必填</span>
+                    <h6 class="flex-grow-1 fw-600" >訂單資訊</h6>
+                  </div>
+                  <div  >
+                    <h6>收件人 : <span id="name"></span></h6>
+                    <h6>地址 : <span id="city"></span> <span id="address"></span></h6>
+                    <h6>手機號碼 : <span id="phone"></span></h6>
+                    <h6>信箱 : <span id="email"></span></h6>
+                  </div>
+                  <div>
+                    <%- cart %>
                   </div>
                 </div>
-                <div class="col-12">
-                  <div></div>
-                </div>
+                
               </div>
+            </div>
               <div class="col-3" style="padding: 0">
                 <div class="div cart_Order">
                   <div style="text-align: center">
@@ -118,6 +137,35 @@
     <footer class="footer"><%- include("footer.ejs") %></footer>
     <script>
       $(document).ready(function () {
+        var url = location.href;
+         if(url.indexOf("?") != -1){
+          var arr1 = url.split("?");
+          var arr2 = arr1[1].split("&");
+          var arr3 = arr2[1].split("=");
+          
+          let o_name =decodeURI(arr2[0].split("=")[1]) ;
+          let o_city = arr2[1].split("=")[1];
+          let o_address =decodeURI(arr2[2].split("=")[1]) ;
+          let o_phone = arr2[3].split("=")[1];
+          let o_email =arr2[4].split("=")[1].replace("%40","@") ;
+          let o_List = arr2[10].split("=")[1];
+
+          $("#newOrder").html(o_List);
+          $("#name").html(o_name);
+          $("#city").html(o_city);
+          $("#address").html(o_address);
+          $("#phone").html(o_phone);
+          $("#email").html(o_email);
+
+          
+
+          
+         }
+
+
+
+
+
         function serializeToJSON(data) {
           values = {};
           for (index in data) {
@@ -252,6 +300,7 @@
               },
               error: function () {
                 alert("系統錯誤");
+                return false;
               },
             });
           }

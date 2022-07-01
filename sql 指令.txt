@@ -1,0 +1,52 @@
+// 01. 
+ALL Product => SELECT *  FROM `products`;
+Male Product => SELECT * FROM `products` WHERE product_gender = 'Male';
+Female Product => SELECT * FROM `products` WHERE product_gender = 'Female';
+
+
+// 02. Price High to Low
+All => SELECT * FROM `products` ORDER BY `product_price` DESC;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_price` DESC;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_price` DESC;
+
+
+// 02. Price Low to High
+All => SELECT * FROM `products` ORDER BY `product_price`;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_price`;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_price`;
+
+
+// 03. Rating High to Low
+All => SELECT * FROM `products` ORDER BY `product_rating` DESC;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_rating` DESC;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_rating` DESC;
+
+
+// 03. Rating Low to High
+All => SELECT * FROM `products` ORDER BY `product_rating`;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_rating`;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_rating`;
+
+
+// 04. 最高評價 LIMIT 4 
+All => SELECT * FROM `products` ORDER BY `product_rating` DESC LIMIT 4;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_rating` DESC LIMIT 4;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_rating` DESC LIMIT 4;
+
+
+// 05. 最新商品 limit 4
+All => SELECT * FROM `products` ORDER BY `product_upload` DESC LIMIT 4;
+M => SELECT * FROM `products` WHERE product_gender = 'Male' ORDER BY `product_upload` DESC LIMIT 4;
+F => SELECT * FROM `products` WHERE product_gender = 'Female' ORDER BY `product_upload` DESC LIMIT 4;
+
+
+// 06. Relative Product
+男生上衣隨機顯示４個 SELECT * FROM `products` WHERE `product_gender`= 'Male' AND `product_category` = '上衣' ORDER BY Rand() LIMIT 4;
+
+
+
+// . 相關商品
+SELECT
+
+
+

@@ -71,6 +71,7 @@
         </thead>
       </table>
       <!-- outline_class  oib oig oi  oir-->
+      <p id="o_id" style="display:none;"><%- o_id %></p>
       <div class="container">
         <div class="cart_content">
           <div class="row content_text">
@@ -117,7 +118,7 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <form id="orderList" class="ct_form" target="frameName">
+                  <form  action="/home/shop_cart/orderFinish" id="orderList" class="ct_form" >
                     <div style="border-radius:5px ;" class="border py-4 px-4 mb-4">
                       <div>
                         <span>
@@ -199,12 +200,12 @@
                       </label>
                       
                     </div>
+                    <input type="hidden" name="newOrderList" id="newOrderList" value="">
                 </div>
                 <button  id="cart-submit" style="text-align: center;">訂單確認</button>
                 </form>
 
 
-                <iframe src="" style="display: none;" frameborder="0" name="frameName"></iframe>
                 <div>
                 </div>
 
@@ -353,14 +354,29 @@
         return checkOrder;
       }
 
+       function addZero (num){
+        if(num<10){
+          num.toString();
+          return "0" + num;
+        }else{
+          return num;
+        }
+      }
+      function addZero2(num){
+        let len = 5;
+        num = num.toString();
+        while(num.length < len){
+          num = '0'+num;
+        }
+        return num ;
+      }
+
         
  $('#cart-submit').on('click', function () {
     if(!checkInputInfo()){
-      // let date = new Date();
-      // let year = toString(date.getFullYear());
-      // let month =toString(date.getMonth() +1) ;
+     
+      
 
-      //  console.log(year );
       
       alert('請填寫資料');
       return false;
@@ -369,6 +385,18 @@
       return false;
     }
     else{
+      let date = new Date();
+      let year = date.getFullYear().toString().substr(2,3);
+      let month =date.getMonth()+1;
+      let Z_month = addZero(month);
+      let day = date.getDate();
+      let Z_day = addZero(day);
+      let now_orderId =  $('#o_id').html();
+      let Z_orderId = addZero2(now_orderId);
+
+      let orderList = year + Z_month + Z_day + Z_orderId;
+      $("#newOrderList").prop("value",orderList);
+
       var data = $('#orderList').serializeArray();
         JSONData = serializeToJSON(data);
         console.log(JSONData);
@@ -384,9 +412,9 @@
           success:function(res){
             var res = JSON.parse(res);
 
-            if(res.errno === 1){
+            if(res.error === 1){
               alert('新增成功');
-            }else if (res.errno === 0){
+            }else if (res.error === 0){
               alert("新增失敗");
             }
           },
