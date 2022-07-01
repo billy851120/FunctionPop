@@ -6,7 +6,43 @@ var memberController = {
         res.render('memberData', {
             title: '會員資料｜個人資料'
         })
+    },
+    updateMemberData: (req, res) => {
+        var { cPhone, cAddr } = req.body;
 
+        console.log(cPhone);
+        console.log(cAddr);
+        console.log(req.session.memberprofile.cAccount);
+
+
+        db.exec('update customer_id set cPhone = ? , cAddr = ? where cAccount = ? ', [cPhone, cAddr, req.session.memberprofile.cAccount], (result, fields, err) => {
+            console.log('更新資料');
+            req.session.memberprofile.cPhone = cPhone;
+            req.session.memberprofile.cAddr = cAddr;
+            res.redirect('/home/member/memberData')
+        })
+
+    },
+    changePw: (req, res) => {
+        res.render('memberData_changePw',{
+            title: '變更密碼'
+        });
+    },
+    handlechangePw: (req, res,next) => {
+        var { oldpw, newpw, newpwAgain } = req.body;
+        console.log(oldpw);
+        console.log(newpw);
+        console.log(newpwAgain);
+        if (!oldpw) {
+            req.flash('errorMessage', '舊密碼不可為空')
+            res.send('success');
+            return next();
+        } else if (!newpw || !newpwAgain) {
+            req.flash('errorMessage', '新密碼不可為空')
+            return next();
+        } else{
+            res.redirect('/home/member/memberData_changePw');
+        }
     },
 
     login: (req, res) => {
@@ -17,8 +53,8 @@ var memberController = {
     handlelogin: (req, res, next) => {
         var { cAccount, cPassword } = req.body;
         if (!cAccount || !cPassword) { req.flash('errorMessage', '請輸入帳密'); return next() }
-
-        db.exec('select * from customer_id where cAccount = ?', [cAccount], (result, err, zzz) => {
+        // 資料庫撈資料
+        db.exec('select * from customer_id where cAccount = ?', [cAccount], (result, fields, err) => {
             console.log('result.........');
             console.log(result);
             if (result[0]?.cAccount != cAccount) {
@@ -26,13 +62,13 @@ var memberController = {
                 return next();
             } else if (result[0].cPassword != cPassword) {
                 req.flash('errorMessage', '密碼不正確');
-                return next();  
-            } else{
-             
+                return next();
+            } else {
+                // 將撈到的資料存入memberprofile session之中
                 req.session.memberprofile = result[0];
                 // res.send('login success');
                 // console.log(username)
-                res.redirect('/member/memberData');
+                res.redirect('/home/member/memberData');
             }
         });
 
@@ -58,9 +94,9 @@ var memberController = {
         // });
 
     },
-    logout:(req,res)=>{
-        req.session.memberprofile=null;
-        res.redirect('/member/memberData');
+    logout: (req, res) => {
+        req.session.memberprofile = null;
+        res.redirect('/home/member/memberData');
     },
 
     frame7: (rqs, res) => {
