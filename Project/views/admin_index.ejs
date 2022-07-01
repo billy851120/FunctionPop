@@ -26,8 +26,187 @@
                     <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
                 </ol>
             </nav>
-            <h2>我是首頁</h2>
- 
+            <div class="container-fluid my-4">
+                <div class="">
+                    <div class="col-lg">
+                        <div class="card">
+                            <div class="card-header">用戶來源</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <canvas id="barCanvas"></canvas>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h4>Details</h4>
+
+                                        <h6 class="mt-3">Google 來源</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 25%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <h6 class="mt-3">Facebook 來源</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 40%"
+                                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <h6 class="mt-3">無法追蹤</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg mt-5">
+                        <div class="card h-100">
+                            <div class="card-header">瀏覽器</div>
+                            <div class="card-body d-flex align-items-center">
+                                <canvas class="chart-item"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
+            <!--圓餅圖與長條圖 Chart.js-->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+            <!--pie,bar  js-->
+            <script>
+                window.chartColors = {
+                    red: 'rgb(255, 99, 132)',
+                    orange: 'rgb(255, 159, 64)',
+                    yellow: 'rgb(255, 205, 86)',
+                    green: 'rgb(75, 192, 192)',
+                    blue: 'rgb(54, 162, 235)',
+                    purple: 'rgb(153, 102, 255)',
+                    grey: 'rgb(201, 203, 207)'
+                };
+
+                var randomScalingFactor = function () {
+                    return Math.round(Math.random() * 100);
+                };
+
+                var config = {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: [
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                            ],
+                            backgroundColor: [
+                                window.chartColors.red,
+                                window.chartColors.orange,
+                                window.chartColors.yellow,
+                                window.chartColors.green,
+                                window.chartColors.blue,
+                            ],
+                            label: 'Dataset 1'
+                        }],
+                        labels: [
+                            "Red",
+                            "Orange",
+                            "Yellow",
+                            "Green",
+                            "Blue"
+                        ]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                };
+
+
+                // bar
+                var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var colors = Chart.helpers.color;
+                var barChartData = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [{
+                        label: 'Dataset 1',
+                        backgroundColor: colors(window.chartColors.red).alpha(0.5).rgbString(),
+                        borderColor: window.chartColors.red,
+                        borderWidth: 1,
+                        data: [
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor()
+                        ]
+                    }, {
+                        label: 'Dataset 2',
+                        backgroundColor: colors(window.chartColors.blue).alpha(0.5).rgbString(),
+                        borderColor: window.chartColors.blue,
+                        borderWidth: 1,
+                        data: [
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor()
+                        ]
+                    }]
+
+                };
+
+                window.onload = function () {
+                    // pie
+                    document.querySelectorAll('.chart-item').forEach(function (item) {
+                        config.data.datasets.forEach(function (dataset) {
+                            dataset.data = dataset.data.map(function () {
+                                return randomScalingFactor();
+                            });
+                        });
+                        var ctx = item.getContext("2d");
+                        window.myPie = new Chart(ctx, config);
+                    })
+
+
+                    // bar
+                    var barCtx = document.getElementById("barCanvas").getContext("2d");
+                    window.myBar = new Chart(barCtx, {
+                        type: 'bar',
+                        data: barChartData,
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Chart.js Bar Chart'
+                            }
+                        }
+                    });
+
+                };
+            </script>
+
         </div>
         <!-- Main Content end-->
 
