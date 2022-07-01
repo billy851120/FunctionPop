@@ -25,10 +25,18 @@
             /* background-color: black; */
             color: grey;
         }
+        .personalfile:hover{
+            text-decoration: none;
+            color: black;
+        }
         .changepw{
             color:black;
             border-bottom:5px solid #FFE200;
             border-radius: 4px;
+        }
+        .changepw:hover{
+            text-decoration: none;
+            color: black;
         }
 
         form div{
@@ -74,39 +82,41 @@
 <body>
         <!-- content -->
                 <%- include("navbar.ejs") %>
-            <div class="container">
+        <div class="container">
                 <%- include("template/loginbar") %>
-       
+        
                 <!-- 左邊選單列 -->
                 <div class="row pb-3 mt-5">
                     <div class="col-2">
-                        <p><a href="#" class="nav-link font-weight-bold  text-dark">個人資料</a></p>
+                        <p><a href="/home/member/memberData" class="nav-link font-weight-bold  text-dark">個人資料</a></p>
                         <p><a href="" class="nav-link text-dark">訂單&退貨</a></p>
                         <p><a href="" class="nav-link text-dark">我的最愛</a></p>
                     </div>
                     
                     <!-- 右邊資訊欄 -->
                     <% if(memberprofile) { %> 
-                    <div class="col-10 row-box mb-3">
+                    <div class="col-10 row-box mb-5">
                         <div class="row">
                             <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h2>個人資料</h2></a>
                             <a href="/home/member/memberData" class="col-6 text-center p-2 changepw"><h2>變更密碼</h2></a>
                          </div>
                         
-                        <h3 class="p-2 mt-4 myprofile">我的資料：</h3>
+                        <h3 class="p-2 mt-4 myprofile">修改密碼：</h3>
 
                          <form action="/home/member/memberData_changePw" method="POST" class="row p-3">
+                            <div class="row offset-1 col-11 ">
                             <% if (errorMessage.length > 0) { %>
-                                <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
+                                <div class="alert alert-danger col-7 mt-3 p-3" role="alert">
                                   <%= errorMessage %>
                                 </div>
                                 <% } %>
+                            </div>
                             <div class="col-2 my-3 text-right ">請輸入舊密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberoldPw" name="oldpw" class="form-control form-control-sm col-7" placeholder="請輸入舊密碼" value=""></div>
                             <div class="col-2 my-3 text-right">輸入新密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberNewPw" name="newpw" class="form-control form-control-sm col-7" placeholder="請輸入新密碼" value="">  </div>
                             <div class="col-2 my-3 text-right">再次輸入新密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberNewPwAgain" name="newpwAgain" class="form-control form-control-sm col-7" placeholder="請再次輸入新密碼" value="">  </div>
                            
                             <!-- <div class="col-6 my-3 text-right"> <a class="btn btn-outline-dark" href="/home/member/memberData_edit">取消</a></div> -->
-                            <div class="col-6 my-3 text-right"> <button id="changeCancel" class="btn_cancel" type="button">取消</button></div>
+                            <div class="col-6 my-3 text-right"> <a id="changeCancel" class="btn btn_cancel" type="button">取消</a></div>
                             <script>
                               changeCancel.onclick = function(){
                                 
@@ -138,18 +148,17 @@
                                </div>
                              </div>
                          </form>
-                      
                         <% } else { %>
                         <div class="alert alert-warning col-10 text-center align-self-center" role="alert">請先登入</div>
                         <%   } %> 
-                    </div>
-                    
-            </div>
+                    </div>  <!-- col-10 -->
+                </div>  <!-- row --> 
+        </div>  <!-- container -->
       
-         <!-- footer -->
-         <footer class="footer w-100">
+         <!-- footer --> 
+
             <%- include("footer.ejs") %>
-        </footer>
+
          
 
 </body>

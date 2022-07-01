@@ -76,7 +76,7 @@
 
               <div id="css_tbody" class="container-fluid css_tbody">
                 <% if(cart){ %> <% cart.forEach(function(item){ %>
-                <div class="row">
+                <div class="row product">
                   <div class="col-2 css_tb d-flex">
                     <div>
                       <input type="checkbox" class="ck" checked />
@@ -175,7 +175,7 @@
                   class="text-center"
                   id="buy"
                 >
-                  <button type="submit">結帳</button>
+                  <button id="sub" type="submit">結帳</button>
                 </form>
               </div>
             </div>
@@ -202,6 +202,14 @@
       <div class="push"></div>
     </div>
     <footer class="footer"><%- include("footer.ejs") %></footer>
+    <script>
+      document.querySelectorAll('p').onclick() = function(){
+        var products = document.querySelectorAll(".row");
+        // if(!)
+        console.log(products);
+
+      }
+    </script>
 
     <script src="/js/shop_cart/owl.carousel.js"></script>
     <script src="/js/shop_cart/server.js"></script>

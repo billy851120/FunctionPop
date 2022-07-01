@@ -81,7 +81,14 @@ router.get('/orderCheck', function (rqs, res) {
     'SELECT * FROM `orders` order by order_id DESC limit 1',
     [],
     function (result, fields) {
-      res.render('orderCheck', { title: '訂單確認', o_id: result[0].order_id });
+      let oid = 0;
+      if(!result[0]){
+        oid = 1;
+      }else{
+        oid = result[0].order_id;
+      }
+      // console.log(result[0]);
+      res.render('orderCheck', { title: '訂單確認', o_id: oid });
     }
   );
 });
@@ -93,22 +100,42 @@ router.post('/orderCheck/add', function (req, res) {
   // console.log(cart);
   // console.log(total);
 
-  var sql =
-    'INSERT INTO orders (order_id,user_name,user_phone,user_email,user_city,user_address ,order_update,order_upload	) VALUES(?,?,?,?,?,?,?,?); ';
-  var data = [
-    '',
+  var sql_orders =
+    'INSERT INTO orders (order_list,user_name,user_phone,user_email,user_city,user_address 	) VALUES(?,?,?,?,?,?); ';
+  var data_orders = [
+    orderLise.newOrderList,
     orderLise.name,
     orderLise.phone,
     orderLise.email,
     orderLise.city,
     orderLise.address,
-    '',
-    '',
+    
   ];
-
-  db.exec(sql, data, function (result, fields) {
-    console.log('新增一筆訂單');
+  db.exec(sql_orders, data_orders, function (result, fields) {
+    console.log('新增一筆訂單到orders');
   });
+  cart.forEach(function(item,idx){
+
+    var sql_order_item =
+      'INSERT INTO order_items (order_id,order_list,product_id,UnitPrice,Quantity,Discount,user_id 	) VALUES(?,?,?,?,?,?,?); ';
+    var data_order_item = [
+     "",
+      orderLise.newOrderList,
+      "",
+      item.price,
+      item.quantity,
+      "",
+      orderLise.email,
+
+      
+    ];
+    db.exec(sql_order_item, data_order_item, function (result, fields) {
+      console.log('已更新order_items');
+    });
+    console.log(cart);
+  })
+
+
 
   res.redirect('/orderFinish');
 });
@@ -116,9 +143,9 @@ router.get('/orderFinish', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
   var orderLise = req.body;
-  console.log(cart);
-  console.log(total);
-  console.log(orderLise);
+  // console.log(cart);
+  // console.log(total);
+  // console.log(orderLise);
   res.render('orderFinish', { title: '訂單完成', cart: cart, total: total });
 });
 
