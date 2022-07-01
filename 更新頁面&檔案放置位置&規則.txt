@@ -35,3 +35,7 @@ js引入
 css引入
 所有css最後會彙整成一個all.css，裡面包含bootstrap4.6.0，因此統一使用all.css檔案
 /css/all.css
+
+-----------------SQL資料庫<借看>
+
+https://github.com/MaxKuo0712/EEIT42-Project-OrderHippo/tree/main/SQL
