@@ -74,8 +74,7 @@ router.post("/login", function (req, res) {
 
     } else {
       console.log("success");
-      // emitter.emit("success");
-      res.redirect('/admin/goods');
+      emitter.emit("success");
       
     }
   });
