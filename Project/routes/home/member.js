@@ -7,12 +7,16 @@ function redirectBack(req, res, next) {
 }
 
 router.get('/memberData', memberController.personalData);
+router.post('/memberData',memberController.updateMemberData);
+router.get('/memberData_changePw',memberController.changePw)
+router.post('/memberData_changePw',memberController.handlechangePw);
 
 router.get('/login',memberController.login);
 
 router.post('/login',memberController.handlelogin,redirectBack);
 
-router.get('/logout',memberController.logout)
+router.get('/logout',memberController.logout);
+
 
 router.get('/memberData', function (rqs, res) {
   res.render('memberData', { title: '會員資料｜我的最愛' });
