@@ -20,8 +20,8 @@ router.use(bodyParser.urlencoded({extended:true}));
 // Female Product
 
 
-router.get('/Female', function (rqs, res) {
-  db.exec('SELECT * FROM products WHERE product_gender = "Female"', [], (result, fields) => {
+router.get('/:gender', function (rqs, res) {
+  db.exec('SELECT * FROM products WHERE product_gender = ?', [rqs.params.gender], (result, fields) => {
     // console.log(result);
     res.render('shop', { result: result });
   });
@@ -30,32 +30,42 @@ router.get('/Female', function (rqs, res) {
 
 // Male Product 
 
-router.get('/Male', function (rqs, res) {
-  db.exec('SELECT * FROM products WHERE product_gender = "Male"', [], (result, fields) => {
-    // console.log(result);
-    res.render('shop', { result: result });
-  });
+// router.get('/Male', function (rqs, res) {
+//   db.exec('SELECT * FROM products WHERE product_gender = "Male"', [], (result, fields) => {
+//     // console.log(result);
+//     res.render('shop', { result: result });
+//   });
+// });
+
+// Gender
+router.get('/:gender/single_product/:id', function (rqs, res) {
+  
+
+  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+      res.render('single_product', { result:rows });
 });
+});
+
 
 // Male
 
-router.get('/Male/single_product/:id', function (rqs, res) {
+// router.get('/Male/single_product/:id', function (rqs, res) {
   
 
-  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
-      res.render('single_product', { result:rows });
-});
-});
+//   db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+//       res.render('single_product', { result:rows });
+// });
+// });
 
 // Female
 
-router.get('/Female/single_product/:id', function (rqs, res) {
+// router.get('/Female/single_product/:id', function (rqs, res) {
   
 
-  db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
-      res.render('single_product', { result:rows });
-});
-});
+//   db.exec('SELECT * from products WHERE product_id = ?', [rqs.params.id], (rows, fields) => {
+//       res.render('single_product', { result:rows });
+// });
+// });
 
 
 // 

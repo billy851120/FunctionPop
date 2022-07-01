@@ -2,9 +2,9 @@ var express = require('express');
 var db = require('../../dataBase');
 var bodyParser = require('body-parser');
 var router = express.Router();
-router.use(bodyParser.json());
 var events = require(`events`);
 var emitter = new events.EventEmitter();
+router.use(bodyParser.json());
 // var dirname = register;    //    指向當前js的路徑
 // router.use(express.static(path.join(register, `project`)));
 
@@ -13,11 +13,7 @@ router.get('/', function (req, res) {
   res.render('register', {})
 })
 router.post("/", function (req, res) {
-  // res.render('register',{})//    獲取get的請求的路徑，拿到前臺傳來的引數
-  //    建立資料庫連線
-  //    連線資料庫
-  var body = req.body;
-  //    監聽資料庫寫入返回的引數
+  var body = req.body; //    監聽資料庫寫入返回的引數
   emitter.on("ok", function () {
     return res.end("註冊成功");    //    向前臺返回資料
   });
