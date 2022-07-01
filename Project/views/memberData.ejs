@@ -73,15 +73,17 @@
             border: 1px solid;
             border: none;
         }
-
+.cc{
+    border:1px solid red
+}
     </style>
 </head>
-
+ 
 <body>
         <!-- content -->
                 <%- include("navbar.ejs") %>
 
-            <div class="container">
+            <div class="container cc">
                 
                 <%- include("template/loginbar") %>
        
@@ -95,7 +97,7 @@
                     
                     <!-- 右邊資訊欄 -->
                     <% if(memberprofile) { %> 
-                    <div class="col-10 row-box mb-5">
+                    <div class="col-10 row-box">
                         <div class="row">
                             <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h2>個人資料</h2></a>
                             <a href="/home/member/memberData_changePw" class="col-6 text-center p-2 changepw"><h2>變更密碼</h2></a>
