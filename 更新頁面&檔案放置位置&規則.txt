@@ -22,9 +22,19 @@ HTML檔案幫我把副檔名改.ejs，並放置views資料夾
         *****內容
     <div class="push"></div>
 </div>  
+
+
+!footer添加注意!
+
+原版 ↙
 <footer class="footer">
     <%- include("footer.ejs") %>
 </footer>  
+
+更新後  ↙
+
+<%- include("footer.ejs") %>
+*/ 將原本頁面上的  <footer class="footer"> 移除
 
 
 2.引入檔案
