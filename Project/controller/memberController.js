@@ -2,47 +2,52 @@ var memberModel = require('../models/home/memberStatus');
 var db = require('../dataBase');
 
 var memberController = {
-    personalData: (req, res) => {
+    memberData: (req, res) => {
         res.render('memberData', {
             title: '會員資料｜個人資料'
         })
     },
     updateMemberData: (req, res) => {
         var { cPhone, cAddr } = req.body;
-
-        console.log(cPhone);
-        console.log(cAddr);
-        console.log(req.session.memberprofile.cAccount);
-
-
-        db.exec('update customer_id set cPhone = ? , cAddr = ? where cAccount = ? ', [cPhone, cAddr, req.session.memberprofile.cAccount], (result, fields, err) => {
-            console.log('更新資料');
-            req.session.memberprofile.cPhone = cPhone;
-            req.session.memberprofile.cAddr = cAddr;
-            res.redirect('/home/member/memberData')
-        })
+        db.exec('update customer_id set cPhone = ? , cAddr = ? where cAccount = ? ',
+            [cPhone, cAddr, req.session.memberprofile.cAccount],
+            (result, fields, err) => {
+                console.log('更新資料');
+                req.session.memberprofile.cPhone = cPhone;
+                req.session.memberprofile.cAddr = cAddr;
+                res.redirect('/home/member/memberData')
+            })
 
     },
     changePw: (req, res) => {
-        res.render('memberData_changePw',{
-            title: '變更密碼'
+        res.render('memberData_changePw', {
+            title: '會員資料｜變更密碼'
         });
     },
-    handlechangePw: (req, res,next) => {
+    handlechangePw: (req, res, next) => {
         var { oldpw, newpw, newpwAgain } = req.body;
         console.log(oldpw);
         console.log(newpw);
         console.log(newpwAgain);
         if (!oldpw) {
             req.flash('errorMessage', '舊密碼不可為空')
-            res.send('success');
             return next();
         } else if (!newpw || !newpwAgain) {
             req.flash('errorMessage', '新密碼不可為空')
             return next();
-        } else{
-            res.redirect('/home/member/memberData_changePw');
+        } else if (req.session.memberprofile.cPassword != oldpw) {
+            req.flash('errorMessage', '舊密碼不正確')
+            return next();
+        } else {
+            db.exec('update customer_id set cPassword = ? where cAccount = ? ',
+                [newpw, req.session.memberprofile.cAccount],
+                (result, fields, err) => {
+                    console.log('pass database')
+                    res.redirect('/home/member/memberData_changePw');
+                })
         }
+
+
     },
 
     login: (req, res) => {
@@ -54,23 +59,25 @@ var memberController = {
         var { cAccount, cPassword } = req.body;
         if (!cAccount || !cPassword) { req.flash('errorMessage', '請輸入帳密'); return next() }
         // 資料庫撈資料
-        db.exec('select * from customer_id where cAccount = ?', [cAccount], (result, fields, err) => {
-            console.log('result.........');
-            console.log(result);
-            if (result[0]?.cAccount != cAccount) {
-                req.flash('errorMessage', '無此使用者');
-                return next();
-            } else if (result[0].cPassword != cPassword) {
-                req.flash('errorMessage', '密碼不正確');
-                return next();
-            } else {
-                // 將撈到的資料存入memberprofile session之中
-                req.session.memberprofile = result[0];
-                // res.send('login success');
-                // console.log(username)
-                res.redirect('/home/member/memberData');
-            }
-        });
+        db.exec('select * from customer_id where cAccount = ?',
+            [cAccount],
+            (result, fields, err) => {
+                console.log('result.........');
+                console.log(result);
+                if (result[0]?.cAccount != cAccount) {
+                    req.flash('errorMessage', '無此使用者');
+                    return next();
+                } else if (result[0].cPassword != cPassword) {
+                    req.flash('errorMessage', '密碼不正確');
+                    return next();
+                } else {
+                    // 將撈到的資料存入memberprofile session之中
+                    req.session.memberprofile = result[0];
+                    // res.send('login success');
+                    // console.log(username)
+                    res.redirect('/home/member/memberData');
+                }
+            });
 
         // res.send(result[0].cAccount)
         //             if (err) {

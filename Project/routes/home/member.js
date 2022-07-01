@@ -6,10 +6,11 @@ function redirectBack(req, res, next) {
   res.redirect('back');
 }
 
-router.get('/memberData', memberController.personalData);
+router.get('/memberData', memberController.memberData);
 router.post('/memberData',memberController.updateMemberData);
+
 router.get('/memberData_changePw',memberController.changePw)
-router.post('/memberData_changePw',memberController.handlechangePw);
+router.post('/memberData_changePw',memberController.handlechangePw,redirectBack);
 
 router.get('/login',memberController.login);
 
