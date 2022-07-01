@@ -13,12 +13,13 @@ router.get('/', function (req, res) {
   res.render('register', {})
 })
 router.post("/", function (req, res) {
+  
   var body = req.body; //    監聽資料庫寫入返回的引數
   emitter.on("ok", function () {
-    return res.end("註冊成功");    //    向前臺返回資料
+    return res.end("ok");    //    向前臺返回資料
   });
   emitter.on("false", function () {
-    return res.end("使用者名稱已存在");    //    向前臺返回資料
+    return res.end("電子郵件已有人使用");    //    向前臺返回資料
   });
 
   var sql = "insert into customer_id(cName,cBirth,cgender,cAccount,cPhone,cAddr,cPassword) values(?,?,?,?,?,?,?)"; //向user這個表裡寫入資料

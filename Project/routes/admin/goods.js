@@ -7,7 +7,8 @@ var events = require(`events`);
 var emitter = new events.EventEmitter();
 router.use(bodyParser.json());
 
-//------後端MYSQL下指令地方
+//------後端MYSQL下指令地方-----------------
+
 
 router.get('/', function (rqs, res) {
   db.exec('SELECT * FROM customer_id', [], (result, fields) => {
@@ -19,23 +20,63 @@ router.get('/member', function (rqs, res) {
     res.render('admin_member', { data: result });
   });
 });
+
 router.get('/item_all', function (rqs, res) {
   db.exec('SELECT * FROM products', [], (result, fields) => {
     res.render('admin_item_all', { data: result });
   });
 });
-router.get('/item_shelf', function (rqs, res) {
-  db.exec('SELECT * FROM products', [], (result, fields) => {
-    res.render('admin_item_shelf', { data: result });
+
+
+
+router.get('/member', function (rqs, res) {
+  db.exec('SELECT * FROM customer_id', [], (result, fields) => {
+    res.render('admin_member', { data: result });
   });
 });
+
+
+//--------------新增菜單--------------------
+
+
+router.get('/item_shelf', function (rqs, res) {
+  res.render('admin_item_shelf', { title: '後台管理系統' });
+});
+
+router.get('/item_shelf', function (req, res) {
+  res.render('admin_item_shelf', {})
+})
+router.post("/item_shelf", function (req, res) {
+  var body = req.body; //    監聽資料庫寫入返回的引數
+  emitter.on("ok", function () {
+    return res.end("新增成功");    //    向前臺返回資料
+  });
+  emitter.on("false", function () {
+    return res.end("新增失敗");    //    向前臺返回資料
+  });
+
+  var sql = "insert into products(product_name,product_gender,product_description,product_price) values(?,?,?,?)"; //向user這個表裡寫入資料
+  var data = [body.product_name, body.product_gender, body.product_description, body.product_price];
+  db.exec(sql, data, function (results, fields, err) {    //    執行sql語句
+    if (err) {
+      console.log(err.message);    //    輸出資料庫錯誤資訊
+      emitter.emit("false");    //    返回失敗
+    }
+    emitter.emit("ok");    //    返回成功
+  });
+
+})
+
+//--------------新增菜單--------------------
+
+//--------------管理員登入------------------
+
 router.get('/login', function (rqs, res) {
   res.render('admin_login', { title: '後台管理系統' });
 });
 
-
-router.post("/login", function (req, res) {
-  var body = req.body;
+router.post("/login", function (rqs, res) {
+  var body = rqs.body;
   emitter.on("false", function () {
     return res.end("資料庫判斷有誤");    //    向前臺返回資料
   });
@@ -71,9 +112,8 @@ router.post("/login", function (req, res) {
 
 })
 
+//--------------管理員登入------------------
 
-
-//------後端MYSQL下指令地方
 
 
 //--------------------------讀檔案--------------------------------
@@ -88,12 +128,7 @@ router.get('/', function (rqs, res) {
 router.get('/item_del', function (rqs, res) {
   res.render('admin_item_del', { title: '後台管理系統' });
 });
-router.get('/item_shelf', function (rqs, res) {
-  res.render('admin_item_shelf', { title: '後台管理系統' });
-});
-router.get('/login', function (rqs, res) {
-  res.render('admin_login', { title: '後台管理系統' });
-});
+
 router.get('/member', function (rqs, res) {
   res.render('admin_member', { title: '後台管理系統' });
 });

@@ -13,6 +13,16 @@
         .fp-item>li>span {
             padding: 15px;
         }
+
+        .fpop_inp {
+            height: 35px;
+            width: 100%;
+            border: 1px solid #acacac;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
     </style>
 </head>
 
@@ -20,6 +30,9 @@
     <%- include("admin_navbar.ejs") %>
         <!-- Main Content -->
         <div class="fpop-main p-5">
+
+
+
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -29,105 +42,50 @@
                 </ol>
             </nav>
             <h2>我是上架商品</h2>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button">搜尋類別</button>
-                </div>
-                <select class="custom-select light-table-filter " aria-label="Example select with button addon"
-                    data-table="order-table">
-                    <option></option>
-                    <option>shirts</option>
-                    <option>pants</option>
-                    <option>shoes</option>
-                    <option>bags</option>
-                    <option>上衣</option>
-                    <option>洋裝與裙子</option>
+
+            <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
+                <label>產品名稱*:</label>
+                <input class="fpop_inp" type="text" id="product_name" placeholder="產品名稱*"> <br>
+                <label>敘述*:</label>
+                <input class="fpop_inp" type="text" id="product_description" placeholder="敘述*"> <br>
+                <label>價格*：</label>
+                <input class="fpop_inp" type="text" id="product_price" placeholder="價格*"> <br>
+                <label>類別*:</label>
+                <select class="fpop_inp" id="product_category">
+                    <option value="上衣">上衣</option>
+                    <option value="下著">下著</option>
+                    <option value="鞋">鞋</option>
+                    <option value="包">包</option>
+                    <option value="洋裝">洋裝</option>
+                    <option value="裙子">裙子</option>
+                    <option value="帽子">帽子</option>
                 </select>
+                <button class="btn btn-dark" id="register">新增商品</button>
             </div>
-            <button>新增商品</button>
-            <table class="table table-hover order-table">
-                <thead>
-                    <th>編號</th>
-                    <th>產品名稱</th>
-                    <th>類別</th>
-                    <th>圖片</th>
-                    <th>尺寸</th>
-                    <th>敘述</th>
-                    <th>價格</th>
-                </thead>
-                <tbody>
-                    <% data.forEach((item ,index)=> { %>
-                        <tr>
-                            <td>
-                                <%= item.product_id %>
-                            </td>
-                            <td>
-                                <%= item.product_name%>
-                            </td>
-                            <td><img style="height: 50px;" src="/img/product/<%= item.product_image %>" alt=""></td>
-                            <td>
-                                <%= item.product_category %>
-                            </td>
-                            <td>
-                                <%= item.product_gender %>
-                            </td>
-                            <td>
-                                <%= item.product_description %>
-                            </td>
-                            <td>
-                                <%= item.product_price %> $
-                            </td>
-
-                        </tr>
-                        <% }) %>
-                </tbody>
-            </table>
             <script>
-                (function (document) {
-                    'use strict';
-
-                    // 建立 LightTableFilter
-                    var LightTableFilter = (function (Arr) {
-
-                        var _input;
-
-                        // 資料輸入事件處理函數
-                        function _onInputEvent(e) {
-                            _input = e.target;
-                            var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-                            Arr.forEach.call(tables, function (table) {
-                                Arr.forEach.call(table.tBodies, function (tbody) {
-                                    Arr.forEach.call(tbody.rows, _filter);
-                                });
-                            });
+                $("#register").click(function () {
+                    $.ajax({
+                        url: "http://localhost:3000/admin/goods/item_shelf",
+                        type: "POST",
+                        data: {
+                            product_name: $("#product_name").val(),
+                            product_category: $("#product_category").val(),
+                            product_description: $("#product_description").val(),
+                            product_price: $("#product_price").val(),
+                        },
+                        success: function (data) {    //    alert後臺的返回值
+                            alert(data);
+                        },
+                        error: function () {
+                            alert(`訪問失敗`);
                         }
-
-                        // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
-                        function _filter(row) {
-                            var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-                            row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-                        }
-
-                        return {
-                            // 初始化函數
-                            init: function () {
-                                var inputs = document.getElementsByClassName('light-table-filter');
-                                Arr.forEach.call(inputs, function (input) {
-                                    input.oninput = _onInputEvent;
-                                });
-                            }
-                        };
-                    })(Array.prototype);
-
-                    // 網頁載入完成後，啟動 LightTableFilter
-                    document.addEventListener('readystatechange', function () {
-                        if (document.readyState === 'complete') {
-                            LightTableFilter.init();
-                        }
-                    });
-
-                })(document);
+                    })
+                });
             </script>
+            <br>
+            <br>
+
+
         </div>
         <!-- Main Content end-->
 

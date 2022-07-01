@@ -15,32 +15,30 @@
 
     <div class="login">
         <h2>登陸</h2>
-        <form >
+        <form>
             <input type="text" name="email" placeholder="  郵箱" id="cAccount">
             <input type="password" name="password" placeholder="  密碼" id="cPassword">
         </form>
         <button id="userLogin">登陸</button>
     </div>
     <script>
-$("#userLogin").click(function(){
-    console.log("安安")
-        $.ajax({
-          url: "http://localhost:3000/admin/goods/login",
-          type: "POST",
-          data: {
-            cAccount: $("#cAccount").val(),
-            cPassword: $("#cPassword").val()
-          },
-          success: function(data){    //    alert後臺返回的引數
-              alert(data);
-          
-          },
-          error: function(){
-            alert(`訪問失敗`);
-            console.log("訪問失敗")
-          }
-      });
-    });    </script>
+        $("#userLogin").click(function () {
+            $.ajax({
+                url: "http://localhost:3000/admin/goods/login",
+                type: "POST",
+                data: {
+                    cAccount: $("#cAccount").val(),
+                    cPassword: $("#cPassword").val()
+                },
+                success: function (data) {    //    alert後臺返回的引數
+                    alert(data);
+
+                },
+                error: function () {
+                    alert(`訪問失敗`);
+                }
+            });
+        });    </script>
 </body>
 
 </html>
