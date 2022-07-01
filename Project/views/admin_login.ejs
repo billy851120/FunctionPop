@@ -3,39 +3,125 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/all.css">
-    <!-- <script src="/js/admin/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/css/all.css" />
+    <script src="/js/admin/bootstrap.min.js"></script>
     <script src="/js/admin/jquery.min.js"></script>
     <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
     <title>f.pop 後台管理</title>
+    <style>
+        .inp_Err {
+            text-align: right;
+            font-size: 5px;
+            color: #d83838;
+        }
+
+        .fpop_inperro {
+            height: 35px;
+            width: 100%;
+            border: 1px solid #d83838;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div class="container" style="width: 500px;">
+        <div class=" shadow-lg ">
 
-    <div class="login">
-        <h2>登陸</h2>
-        <form>
-            <input type="text" name="email" placeholder="  郵箱" id="cAccount">
-            <input type="password" name="password" placeholder="  密碼" id="cPassword">
-        </form>
-        <button id="userLogin">登陸</button>
+            <div class="p-5 imgcontainer m-5">
+                <a class="navbar-brand " href="#"><img src="/img/admin/logo_black.svg" width="60px" height="60px">
+                    <img src="/img/admin/logo_text_black.svg" width="170px" height="70px"></a>
+                <div class="text-center">
+                    <h4 class="mb-4 mt-5 font-weight-bold">後台管理系統</h4>
+                </div>
+                <form class="user">
+                    <p class="inp_Err" style="visibility: hidden" id="aAccountErr">請填寫帳號*</p>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-user" id="aAccount" placeholder="帳號">
+                    </div>
+                    <p class="inp_Err" style="visibility: hidden" id="aPasswordErr">請填寫密碼*</p>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-user" id="aPassword" placeholder="密碼">
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox small">
+                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-user btn-block" id="userLogin">登入</button>
+
+                </form>
+                <hr>
+                <footer class="sticky-footer">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+
+
+            </div>
+        </div>
     </div>
+
+
     <script>
+        $("#aAccount").on('input', function () {
+            if (!($("#aAccount").val() == '')) {
+                $("#aAccount").removeClass("fpop_inperro")
+                $("#aAccountErr").css('visibility', 'hidden')
+            }
+        })
+        $("#aPassword").on('input', function () {
+            if (!($("#aPassword").val() == '')) {
+                $("#aPassword").removeClass("fpop_inperro")
+                $("#aPasswordErr").css('visibility', 'hidden')
+            }
+        })
+        function checkInputInfo() {
+            var a = $("#aAccount").val();
+            var c = $("#aPassword").val();
+            var b = true;
+            if (a == null || a == "") {
+                $("#aAccount").addClass("fpop_inperro")
+                $("#aAccountErr").css('visibility', 'visible')
+                b = false
+            }
+            if (c == null || c == "") {
+                $("#aPassword").addClass("fpop_inperro")
+                $("#aPasswordErr").css('visibility', 'visible')
+                b = false
+            }
+            return b
+        }
         $("#userLogin").click(function () {
+            if (!checkInputInfo()) {
+                alert("資料輸入有誤");
+                return false
+            }
             $.ajax({
                 url: "http://localhost:3000/admin/goods/login",
                 type: "POST",
                 data: {
-                    cAccount: $("#cAccount").val(),
-                    cPassword: $("#cPassword").val()
+                    aAccount: $("#aAccount").val(),
+                    aPassword: $("#aPassword").val()
                 },
                 success: function (data) {    //    alert後臺返回的引數
-                    alert(data);
-
+                    if (data=="ok") {
+                        alert("登入成功")
+                        window.location.href = "http://localhost:3000/admin/goods";
+                    } else {
+                        alert(data);
+                    }
                 },
                 error: function () {
-                    alert(`訪問失敗`);
+                    alert(`連線失敗`);
                 }
             });
         });    </script>

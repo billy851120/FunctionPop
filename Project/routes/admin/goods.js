@@ -80,28 +80,24 @@ router.post("/login", function (rqs, res) {
   emitter.on("false", function () {
     return res.end("資料庫判斷有誤");    //    向前臺返回資料
   });
-  emitter.on("ok", function () {
+  emitter.on("false2", function () {
     return res.end("輸入帳密錯誤");    //    向前臺返回資料
   });
   emitter.on("success", function () {
-    return res.end("成功");    //    向前臺返回資料
+    return res.end("ok");    //    向前臺返回資料
   });
 
-  var sql = "select * from customer_id where cAccount ='" + body.cAccount + "' and cPassword='" + body.cPassword + "';";    //    在資料庫裡面查詢使用者名稱跟密碼
+  var sql = "select * from admin_user where aAccount ='" + body.aAccount + "' and aPassword='" + body.aPassword + "';";    //    在資料庫裡面查詢使用者名稱跟密碼
   db.exec(sql, [], function (results, fields, err) {  //    執行sql語句，並返回結果
-    console.log("results");
-    console.log(sql);
-    console.log(results);
-
+ 
     if (err) {
       console.log("資料庫錯誤");
       emitter.emit("false");
-
       return
     }
     if (results.length == 0) {
       console.log("資料庫裡面沒找到配對的內容返回引數");
-      emitter.emit("ok");
+      emitter.emit("false2");
 
     } else {
       console.log("success");
