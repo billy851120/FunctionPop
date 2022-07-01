@@ -8,12 +8,25 @@ router.use(bodyParser.json());
 
 function isProductInCart(cart, id) {
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == id) {
+    if (cart[i].all_id == id) {
       return true;
     }
   }
 
   return false;
+}
+
+function updateCart(cart, req) {
+  let count = 0;
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].quantity) {
+      count += parseInt(cart[i].quantity);
+    } else {
+      count += parseInt(cart[i].quantity);
+    }
+  }
+  req.session.cartCount = count.toString();
+  return count;
 }
 
 function calculateTotal(cart, req) {
@@ -35,12 +48,16 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post('/', function (req, res) {
   var code = req.body.code;
+  var all_id = req.body.all_id;
+  var id = req.body.id;
   var name = req.body.name;
   var image = req.body.image;
   var price = req.body.price;
   var quantity = req.body.quantity;
   var product = {
     code: code,
+    all_id: all_id,
+    id: id,
     name: name,
     image: image,
     price: price,
@@ -49,16 +66,17 @@ router.post('/', function (req, res) {
 
   if (req.session.cart) {
     var cart = req.session.cart;
-
     if (!isProductInCart(cart, code)) {
-      // console.log(cart);
+      console.log('A');
       cart.push(product);
     }
   } else {
+    console.log('B');
+
     req.session.cart = [product];
     var cart = req.session.cart;
   }
-
+  updateCart(cart, req);
   // Calculate total
   calculateTotal(cart, req);
 
@@ -82,9 +100,9 @@ router.get('/orderCheck', function (rqs, res) {
     [],
     function (result, fields) {
       let oid = 0;
-      if(!result[0]){
+      if (!result[0]) {
         oid = 1;
-      }else{
+      } else {
         oid = result[0].order_id;
       }
       // console.log(result[0]);
@@ -109,33 +127,27 @@ router.post('/orderCheck/add', function (req, res) {
     orderLise.email,
     orderLise.city,
     orderLise.address,
-    
   ];
   db.exec(sql_orders, data_orders, function (result, fields) {
     console.log('新增一筆訂單到orders');
   });
-  cart.forEach(function(item,idx){
-
+  cart.forEach(function (item, idx) {
     var sql_order_item =
       'INSERT INTO order_items (order_id,order_list,product_id,UnitPrice,Quantity,Discount,user_id 	) VALUES(?,?,?,?,?,?,?); ';
     var data_order_item = [
-     "",
+      '',
       orderLise.newOrderList,
-      "",
+      '',
       item.price,
       item.quantity,
-      "",
+      '',
       orderLise.email,
-
-      
     ];
     db.exec(sql_order_item, data_order_item, function (result, fields) {
       console.log('已更新order_items');
     });
     console.log(cart);
-  })
-
-
+  });
 
   res.redirect('/orderFinish');
 });
