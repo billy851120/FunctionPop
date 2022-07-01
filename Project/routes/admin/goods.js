@@ -6,13 +6,7 @@ var router = express.Router();
 var events = require(`events`);
 var emitter = new events.EventEmitter();
 router.use(bodyParser.json());
-//--------------------------
-var path = require("path");
-// var dirname=__dirname;    //    指向當前js的路徑
-// app.use(express.static(path.join(__dirname, `project`))); 
-var dirname = '../admin/goods.js';
-// router.use('/admin_login', goods);   //    這裡你能夠直接訪問你的靜態檔案，比如你的index.html
-router.use(express.static(path.join('../admin/goods.js', `project`)));   //    這裡你能夠直接訪問你的靜態檔案，比如你的index.html
+
 //------後端MYSQL下指令地方
 
 router.get('/', function (rqs, res) {
@@ -38,14 +32,10 @@ router.get('/item_shelf', function (rqs, res) {
 router.get('/login', function (rqs, res) {
   res.render('admin_login', { title: '後台管理系統' });
 });
+
+
 router.post("/login", function (req, res) {
-  // res.render('admin_login', { title: '後台管理系統' });
   var body = req.body;
-
-  // console.log("start login...ss)
-
-  // console.log("date:"+req.query)
-  // // console.log(res.query)
   emitter.on("false", function () {
     return res.end("資料庫判斷有誤");    //    向前臺返回資料
   });
@@ -75,18 +65,16 @@ router.post("/login", function (req, res) {
     } else {
       console.log("success");
       emitter.emit("success");
-      
+
     }
   });
 
 })
-// router.get('/login', function (rqs, res) {
-//   res.render('admin_login', { title: '後台管理系統' });
-// });
 
 
 
 //------後端MYSQL下指令地方
+
 
 //--------------------------讀檔案--------------------------------
 
