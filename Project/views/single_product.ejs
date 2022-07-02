@@ -293,7 +293,8 @@
             <p>顏　色： <span id="cho_color">米白色</span></p>
             <span style="color: red">顏色選單</span>
             <span class="colorflexBox mx-auto py-3">
-              <input
+              <label >
+                <input
                 type="radio"
                 value="WH"
                 name="color_ch"
@@ -301,44 +302,40 @@
                 data-col="白"
                 checked
               />白
-              <input
+              </label>
+              <label >
+                <input
                 type="radio"
                 value="BK"
                 name="color_ch"
                 data-col="黑"
                 style="width: 40px; height: 40px"
               />黑
+              </label>
+             
             </span>
             <br />
             <br />
-            <h6>尺　寸：<span id="cho_size">M</span></h6>
+            <h6>尺　寸：<span id="cho_size"></span></h6>
             <span style="color: red">尺寸選單</span><img src="" alt="" />
             <span class="sizeflexBox mx-auto py-3">
-              <input
-                type="radio"
-                value="S"
-                name="size_ch"
-                style="width: 40px; height: 40px"
-              />S
-              <input
-                type="radio"
-                value="M"
-                name="size_ch"
-                style="width: 40px; height: 40px"
-                checked
-              />M
-              <input
-                type="radio"
-                value="L"
-                name="size_ch"
-                style="width: 40px; height: 40px"
-              />L
-              <input
-                type="radio"
-                value="XL"
-                name="size_ch"
-                style="width: 40px; height: 40px"
-              />XL
+              <% result.forEach(function(item){ %>
+                <% let ch = "" %>
+                <% if(ch != item.size_name){ %>
+                  <label >
+                    <input
+                    type="radio"
+                    value="<%- item.size_name %>"
+                    name="size_ch"
+                    style="width: 40px; height: 40px"
+                    data-allId="<%- item.product_all_id %>"
+                  /><%- item.size_name %>
+                  </label>
+              
+              <% ch = item.size_name %>
+              <% } %>
+              <% }) %>
+              
             </span>
             <br />
             <br />
@@ -661,6 +658,7 @@
         $(".sizeflexBox input").on("click", function () {
           $("#cho_size").html(this.value);
           $("#p_single input[name='size']").val(this.value);
+          $("#p_single input[name='all_id']").val($(this).attr("data-allId"));
           $(".sizeflexBox input").removeClass("psize-active");
           $(this).addClass("psize-active");
         });
@@ -788,7 +786,7 @@
               console.log(al);
               al.innerHTML = "請選擇尺寸";
               $(al).attr("class", "al fadeInDown");
-              document.body.appendChild(al);
+              document.querySelector(".sticky-top").appendChild(al);
             }
 
             setTimeout(function () {

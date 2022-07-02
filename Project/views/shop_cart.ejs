@@ -101,28 +101,28 @@
                     <p class="pDesc" style="margin-bottom: 10px">
                       <%- item.name %>
                     </p>
-                    <p class="pColor">顏色:</p>
-                    <p class="pSize">尺寸:</p>
+                    <p class="pColor">顏色:<%- item.color %></p>
+                    <p class="pSize">尺寸:<%- item.size %></p>
                   </div>
                   <div class="col-2 css_tb price align-self-center">
                     NT$<%- item.price %>
                   </div>
                   <div class="col-2 css_tb pCount align-self-center">
                     <a
-                      href="#"
-                      class="sub"
+                      href="javascript:"
+                      class="q_sub"
                       style="padding: 2px; border: 1px solid #000"
                       >-</a
                     >
                     <input
                       type="text"
                       id="number"
-                      value="0"
+                      value="<%- item.quantity %>"
                       style="width: 25px; text-align: center"
                     />
                     <a
-                      href="#"
-                      class="add"
+                      href="javascript:"
+                      class="q_add"
                       style="padding: 2px; border: 1px solid #000"
                       >+</a
                     >
@@ -203,17 +203,38 @@
     </div>
     <footer class="footer"><%- include("footer.ejs") %></footer>
     <script>
-      document.querySelectorAll('p').onclick() = function(){
-        var products = document.querySelectorAll(".row");
-        // if(!)
-        console.log(products);
+      $(document).ready(function(){
+//商品增加
+$(".q_add").click(function () {
+          var num = 0;
+          num++;
+          var Count = parseInt($(this).siblings("#number").val());
+          var to_Count = parseInt(Count + num);
+          $(this).siblings("#number").val(to_Count);
+          let quantity = $("#number").val();
 
-      }
+          // $(this).siblings("#number").val();
+        });
+
+        //商品減少
+        $(".q_sub").click(function () {
+          var Count = parseInt($(this).siblings("#number").val());
+          Count--;
+
+          if (Count < 1) {
+            Count = 1;
+          } else {
+            $(this).siblings("#number").val(Count);
+          }
+        });
+
+      })
+     
     </script>
 
     <script src="/js/shop_cart/owl.carousel.js"></script>
-    <script src="/js/shop_cart/server.js"></script>
-    <script src="/js/shop_cart/cart.js"></script>
+    <!-- <script src="/js/shop_cart/server.js"></script> -->
+    <!-- <script src="/js/shop_cart/cart.js"></script> -->
     <script src="/js/shop_cart/owl.js"></script>
     <script src="/js/shop_cart/bootstrap.js"></script>
   </body>

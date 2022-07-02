@@ -6,9 +6,9 @@ var router = express.Router();
 var db = require('../../dataBase');
 router.use(bodyParser.json());
 
-function isProductInCart(cart, id) {
+function isProductInCart(cart, all_id) {
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].all_id == id) {
+    if (cart[i].all_id == all_id) {
       return true;
     }
   }
@@ -51,6 +51,8 @@ router.post('/', function (req, res) {
   var all_id = req.body.all_id;
   var id = req.body.id;
   var name = req.body.name;
+  var color = req.body.color;
+  var size = req.body.size;
   var image = req.body.image;
   var price = req.body.price;
   var quantity = req.body.quantity;
@@ -59,22 +61,34 @@ router.post('/', function (req, res) {
     all_id: all_id,
     id: id,
     name: name,
+    color: color,
+    size: size,
     image: image,
     price: price,
     quantity: quantity,
   };
+  // console.log(req.session.cart);
 
   if (req.session.cart) {
     var cart = req.session.cart;
-    if (!isProductInCart(cart, code)) {
-      console.log('A');
+    if (isProductInCart(cart, all_id)) {
+      for (let i = 0; i < cart.length; i++) {
+        let ct = 0;
+        if (cart[i].all_id == all_id) {
+          ct = parseInt(cart[i].quantity) + parseInt(quantity);
+          cart[i].quantity = ct.toString();
+          console.log(cart);
+        }
+      }
+    } else {
       cart.push(product);
+      console.log(cart);
     }
   } else {
-    console.log('B');
-
     req.session.cart = [product];
+
     var cart = req.session.cart;
+    console.log(cart);
   }
   updateCart(cart, req);
   // Calculate total
@@ -89,7 +103,7 @@ router.post('/', function (req, res) {
 router.get('/', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
-  // console.log(cart,total);
+  console.log(total);
   // console.log(req.session);
 
   res.render('shop_cart', { cart: cart, total: total });
