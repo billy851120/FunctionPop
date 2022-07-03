@@ -178,7 +178,7 @@ $("#tototoPrice").html(tototoPrice.toString());
           let o_address =decodeURI(arr2[2].split("=")[1]) ;
           let o_phone = arr2[3].split("=")[1];
           let o_email =arr2[4].split("=")[1].replace("%40","@") ;
-          let o_List =decodeURI(arr2[10].split("=")[1]) ;
+          let o_List = arr2[10].split("=")[1] ;
 
           $("#newOrder").html(o_List);
           $("#name").html(o_name);
