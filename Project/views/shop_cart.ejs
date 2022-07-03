@@ -104,13 +104,14 @@
                     <p class="pColor">顏色:<%- item.color %></p>
                     <p class="pSize">尺寸:<%- item.size %></p>
                   </div>
-                  <div class="col-2 css_tb price align-self-center">
-                    NT$<%- item.price %>
+                  <div class="col-2 css_tb  align-self-center">
+                    NT$ <span class="price"><%- item.price %></span>
                   </div>
                   <div class="col-2 css_tb pCount align-self-center">
                     <a
                       href="javascript:"
                       class="q_sub"
+                      data-allId="<%- item.all_id %>"
                       style="padding: 2px; border: 1px solid #000"
                       >-</a
                     >
@@ -123,13 +124,16 @@
                     <a
                       href="javascript:"
                       class="q_add"
+                      data-allId="<%- item.all_id %>"
                       style="padding: 2px; border: 1px solid #000"
                       >+</a
                     >
                   </div>
-                  <div class="col css_tb to_price align-self-center">NT$</div>
+                  <% let toP = item.quantity * item.price %>
+                  <div  class="col css_tb  align-self-center">NT$ <span class="to_price"><%- toP %></span></div>
                   <div class="col css_tb align-self-center">
-                    <a href="#" class="del"
+
+                    <a href="javascript:" class="del" data-allId="<%- item.all_id %>"
                       ><i class="fa-solid fa-trash-can"></i
                     ></a>
                   </div>
@@ -204,14 +208,55 @@
     <footer class="footer"><%- include("footer.ejs") %></footer>
     <script>
       $(document).ready(function(){
+        var total_count = 0;
+        $("#css_tbody .product").each(function(idx,ele){
+          total_count +=parseInt($(ele).find('#number').val());
+        });
+        $("#total_count").text(total_count.toString());
+        
+
+        
+
+
 //商品增加
 $(".q_add").click(function () {
           var num = 0;
           num++;
           var Count = parseInt($(this).siblings("#number").val());
           var to_Count = parseInt(Count + num);
+          var price = parseInt($(this).parent().parent().find('.price').text())
+          var to_price = 0;
+          to_price = price * to_Count;
+          console.log(to_price);
           $(this).siblings("#number").val(to_Count);
-          let quantity = $("#number").val();
+          $(this).parent().parent().find('.to_price').html(to_price.toString());
+
+
+          var total_count = 0;
+        $("#css_tbody .product").each(function(idx,ele){
+          total_count +=parseInt($(ele).find('#number').val());
+           
+          
+        });
+        console.log(total_count);
+        $("#total_count").text(total_count.toString());
+
+          let all_id ={};
+          all_id.allId = $(this).attr("data-allId");
+
+          $.ajax({
+          url:"/home/shop_cart/q_add",
+          type:"POST",
+          data:all_id,
+          success:function(res){
+            // console.log("新增");
+          },
+          error:function(){
+            alert("系統錯誤");
+          }
+
+
+        })
 
           // $(this).siblings("#number").val();
         });
@@ -219,15 +264,76 @@ $(".q_add").click(function () {
         //商品減少
         $(".q_sub").click(function () {
           var Count = parseInt($(this).siblings("#number").val());
-          Count--;
 
-          if (Count < 1) {
+          if (Count <= 1) {
             Count = 1;
           } else {
-            $(this).siblings("#number").val(Count);
+            Count--;
+            var price = parseInt($(this).parent().parent().find('.price').text())
+          var to_price = 0;
+          to_price = price * Count;
+          console.log(to_price);
+          $(this).parent().parent().find('.to_price').html(to_price.toString());
+          $(this).siblings("#number").val(Count);
+
+          var total_count = 0;
+        $("#css_tbody .product").each(function(idx,ele){
+          total_count +=parseInt($(ele).find('#number').val());
+        });
+        console.log(total_count);
+        $("#total_count").text(total_count.toString());
+
+            
+            let all_id ={};
+          all_id.allId = $(this).attr("data-allId");
+
+        $.ajax({
+          url:"/home/shop_cart/q_sub",
+          type:"POST",
+          data:all_id,
+          success:function(res){
+            console.log("成功");
+          },
+          error:function(){
+            alert("系統錯誤");
+          }
+
+
+        })
           }
         });
+        
 
+      
+        // $("#total_count").
+      })
+
+  
+
+
+      // 刪除按鈕
+      $('.del').click(function(x){
+        if(confirm('確定刪除此商品')){
+          let all_id ={};
+          all_id.allId = $(this).attr("data-allId");
+          console.log(all_id);
+          
+          $(this).parent().parent().remove();
+          $.ajax({
+            url: "/home/shop_cart/del",
+            type:"POST",
+            data: all_id,
+
+            success:function(res){
+              console.log("已刪除");
+              console.log(res);
+            },
+            error: function(){
+              alert("系統錯誤");
+            }
+          })
+        }
+      
       })
      
     </script>

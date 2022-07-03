@@ -26,7 +26,7 @@ function updateCart(cart, req) {
     }
   }
   req.session.cartCount = count.toString();
-  return count;
+  return req.session.cartCount;
 }
 
 function calculateTotal(cart, req) {
@@ -45,6 +45,16 @@ function calculateTotal(cart, req) {
 
 router.use(session({ secret: 'secret' }));
 router.use(bodyParser.urlencoded({ extended: true }));
+
+// 查看購物車-----------------------------------------------
+
+router.get('/', function (req, res) {
+  var cart = req.session.cart;
+
+  var total = req.session.total;
+
+  res.render('shop_cart', { cart: cart, total: total });
+});
 
 router.post('/', function (req, res) {
   var code = req.body.code;
@@ -77,18 +87,18 @@ router.post('/', function (req, res) {
         if (cart[i].all_id == all_id) {
           ct = parseInt(cart[i].quantity) + parseInt(quantity);
           cart[i].quantity = ct.toString();
-          console.log(cart);
+          // console.log(cart);
         }
       }
     } else {
       cart.push(product);
-      console.log(cart);
+      // console.log(cart);
     }
   } else {
     req.session.cart = [product];
 
     var cart = req.session.cart;
-    console.log(cart);
+    // console.log(cart);
   }
   updateCart(cart, req);
   // Calculate total
@@ -100,14 +110,68 @@ router.post('/', function (req, res) {
   // res.end()
 });
 
-router.get('/', function (req, res) {
-  var cart = req.session.cart;
-  var total = req.session.total;
-  console.log(total);
-  // console.log(req.session);
-
-  res.render('shop_cart', { cart: cart, total: total });
+router.post('/q_add', function (req, res) {
+  if (req.body.allId) {
+    var cart = req.session.cart;
+    var all_id = req.body.allId;
+    if (isProductInCart(cart, all_id)) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].all_id == all_id) {
+          var qua = parseInt(cart[i].quantity);
+          qua++;
+          cart[i].quantity = qua.toString();
+        }
+      }
+    }
+  }
+  res.redirect('back');
 });
+router.post('/q_sub', function (req, res) {
+  if (req.body.allId) {
+    var cart = req.session.cart;
+    var all_id = req.body.allId;
+    if (isProductInCart(cart, all_id)) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].all_id == all_id && cart[i].quantity > 1) {
+          var qua = parseInt(cart[i].quantity);
+          qua--;
+          cart[i].quantity = qua.toString();
+        }
+      }
+    }
+  }
+  res.redirect('back');
+});
+
+router.post('/del', function (req, res) {
+  console.log('刪除前');
+  console.log(cart);
+
+  if (req.session.cart) {
+    var cart = req.session.cart;
+    var del_id = req.body.allId;
+
+    if (isProductInCart(cart, del_id)) {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].all_id == del_id) {
+          cart.splice(i, i + 1);
+          req.session.cart = cart;
+          console.log('已刪除all_id :' + del_id + '商品');
+        } else {
+          console.log(' ');
+        }
+      }
+    } else {
+      console.log('err');
+    }
+  }
+  console.log('目前購物車清單 : ');
+  console.log(cart);
+  res.redirect('back');
+});
+
+//-------------------------------------------
+
 router.get('/orderCheck', function (rqs, res) {
   db.exec(
     'SELECT * FROM `orders` order by order_id DESC limit 1',
