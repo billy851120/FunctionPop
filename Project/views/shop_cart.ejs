@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>assd</title>
-    <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <script src="/js/shop_cart/cookie.js"></script>
-    <script
-      src="https://kit.fontawesome.com/93e1c8f0af.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/js/shop_cart/jquery.js"></script>
-  </head>
 
-  <body>
-    <div class="wrapper">
-      <%- include("navbar.ejs") %>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>assd</title>
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <script src="/js/shop_cart/cookie.js"></script>
+  <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+  <script src="/js/shop_cart/jquery.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <%- include("navbar.ejs") %>
       <table>
         <thead>
           <th colspan=""></th>
@@ -75,70 +73,57 @@
               </div>
 
               <div id="css_tbody" class="container-fluid css_tbody">
-                <% if(cart){ %> <% cart.forEach(function(item){ %>
-                <div class="row product">
-                  <div class="col-2 css_tb d-flex">
-                    <div>
-                      <input type="checkbox" class="ck" checked />
-                    </div>
-                    <div
-                      style="
+                <% if(cart){ %>
+                  <% cart.forEach(function(item){ %>
+                    <div class="row product">
+                      <div class="col-2 css_tb d-flex">
+                        <div>
+                          <input type="checkbox" class="ck" checked />
+                        </div>
+                        <div style="
                         max-height: 134px;
                         max-width: 93px;
                         height: 100%;
                         width: 100%;
-                      "
-                    >
-                      <img
-                        class="pImg"
-                        style="width: 100%; height: 100%"
-                        src="/img/product/<%- item.image %>"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="col-3 css_tb align-self-center">
-                    <p class="pDesc" style="margin-bottom: 10px">
-                      <%- item.name %>
-                    </p>
-                    <p class="pColor">顏色:<%- item.color %></p>
-                    <p class="pSize">尺寸:<%- item.size %></p>
-                  </div>
-                  <div class="col-2 css_tb  align-self-center">
-                    NT$ <span class="price"><%- item.price %></span>
-                  </div>
-                  <div class="col-2 css_tb pCount align-self-center">
-                    <a
-                      href="javascript:"
-                      class="q_sub"
-                      data-allId="<%- item.all_id %>"
-                      style="padding: 2px; border: 1px solid #000"
-                      >-</a
-                    >
-                    <input
-                      type="text"
-                      id="number"
-                      value="<%- item.quantity %>"
-                      style="width: 25px; text-align: center"
-                    />
-                    <a
-                      href="javascript:"
-                      class="q_add"
-                      data-allId="<%- item.all_id %>"
-                      style="padding: 2px; border: 1px solid #000"
-                      >+</a
-                    >
-                  </div>
-                  <% let toP = item.quantity * item.price %>
-                  <div  class="col css_tb  align-self-center">NT$ <span class="to_price"><%- toP %></span></div>
-                  <div class="col css_tb align-self-center">
+                      ">
+                          <img class="pImg" style="width: 100%; height: 100%" src="/img/product/<%- item.image %>"
+                            alt="" />
+                        </div>
+                      </div>
+                      <div class="col-3 css_tb align-self-center">
+                        <p class="pDesc" style="margin-bottom: 10px">
+                          <%- item.name %>
+                        </p>
+                        <p class="pColor">顏色:<%- item.color %>
+                        </p>
+                        <p class="pSize">尺寸:<%- item.size %>
+                        </p>
+                      </div>
+                      <div class="col-2 css_tb  align-self-center">
+                        NT$ <span class="price">
+                          <%- item.price %>
+                        </span>
+                      </div>
+                      <div class="col-2 css_tb pCount align-self-center">
+                        <a href="javascript:" class="q_sub" data-allId="<%- item.all_id %>"
+                          style="padding: 2px; border: 1px solid #000">-</a>
+                        <input type="text" id="number" value="<%- item.quantity %>"
+                          style="width: 25px; text-align: center" />
+                        <a href="javascript:" class="q_add" data-allId="<%- item.all_id %>"
+                          style="padding: 2px; border: 1px solid #000">+</a>
+                      </div>
+                      <% let toP=item.quantity * item.price %>
+                        <div class="col css_tb  align-self-center">NT$ <span class="to_price">
+                            <%- toP %>
+                          </span></div>
+                        <div class="col css_tb align-self-center">
 
-                    <a href="javascript:" class="del" data-allId="<%- item.all_id %>"
-                      ><i class="fa-solid fa-trash-can"></i
-                    ></a>
-                  </div>
-                </div>
-                <% }); %> <% } %>
+                          <a href="javascript:" class="del" data-allId="<%- item.all_id %>"><i
+                              class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </div>
+                    <% }); %>
+                      <% } %>
               </div>
             </div>
 
@@ -150,35 +135,25 @@
                 <div class="py-2">
                   <p>
                     <b>總計商品件數:</b>
-                    <span class="float-right"
-                      ><span id="total_count">0</span> 件</span
-                    >
+                    <span class="float-right"><span id="total_count">0</span> 件</span>
                   </p>
                   <p>
-                    <b>小計:</b
-                    ><span class="float-right"
-                      >NT$<span id="total_price">0</span></span
-                    >
+                    <b>小計:</b><span class="float-right">NT$<span id="total_price">0</span></span>
                   </p>
                   <p>
-                    <b>運費:</b
-                    ><span class="float-right">NT$<span>0</span></span>
+                    <b>運費:</b><span class="float-right">NT$<span id="fare" class="fare">0</span></span>
                   </p>
                 </div>
-                <div class="py-3">
+                <div class="py-3" class="canFare" id="canFare">
+
                   只差NT$ <span>0</span>，即可享有免費標準運送。
                 </div>
                 <div class="pt-2 mb-4">
                   <p>
-                    <b>總額:</b
-                    ><span class="float-right">NT$<span>0</span></span>
+                    <b>總額:</b><span class="float-right">NT$<span id="tototoPrice">0</span></span>
                   </p>
                 </div>
-                <form
-                  action="/home/shop_cart/orderCheck"
-                  class="text-center"
-                  id="buy"
-                >
+                <form action="/home/shop_cart/orderCheck" class="text-center" id="buy">
                   <button id="sub" type="submit">結帳</button>
                 </form>
               </div>
@@ -204,144 +179,262 @@
         </div>
       </div>
       <div class="push"></div>
-    </div>
-    <footer class="footer"><%- include("footer.ejs") %></footer>
-    <script>
-      $(document).ready(function(){
+  </div>
+  <footer class="footer">
+    <%- include("footer.ejs") %>
+  </footer>
+  <script>
+    $(document).ready(function () {
+      //更新總數量
+      var total_count = 0;
+      $("#css_tbody .product").each(function (idx, ele) {
+        total_count += parseInt($(ele).find('#number').val());
+      });
+      $("#total_count").text(total_count.toString());
+
+      //更新總價格
+      var total_price = 0;
+      $("#css_tbody .product").each(function (idx, ele) {
+        total_price += parseInt($(ele).find(".to_price").text());
+      })
+      $("#total_price").text(total_price.toString());
+
+      //更新運費
+      var fare = 1000;
+
+      if (total_price >= fare) {
+        console.log($(".canFare").html());
+        $("#fare").html("0");
+        $("#canFare").html("<p>免費標準運送。</p>");
+      } else {
+        console.log("B");
+
+        var diff = 0;
+        diff = fare - total_price;
+        $("#fare").html("60");
+        $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
+      }
+
+      //更新總額
+      var P_fare = parseInt($("#fare").html());
+      var tototoPrice = 0;
+      tototoPrice = P_fare + total_price;
+      $("#tototoPrice").html(tototoPrice.toString());
+
+      //商品增加
+      $(".q_add").click(function () {
+        var num = 0;
+        num++;
+        var Count = parseInt($(this).siblings("#number").val());
+        var to_Count = parseInt(Count + num);
+        var price = parseInt($(this).parent().parent().find('.price').text())
+        var to_price = 0;
+        to_price = price * to_Count;
+        console.log(to_price);
+        $(this).siblings("#number").val(to_Count);
+        $(this).parent().parent().find('.to_price').html(to_price.toString());
+
+        //更新總數量
         var total_count = 0;
-        $("#css_tbody .product").each(function(idx,ele){
-          total_count +=parseInt($(ele).find('#number').val());
+        $("#css_tbody .product").each(function (idx, ele) {
+          total_count += parseInt($(ele).find('#number').val());
         });
         $("#total_count").text(total_count.toString());
-        
 
-        
-
-
-//商品增加
-$(".q_add").click(function () {
-          var num = 0;
-          num++;
-          var Count = parseInt($(this).siblings("#number").val());
-          var to_Count = parseInt(Count + num);
-          var price = parseInt($(this).parent().parent().find('.price').text())
-          var to_price = 0;
-          to_price = price * to_Count;
-          console.log(to_price);
-          $(this).siblings("#number").val(to_Count);
-          $(this).parent().parent().find('.to_price').html(to_price.toString());
-
-
-          var total_count = 0;
-        $("#css_tbody .product").each(function(idx,ele){
-          total_count +=parseInt($(ele).find('#number').val());
-           
-          
+        //更新總小計
+        var total_price = 0;
+        $("#css_tbody .product").each(function (idx, ele) {
+          total_price += parseInt($(ele).find(".to_price").text());
         });
-        console.log(total_count);
-        $("#total_count").text(total_count.toString());
+        $("#total_price").text(total_price.toString());
 
-          let all_id ={};
-          all_id.allId = $(this).attr("data-allId");
 
-          $.ajax({
-          url:"/home/shop_cart/q_add",
-          type:"POST",
-          data:all_id,
-          success:function(res){
+
+        //更新運費
+        var fare = 1000;
+
+        if (total_price >= fare) {
+          $("#fare").html("0");
+          $("#canFare").html("<p>免費標準運送。</p>");
+        } else {
+          var diff = 0;
+          diff = fare - total_price;
+          $("#fare").html("60");
+          $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
+        }
+
+        //更新總額
+        var P_fare = parseInt($("#fare").html());
+        var tototoPrice = 0;
+        tototoPrice = P_fare + total_price;
+        $("#tototoPrice").html(tototoPrice.toString());
+
+        let all_id = {};
+        all_id.allId = $(this).attr("data-allId");
+
+        $.ajax({
+          url: "/home/shop_cart/q_add",
+          type: "POST",
+          data: all_id,
+          success: function (res) {
             // console.log("新增");
           },
-          error:function(){
+          error: function () {
             alert("系統錯誤");
           }
 
 
         })
 
-          // $(this).siblings("#number").val();
-        });
+      });
 
-        //商品減少
-        $(".q_sub").click(function () {
-          var Count = parseInt($(this).siblings("#number").val());
+      //商品減少
+      $(".q_sub").click(function () {
+        var Count = parseInt($(this).siblings("#number").val());
 
-          if (Count <= 1) {
-            Count = 1;
-          } else {
-            Count--;
-            var price = parseInt($(this).parent().parent().find('.price').text())
+        if (Count <= 1) {
+          Count = 1;
+        } else {
+          Count--;
+          var price = parseInt($(this).parent().parent().find('.price').text())
           var to_price = 0;
           to_price = price * Count;
           console.log(to_price);
           $(this).parent().parent().find('.to_price').html(to_price.toString());
           $(this).siblings("#number").val(Count);
 
+          //更新總數量
           var total_count = 0;
-        $("#css_tbody .product").each(function(idx,ele){
-          total_count +=parseInt($(ele).find('#number').val());
-        });
-        console.log(total_count);
-        $("#total_count").text(total_count.toString());
+          $("#css_tbody .product").each(function (idx, ele) {
+            total_count += parseInt($(ele).find('#number').val());
+          });
+          console.log(total_count);
+          $("#total_count").text(total_count.toString());
 
-            
-            let all_id ={};
+
+          //更新總小計
+          var total_price = 0;
+          $("#css_tbody .product").each(function (idx, ele) {
+            total_price += parseInt($(ele).find(".to_price").text());
+          });
+          $("#total_price").text(total_price.toString());
+
+          let all_id = {};
           all_id.allId = $(this).attr("data-allId");
 
-        $.ajax({
-          url:"/home/shop_cart/q_sub",
-          type:"POST",
-          data:all_id,
-          success:function(res){
-            console.log("成功");
-          },
-          error:function(){
-            alert("系統錯誤");
+
+          //更新運費
+          var fare = 1000;
+
+          if (total_price >= fare) {
+            $("#fare").html("0");
+            $("#canFare").html("<p>免費標準運送。</p>");
+          } else {
+            var diff = 0;
+            diff = fare - total_price;
+            $("#fare").html("60");
+            $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
           }
 
+          //更新總額
+          var P_fare = parseInt($("#fare").html());
+          var tototoPrice = 0;
+          tototoPrice = P_fare + total_price;
+          $("#tototoPrice").html(tototoPrice.toString());
 
-        })
-          }
-        });
-        
-
-      
-        // $("#total_count").
-      })
-
-  
-
-
-      // 刪除按鈕
-      $('.del').click(function(x){
-        if(confirm('確定刪除此商品')){
-          let all_id ={};
-          all_id.allId = $(this).attr("data-allId");
-          console.log(all_id);
-          
-          $(this).parent().parent().remove();
           $.ajax({
-            url: "/home/shop_cart/del",
-            type:"POST",
+            url: "/home/shop_cart/q_sub",
+            type: "POST",
             data: all_id,
-
-            success:function(res){
-              console.log("已刪除");
-              console.log(res);
+            success: function (res) {
+              console.log("成功");
             },
-            error: function(){
+            error: function () {
               alert("系統錯誤");
             }
+
+
           })
         }
-      
-      })
-     
-    </script>
+      });
 
-    <script src="/js/shop_cart/owl.carousel.js"></script>
-    <!-- <script src="/js/shop_cart/server.js"></script> -->
-    <!-- <script src="/js/shop_cart/cart.js"></script> -->
-    <script src="/js/shop_cart/owl.js"></script>
-    <script src="/js/shop_cart/bootstrap.js"></script>
-  </body>
+
+
+      // $("#total_count").
+    })
+
+
+
+
+    // 刪除按鈕
+    $('.del').click(function (x) {
+      if (confirm('確定刪除此商品')) {
+        let all_id = {};
+        all_id.allId = $(this).attr("data-allId");
+        console.log(all_id);
+
+
+
+
+        $(this).parent().parent().remove();
+        $.ajax({
+          url: "/home/shop_cart/del",
+          type: "POST",
+          data: all_id,
+
+          success: function (res) {
+            console.log("已刪除");
+            //更新總數量
+            var total_count = 0;
+            $("#css_tbody .product").each(function (idx, ele) {
+              total_count += parseInt($(ele).find('#number').val());
+            });
+            $("#total_count").text(total_count.toString());
+
+            //更新總小計
+            var total_price = 0;
+            $("#css_tbody .product").each(function (idx, ele) {
+              total_price += parseInt($(ele).find(".to_price").text());
+            });
+            $("#total_price").text(total_price.toString());
+
+
+
+            //更新運費
+            var fare = 1000;
+
+            if (total_price >= fare) {
+              $("#fare").html("0");
+              $("#canFare").html("<p>免費標準運送。</p>");
+            } else {
+              var diff = 0;
+              diff = fare - total_price;
+              $("#fare").html("60");
+
+              $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
+            }
+
+            //更新總額
+            var P_fare = parseInt($("#fare").html());
+            var tototoPrice = 0;
+            tototoPrice = P_fare + total_price;
+            $("#tototoPrice").html(tototoPrice.toString());
+          },
+          error: function () {
+            alert("系統錯誤");
+          }
+        })
+      }
+
+    })
+
+  </script>
+
+  <script src="/js/shop_cart/owl.carousel.js"></script>
+  <!-- <script src="/js/shop_cart/server.js"></script> -->
+  <!-- <script src="/js/shop_cart/cart.js"></script> -->
+  <script src="/js/shop_cart/owl.js"></script>
+  <script src="/js/shop_cart/bootstrap.js"></script>
+</body>
+
 </html>

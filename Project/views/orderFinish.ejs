@@ -108,27 +108,27 @@
                     <p>
                       <b>總計商品件數:</b>
                       <span class="float-right"
-                        ><span id="total_count">0</span> 件</span
+                        ><span id="total_count"><%- cartCount %></span> 件</span
                       >
                     </p>
                     <p>
                       <b>小計:</b
                       ><span class="float-right"
-                        >NT$<span id="total_price">0</span></span
+                        >NT$<span id="total_price"><%- total %></span></span
                       >
                     </p>
                     <p>
                       <b>運費:</b
-                      ><span class="float-right">NT$<span>0</span></span>
+                      ><span class="float-right">NT$<span id="fare" class="fare">0</span></span>
                     </p>
                   </div>
-                  <div class="py-3">
+                  <div class="py-3" class="canFare" id="canFare">
                     只差NT$ <span>0</span>，即可享有免費標準運送。
                   </div>
                   <div class="pt-2 mb-4">
                     <p>
                       <b>總額:</b
-                      ><span class="float-right">NT$<span>0</span></span>
+                      ><span class="float-right">NT$<span id="tototoPrice">0</span></span>
                     </p>
                   </div>
                 </div>
@@ -142,6 +142,31 @@
     <footer class="footer"><%- include("footer.ejs") %></footer>
     <script>
       $(document).ready(function () {
+ //更新運費
+ var fare = 1000;
+       var total_price = parseInt($("#total_price").text()) 
+
+if (total_price >= fare) {
+  $("#fare").html("0");
+  $("#canFare").html("<p>免費標準運送。</p>");
+} else {
+  var diff = 0;
+  diff = fare - total_price;
+  $("#fare").html("60");
+
+  $("#canFare ").html(`只差NT$ <span>${diff.toString()}</span>，即可享有免費標準運送。`);
+}
+
+//更新總額
+var P_fare = parseInt($("#fare").html());
+var tototoPrice = 0;
+tototoPrice = P_fare + total_price;
+$("#tototoPrice").html(tototoPrice.toString());
+
+
+
+
+
         var url = location.href;
          if(url.indexOf("?") != -1){
           var arr1 = url.split("?");
@@ -153,7 +178,7 @@
           let o_address =decodeURI(arr2[2].split("=")[1]) ;
           let o_phone = arr2[3].split("=")[1];
           let o_email =arr2[4].split("=")[1].replace("%40","@") ;
-          let o_List = arr2[10].split("=")[1];
+          let o_List =decodeURI(arr2[10].split("=")[1]) ;
 
           $("#newOrder").html(o_List);
           $("#name").html(o_name);

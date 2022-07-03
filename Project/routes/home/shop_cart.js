@@ -165,14 +165,17 @@ router.post('/del', function (req, res) {
       console.log('err');
     }
   }
-  console.log('目前購物車清單 : ');
-  console.log(cart);
+  // console.log('目前購物車清單 : ');
+  // console.log(cart);
   res.redirect('back');
 });
 
 //-------------------------------------------
 
-router.get('/orderCheck', function (rqs, res) {
+router.get('/orderCheck', function (req, res) {
+  var cart = req.session.cart;
+  var cartCount = req.session.cartCount;
+  var total = req.session.total;
   db.exec(
     'SELECT * FROM `orders` order by order_id DESC limit 1',
     [],
@@ -184,7 +187,13 @@ router.get('/orderCheck', function (rqs, res) {
         oid = result[0].order_id;
       }
       // console.log(result[0]);
-      res.render('orderCheck', { title: '訂單確認', o_id: oid });
+      res.render('orderCheck', {
+        title: '訂單確認',
+        o_id: oid,
+        cart: cart,
+        cartCount: cartCount,
+        total: total,
+      });
     }
   );
 });
@@ -192,7 +201,7 @@ router.post('/orderCheck/add', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
   var orderLise = req.body;
-  // console.log(orderLise);
+  console.log(orderLise);
   // console.log(cart);
   // console.log(total);
 
@@ -210,13 +219,14 @@ router.post('/orderCheck/add', function (req, res) {
     console.log('新增一筆訂單到orders');
   });
   cart.forEach(function (item, idx) {
+    var to_price = parseInt(item.price) * parseInt(item.quantity).toString();
+    console.log(orderLise);
     var sql_order_item =
-      'INSERT INTO order_items (order_id,order_list,product_id,UnitPrice,Quantity,Discount,user_id 	) VALUES(?,?,?,?,?,?,?); ';
+      'INSERT INTO order_items (order_list,product_id,UnitPrice,Quantity,Discount,user_id ) VALUES(?,?,?,?,?,?); ';
     var data_order_item = [
-      '',
       orderLise.newOrderList,
-      '',
-      item.price,
+      item.all_id,
+      to_price,
       item.quantity,
       '',
       orderLise.email,
@@ -231,12 +241,18 @@ router.post('/orderCheck/add', function (req, res) {
 });
 router.get('/orderFinish', function (req, res) {
   var cart = req.session.cart;
+  var cartCount = req.session.cartCount;
   var total = req.session.total;
   var orderLise = req.body;
   // console.log(cart);
   // console.log(total);
   // console.log(orderLise);
-  res.render('orderFinish', { title: '訂單完成', cart: cart, total: total });
+  res.render('orderFinish', {
+    title: '訂單確認',
+    cart: cart,
+    cartCount: cartCount,
+    total: total,
+  });
 });
 
 module.exports = router;
