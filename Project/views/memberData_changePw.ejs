@@ -80,17 +80,22 @@
                 <%- include("template/loginbar") %>
         
                 <!-- 左邊選單列 -->
-                <%- include("template/LeftNavBar") %>
+                <div class="row mt-4">
+                  <div class="col-12 col-lg-2 text-center mb-4">
+                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData" class="nav-link text-dark font-weight-bold memberData d-inline d-lg-block">個人資料</a></p>
+                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline" ><a href="/home/member/orderList" class="nav-link text-dark d-inline d-lg-block">訂單&退貨</a></p>
+                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite" class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
+                  </div> 
                     
                     <!-- 右邊資訊欄 -->
                     <% if(memberprofile) { %> 
-                    <div class="col-10 row-box mb-5">
+                      <div class="col-12 col-lg-10 row-box p-3">
                         <div class="row">
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h2>個人資料</h2></a>
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 changepw"><h2>變更密碼</h2></a>
+                            <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h4>個人資料</h4></a>
+                            <a href="/home/member/memberData" class="col-6 text-center p-2 changepw"><h4>變更密碼</h4></a>
                          </div>
                         
-                        <h3 class="p-2 mt-4 myprofile">修改密碼：</h3>
+                        <p class="p-2 mt-4 myprofile" style="font-weight:700">修改密碼：</p>
 
                          <form action="/home/member/memberData_changePw" method="POST" class="row p-3">
                             <div class="row offset-1 col-11 ">
@@ -138,7 +143,7 @@
                              </div>
                          </form>
                         <% } else { %>
-                        <div class="alert alert-warning col-10 text-center align-self-center" role="alert">請先登入</div>
+                          <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
                         <%   } %> 
                     </div>  <!-- col-10 -->
                 </div>  <!-- row --> 

@@ -19,6 +19,7 @@ app.use((req, res, next) => {
   // 將 moment 和 shortDateFormat 放到 locals 全域環境中
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
+  res.locals.cartCount = req.session.cartCount;
   next();
 });
 

@@ -30,8 +30,6 @@ router.get('/myFavourite', function (req, res) {
   var url = req.url;
   res.render('myFavourite', { title: '會員資料｜我的最愛', url });
 });
-router.get('/test3', function (req, res) {
-  res.render('test3', { title: '會員資料｜我的最愛' });
-});
+
 
 module.exports = router;

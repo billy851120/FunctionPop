@@ -30,18 +30,18 @@
       <%- include("template/loginbar") %>
 
          <!-- 左邊選單列 -->
-        <div class="row pb-3 mt-5">
-            <div class="col-2">
-                <p><a href="/home/member/memberData" class="nav-link text-dark memberData">個人資料</a></p>
-                <p><a href="/home/member/orderList" class="nav-link text-dark font-weight-bold orderList">訂單&退貨</a></p>
-                <p><a href="/home/member/myFavourite" class="nav-link text-dark myFavourite">我的最愛</a></p>
+         <div class="row mt-4">
+            <div class="col-12 col-lg-2 text-center mb-4 ">
+                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData" class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
+                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline" ><a href="/home/member/orderList" class="nav-link text-dark font-weight-bold  d-inline d-lg-block">訂單&退貨</a></p>
+                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite" class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
             </div> 
 
             <!-- 右邊資訊欄 -->
             <% if(memberprofile) { %> 
-            <div class="col-10 row-box ">
+                <div class="col-12 col-lg-10 row-box p-3">
                     <div class="row">
-                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1"><h2>訂單&退貨紀錄</h2></a>
+                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1"><h4>訂單&退貨紀錄</h4></a>
                      </div>
          
 
@@ -78,7 +78,8 @@
                         </div>
                 </div>
                 <% } else { %>
-                    <div class="alert alert-warning col-10 text-center align-self-center" role="alert">請先登入</div>
+                    <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
                     <%   } %> 
                 
             </div>  <!-- col-10 -->
@@ -89,6 +90,42 @@
 
     <!-- footer -->
         <%- include("footer.ejs") %>
+        <script>
+
+            var xx =[{
+                price:1000
+            },
+            {
+                 price:20
+             },
+            {   price:30
+                },
+            {price:50}];
+
+            // xx.forEach(x=> {return x.price});
+            // var yy= xx.sort(function (a, b) {
+            //         return a.price - b.price;
+            // });
+            // console.log(yy);
+            // aa.push(x.price)
+            var aa=[];
+            xx.forEach( x => {aa.push(x.price);
+            console.log(aa)});
+
+            var yy= aa.sort(function (a, b) {
+                    return a - b;
+            });
+            console.log(yy);
+
+// var numbers = [4, 2, 5, 1,,1000, 3];
+// numbers.sort(function(a, b) {
+//   return a - b;
+// });
+// console.log(numbers);
+
+// [1, 2, 3, 4, 5]
+        </script>
+
 
 </body>
 
