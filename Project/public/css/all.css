@@ -12340,9 +12340,19 @@ figcaption {
 }
 
 .payCh {
-  border: 1px solid #000;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+          box-shadow: 1px 1px 3px #ccc;
   padding: 8px 7px;
   border-radius: 5px;
+}
+
+.checkBg {
+  background-color: #EEEEEE;
+}
+
+.payCh:hover {
+  -webkit-box-shadow: 2px 3px 5px #aaa;
+          box-shadow: 2px 3px 5px #aaa;
 }
 
 .payCh + .payCh {

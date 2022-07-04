@@ -164,11 +164,12 @@
                       <div>
                         <p><span><img src="/img/shop_cart/check.png" alt=""></span> 選擇付款方式</p>
                       </div>
-                      <div><span class="payCh"><input type="radio" class="cart_cho" name="cart_cho" value="信用卡/簽帳金融卡">
-                          信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></span><span class="payCh"><input
-                            type="radio" class="cart_cho" name="cart_cho" value="貨到付款">貨到付款</span></div>
+                      <div><label class="payCh "><input type="radio" class="cart_cho" name="cart_cho" value="信用卡/簽帳金融卡">
+                          信用卡/簽帳金融卡 <img src="/img/shop_cart/cart.png" alt=""></label><label class="payCh"><input
+                            type="radio" class="cart_cho" name="cart_cho" value="貨到付款">貨到付款</label>
+                        </div>
                       <div id="payCh">
-                        <div class="d-flex">
+                         <div class="d-flex">
                         <div class="mr-3 cars"><img src="/img/shop_cart/mas.png"
                             style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
                         </div>
@@ -197,6 +198,7 @@
                           style="width: 58px; text-align: center; margin-left: 10px;"
                           placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
                       </div>
+                        
                       </div>
                       <div class="mt-3 mb-5">
                         <label for="agree">
@@ -215,7 +217,7 @@
 
                 </div>
               </div>
-              <div class="col-3" style="padding: 0">
+              <div class="col-3" style=" padding: 0">
                 <div class="div cart_Order">
                   <div style="text-align: center">
                     <p>訂單確認</p>
@@ -414,8 +416,78 @@
                 return num;
               };
               $("input[name='cart_cho']").on('click',function(){
-                console.log($("input[name='cart_cho']").val());
+                $("input[name='cart_cho']").each(function(idx,ele){
+                  $(ele).parent().removeClass("checkBg");
+                });
+                if($(this).val() == "信用卡/簽帳金融卡"){
+                  $(this).parent().addClass('checkBg');
+                  $("#payCh").html(`
+                  <div class="d-flex">
+                        <div class="mr-3 cars"><img src="/img/shop_cart/mas.png"
+                            style="width: 100%; height: 101%;  border-radius: 5px;" alt="">
+                        </div>
+                        <div class="mr-3 cars"><img src="/img/shop_cart/visa.png"
+                            style="width: 100%; height: 100%; border: 1px solid #000; border-radius: 5px; " alt="">
+                        </div>
+                        <div class="cars"><img src="/img/shop_cart/paypal.png"
+                            style="width: 100%; height: 100%; border: 1px solid #000;  border-radius: 5px;" alt="">
+                        </div>
+                      </div>
+                      <div>
+                        <input type="text" style="width: 191px;" name="cart_num" placeholder="信用卡號碼*">
+                      </div>
+                      <div>
+                        <span>有效日期* : </span><select name="cart_date" id="">
+                          <option>月</option>
+                          <% for(let i=1;i <=12;i++){ %>
+                            <option value="<%- i %>">
+                              <%- i %>
+                            </option>
+                            <% } %>
+                        </select> / <select name="cart_date" id="">
+                          <option>日</option>
+
+                        </select> <input class="fpop_inp" type="text" name="cart_CVN"
+                          style="width: 58px; text-align: center; margin-left: 10px;"
+                          placeholder="CVN *"><small>此代碼為印於信用卡正面或背面的三位或四位數字。</small>
+                      </div>
+                  `);
+                }else if($(this).val() == "貨到付款"){
+                  $(this).parent().addClass('checkBg');
+                  $("#payCh").html(`
+                        <label class="payCh"><input class="cart_cho"  type="radio" name="getPay" value="超商_全家取貨"><img style="margin-left: 5px; margin-right: 4px; transform: translateY(-2px); width: 20px; height:20px" src="/img/shop_cart/family.png" alt="">超商 - 全家取貨</label>
+                        <label class="payCh"><input class="cart_cho" type="radio" name="getPay" value="超商_7-11取貨"><img style="margin-left: 5px; margin-right: 4px; transform: translateY(-2px); width: 20px; height:20px" src="/img/shop_cart/711.png" alt="">超商 - 7-11取貨</label>
+                        <label class="payCh"><input class="cart_cho" type="radio" name="getPay" value="宅配_宅急便(黑貓)"><img style="margin-left: 5px; margin-right: 4px; transform: translateY(-2px); width: 20px; height:20px" src="/img/shop_cart/cat.png" alt="">宅配 - 宅急便(黑貓)</label>
+                  `);
+                  console.log($("input[name='getPay']"));
+
+                }
               });
+              $("input[value='貨到付款']").on('click',function(){
+               
+                 $("input[name='getPay']").on('click',function(){
+                    $("input[name='getPay']").each(function(idx,ele){
+                  $(ele).parent().removeClass("checkBg");
+                });
+                  $(this).parent().addClass('checkBg');
+
+              });
+              });
+              
+                  
+             
+                  let date = new Date();
+                  let year = date.getFullYear().toString().substr(2, 3);
+                  let month = date.getMonth() + 1;
+                  let Z_month = addZero(month);
+                  let day = date.getDate();
+                  let Z_day = addZero(day);
+                  let now_orderId = $('#o_id').text().replace(/\s*/g, "");
+                  let Z_orderId = addZero2(now_orderId);
+
+
+                  let orderList = year + Z_month + Z_day + Z_orderId;
+                  console.log(orderList);
 
               $('#cart-submit').on('click', function () {
                 if (!checkInputInfo()) {
@@ -435,7 +507,9 @@
                   let now_orderId = $('#o_id').text().replace(/\s*/g, "");
                   let Z_orderId = addZero2(now_orderId);
 
+
                   let orderList = year + Z_month + Z_day + Z_orderId;
+                  console.log(orderList);
                   $("#newOrderList").prop("value", orderList);
 
                   var data = $('#orderList').serializeArray();

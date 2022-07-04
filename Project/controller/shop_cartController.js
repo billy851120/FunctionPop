@@ -132,8 +132,8 @@ var shop_cartController = {
         let oid = 0;
         if (!result[0]) {
           oid = 1;
-        } else {
-          oid = result[0].order_id;
+        } else{
+          oid = result[0].order_id + 1;
         }
         // console.log(result[0]);
         res.render('orderCheck', {
