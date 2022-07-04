@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- title %></title>
     <link rel="stylesheet" href="/css/all.css">
-    <script src="/js/member/jquery.min.js"></script>
-    <script src="/js/member/popper.min.js"></script>
-
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
     <style>
 
 
@@ -23,12 +25,7 @@
 <div class="container">
     <%- include("navbar.ejs") %>
         <!-- 左邊選單列 -->
-        <div class="row pb-3 mt-5">
-            <div class="col-2">
-                <p><a href="#" class="nav-link text-dark">個人資料</a></p>
-                <p><a href="" class="nav-link font-weight-bold text-dark">訂單&退貨</a></p>
-                <p><a href="" class="nav-link text-dark">我的最愛</a></p>
-            </div>
+        <%- include("template/LeftNavBar") %>
             <!-- 右邊資訊欄 -->
             <div class="col-10">
                 <p class="text-center">訂單資訊</p>

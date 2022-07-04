@@ -7,57 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- title %></title>
     <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/js/member/member.css">
     <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
     <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
     <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
-   
-   <style>
-         .row-box{
-            background-color: rgb(249, 249, 249);
-            border-radius: 30px;
-            box-shadow: 12px 12px 22px rgb(225, 225, 225);
-        }
-        .personalfile{
-            /* background-color: black; */
-            color:black;
-            border-bottom:5px solid #FFE200;
-            border-radius: 4px;
-        }
-        .personalfile:hover{
-            text-decoration: none;
-            color: black;
-        }
-        .changepw{
-            color: grey;
-        }
-        .changepw:hover{
-            text-decoration: none;
-            color: black;
-        }
+   <!-- <script src="/js/member/LeftNavBar.js"></script> -->
 
-        form div{
-            /* text-align-last: right; */
-        }
-        .myprofile{
-            border-left: 5px solid black;
-        }
-        .btn_save{
-            height: 40px;
-            width: 20%;
-            border: none;
-            outline: none;
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-        }
-        .btn_save:hover{
-            background-color: #FFE200;
-            color: black;
-            border: 1px solid;
-            border: none;
-        }
+
+   <style>
        .btn_cancel{
             height: 40px;
             width: 20%;
@@ -73,9 +32,7 @@
             border: 1px solid;
             border: none;
         }
-.cc{
-    border:1px solid red
-}
+
     </style>
 </head>
  
@@ -83,30 +40,30 @@
         <!-- content -->
                 <%- include("navbar.ejs") %>
 
-            <div class="container cc">
+            <div class="container">
                 
                 <%- include("template/loginbar") %>
        
                 <!-- 左邊選單列 -->
                 <div class="row pb-3 mt-5">
                     <div class="col-2">
-                        <p><a href="/home/member/memberData" class="nav-link font-weight-bold  text-dark">個人資料</a></p>
-                        <p><a href="" class="nav-link text-dark">訂單&退貨</a></p>
-                        <p><a href="" class="nav-link text-dark">我的最愛</a></p>
-                     </div>
-                    
+                        <p><a href="/home/member/memberData" class="nav-link text-dark font-weight-bold memberData">個人資料</a></p>
+                        <p><a href="/home/member/orderList" class="nav-link text-dark orderList">訂單&退貨</a></p>
+                        <p><a href="/home/member/myFavourite" class="nav-link text-dark myFavourite">我的最愛</a></p>
+                    </div> 
+         
                     <!-- 右邊資訊欄 -->
                     <% if(memberprofile) { %> 
                     <div class="col-10 row-box">
                         <div class="row">
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h2>個人資料</h2></a>
-                            <a href="/home/member/memberData_changePw" class="col-6 text-center p-2 changepw"><h2>變更密碼</h2></a>
+                            <a href="/home/member/memberData" class="col-6 text-center p-2 title_1"><h2>個人資料</h2></a>
+                            <a href="/home/member/memberData_changePw" class="col-6 text-center p-2 title_2"><h2>變更密碼</h2></a>
                          </div>
                         
-                        <h3 class="p-2 mt-4 myprofile">我的資料：</h3>
+                        <h3 class="p-2 mt-4 title_3">我的資料：</h3>
 
                         <form action="/home/member/memberData" method="POST" class="row p-3">
-                            <div class="col-2 my-3 text-right ">姓名</div><div class="col-10 my-3 text-left"><%- memberprofile.cName  %></div>
+                            <div class="col-2 my-3 text-right ">姓名</div><div class="col-10 my-3  aa "><%- memberprofile.cName  %></div>
                             <div class="col-2 my-3 text-right ">生日</div><div class="col-10 my-3 text-left"><%- memberprofile.cBirth  %></div>
                             <div class="col-2 my-3 text-right ">性別</div><div class="col-10 my-3 text-left"><%- memberprofile.cgender  %></div>
                             <div class="col-2 my-3 text-right ">聯絡電話</div><div class="col-10 my-3 text-left"><input type="text" id="memberPhone" name="cPhone" class="form-control form-control-sm col-7" value="<%- memberprofile.cPhone%>"></div>
@@ -119,10 +76,15 @@
                                        $('#memberPhone').prop("value","<%-memberprofile.cPhone %>");
                                        $('#memberAddr').prop("value", "<%- memberprofile.cAddr %>");
                                                                      }
-                                 </script>
-                            <!-- <div class="col-6 my-3 text-left"> <button class="btn_save" type="submit">儲存</button></div> -->
 
-                            <div class="col-6 my-3 text-left"> <button type="button" class="btn_save" data-toggle="modal" data-target="#staticBackdrop">儲存</button></div>
+                                    //   var elm =document.getElementsByClassName('aa');
+                                    //    console.log(elm);
+                                    //    elm[0].className += 'font-weight-bold';
+                                        
+                                 </script>
+                            <!-- <div class="col-6 my-3 text-left"> <button class="btn_GO" type="submit">儲存</button></div> -->
+
+                            <div class="col-6 my-3 text-left"> <button type="button" class="btn_GO" data-toggle="modal" data-target="#staticBackdrop">儲存</button></div>
               
                              <!-- Modal -->
                              
@@ -140,7 +102,7 @@
                                    </div>
                                    <div class="modal-footer">
                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                     <button type="submit" class="btn_save">確定</button>
+                                     <button type="submit" class="btn_GO">確定</button>
                                    </div>
                                  </div>
                                </div>
@@ -156,11 +118,7 @@
             </div>  <!-- container -->
 
          <!-- footer -->
-        
             <%- include("footer.ejs") %>
-
-         
-
 </body>
 
 </html>

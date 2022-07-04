@@ -1,0 +1,46 @@
+.row-box {
+    background-color: rgb(249, 249, 249);
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px rgb(225, 225, 225);
+}
+
+.title_1 {
+    /* background-color: black; */
+    color: black;
+    border-bottom: 5px solid #FFE200;
+    border-radius: 4px;
+}
+
+.title_1:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.title_2 {
+    color: grey;
+}
+
+.title_2:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.title_3 {
+    border-left: 5px solid black;
+}
+
+.btn_GO {
+    height: 40px;
+    width: 20%;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn_GO:hover {
+    background-color: #FFE200;
+    color: black;
+    text-decoration:none;
+}

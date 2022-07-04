@@ -24,11 +24,14 @@ app.use((req, res, next) => {
 
 
 
-
+//      前後台路徑
 //前台模組
 var home = require('./routes/home.js');
 // 後台模組
 var admin = require('./routes/admin.js');
+//      前後台路徑
+
+
 // Web伺服器的靜態檔案置於 public 資料夾
 app.use(express.static('public'));
 
