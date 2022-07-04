@@ -120,6 +120,10 @@ router.post('/member/update', function (rqs, res) {
   db.exec(sql, data, function (results, fields) {
     console.log("sql")
     console.log(sql)
+    console.log("results")
+    console.log(results)
+    console.log("results.affectedRows")
+    console.log(results.affectedRows)
     if (results.affectedRows) {
       res.end(
         JSON.stringify(new Success('update success'))
@@ -149,144 +153,6 @@ function UPDATE(cName,  cgender, cAccount, cAddr,id) {
 
 
 //------------製作會員分頁---------------
-
-
-//------------製作分頁---------------
-
-router.get('/stockMgat_all', function (rqs, res) {
-  res.render('admin_stockMgat_all');
-  res.redirect('/admin/goods/stockMgat_all/1');
-});
-router.get('/stockMgat_all/:page([0-9]+)', function (rqs, res) {
-
-  var page = rqs.params.page
-  //把<=0的id強制改成1
-  if (page <= 0) {
-    res.redirect('/stockMgat_all')
-    return
-  }
-  //每頁資料數
-  var nums_per_page = 10
-  //定義資料偏移量
-  var offset = (page - 1) * nums_per_page
-
-  db.exec(`SELECT * FROM inventory LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
-    db.exec(`SELECT COUNT(*) AS COUNT FROM inventory`, [], function (nums, fields) {
-      var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
-
-      //避免請求超過最大頁數
-      if (page > last_page) {
-        res.redirect('/admin/goods/stockMgat_all/' + last_page)
-        return
-      }
-
-      res.render('admin_stockMgat_all', {
-        data: data,
-        curr_page: page,
-        //本頁資料數量
-        total_nums: nums[0].COUNT,
-        //總數除以每頁筆數，再無條件取整數
-        last_page: last_page
-      })
-    })
-  })
-})
-router.get('/stockMgat_all/detail/:id([0-9]+)', function (rqs, res) {
-  var sql = `SELECT * FROM inventory WHERE id = ?;`
-  var data = [rqs.params.id]
-  db.exec(sql, data, function (results, fields) {
-    if (results[0]) {
-      res.end(
-        JSON.stringify(new Success(results[0]))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('no result'))
-      )
-    }
-  })
-})
-
-router.get('/stockMgat_all/add', function (rqs, res) {
-  res.render('add')
-})
-
-router.post('/stockMgat_all/insert', function (rqs, res) {
-  var body = rqs.body
-  var sql = `INSERT INTO inventory(name, phone, address, adult_mask, child_mask) VALUES(?,?,?,?,?);`
-  var data = [body.name, body.phone, body.address, parseInt(body.adult_mask), parseInt(body.child_mask)]
-  db.exec(sql, data, function (results, fields) {
-    if (results.insertId) {
-      res.end(
-        JSON.stringify(new Success('insert success'))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('insert failed'))
-      )
-    }
-  })
-})
-
-router.post('/stockMgat_all/update', function (rqs, res) {
-  var body = rqs.body
-  var sql = `UPDATE inventory SET name = ?, phone = ?, address = ?, adult_mask = ?, child_mask = ? WHERE id = ?`;
-  var data = [body.name, body.phone, body.address, parseInt(body.adult_mask), parseInt(body.child_mask), parseInt(body.id)]
-  db.exec(sql, data, function (results, fields) {
-    if (results.affectedRows) {
-      res.end(
-        JSON.stringify(new Success('update success'))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('update failed'))
-      )
-    }
-  })
-})
-
-router.post('/stockMgat_all/delete', function (rqs, res) {
-  var body = rqs.body
-  var sql = `DELETE FROM inventory WHERE id = ?;`
-  var data = [parseInt(body.id)]
-  db.exec(sql, data, function (results, fields) {
-    //使用affectedRows，判斷是否有被刪除
-    if (results.affectedRows) {
-      res.end(
-        JSON.stringify(new Success('delete success'))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('delete failed'))
-      )
-    }
-  })
-})
-function UPDATE(name, phone, address, adult_mask, child_mask, id) {
-  const sql = `UPDATE inventory SET name = ?, phone = ?, address = ?, adult_mask = ?, child_mask = ? WHERE id = ?`;
-  const data = [name, phone, address, adult_mask, child_mask, id];
-  db.exec(sql, data, function (results, fields) {
-    if (results.affectedRows) {
-      console.log(JSON.stringify(new Success('update success')));
-    } else {
-      console.log(JSON.stringify(new Error('update failed')));
-    }
-  });
-}
-
-// UPDATE('更改後的診所', '(02)2222-2222', '台北市', 100, 1000, 36);
-
-function DELETE(id) {
-  const sql = `DELETE FROM inventory WHERE id = ?;`;
-  const data = [id];
-  db.exec(sql, data, function (results, fields) {
-    if (results.affectedRows) {
-      console.log(JSON.stringify(new Success('delete success')));
-    } else {
-      console.log(JSON.stringify(new Error('delete failed')));
-    }
-  });
-}
 
 class Success {
   constructor(data, message) {
