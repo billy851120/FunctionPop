@@ -22,7 +22,9 @@
 
   <body>
     <div class="wrapper">
-      <%- include("navbar.ejs") %>
+      <%- include("navbar.ejs") %> <%if(memberprofile){%>
+      <span id="member" style="display: none"><%- memberprofile.cName %></span>
+      <% } %>
       <table>
         <thead>
           <th colspan=""></th>
@@ -30,6 +32,7 @@
       </table>
       <!-- outline_class  oib oig oi  oir-->
       <div class="container">
+        <%- include("template/loginbar") %>
         <div class="cart_content">
           <div class="row content_text">
             <div class="col-9" style="padding: 0">
@@ -495,7 +498,25 @@
         });
         $("#sub").click(function () {
           if ($("#css_tbody ").has(".product").length ? true : false) {
-            return true;
+            if ($("#member").length ? true : false) {
+              // $.ajax({
+              //   url:"/home/shop_cart/orderCheck",
+              //   type:"GET",
+              //   success:function(res){
+              //     console.log("傳送成功");
+              //   },
+              //   error:function(){
+              //     console.log("傳送失敗")
+              //   }
+              // });
+              $("#buy").prop("action", "/home/shop_cart/orderCheck");
+              alert("已登入");
+              return true;
+            } else {
+              $("#buy").prop("action", "/home/member/login");
+              alert("請先登入");
+              return true;
+            }
           } else {
             alert("目前沒有任何商品");
             return false;

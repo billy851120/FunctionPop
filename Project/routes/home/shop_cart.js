@@ -1,5 +1,4 @@
 var express = require('express');
-var fs = require('fs');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var router = express.Router();
@@ -51,6 +50,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
+  console.log(req.locals);
 
   db.exec('SELECT * FROM `products` order by product_id DESC',[],function(result,fields){
     
@@ -204,6 +204,10 @@ router.get('/orderCheck', function (req, res) {
     }
   );
 });
+router.post('/orderCheck',function(req,res){
+});
+
+
 router.post('/orderCheck/add', function (req, res) {
   var cart = req.session.cart;
   var total = req.session.total;
