@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>assd</title>
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <script src="/js/shop_cart/cookie.js"></script>
     <script
       src="https://kit.fontawesome.com/93e1c8f0af.js"
       crossorigin="anonymous"
@@ -305,12 +304,12 @@
           num++;
           var Count = parseInt($(this).siblings("#number").val());
           var to_Count = parseInt(Count + num);
-          var price = parseInt($(this).parent().parent().find(".price").text());
+          var price = parseInt($(this).parent().parent().parent().find(".price").text());
           var to_price = 0;
           to_price = price * to_Count;
           console.log(to_price);
           $(this).siblings("#number").val(to_Count);
-          $(this).parent().parent().find(".to_price").html(to_price.toString());
+          $(this).parent().parent().parent().find(".to_price").html(to_price.toString());
 
           //更新總數量
           var total_count = 0;
@@ -322,9 +321,10 @@
           //更新總小計
           var total_price = 0;
           $("#css_tbody .product").each(function (idx, ele) {
-            total_price += parseInt($(ele).find(".to_price").text());
+            total_price += parseInt($(ele).parent().find(".to_price").text());
           });
-          $("#total_price").text(total_price.toString());
+          console.log(total_price);
+          $("#total_price").html(total_price.toString());
 
           //更新運費
           var fare = 1000;
@@ -372,12 +372,12 @@
           } else {
             Count--;
             var price = parseInt(
-              $(this).parent().parent().find(".price").text()
+              $(this).parent().parent().parent().find(".price").text()
             );
             var to_price = 0;
             to_price = price * Count;
-            console.log(to_price);
             $(this)
+              .parent()
               .parent()
               .parent()
               .find(".to_price")
@@ -389,13 +389,12 @@
             $("#css_tbody .product").each(function (idx, ele) {
               total_count += parseInt($(ele).find("#number").val());
             });
-            console.log(total_count);
             $("#total_count").text(total_count.toString());
 
             //更新總小計
             var total_price = 0;
             $("#css_tbody .product").each(function (idx, ele) {
-              total_price += parseInt($(ele).find(".to_price").text());
+              total_price += parseInt($(ele).parent().find(".to_price").text());
             });
             $("#total_price").text(total_price.toString());
 
@@ -464,7 +463,7 @@
                 //更新總小計
                 var total_price = 0;
                 $("#css_tbody .product").each(function (idx, ele) {
-                  total_price += parseInt($(ele).find(".to_price").text());
+                  total_price += parseInt($(ele).parent().find(".to_price").text());
                 });
                 $("#total_price").text(total_price.toString());
 
@@ -525,8 +524,6 @@
     </script>
 
     <script src="/js/shop_cart/owl.carousel.js"></script>
-    <!-- <script src="/js/shop_cart/server.js"></script> -->
-    <!-- <script src="/js/shop_cart/cart.js"></script> -->
     <script src="/js/shop_cart/owl.js"></script>
     <script src="/js/shop_cart/bootstrap.js"></script>
   </body>
