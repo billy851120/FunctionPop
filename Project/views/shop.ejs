@@ -84,6 +84,19 @@
             opacity: 1;
         }
 
+        .my_product .favo-btn {
+            color: #395D6C;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 0.3s all;
+            background-color: #FFE200;
+        }
+
+        .my_product:hover .favo-btn {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+
         .my_button {
             font-size: 0.8rem;
             font-weight: 900;
@@ -91,17 +104,86 @@
             border: none;
             background-color: #1d1d1d;
             color: aliceblue;
-            padding: 13px 30px;
+            padding: 10px 20px;
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.5s ease;
+            border-radius: 5px;
         }
 
         .my_button:hover {
             background-color: coral;
         }
 
+        .star-progress{
+            margin: 0;
+            padding: 0;
+            height: 25px;
+            background-image: url("/img/product/star2.jpg"); /* 星星的大小大約是15px*/
+            background-repeat: repeat-x; /* 作爲背景的星星圖案水平重複*/
+            width: 100px; /* 進度條的寬度爲5個星星的寬度*/
+        }
 
+        .star-progress-bar{
+            float: left;
+            width: 0; 
+            height: 100%;
+            text-align: center;
+            -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .85);
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .85);
+            -webkit-transition: width .6s ease;
+            -o-transition: width .6s ease;
+            transition: width .6s ease;
+            background-image: url("/img/product/star1.jpg");  /* 被點亮的星星圖案*/
+            background-repeat: repeat-x; /* 水平重複*/
+        }
+
+        .star5 {
+        box-sizing: border-box;
+        }
+
+        .rating {
+        width: 120px;
+        height: 24px;
+        position: relative;
+        background-color: gray;
+        }
+
+        .rating progress.rating-bg {
+        -webkit-appearance: none;
+        -moz-appearence: none;
+        appearance: none;
+        border: none;
+        display: inline-block;
+        height: 24px;
+        width: 100%;
+        color: orange;
+        }
+
+        .rating progress.rating-bg::-webkit-progress-value {
+        background-color: orange;
+        }
+
+        .rating progress.rating-bg::-moz-progress-bar {
+        background-color: orange;
+        }
+
+        .rating svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
+
+        #productOuter {
+            width: 100%;
+            text-align: center;
+        }
+
+        .productInner {
+            display: inline-block;
+        }
 
     </style>
     <!-- <link rel="stylesheet" href="./assets/css/Nice-breadcrumb.css"> -->
@@ -301,10 +383,26 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
+                                <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
                                     <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
                                     <h5><%= item.product_name %></h5>
-                                    <p><%- item.rows %></p>
+                                    <svg style="display:none;" class="star5">
+                                        <defs class="star5 mx-auto d-flex justify-content-center">
+                                          <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
+                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
+                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
+                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
+                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
+                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
+                                          </symbol>
+                                        </defs>
+                                      </svg>
+                                      <div class="rating mx-auto">
+                                      <!--   <div class="rating-bg" style="width: 90%;"></div> -->
+                                        <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
+                                        <svg><use xlink:href="#fivestars"/></svg>
+                                      </div>
+                                      
 
 
                                     <% if(item.product_special_offer){ %>
@@ -316,8 +414,10 @@
                                         <p>$<strong><%= item.product_price %></strong> </p>
 
                                     <% } %>
-
-                                    <button class="my_button buy-btn">Buy Now</button>
+                                    <div id="productOuter">
+                                        <div class="productInner"><button class="my_button favo-btn">收藏</button></div>
+                                        <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="productInner"><button class="my_button buy-btn">購物車</button></div>
+                                    </div>
                                 </div>
 
                                 <% }); %>
@@ -383,14 +483,16 @@
             }
         }
 
+        // Price High To Low
         function option_01() {
-            var item = ""
+            var item = "<% result.forEach(function(item) { %>  <% }); %>
             item.sort(function(a,b) {
                 return a.product_price > b.product_price;
             })
             alert(item);
         }
         
+        // Price Low to High
         function option_02() {
             alert("選到 option_02");
         }

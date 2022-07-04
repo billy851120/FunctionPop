@@ -1,282 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet"  type="text/css" href="/css/all.css" />
-    <script src="/js/index/jquery.min.js"></script>
-    <script src="/js/index/popper.min.js"></script>
-    <script src="/js/index/bootstrap.min.js"></script>
-    <script src="/js/index/html2canvas_min.js"></script>
 
-    <style>
-      .nav_class {
-        padding-left: 16.875%;
-        padding-right: 16.875%;
-        z-index: 5000;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <script src="/js/index/jquery.min.js"></script>
+  <script src="/js/index/popper.min.js"></script>
+  <script src="/js/index/bootstrap.min.js"></script>
+  <script src="/js/index/html2canvas_min.js"></script>
 
-      .logo_where {
-        margin-left: 25%;
-      }
+  <style>
+    .nav_class {
+      padding-left: 16.875%;
+      padding-right: 16.875%;
+      z-index: 5000;
+    }
 
-      .search_input {
-        /* width: 150px; */
-        height: 35px;
-        border-radius: 50px;
-      }
+    .logo_where {
+      margin-left: 25%;
+    }
 
-      .search_button {
-        font-size: 0.9em;
-      }
+    .search_input {
+      /* width: 150px; */
+      height: 35px;
+      border-radius: 50px;
+    }
 
-      .middleboard {
-        overflow: hidden;
-      }
+    .search_button {
+      font-size: 0.9em;
+    }
 
-      .uploadA,
-      .uploadB {
-        border: #363b36 solid 1px;
-        width: 50%;
-        height: 100%;
-        float: left;
-        overflow: hidden;
-      }
-    </style>
-  </head>
+    .middleboard {
+      overflow: hidden;
+    }
 
-  <body>
-    <div class="wrapper">
-      <%- include("navbar.ejs")  %>
+    .uploadA,
+    .uploadB {
+      border: #363b36 solid 1px;
+      width: 50%;
+      height: 100%;
+      float: left;
+      overflow: hidden;
+    }
+  </style>
+</head>
 
+<body>
+  <div>
+    <%- include("navbar.ejs") %>
+    <div class="container">
+      <%- include("./template/loginbar") %>
+    </div>
+    
       <!-- 小連結 -->
       <div style="position: relative; width: 50%; top: 180px; left: 16.875%">
         <a href="" style="left: 16.875%"> <b>首頁</b> </a>|
         <b>我的設計</b>
       </div>
-  
+
       <!-- 客製化T  -->
-      <div
-        style="
+      <div style="
           position: relative;
           width: 66.25%;
           top: 250px;
           left: 16.875%;
           border-bottom: 1px black solid;
           min-height: 700px;
-        "
-      >
+        ">
         <h4 style="text-align: center; margin-bottom: 40px"><b>客製化T恤</b></h4>
-        <span style="font-size: 15px">STEP</span
-        ><b style="font-size: 18px">1. 選擇顏色</b>
-  
+        <span style="font-size: 15px">STEP</span><b style="font-size: 18px">1. 選擇顏色</b>
+
         <!-- 選擇顏色 -->
         <div style="display: inline-block; margin-left: 40px">
-          <div
-            id="blackc"
-            style="
+          <div id="blackc" style="
               background-color: black;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="whitec"
-            style="
+            "></div>
+          <div id="whitec" style="
               margin-left: 9px;
               color: black;
               width: 26px;
               height: 26px;
               border: 1px black solid;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="redc"
-            style="
+            "></div>
+          <div id="redc" style="
               margin-left: 9px;
               background-color: #91414c;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="purplec"
-            style="
+            "></div>
+          <div id="purplec" style="
               margin-left: 9px;
               background-color: #d17dbe;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="yellowc"
-            style="
+            "></div>
+          <div id="yellowc" style="
               margin-left: 9px;
               background-color: #ffd233;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="greenc"
-            style="
+            "></div>
+          <div id="greenc" style="
               margin-left: 9px;
               background-color: #b9b89a;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="bluec"
-            style="
+            "></div>
+          <div id="bluec" style="
               margin-left: 9px;
               background-color: #a9c2c9;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
-          <div
-            id="darkbluec"
-            style="
+            "></div>
+          <div id="darkbluec" style="
               margin-left: 9px;
               background-color: #363b36;
               width: 26px;
               height: 26px;
               display: inline-block;
-            "
-          ></div>
+            "></div>
         </div>
-  
+
         <!-- 中間衣服畫板 -->
-        <div
-          id="capture"
-          class="row middleboard"
-          style="border: black solid 1px; height: 533px; margin-top: 60px"
-        >
-          <div
-            class="col-6 move_place"
-            id="target-container"
-            ondragover="over(event)"
-            ondrop="drop(event)"
-            style="position: absolute; text-align: center; padding: 0; left: 0"
-          >
-            <img
-              ondragover="over(event)"
-              ondrop="drop(event)"
-              id="cloth_front"
-              src="/img/index/Tshirt/black_f.png"
-              alt=""
-              style="z-index: 500; margin-top: 2px"
-            />
+        <div id="capture" class="row middleboard" style="border: black solid 1px; height: 533px; margin-top: 60px">
+          <div class="col-6 move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
+            style="position: absolute; text-align: center; padding: 0; left: 0">
+            <img ondragover="over(event)" ondrop="drop(event)" id="cloth_front" src="/img/index/Tshirt/black_f.png"
+              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -13px;" />
             <!-- /img/index/Tshirt_2 -->
-            <img
-              id="cloth_fronto"
-              src="/img/index/Tshirt_2/black_fo.png"
-              alt=""
-              style="
+            <img id="cloth_fronto" src="/img/index/Tshirt_2/black_fo.png" alt="" style="
                 position: relative;
+                left: -13px;
                 top: -528px;
                 z-index: 1500;
                 pointer-events: none;
                 margin-top: 2px;
-              "
-            />
+              " />
           </div>
-  
-          <div
-            class="col-6 move_place"
-            id="target-container"
-            ondragover="over(event)"
-            ondrop="drop(event)"
-            style="position: absolute; text-align: center; padding: 0; right: 1px"
-          >
-            <img
-              ondragover="over(event)"
-              ondrop="drop(event)"
-              id="cloth_back"
-              src="/img/index/Tshirt/black_b.png"
-              alt=""
-              style="z-index: 500; margin-top: 2px"
-            />
-            <img
-              id="cloth_backo"
-              src="/img/index/Tshirt_2/black_bo.png"
-              alt=""
-              style="
+
+          <div class="col-6 move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
+            style="position: absolute; text-align: center; padding: 0; right: 1px">
+            <img ondragover="over(event)" ondrop="drop(event)" id="cloth_back" src="/img/index/Tshirt/black_b.png"
+              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -8px;" />
+            <img id="cloth_backo" src="/img/index/Tshirt_2/black_bo.png" alt="" style="
                 position: relative;
+                left: -8px;
                 top: -524px;
                 z-index: 1500;
                 pointer-events: none;
                 margin-top: 2px;
-              "
-            />
+              " />
           </div>
         </div>
-  
+
         <!-- STEP2之後 -->
         <div class="row" style="height: 300px; margin-top: 90px; z-index: 2000">
           <div class="col-6" style="text-align: center">
-            <span style="font-size: 15px">STEP</span
-            ><b style="font-size: 18px">2. 上傳圖片</b> <br /><br /><br /><br />
-            <input
-              id="myFile"
-              type="file"
-              style="border: black solid 1px; width: 33%; font-size: 15px"
-            />
+            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">2. 上傳圖片</b> <br /><br /><br /><br />
+            <input id="myFile" type="file" style="border: black solid 1px; width: 33%; font-size: 15px" />
           </div>
-  
+
           <div class="col-6" style="text-align: center">
-            <span style="font-size: 15px">STEP</span
-            ><b style="font-size: 18px">3. 將圖片拖曳至T恤</b>
-            <div
-              style="
+            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">3. 將圖片拖曳至T恤</b>
+            <div style="
                 width: 320px;
                 height: 180px;
                 background-color: #d4d4d4;
                 margin: 20px auto;
                 border-radius: 10px;
-              "
-            >
+              ">
               <div class="uploadA" id="upload_place"></div>
               <div class="uploadB" id="upload_placeii"></div>
             </div>
           </div>
         </div>
-  
+
         <div class="row" style="height: 350px">
           <div class="col-6" style="text-align: center">
-            <span style="font-size: 15px">STEP</span
-            ><b style="font-size: 18px">4. 儲存</b> <br /><br /><br /><br />
-            <a href="#"
-              ><button
-                onclick="divtoimg()"
-                style="background-color: white; border-radius: 5px"
-              >
+            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">4. 儲存</b> <br /><br /><br /><br />
+            <a href="#"><button onclick="divtoimg()" style="background-color: white; border-radius: 5px">
                 儲存設計
               </button>
             </a>
           </div>
-  
+
           <div class="col-6" style="text-align: center">
-            <span style="font-size: 15px">STEP</span
-            ><b style="font-size: 18px">5. 訂購數量&尺寸</b>
-            <table
-              style="
+            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">5. 訂購數量&尺寸</b>
+            <table style="
                 margin: 0 auto;
                 width: 350px;
                 height: 240px;
                 margin-top: 50px;
-              "
-            >
+              ">
               <tr>
                 <th style="width: 100px">尺寸</th>
                 <th style="width: 100px">數量</th>
@@ -320,398 +247,382 @@
           </div>
         </div>
       </div>
-  
+
       <!-- 小介紹 -->
       <div style="position: relative; width: 28%; top: 300px; left: 16.875%">
         <b>
           United Athle 頂級柔棉T恤 <br />
           <br />
-  
+
           日本潮流品牌，精選頂級柔綿 <br />
-  
+
           5.6盎司加上多色選擇 <br />
-  
+
           人手必備一件的人氣單品 <br />
           <br />
           <br />
         </b>
-  
-        <span style="color: red"
-          ><b
-            >*此款式屬於中性休閒版型，請參考尺寸表依個人穿衣習慣斟酌選購。</b
-          ></span
-        >
+
+        <span style="color: red"><b>*此款式屬於中性休閒版型，請參考尺寸表依個人穿衣習慣斟酌選購。</b></span>
       </div>
-  
+
       <!-- 圖片介紹 -->
-      <div style="text-align: center; position: relative; top: 400px">
-        <img
-          src="/img/index/product_detail.png"
-          alt=""
-          style="width: 550px"
-        />
+      <div style="text-align: center; position: relative; top: 400px; height: 1200px">
+        <img src="/img/index/product_detail.png" alt="" style="width: 550px" />
         <br />
-        <img
-          src="/img/index/product_size.png"
-          alt=""
-          style="width: 450px"
-        />
+        <img src="/img/index/product_size.png" alt="" style="width: 450px" />
         <br />
-        <img
-          src="/img/index/product_more.png"
-          alt=""
-          style="width: 550px"
-        />
+        <img src="/img/index/product_more.png" alt="" style="width: 550px" />
       </div>
-      <div class="push"></div>
-  </div>  
-  <footer class="footer">
-      <%- include("footer.ejs") %>
-  </footer>  
+  </div>
 
-   
-    
-  </body>
+  <%- include("footer.ejs") %>
 
-  <script>
-    var color_choose = function () {
-      console.log(this.id);
-      switch (this.id) {
-        case 'blackc':
-          cloth_front.src = '/img/index/Tshirt/black_f.png';
-          cloth_back.src = '/img/index/Tshirt/black_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/black_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/black_bo.png';
-          cloth_backo.style.top = '-523px';
-          break;
-        case 'whitec':
-          cloth_front.src = '/img/index/Tshirt/white_f.png';
-          cloth_back.src = '/img/index/Tshirt/white_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/white_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/white_bo.png';
-          cloth_backo.style.top = '-527px';
-          break;
-        case 'redc':
-          cloth_front.src = '/img/index/Tshirt/darkred_f.png';
-          cloth_back.src = '/img/index/Tshirt/darkred_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/darkred_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/darkred_bo.png';
-          cloth_backo.style.top = '-529px';
-          break;
-        case 'purplec':
-          cloth_front.src = '/img/index/Tshirt/purple_f.png';
-          cloth_back.src = '/img/index/Tshirt/purple_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/purple_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/purple_bo.png';
-          cloth_backo.style.top = '-528px';
-          break;
-        case 'yellowc':
-          cloth_front.src = '/img/index/Tshirt/yellow_f.png';
-          cloth_back.src = '/img/index/Tshirt/yellow_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/yellow_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/yellow_bo.png';
-          cloth_backo.style.top = '-528px';
-          break;
-        case 'greenc':
-          cloth_front.src = '/img/index/Tshirt/green_f.png';
-          cloth_back.src = '/img/index/Tshirt/green_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/green_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/green_bo.png';
-          cloth_backo.style.top = '-529px';
-          break;
-        case 'bluec':
-          cloth_front.src = '/img/index/Tshirt/blue_f.png';
-          cloth_back.src = '/img/index/Tshirt/blue_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/blue_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/blue_bo.png';
-          cloth_backo.style.top = '-527px';
-          break;
-        case 'darkbluec':
-          cloth_front.src = '/img/index/Tshirt/darkblue_f.png';
-          cloth_back.src = '/img/index/Tshirt/darkblue_b.png';
-          cloth_fronto.src = '/img/index/Tshirt_2/darkblue_fo.png';
-          cloth_backo.src = '/img/index/Tshirt_2/darkblue_bo.png';
-          cloth_backo.style.top = '-529px';
-          break;
+
+
+
+</body>
+
+<script>
+  var color_choose = function () {
+    console.log(this.id);
+    switch (this.id) {
+      case 'blackc':
+        cloth_front.src = '/img/index/Tshirt/black_f.png';
+        cloth_back.src = '/img/index/Tshirt/black_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/black_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/black_bo.png';
+        cloth_backo.style.top = '-523px';
+        break;
+      case 'whitec':
+        cloth_front.src = '/img/index/Tshirt/white_f.png';
+        cloth_back.src = '/img/index/Tshirt/white_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/white_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/white_bo.png';
+        cloth_backo.style.top = '-527px';
+        break;
+      case 'redc':
+        cloth_front.src = '/img/index/Tshirt/darkred_f.png';
+        cloth_back.src = '/img/index/Tshirt/darkred_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/darkred_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/darkred_bo.png';
+        cloth_backo.style.top = '-529px';
+        break;
+      case 'purplec':
+        cloth_front.src = '/img/index/Tshirt/purple_f.png';
+        cloth_back.src = '/img/index/Tshirt/purple_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/purple_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/purple_bo.png';
+        cloth_backo.style.top = '-528px';
+        break;
+      case 'yellowc':
+        cloth_front.src = '/img/index/Tshirt/yellow_f.png';
+        cloth_back.src = '/img/index/Tshirt/yellow_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/yellow_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/yellow_bo.png';
+        cloth_backo.style.top = '-528px';
+        break;
+      case 'greenc':
+        cloth_front.src = '/img/index/Tshirt/green_f.png';
+        cloth_back.src = '/img/index/Tshirt/green_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/green_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/green_bo.png';
+        cloth_backo.style.top = '-529px';
+        break;
+      case 'bluec':
+        cloth_front.src = '/img/index/Tshirt/blue_f.png';
+        cloth_back.src = '/img/index/Tshirt/blue_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/blue_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/blue_bo.png';
+        cloth_backo.style.top = '-527px';
+        break;
+      case 'darkbluec':
+        cloth_front.src = '/img/index/Tshirt/darkblue_f.png';
+        cloth_back.src = '/img/index/Tshirt/darkblue_b.png';
+        cloth_fronto.src = '/img/index/Tshirt_2/darkblue_fo.png';
+        cloth_backo.src = '/img/index/Tshirt_2/darkblue_bo.png';
+        cloth_backo.style.top = '-529px';
+        break;
+    }
+  };
+
+  blackc.onclick = color_choose;
+  whitec.onclick = color_choose;
+  redc.onclick = color_choose;
+  purplec.onclick = color_choose;
+  yellowc.onclick = color_choose;
+  greenc.onclick = color_choose;
+  bluec.onclick = color_choose;
+  darkbluec.onclick = color_choose;
+</script>
+
+<script>
+  var real = true;
+  var imgsrc = '';
+  var src_arr = [];
+  var uploadNum = 0;
+  var fstmovsrc = '';
+  // const myImg = new Image();
+
+  myFile.onchange = function () {
+    const reader = new FileReader();
+    reader.readAsDataURL(myFile.files[0]);
+    // console.log(myFile.files);
+    reader.onload = function () {
+      // console.log(reader.result);
+      // 15. 透過 new Image() 記錄圖片
+      //      * Image.src
+
+      // 20. 將圖片顯示到網頁上
+
+      const aamyImg = new Image(); // document.createElement('img'); // <img>
+      src_arr[0] = reader.result;
+      aamyImg.src = src_arr[0]; // <img src='data....'>
+      aamyImg.id = 'aamyImg';
+      aamyImg.draggable = 'true';
+      aamyImg.style.zIndex = 1000;
+      aamyImg.style.margin = '10px';
+      aamyImg.addEventListener(
+        'dragstart',
+        function () {
+          start(event);
+        },
+        false
+      );
+      // real = false;
+      // var new_img_src = myImg.src;
+
+      const bbmyImgb = new Image(); // document.createElement('img'); // <img>
+      src_arr[1] = reader.result;
+      bbmyImgb.src = src_arr[1]; // <img src='data....'>
+      bbmyImgb.id = 'bbmyImgb';
+      bbmyImgb.draggable = 'true';
+      bbmyImgb.style.margin = '10px';
+      bbmyImgb.addEventListener(
+        'dragstart',
+        function () {
+          start(event);
+        },
+        false
+      );
+      // real = false;
+      // var new_img_src = myImg.src;
+
+      if (uploadNum == 0) {
+        aamyImg.onload = function () {
+          // 　　a. 透過 <img>
+          aamyImg.style.width = '100px';
+          document.getElementById('upload_place').append(aamyImg);
+
+          $('#upload_place img').bind('mousewheel', function () {
+            zoomImg(this);
+            return false;
+          });
+          aamyImg.addEventListener('mousedown', (event) => {
+            console.log(this);
+            fstmovsrc = this.src;
+          });
+
+          uploadNum++;
+        };
+      } else {
+        bbmyImgb.onload = function () {
+          // 　　a. 透過 <img>
+          bbmyImgb.style.width = '100px';
+          document.getElementById('upload_placeii').append(bbmyImgb);
+
+          $('#upload_placeii img').bind('mousewheel', function () {
+            zoomImg(this);
+            return false;
+          });
+          bbmyImgb.addEventListener('mousedown', (event) => {
+            console.log(this);
+            fstmovsrc = this.src;
+          });
+
+          uploadNum++;
+        };
       }
     };
+  };
 
-    blackc.onclick = color_choose;
-    whitec.onclick = color_choose;
-    redc.onclick = color_choose;
-    purplec.onclick = color_choose;
-    yellowc.onclick = color_choose;
-    greenc.onclick = color_choose;
-    bluec.onclick = color_choose;
-    darkbluec.onclick = color_choose;
-  </script>
+  function zoomImg(o) {
+    var zoom = parseInt(o.style.width);
+    // console.log(event.wheelDelta)
+    zoom += event.wheelDelta / 12;
+    if (zoom > 0) o.style.width = zoom + 'px';
+    if (zoom > 500) o.style.width = '500px';
+  }
+</script>
+<script>
+  // 40. ondragover 拖動過程中，允許元素接受 drop
 
-  <script>
-    var real = true;
-    var imgsrc = '';
-    var src_arr = [];
-    var uploadNum = 0;
-    var fstmovsrc = '';
-    // const myImg = new Image();
+  var co = 0;
+  function over(evtobj) {
+    evtobj.preventDefault();
+  }
 
-    myFile.onchange = function () {
-      const reader = new FileReader();
-      reader.readAsDataURL(myFile.files[0]);
-      // console.log(myFile.files);
-      reader.onload = function () {
-        // console.log(reader.result);
-        // 15. 透過 new Image() 記錄圖片
-        //      * Image.src
+  // 50. ondragstart 當元素開始被拖動的時候，紀錄元素id
+  // var moving_src = "";
+  function start(evtobj) {
+    console.log(evtobj);
+    console.log(evtobj.target);
+    // console.log(this);
+    // moving_src = evtobj.target.src;
+    var x = evtobj.offsetX,
+      y = evtobj.offsetY;
 
-        // 20. 將圖片顯示到網頁上
+    evtobj.dataTransfer.setData('text/plain', evtobj.target.id);
+    evtobj.dataTransfer.setData('X', x);
+    evtobj.dataTransfer.setData('Y', y);
+    // evtobj.dataTransfer.setData('src', moving_src);
+  }
 
-        const aamyImg = new Image(); // document.createElement('img'); // <img>
-        src_arr[0] = reader.result;
-        aamyImg.src = src_arr[0]; // <img src='data....'>
-        aamyImg.id = 'aamyImg';
-        aamyImg.draggable = 'true';
-        aamyImg.style.zIndex = 1000;
-        aamyImg.style.margin = '10px';
-        aamyImg.addEventListener(
+  // 60. ondrop 滑鼠放開時，將元素附加到指定位置
+  var drop_count = 0;
+  var temp = '';
+  function drop(evtobj) {
+    drop_count++;
+    // console.log(evtobj);
+    // console.log(evtobj.target);
+    // console.log(evtobj.target.tagName);
+    var x = parseInt(evtobj.dataTransfer.getData('X'));
+    var y = parseInt(evtobj.dataTransfer.getData('Y'));
+    // var nsrc = evtobj.dataTransfer.getData('src');
+
+    if (evtobj.target.tagName != 'ASG') {
+      temp = evtobj.dataTransfer.getData('text/plain');
+      // document.getElementById(temp).src = nsrc;
+      console.log(evtobj.target.id.substr(0, 2) != 'aa');
+      console.log(evtobj.target.id.substr(0, 2) != 'bb');
+      console.log(
+        evtobj.target.id.substr(0, 2) != 'aa' ||
+        evtobj.target.id.substr(0, 2) != 'bb'
+      );
+
+      if (
+        evtobj.target.id.substr(0, 2) != 'aa' &&
+        evtobj.target.id.substr(0, 2) != 'bb'
+      ) {
+        document.getElementById(temp).style.position = 'absolute';
+        document.getElementById(temp).style.left = evtobj.layerX - x + 'px';
+        document.getElementById(temp).style.top = evtobj.layerY - y + 'px';
+        document.getElementById(temp).style.margin = 0;
+        document.getElementById(temp).addEventListener(
           'dragstart',
           function () {
             start(event);
           },
           false
         );
-        // real = false;
-        // var new_img_src = myImg.src;
 
-        const bbmyImgb = new Image(); // document.createElement('img'); // <img>
-        src_arr[1] = reader.result;
-        bbmyImgb.src = src_arr[1]; // <img src='data....'>
-        bbmyImgb.id = 'bbmyImgb';
-        bbmyImgb.draggable = 'true';
-        bbmyImgb.style.margin = '10px';
-        bbmyImgb.addEventListener(
-          'dragstart',
-          function () {
-            start(event);
-          },
-          false
-        );
-        // real = false;
-        // var new_img_src = myImg.src;
+        evtobj.target.parentNode.appendChild(document.getElementById(temp));
+        console.log(evtobj.target);
+        console.log(temp);
 
-        if (uploadNum == 0) {
-          aamyImg.onload = function () {
-            // 　　a. 透過 <img>
-            aamyImg.style.width = '100px';
-            document.getElementById('upload_place').append(aamyImg);
-
-            $('#upload_place img').bind('mousewheel', function () {
-              zoomImg(this);
-              return false;
-            });
-            aamyImg.addEventListener('mousedown', (event) => {
-              console.log(this);
-              fstmovsrc = this.src;
-            });
-
-            uploadNum++;
-          };
+        var tempstr = temp.substr(0, 2);
+        console.log(tempstr);
+        if (tempstr == 'aa') {
+          appendnewimg();
         } else {
-          bbmyImgb.onload = function () {
-            // 　　a. 透過 <img>
-            bbmyImgb.style.width = '100px';
-            document.getElementById('upload_placeii').append(bbmyImgb);
-
-            $('#upload_placeii img').bind('mousewheel', function () {
-              zoomImg(this);
-              return false;
-            });
-            bbmyImgb.addEventListener('mousedown', (event) => {
-              console.log(this);
-              fstmovsrc = this.src;
-            });
-
-            uploadNum++;
-          };
+          appendnewimgb();
         }
-      };
-    };
+        // if(appendnum > 1){
+        //     document.getElementById(`myImgaa${appendnum}`).remove();
+        // }
+        // // 刪除移動後會複製的原生物，只留下一個
+        var ci = upload_place.children;
+        var lis = Array.from(ci);
+        console.log(lis);
 
-    function zoomImg(o) {
-      var zoom = parseInt(o.style.width);
-      // console.log(event.wheelDelta)
-      zoom += event.wheelDelta / 12;
-      if (zoom > 0) o.style.width = zoom + 'px';
-      if (zoom > 500) o.style.width = '500px';
-    }
-  </script>
-  <script>
-    // 40. ondragover 拖動過程中，允許元素接受 drop
-
-    var co = 0;
-    function over(evtobj) {
-      evtobj.preventDefault();
-    }
-
-    // 50. ondragstart 當元素開始被拖動的時候，紀錄元素id
-    // var moving_src = "";
-    function start(evtobj) {
-      console.log(evtobj);
-      console.log(evtobj.target);
-      // console.log(this);
-      // moving_src = evtobj.target.src;
-      var x = evtobj.offsetX,
-        y = evtobj.offsetY;
-
-      evtobj.dataTransfer.setData('text/plain', evtobj.target.id);
-      evtobj.dataTransfer.setData('X', x);
-      evtobj.dataTransfer.setData('Y', y);
-      // evtobj.dataTransfer.setData('src', moving_src);
-    }
-
-    // 60. ondrop 滑鼠放開時，將元素附加到指定位置
-    var drop_count = 0;
-    var temp = '';
-    function drop(evtobj) {
-      drop_count++;
-      // console.log(evtobj);
-      // console.log(evtobj.target);
-      // console.log(evtobj.target.tagName);
-      var x = parseInt(evtobj.dataTransfer.getData('X'));
-      var y = parseInt(evtobj.dataTransfer.getData('Y'));
-      // var nsrc = evtobj.dataTransfer.getData('src');
-
-      if (evtobj.target.tagName != 'ASG') {
-        temp = evtobj.dataTransfer.getData('text/plain');
-        // document.getElementById(temp).src = nsrc;
-        console.log(evtobj.target.id.substr(0, 2) != 'aa');
-        console.log(evtobj.target.id.substr(0, 2) != 'bb');
-        console.log(
-          evtobj.target.id.substr(0, 2) != 'aa' ||
-            evtobj.target.id.substr(0, 2) != 'bb'
-        );
-
-        if (
-          evtobj.target.id.substr(0, 2) != 'aa' &&
-          evtobj.target.id.substr(0, 2) != 'bb'
-        ) {
-          document.getElementById(temp).style.position = 'absolute';
-          document.getElementById(temp).style.left = evtobj.layerX - x + 'px';
-          document.getElementById(temp).style.top = evtobj.layerY - y + 'px';
-          document.getElementById(temp).style.margin = 0;
-          document.getElementById(temp).addEventListener(
-            'dragstart',
-            function () {
-              start(event);
-            },
-            false
-          );
-
-          evtobj.target.parentNode.appendChild(document.getElementById(temp));
-          console.log(evtobj.target);
-          console.log(temp);
-
-          var tempstr = temp.substr(0, 2);
-          console.log(tempstr);
-          if (tempstr == 'aa') {
-            appendnewimg();
-          } else {
-            appendnewimgb();
+        lis.forEach((index, e) => {
+          // console.log(index);
+          if (e > 0) {
+            index.remove();
           }
-          // if(appendnum > 1){
-          //     document.getElementById(`myImgaa${appendnum}`).remove();
-          // }
-          // // 刪除移動後會複製的原生物，只留下一個
-          var ci = upload_place.children;
-          var lis = Array.from(ci);
-          console.log(lis);
+        });
 
-          lis.forEach((index, e) => {
-            // console.log(index);
-            if (e > 0) {
-              index.remove();
-            }
-          });
+        var vi = upload_placeii.children;
+        var lisv = Array.from(vi);
+        console.log(lisv);
 
-          var vi = upload_placeii.children;
-          var lisv = Array.from(vi);
-          console.log(lisv);
-
-          lisv.forEach((index, e) => {
-            // console.log(index);
-            if (e > 0) {
-              index.remove();
-            }
-          });
-        }
+        lisv.forEach((index, e) => {
+          // console.log(index);
+          if (e > 0) {
+            index.remove();
+          }
+        });
       }
-      co++;
     }
+    co++;
+  }
 
-    // 移動後原本圖片會消失，重新加入
-    var appendnum = 0;
-    var appendnewimg = function () {
-      // 　　a. 透過 <img>
-      var ntemp = document.getElementById(temp).cloneNode(true);
-      ntemp.id = `aamyImgaa${appendnum}`;
+  // 移動後原本圖片會消失，重新加入
+  var appendnum = 0;
+  var appendnewimg = function () {
+    // 　　a. 透過 <img>
+    var ntemp = document.getElementById(temp).cloneNode(true);
+    ntemp.id = `aamyImgaa${appendnum}`;
 
-      // console.log(ntemp);
-      document.getElementById('upload_place').appendChild(ntemp);
-      document.getElementById(`aamyImgaa${appendnum}`).style.position =
-        'relative';
-      document.getElementById(`aamyImgaa${appendnum}`).style.left = 0;
-      document.getElementById(`aamyImgaa${appendnum}`).style.top = 0;
-      document.getElementById(`aamyImgaa${appendnum}`).addEventListener(
-        'dragstart',
-        function () {
-          start(event);
-        },
-        false
-      );
-      $('#upload_place img').bind('mousewheel', function () {
-        // console.log(myImg);
-        zoomImg(this);
-        return false;
-      });
-      appendnum++;
-    };
+    // console.log(ntemp);
+    document.getElementById('upload_place').appendChild(ntemp);
+    document.getElementById(`aamyImgaa${appendnum}`).style.position =
+      'relative';
+    document.getElementById(`aamyImgaa${appendnum}`).style.left = 0;
+    document.getElementById(`aamyImgaa${appendnum}`).style.top = 0;
+    document.getElementById(`aamyImgaa${appendnum}`).addEventListener(
+      'dragstart',
+      function () {
+        start(event);
+      },
+      false
+    );
+    $('#upload_place img').bind('mousewheel', function () {
+      // console.log(myImg);
+      zoomImg(this);
+      return false;
+    });
+    appendnum++;
+  };
 
-    var appendbnum = 0;
-    var appendnewimgb = function () {
-      // 　　a. 透過 <img>
-      var nbtemp = document.getElementById(temp).cloneNode(true);
-      nbtemp.id = `bbmyImgbb${appendbnum}`;
+  var appendbnum = 0;
+  var appendnewimgb = function () {
+    // 　　a. 透過 <img>
+    var nbtemp = document.getElementById(temp).cloneNode(true);
+    nbtemp.id = `bbmyImgbb${appendbnum}`;
 
-      // console.log(ntemp);
-      document.getElementById('upload_placeii').appendChild(nbtemp);
-      document.getElementById(`bbmyImgbb${appendbnum}`).style.position =
-        'relative';
-      document.getElementById(`bbmyImgbb${appendbnum}`).style.left = 0;
-      document.getElementById(`bbmyImgbb${appendbnum}`).style.top = 0;
-      document.getElementById(`bbmyImgbb${appendbnum}`).addEventListener(
-        'dragstart',
-        function () {
-          start(event);
-        },
-        false
-      );
-      $('#upload_placeii img').bind('mousewheel', function () {
-        // console.log(myImg);
-        zoomImg(this);
-        return false;
-      });
-      appendbnum++;
-    };
-  </script>
-  <script>
-    function divtoimg() {
-      html2canvas(document.querySelector('#capture')).then(function (canvas) {
-        a = document.createElement('a');
-        a.href = canvas
-          .toDataURL('image/jpeg', 0.92)
-          .replace('image/jpeg', 'image/octet-stream');
-        a.download = 'image.jpg';
-        a.click();
-      });
-    }
-  </script>
+    // console.log(ntemp);
+    document.getElementById('upload_placeii').appendChild(nbtemp);
+    document.getElementById(`bbmyImgbb${appendbnum}`).style.position =
+      'relative';
+    document.getElementById(`bbmyImgbb${appendbnum}`).style.left = 0;
+    document.getElementById(`bbmyImgbb${appendbnum}`).style.top = 0;
+    document.getElementById(`bbmyImgbb${appendbnum}`).addEventListener(
+      'dragstart',
+      function () {
+        start(event);
+      },
+      false
+    );
+    $('#upload_placeii img').bind('mousewheel', function () {
+      // console.log(myImg);
+      zoomImg(this);
+      return false;
+    });
+    appendbnum++;
+  };
+</script>
+<script>
+  function divtoimg() {
+    html2canvas(document.querySelector('#capture')).then(function (canvas) {
+      a = document.createElement('a');
+      a.href = canvas
+        .toDataURL('image/jpeg', 0.92)
+        .replace('image/jpeg', 'image/octet-stream');
+      a.download = 'image.jpg';
+      a.click();
+    });
+  }
+</script>
+
 </html>
