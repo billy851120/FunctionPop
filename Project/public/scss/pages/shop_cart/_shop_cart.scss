@@ -271,3 +271,16 @@
     height: 100%;
     background-image: url(/img/shop_cart/check.png);
 }
+.order_info{
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 16px;
+}
+
+
+.order_infoContent{
+    font-size: 0.7em;
+    border: 1px solid #000;
+    border-radius: 7px;
+    padding: 11px;
+}

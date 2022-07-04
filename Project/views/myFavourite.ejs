@@ -7,63 +7,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- title %></title>
     <link rel="stylesheet" href="/css/all.css">
-    <script src="/js/member/jquery.min.js"></script>
-    <script src="/js/member/popper.min.js"></script>
+    <link rel="stylesheet" href="/js/member/member.css">
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+   <!-- <script src="/js/member/LeftNavBar.js"></script> -->
 
-    <style>
-
-
-
-    </style>
 </head>
 
 <body>
-    <div class="wrapper">
-<!-- 產品分類導覽列 -->
-<div class="container">
-    <%- include("navbar.ejs") %>
+    
+        <!-- content -->
+            <%- include("navbar.ejs") %>
+        
+   <div class="container">
+
+         <%- include("template/loginbar") %>
+
         <!-- 左邊選單列 -->
         <div class="row pb-3 mt-5">
             <div class="col-2">
-                <p><a href="#" class="nav-link text-dark">個人資料</a></p>
-                <p><a href="" class="nav-link text-dark">訂單&退貨</a></p>
-                <p><a href="" class="nav-link font-weight-bold text-dark">我的最愛</a></p>
-            </div>
-            <!-- 右邊內容：我的最愛 -->
-            <div class="col-10">
-                <p class="text-center">我的最愛 <span class="float-right">Ｎ件商品</span></p>
+                <p><a href="/home/member/memberData" class="nav-link text-dark memberData">個人資料</a></p>
+                <p><a href="/home/member/orderList" class="nav-link text-dark ">訂單&退貨</a></p>
+                <p><a href="/home/member/myFavourite" class="nav-link text-dark font-weight-bold orderList myFavourite">我的最愛</a></p>
+            </div> 
 
-                <div class="row  border-top border-bottom border-danger p-3 text-center align-items-center">
+            <!-- 右邊內容：我的最愛 -->
+            <% if(memberprofile) { %> 
+            <div class="col-10 row-box">
+                 <div class="row">
+                    <div class="col-12 p-2 text-center title_1"><h2 style="display:inline">我的最愛</h2><span class="float-right p-2">Ｎ件商品</span></div>
+                </div>
+
+                <!-- <div class="row p-3 text-center align-items-center">
                     <div class="d-none d-sm-inline col-8 col-xl-4 col-lg-4">商品名稱</div>
                     <div class="d-none d-sm-inline col-2 col-xl-2 col-lg-2">顏色</div>
                     <div class="d-none d-sm-inline col-2 col-xl-1 col-lg">尺寸</div>
                     <div class="col-xl-1 col-lg text-xl-center  d-none d-lg-inline">金額</div>
-            <div class="col-xl-2 col-lg-2"></div>
-            <div class="col-xl-2 col-lg-2"></div>
-           
-                </div>
+                </div> -->
 
 
-                <div class="row row-cols-7 py-2 border-bottom border-secondary align-items-center text-center">
-                    <div class="col-5 col-lg-2"><img class="" src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
+                <div class="row row-cols-7 p-3 align-items-center text-center">
+                    <div class="col-5 col-lg-2 border border-danger text-center"><img class="" src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
                     <div class="col-3 col-lg-2">Micah 草編真皮厚底涼鞋</div> 
                     <div class="col-2 col-lg-2">石白灰</div>
                     <div class="col-2 col-lg">36碼</div>
-                    <div class="mt-2 col-4 col-lg">$890</div>
+                    <div class="mt-2 col-4 col-lg  text-center border border-danger">$890</div>
                   <a href="#" class="mt-2 col-4 col-lg-2 border border-success rounded text-dark py-2 ">移至購物車</a>
-                    <a href="" class="mt-2 col-4 col-lg-2">垃圾桶</a>
+                    <a href="" class="mt-2 col-4 col-lg-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                      </svg></a>
+                    
 
                 </div>
-                <div class="row row-cols-7 py-2 border-bottom border-secondary align-items-center text-center">
-                    <div class="col"><img src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo2" alt=""></div>
-                    <div class="col">Micah 草編真皮厚底涼鞋</div>
-                    <div class="col">顏色:石白灰</div>
-                    <div class="col">尺寸:36碼</div>
-                    <div class="col">NT $890</div>
-                    <a href="#" class="col border border-success rounded p-2 text-dark">移至購物車</a>
-                    <a href="" class="col">垃圾桶</a>
+                <div class="row row-cols-7 p-3 align-items-center text-center">
+                    <div class="col-5 col-lg-2 border border-danger text-center"><img class="" src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
+                    <div class="col-3 col-lg-2">Micah 草編真皮厚底涼鞋</div> 
+                    <div class="col-2 col-lg-2">石白灰</div>
+                    <div class="col-2 col-lg">36碼</div>
+                    <div class="mt-2 col-4 col-lg  text-center border border-danger">$890</div>
+                  <a href="#" class="mt-2 col-4 col-lg-2 border border-success rounded text-dark py-2 ">移至購物車</a>
+                    <a href="" class="mt-2 col-4 col-lg-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                      </svg></a>
+                    
+
                 </div>
-                <div class="row row-cols-7 py-2 border-bottom border-secondary d-flex align-items-center text-center">
+                <div class="row row-cols-7 p-3 d-flex align-items-center text-center">
                     <div class="col"><img src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo3" alt=""></div>
                     <div class="col">Micah 草編真皮厚底涼鞋</div>
                     <div class="col">顏色:石白灰</div>
@@ -72,7 +84,7 @@
                     <a href="#" class="col border border-success rounded p-2 text-dark">移至購物車</a>
                     <a href="" class="col">垃圾桶</a>
                 </div>
-                <div class="row row-cols-7 py-2 border-bottom border-secondary d-flex align-items-center text-center">
+                <div class="row row-cols-7 p-3 d-flex align-items-center text-center">
                     <div class="col"><img src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo4" alt=""></div>
                     <div class="col">Micah 草編真皮厚底涼鞋</div>
                     <div class="col">顏色:石白灰</div>
@@ -81,7 +93,7 @@
                     <a href="#" class="col border border-success rounded p-2 text-dark">移至購物車</a>
                     <a href="" class="col">垃圾桶</a>
                 </div>
-                <div class="row row-cols-7 py-2 border-bottom border-secondary d-flex align-items-center text-center">
+                <div class="row row-cols-7 p-3 d-flex align-items-center text-center">
                     <div class="col"><img src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo5" alt=""></div>
                     <div class="col">Micah 草編真皮厚底涼鞋</div>
                     <div class="col">顏色:石白灰</div>
@@ -90,7 +102,7 @@
                     <a href="#" class="col border border-success rounded p-2 text-dark">移至購物車</a>
                     <a href="" class="col">垃圾桶</a>
                 </div>
-                <div class="row row-cols-7 py-2 border-bottom border-secondary d-flex align-items-center text-center">
+                <div class="row row-cols-7 p-3 d-flex align-items-center text-center">
                     <div class="col"><img src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo6" alt=""></div>
                     <div class="col">Micah 草編真皮厚底涼鞋</div>
                     <div class="col">顏色:石白灰</div>
@@ -99,8 +111,11 @@
                     <a href="#" class="col border border-success rounded p-2 text-dark">移至購物車</a>
                     <a href="" class="col">垃圾桶</a>
                 </div>
-            </div>
-        </div>
+            </div>  <!-- col-10 -->
+            <% } else { %>
+                <div class="alert alert-warning col-10 text-center align-self-center" role="alert">請先登入</div>
+                <%   } %> 
+        </div>   <!-- row -->
         <p class="text-center mt-5 font-weight-bold">新潮指標</p>
         <hr>
         <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
@@ -151,9 +166,9 @@
             </div>
             
         </div>
-        <div class="push"></div>
-</div>
-    </div>
+
+    </div>  <!-- container -->
+
 
     
     <footer class="footer">
