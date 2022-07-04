@@ -23,13 +23,12 @@ router.post('/', shop_cartController.updateCart);
 
 router.post('/q_add', shop_cartController.productAdd, redirectBack);
 router.post('/q_sub', shop_cartController.productSub, redirectBack);
-router.post('/del', shop_cartController.productDel, redirectBack);
+router.delete('/del', shop_cartController.productDel, redirectBack);
 
 //訂單確認-------------------------------------------
 
 router.get('/orderCheck', shop_cartController.orderCheck);
-router.post('/orderCheck', function (req, res) {});
-router.post('/orderCheck/add', shop_cartController.newOrder);
+router.post('/orderCheck/', shop_cartController.newOrder);
 
 // 訂單完成--------------------------------------------
 router.get('/orderFinish', shop_cartController.orderFinish);
