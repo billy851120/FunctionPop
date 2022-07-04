@@ -125,7 +125,7 @@
                         <span>
                           收件人* :
                         </span>
-                        <input class="fpop_inp" type="text" style="width:130px ;" name="name" placeholder="姓名"><span
+                        <input class="fpop_inp" type="text" style="width:130px ;" name="name" placeholder="姓名" value="<%- memberprofile.cName %>"><span
                           class="inp_Err" style="visibility: hidden;" id="nameErr">請填寫姓名欄位*</span><br>
                       </div>
                       <div>
@@ -133,7 +133,7 @@
                           通訊地址* :
                         </span>
                         <input class="fpop_inp" type="text" style="width:70px; margin-right:25px;" name="city"
-                          placeholder=""><input class="fpop_inp" type="text" name="address" placeholder="地址"><span
+                          placeholder=""><input class="fpop_inp" type="text" name="address" placeholder="地址" value="<%- memberprofile.cAddr %>"><span
                           class="inp_Err" style="visibility: hidden;" id="addressErr">請填寫地址欄位*</span>
                         <span class="inp_Err" style="visibility: hidden;" id="addressErr2">請填寫有效郵遞區號*</span><br>
                       </div>
@@ -141,7 +141,7 @@
                         <span>
                           手機號碼* :
                         </span>
-                        <input class="fpop_inp" type="text" style="width:150px ;" name="phone" placeholder=""><span
+                        <input class="fpop_inp" type="text" style="width:150px ;" name="phone" placeholder="" value="<%- memberprofile.cPhone %>"><span
                           class="inp_Err" style="visibility: hidden;" id="phoneErr">請填寫手機欄位*</span><br>
                       </div>
                       <div>
@@ -149,7 +149,7 @@
                           電子郵件* :
                         </span>
                         <input class="fpop_inp" type="text" style="width:150px ;" name="email"
-                          placeholder="123@gmail.com">
+                          placeholder="123@gmail.com" value="<%- memberprofile.cAccount %>">
                         <span class="inp_Err" style="visibility: hidden;" id="emailErr">請填寫電子郵件欄位*</span>
                         <span class="inp_Err" style="visibility: hidden;" id="emailErr2">請輸入有效的郵箱地址*</span>
                       </div>
@@ -403,10 +403,6 @@
 
       $('#cart-submit').on('click', function () {
         if (!checkInputInfo()) {
-
-
-
-
           alert('請填寫資料');
           return false;
         } else if (!$('#orderList input[name="agree"]').prop('checked')) {

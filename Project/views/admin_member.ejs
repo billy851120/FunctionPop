@@ -7,8 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>f.pop 後台管理</title>
+    <style>
+        .fpop-card-text {
+            font-size: 13px;
+        }
+
+        .modal-inp {
+            height: 35px;
+            width: 200px;
+            border: 1px solid #acacac;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 5px 0;
+            padding: 0 10px;
+        }
+
+        input:disabled {
+            cursor: default;
+            background-color: -internal-light-dark(rgba(239, 239, 239, 0.5), rgba(59, 59, 59, 0.5));
+            color: -internal-light-dark(rgb(84, 84, 84), rgb(243, 14, 14));
+            /* border-color: rgba(255, 8, 8, 0.3); */
+        }
+    </style>
 
 </head>
 
@@ -27,161 +51,186 @@
                     <li class="breadcrumb-item active" aria-current="page">會員資料</li>
                 </ol>
             </nav>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                <table id="table_server" ></table>
-                </div>
-                </div>
-            <table id="mytab" class="table table-hover"></table>
-            <script type="text/javascript">
-                $(function () {
-                
-                    var t = $("#table_server").bootstrapTable({
-                        url: 'http://localhost:3000/admin/goods/member',
-                        method: 'get',
-                        dataType: "json",
-                        striped: true,              //設定為 true 會有隔行變色效果
-                        undefinedText: "空",        //當資料為 undefined 時顯示的字元
-                        pagination: true,            //分頁
-                        // paginationLoop:true,//設定為 true 啟用分頁條無限迴圈的功能。
-                        showToggle: "true",//是否顯示 切換試圖（table/card）按鈕
-                        showColumns: "true",//是否顯示 內容列下拉框
-                        pageNumber: 1,//如果設定了分頁，首頁頁碼
-                        // showPaginationSwitch:true,//是否顯示 資料條數選擇框
-                        pageSize: 5,//如果設定了分頁，頁面資料條數
-                        pageList: [5, 10, 20, 40],	//如果設定了分頁，設定可供選擇的頁面資料條數。設定為All 則顯示所有記錄。
-                        paginationPreText: '‹',//指定分頁條中上一頁按鈕的圖示或文字,這裡是<
-                        paginationNextText: '›',//指定分頁條中下一頁按鈕的圖示或文字,這裡是>
-                        // singleSelect: false,//設定True 將禁止多選
-                        search: false, //顯示搜尋框
-                        data_local: "zh-US",//表格漢化
-                        sidePagination: "server", //服務端處理分頁
-                        queryParams: function (params) {//自定義引數，這裡的引數是傳給後臺的，我這是是分頁用的
-                            return {                  //這裡的params是table提供的
-                                cp: params.offset,//從資料庫第幾條記錄開始
-                                ps: params.limit//找多少條
-                            };
-                        },
-                        idField: "customer_id",//指定主鍵列
-                        columns: [
-                            {
-                                title: 'cName',//表的列名
-                                field: 'cName',//json資料中rows陣列中的屬性名
-                                align: 'center'//水平居中
-                            },
-                            {
-                                title: 'cBirth',
-                                field: 'cBirth',
-                                align: 'center'
-                            },
-                            {
-                                title: 'cAccount',
-                                field: 'cAccount',
-                                align: 'center'
-                            },
-                            {
-                                //EMAIL
-                                title: 'cPhone',
-                                field: 'cPhone',
-                                align: 'center'
-                            },
-                            {
-                                //部門名字
-                                title: 'cAddr',
-                                field: 'cAddr',//可以直接取到屬性裡面的屬性，贊
-                                align: 'center'
-                            },
-                           
-                            {
-                                title: '操作',
-                                field: 'customer_id',
-                                align: 'center',
-                                formatter: function (value, row, index) {//自定義顯示可以寫標籤哦~
-                                    return '<a href="#" mce_href="#" onclick="edit(\'' + row.customer_id + '\')">操作</a> ';
-                                }
-                            }
-                
-                        ]
-                    });
-                
-                
-                    t.on('load-success.bs.table', function (data) {//table載入成功後的監聽函式
-                        console.log("load success");
-                        $(".pull-right").css("display", "block");
-                    });
-                
-                });
-                </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="col-11 m-auto">
-                <div class="card">
+                <div>
                     <div class="card-title pr">
                         <h4 class="text-center pt-3">會員資料</h4>
                     </div>
+                    <div class=" text-center">
+                        <a href="/admin/goods/member/<%= i %>"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                            </svg></a>
+                        <a href="/admin/goods/member/<%= i %>"></a>
+                        <% for(var i=1; i <=last_page; i++) { %>
+                            <a href="/admin/goods/member/<%= i %>">
+                                <%= i%>
+                            </a>
+                            <% } %>
+                                <a href="/admin/goods/member/<%= i+1 %>"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short"
+                                        viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                    </svg></a>
+
+                                <p>會員 <%= total_nums%> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
+                    </div>
+                    <div class="modal" id="myModal">
+                        <form id="form" class="modal-content" style="width: 400px;">
+                            <div class="text-center p-4">
+                                <input type="hidden" name="id">
+                                <h4 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
+                                </h4><br>
+                                <h4 class="font-weight-bold">生日: 　<input class="modal-inp" type="text" name="cBirth"
+                                        disabled></h4><br>
+                                <h4 class="font-weight-bold">性別: 　<input class="modal-inp" type="text" name="cgender"
+                                        disabled></h4><br>
+                                <h4 class="font-weight-bold">信箱: 　<input class="modal-inp" type="text" name="cAccount"
+                                        disabled>
+                                </h4><br>
+                                <h4 class="font-weight-bold">電話: 　<input class="modal-inp" type="text" name="cPhone">
+                                </h4><br>
+                                <h4 class="font-weight-bold">地址: 　<input class="modal-inp" type="text" name="cAddr">
+                                </h4><br>
+                                <button class="btn btn-dark btn-sm mt-2 text-center" type="button"
+                                    id="submit">更新</button>
+                            </div>
+                        </form>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>姓名</th>
-                                    <th>生日</th>
-                                    <th>性別</th>
-                                    <th>信箱</th>
-                                    <th>電話</th>
-                                    <th>地址</th>
-                                </thead>
-                                <tbody>
-                                    <% data.forEach((item ,index)=> { %>
-                                        <tr>
-                                            <td>
-                                                <%= index+1 %>
-                                            </td>
-                                            <td>
-                                                <%= item.cName %>
-                                            </td>
-                                            <td>
-                                                <%= item.cBirth %>
-                                            </td>
-                                            <td>
-                                                <%= item.cgender %>
-                                            </td>
-                                            <td>
-                                                <%= item.cAccount %>
-                                            </td>
-                                            <td>
-                                                <%= item.cPhone %>
-                                            </td>
-                                            <td>
-                                                <%= item.cAddr %>
-                                            </td>
-                                        </tr>
-                                        <% }) %>
-                                </tbody>
-                            </table>
+                            <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                                <% data.forEach((item ,index)=> { %>
+                                    <div class="col-6 m-auto">
+                                        <div class="card m-2">
+                                            <div class="card-body">
+
+                                                <h5 class="card-title">
+                                                    姓名: <%= item.cName %>
+                                                </h5>
+                                                <p class="fpop-card-text">
+                                                    生日: <%= item.cBirth %>
+                                                </p>
+                                                <p class="fpop-card-text pt-2">
+                                                    信箱: <%= item.cAccount %>
+                                                </p>
+                                                <p class="fpop-card-text pt-2">
+                                                    性別: <%= item.cgender %>
+                                                </p>
+                                                <p class="fpop-card-text pt-2">
+                                                    電話: <%= item.cPhone %>
+                                                </p>
+                                                <p class="fpop-card-text pt-2">
+                                                    地址: <%= item.cAddr %>
+                                                </p>
+                                                <p class="fpop-card-text pt-2">
+                                                    創建日期: <%= item.cUpdate %>
+                                                </p>
+                                                <div class="mt-2 text-center">
+                                                    <button class="btn btn-outline-info btn-sm "
+                                                        onclick="Edit( <%= item.id%> )" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#myModal">編輯</button>
+                                                    <!-- <button class="btn btn-outline-danger btn-sm"
+                                                        onclick="Delete( <%= item.id%> )">刪除</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-
             </div>
+            <!-- Main Content end-->
+            <script>
+                function Edit(id) {
+                    $.ajax({
+                        url: "http://localhost:3000/admin/goods/member/detail/" + id,
+                        type: "GET",
+                        success: function (res) {
+                            console.log(id)
+                            var res = JSON.parse(res)
+                            //將值傳遞進input裏頭
+                            $("input[name='id']").val(res.data.id)
+                            $("input[name='cName']").val(res.data.cName)
+                            $("input[name='cBirth']").val(res.data.cBirth)
+                            $("input[name='cAccount']").val(res.data.cAccount)
+                            $("input[name='cgender']").val(res.data.cgender)
+                            $("input[name='cPhone']").val(res.data.cPhone)
+                            $("input[name='cAddr']").val(res.data.cAddr)
 
-            <a href="#">next</a>
-        </div>
-        <!-- Main Content end-->
+                        },
+                        error: function () {
+                            alert("系統錯誤!")
+                        },
+                    })
+                }
+                function Delete(id) {
+                    var JSONData = { "id": id }
+                    JSONData = JSON.stringify(JSONData)
+                    $.ajax({
+                        url: "http://localhost:3000/admin/goods/member/delete",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSONData,
+                        success: function (res) {
+                            var res = JSON.parse(res)
+                            if (res.errno === 1) {
+                                alert("刪除成功!")
+                                location.reload()
+                            } else if (res.errno === 0) {
+                                alert("刪除失敗!")
+                            }
+                        },
+                        error: function () {
+                            alert("系統錯誤!")
+                        }
+                    })
+                }
+                $('#submit').on('click', function () {
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+                    //整理表單資料到變數
+                    var data = $('#form').serializeArray()
+                    JSONData = serializeToJSON(data)
+                    console.log(data)
+                    console.log(JSONData)
+
+                    $.ajax({
+                        url: "http://localhost:3000/admin/goods/member/update",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSONData,
+                        success: function (res) {
+                            var res = JSON.parse(res)
+                            if (res.errno === 1) {
+                                alert("更新成功!")
+                                location.reload()
+                            } else if (res.errno === 0) {
+                                alert("更新失敗!")
+                            }
+                        },
+                        error: function () {
+                            alert("系統錯誤!")
+                        }
+                    })
+                })
+                function serializeToJSON(data) {
+                    var values = {};
+                    for (index in data) {
+                        values[data[index].name] = data[index].value;
+                    }
+                    return JSON.stringify(values)
+                }
+
+
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

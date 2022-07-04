@@ -44,7 +44,6 @@ localhost:3000/xxxxx
 /admin/goods/item_shelf
 /admin/goods/login
 /admin/goods/member
-/admin/goods/orderMgat__refund
 /admin/goods/orderMgat_num
 /admin/goods/register
 /admin/goods/stockMgat_all

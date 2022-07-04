@@ -181,7 +181,6 @@ router.post('/del', function (req, res) {
 
 router.get('/orderCheck', function (req, res) {
   var cart = req.session.cart;
-  var cartCount = req.session.cartCount;
   var total = req.session.total;
   db.exec(
     'SELECT * FROM `orders` order by order_id DESC limit 1',
@@ -198,7 +197,6 @@ router.get('/orderCheck', function (req, res) {
         title: '訂單確認',
         o_id: oid,
         cart: cart,
-        cartCount: cartCount,
         total: total,
       });
     }
@@ -247,23 +245,31 @@ router.post('/orderCheck/add', function (req, res) {
     });
     console.log(cart);
   });
+  req.session.cart =[];
+  req.session.cartCount =0;
+  req.session.total =0;
+  req.session.orderLise  = orderLise.newOrderList;
 
-  res.redirect('/orderFinish');
+  res.redirect('/home/shop_cart/orderFinish');
+ 
 });
 router.get('/orderFinish', function (req, res) {
-  var cart = req.session.cart;
-  var cartCount = req.session.cartCount;
-  var total = req.session.total;
-  var orderLise = req.body;
-  // console.log(cart);
-  // console.log(total);
-  // console.log(orderLise);
-  res.render('orderFinish', {
+  var count = 0;
+  db.exec("SELECT * FROM `order_items` WHERE order_list = ?",[req.session.orderLise],(result,fields)=>{
+res.render('orderFinish', {
     title: '訂單確認',
-    cart: cart,
-    cartCount: cartCount,
-    total: total,
+    result:result,
   });
+  })
+  
+    // console.log(cart);
+    // console.log(total);
+    
+    console.log("總商品數");
+    console.log();
+
+
+  
 });
 
 module.exports = router;
