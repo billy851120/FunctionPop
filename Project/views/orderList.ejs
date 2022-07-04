@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %></title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/js/member/member.css">
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+
+    <style>
+
+
+
+    </style>
+</head>
+
+<body>
+  <!-- content -->
+  <%- include("navbar.ejs") %>
+
+  <div class="container ">
+      
+      <%- include("template/loginbar") %>
+
+         <!-- 左邊選單列 -->
+        <div class="row pb-3 mt-5">
+            <div class="col-2">
+                <p><a href="/home/member/memberData" class="nav-link text-dark memberData">個人資料</a></p>
+                <p><a href="/home/member/orderList" class="nav-link text-dark font-weight-bold orderList">訂單&退貨</a></p>
+                <p><a href="/home/member/myFavourite" class="nav-link text-dark myFavourite">我的最愛</a></p>
+            </div> 
+
+            <!-- 右邊資訊欄 -->
+            <% if(memberprofile) { %> 
+            <div class="col-10 row-box ">
+                    <div class="row">
+                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1"><h2>訂單&退貨紀錄</h2></a>
+                     </div>
+         
+
+                <div class="row p-3">
+                    <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
+                    <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
+                    <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
+                    <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
+                    <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
+                    <div class="col-12 col-md-6 my-2 ">
+                        <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
+                    <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
+                    <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
+                    <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
+                    <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
+                    <div class="col-12 col-md-6 my-2 "> 
+                       <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
+                    <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
+                    <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
+                    <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
+                    <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
+                    <div class="col-12 col-md-6 my-2 ">
+                       <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                        </div>
+                </div>
+                <% } else { %>
+                    <div class="alert alert-warning col-10 text-center align-self-center" role="alert">請先登入</div>
+                    <%   } %> 
+                
+            </div>  <!-- col-10 -->
+            
+        </div>  <!-- row -->
+
+    </div>  <!-- container -->
+
+    <!-- footer -->
+        <%- include("footer.ejs") %>
+
+</body>
+
+</html>

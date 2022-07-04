@@ -3,8 +3,11 @@ var db = require('../dataBase');
 
 var memberController = {
     memberData: (req, res) => {
+        var url = req.url ;
+        // console.log(url);
         res.render('memberData', {
-            title: '會員資料｜個人資料'
+            title: '會員資料｜個人資料',
+            url
         })
     },
     updateMemberData: (req, res) => {
@@ -16,12 +19,15 @@ var memberController = {
                 req.session.memberprofile.cPhone = cPhone;
                 req.session.memberprofile.cAddr = cAddr;
                 res.redirect('/home/member/memberData')
+                console.log('in');
+                console.log(req.session.memberprofile.cPhone)
             })
-
     },
     changePw: (req, res) => {
+        var url = req.url ;
         res.render('memberData_changePw', {
-            title: '會員資料｜變更密碼'
+            title: '會員資料｜變更密碼',
+            url
         });
     },
     handlechangePw: (req, res, next) => {
@@ -38,6 +44,9 @@ var memberController = {
         } else if (req.session.memberprofile.cPassword != oldpw) {
             req.flash('errorMessage', '舊密碼不正確')
             return next();
+        } else if (newpw != newpwAgain) {
+            req.flash('errorMessage', '新密碼必須為一致')
+            return next();
         } else {
             db.exec('update customer_id set cPassword = ? where cAccount = ? ',
                 [newpw, req.session.memberprofile.cAccount],
@@ -46,8 +55,6 @@ var memberController = {
                     res.redirect('/home/member/memberData_changePw');
                 })
         }
-
-
     },
 
     login: (req, res) => {
