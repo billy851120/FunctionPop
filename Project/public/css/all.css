@@ -415,9 +415,14 @@ pre code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+<<<<<<< HEAD
+  flex-wrap: wrap;
+  /* margin-right: -15px; */
+=======
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-right: -15px;
+>>>>>>> acfce11d6657795186e6d786e64bc7deb8b50854
   margin-left: -15px;
 }
 
@@ -3855,7 +3860,7 @@ input[type=button].btn-block {
   border-color: #80bdff;
 }
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
-  color: #fff;
+  color: rgb(163, 53, 53);
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
@@ -6051,7 +6056,7 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 1040;
