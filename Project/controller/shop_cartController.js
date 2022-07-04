@@ -3,7 +3,6 @@ var session = require('express-session');
 var shop_cartModel = require('../models/home/shop_cartStatus');
 
 var shop_cartController = {
-  //shop_cart頁面控制器
   shop_cart: (req, res) => {
     var cart = req.session.cart;
     var total = req.session.total;
