@@ -50,10 +50,17 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', function (req, res) {
   var cart = req.session.cart;
-
   var total = req.session.total;
 
-  res.render('shop_cart', { cart: cart, total: total });
+  db.exec('SELECT * FROM `products` order by product_id DESC',[],function(result,fields){
+    
+    res.render('shop_cart', { 
+      cart: cart,
+       total: total,
+       result:result,
+       });
+  })
+
 });
 
 router.post('/', function (req, res) {
@@ -100,13 +107,13 @@ router.post('/', function (req, res) {
     var cart = req.session.cart;
     // console.log(cart);
   }
+  //計算總數量
   updateCart(cart, req);
-  // Calculate total
+  // 計算總額
   calculateTotal(cart, req);
 
   // return to cart page
   res.redirect('back');
-  // res.send('adasda');
   // res.end()
 });
 

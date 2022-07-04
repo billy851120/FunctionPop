@@ -4,11 +4,11 @@ $(document).ready(function () {
     margin: 10,
     nav: true,
     responsive: {
-      0: {
-        items: 4,
+      500: {
+        items: 1,
       },
       600: {
-        items: 4,
+        items: 3,
       },
       1000: {
         items: 4,
