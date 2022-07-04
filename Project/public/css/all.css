@@ -412,7 +412,7 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
+  /* margin-right: -15px; */
   margin-left: -15px;
 }
 
@@ -3357,7 +3357,7 @@ input[type=button].btn-block {
   border-color: #80bdff;
 }
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
-  color: #fff;
+  color: rgb(163, 53, 53);
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
@@ -5338,7 +5338,7 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 1040;
