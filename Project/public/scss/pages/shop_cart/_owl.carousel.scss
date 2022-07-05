@@ -28,6 +28,7 @@
     height: 0; }
   .owl-carousel .owl-stage-outer {
     position: relative;
+    transform: scale(0.9) !important;
     overflow: hidden;
     /* fix for flashing background */
     -webkit-transform: translate3d(0px, 0px, 0px); }
@@ -48,7 +49,8 @@
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
     display: block;
-    width: 100%; }
+    width: 100%; 
+  }
   .owl-carousel .owl-nav.disabled,
   .owl-carousel .owl-dots.disabled {
     display: none; }
@@ -61,13 +63,36 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none; }
+    .owl-carousel .owl-nav button.owl-next{
+      transform: translateX(90px);
+
+    }
+     .owl-nav button.owl-prev{
+      transform: translateX(-90px);
+     }
+
+     .owl-nav button.owl-next span,
+    .owl-nav button.owl-prev span{
+      opacity: 0.5;
+      font-size: 8em;
+    }
+ .owl-carousel .owl-nav button.owl-prev{
+    padding-bottom: 47px !important;
+
+ }
+.owl-carousel .owl-nav button.owl-next{
+    padding-bottom: 47px !important;
+
+}
   .owl-carousel .owl-nav button.owl-prev,
   .owl-carousel .owl-nav button.owl-next,
   .owl-carousel button.owl-dot {
     background: none;
     color: inherit;
     border: none;
-    padding: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 0 !important;
     font: inherit; }
   .owl-carousel.owl-loaded {
     display: block; }

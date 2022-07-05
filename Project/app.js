@@ -16,9 +16,11 @@ app.use((req, res, next) => {
   res.locals.isLogin = req.session.isLogin;
   res.locals.memberprofile = req.session.memberprofile;
   res.locals.errorMessage = req.flash('errorMessage');
+  res.locals.cartCount = req.session.cartCount;
   // 將 moment 和 shortDateFormat 放到 locals 全域環境中
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
+  res.locals.cartCount = req.session.cartCount;
   next();
 });
 
@@ -51,3 +53,5 @@ app.use('/admin', admin);
 app.listen(3000, function () {
   console.log('run');
 });
+
+

@@ -13,7 +13,7 @@
         *{
             /* padding: 0;
             margin: 0; */
-            box-sizing: border-box;
+            /* box-sizing: border-box; */
         }
         body{
             background-color: white
@@ -43,6 +43,13 @@
             border: 1px solid;
 
         }
+        @media screen and (max-width: 990px){
+
+         .aa img{
+        border-radius: 30px;
+        width: 100%;
+              } 
+        }
     </style>
 </head>
 
@@ -52,14 +59,14 @@
     <section class="Form my-4 mx-5">
         <div class="container">            
             <div class="row row-box no-gutters">
-                <div class="col-lg-5">
+                <div class="col-12 col-lg-6 aa">
                     <img src="/img/index/f3.jpg" alt="">
                 </div>
                 <% if(!memberprofile) {%>
-                <div class="col-lg-7 px-5 pt-5">
+                <div class="col-12 col-lg-6 px-5 pt-5 mb-5">
                      
                     <h1 class="font-weight-blod py-3">FunctionPOP</h1>
-                    <h4>Sign into your account</h4>
+                    <h4>登入您的帳戶</h4>
                     <% if (errorMessage.length > 0) { %>
                         <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
                           <%= errorMessage %>
@@ -81,20 +88,20 @@
                                 <button type="submit" class="btn1 mt-3 mb-5">Login</button>
                             </div>
                         </div>
-                        <a href="#">Forgot password</a>
-                        <p>Don't have an account? <a href="#">Register</a> </p>
+                        <a href="#">忘記密碼</a>
+                        <p>沒有帳戶嗎？<a href="#">註冊</a> </p>
                     </form>
-                </div> 
+                </div> <!-- col-lg-7 -->
               <% } else { %>
-                <div class="col-lg-7 px-5 pt-5 text-center  align-items-end border border-success">
+                <div class="col-lg-7 px-5 pt-5 text-center  align-items-end">
                     <h1 class="font-weight-blod py-3">您已登入 </h1> 
                     <p class="font-weight-blod py-3">是否登出？</p> 
                      <a href="/home/member/logout" class="btn btn-outline-dark d-block">Logout</a> 
                 </div>
             
                 <% } %>
-            </div>
-        </div>
+            </div>  <!-- row -->
+        </div>  <!-- container -->
     </section>
 
 
