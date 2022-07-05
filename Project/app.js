@@ -6,11 +6,7 @@ var app = express();
 var moment = require('moment');
 var shortDataFormat = 'YYYY-MM-DD hh:mm:ss';
 
-function getUrl(req, res, next) {
-  var url = req.originalUrl;
-  req.session.url = url;
-  return next();
-}
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
