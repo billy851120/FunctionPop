@@ -3,7 +3,7 @@ var db = require('../dataBase');
 
 var memberController = {
     memberData: (req, res) => {
-        var url = req.url ;
+        var url = req.url;
         // console.log(url);
         res.render('memberData', {
             title: '會員資料｜個人資料',
@@ -24,7 +24,7 @@ var memberController = {
             })
     },
     changePw: (req, res) => {
-        var url = req.url ;
+        var url = req.url;
         res.render('memberData_changePw', {
             title: '會員資料｜變更密碼',
             url
@@ -80,9 +80,8 @@ var memberController = {
                 } else {
                     // 將撈到的資料存入memberprofile session之中
                     req.session.memberprofile = result[0];
-                    // res.send('login success');
-                    // console.log(username)
-                    res.redirect('/home/member/memberData');
+                    console.log(req.session.url);
+                    res.redirect(req.session.url);
                 }
             });
 
@@ -110,7 +109,7 @@ var memberController = {
     },
     logout: (req, res) => {
         req.session.memberprofile = null;
-        res.redirect('/home/member/memberData');
+        res.redirect(req.session.url);
     },
 
     frame7: (rqs, res) => {

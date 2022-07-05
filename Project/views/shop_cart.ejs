@@ -16,6 +16,13 @@
       .owl-theme .owl-dots .owl-dot span {
         display: none;
       }
+      .owl-carousel .img {
+        max-width: 374px;
+        width: 100%;
+        background-color: #ccc;
+        max-height: 561px;
+        height: 100%;
+      }
     </style>
   </head>
 
@@ -24,11 +31,7 @@
       <%- include("navbar.ejs") %> <%if(memberprofile){%>
       <span id="member" style="display: none"><%- memberprofile.cName %></span>
       <% } %>
-      <table>
-        <thead>
-          <th colspan=""></th>
-        </thead>
-      </table>
+
       <!-- outline_class  oib oig oi  oir-->
       <div class="container">
         <%- include("template/loginbar") %>
@@ -38,7 +41,7 @@
               <div class="row cart_banner">
                 <div class="col-12 top_link">
                   <ul class="cart-link">
-                    <li><a href="/">首頁</a></li>
+                    <li><a href="/home">首頁</a></li>
                     <li>
                       <a href="#">購物車</a>
                     </li>
@@ -215,7 +218,7 @@
         <hr style="border-top: 0.9px solid #000" />
         <div class="container">
           <div class="row">
-            <div style="font-weight: 900" class="col text-center mb-5 mt-2">
+            <div style="font-weight: 900" class="col text-center mb-3 mt-2">
               熱門商品
             </div>
           </div>
@@ -257,7 +260,7 @@
       </div>
       <div class="push"></div>
     </div>
-    <footer class="footer"><%- include("footer.ejs") %></footer>
+    <%- include("footer.ejs") %>
     <script>
       $(document).ready(function () {
         //更新總數量
@@ -304,12 +307,19 @@
           num++;
           var Count = parseInt($(this).siblings("#number").val());
           var to_Count = parseInt(Count + num);
-          var price = parseInt($(this).parent().parent().parent().find(".price").text());
+          var price = parseInt(
+            $(this).parent().parent().parent().find(".price").text()
+          );
           var to_price = 0;
           to_price = price * to_Count;
           console.log(to_price);
           $(this).siblings("#number").val(to_Count);
-          $(this).parent().parent().parent().find(".to_price").html(to_price.toString());
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .find(".to_price")
+            .html(to_price.toString());
 
           //更新總數量
           var total_count = 0;
@@ -448,7 +458,7 @@
             $(this).parent().parent().remove();
             $.ajax({
               url: "/home/shop_cart/del",
-              type: "POST",
+              type: "DELETE",
               data: all_id,
 
               success: function (res) {
@@ -463,7 +473,9 @@
                 //更新總小計
                 var total_price = 0;
                 $("#css_tbody .product").each(function (idx, ele) {
-                  total_price += parseInt($(ele).parent().find(".to_price").text());
+                  total_price += parseInt(
+                    $(ele).parent().find(".to_price").text()
+                  );
                 });
                 $("#total_price").text(total_price.toString());
 
