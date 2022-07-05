@@ -80,7 +80,7 @@ var memberController = {
                 } else {
                     // 將撈到的資料存入memberprofile session之中
                     req.session.memberprofile = result[0];
-                    // console.log(url);
+                    console.log(req.session.url);
                     res.redirect(req.session.url);
                 }
             });

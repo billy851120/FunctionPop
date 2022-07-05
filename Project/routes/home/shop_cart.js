@@ -16,28 +16,29 @@ function redirectBack(req, res, next) {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(session({ secret: 'secret' }));
-router.use((req, res, next) => {  //  登入後返回原本頁面
+function getUrl(req, res, next) {  // 登入後返回前頁
   var url = req.originalUrl;
+  req.session.url = null;
   req.session.url = url;
   return next();
-})
+}
 
 // 查看購物車-----------------------------------------------
 
-router.get('/', shop_cartController.shop_cart);
-router.post('/', shop_cartController.updateCart);
+router.get('/', getUrl, shop_cartController.shop_cart);
+router.post('/', getUrl, shop_cartController.updateCart);
 
-router.post('/q_add', shop_cartController.productAdd, redirectBack);
-router.post('/q_sub', shop_cartController.productSub, redirectBack);
-router.post('/del', shop_cartController.productDel, redirectBack);
+router.post('/q_add', getUrl, shop_cartController.productAdd, redirectBack);
+router.post('/q_sub', getUrl, shop_cartController.productSub, redirectBack);
+router.post('/del', getUrl, shop_cartController.productDel, redirectBack);
 
 //訂單確認-------------------------------------------
 
-router.get('/orderCheck', shop_cartController.orderCheck);
-router.post('/orderCheck', function (req, res) { });
-router.post('/orderCheck/add', shop_cartController.newOrder);
+router.get('/orderCheck', getUrl, shop_cartController.orderCheck);
+router.post('/orderCheck', getUrl, function (req, res) { });
+router.post('/orderCheck/add', getUrl, shop_cartController.newOrder);
 
 // 訂單完成--------------------------------------------
-router.get('/orderFinish', shop_cartController.orderFinish);
+router.get('/orderFinish', getUrl, shop_cartController.orderFinish);
 
 module.exports = router;
