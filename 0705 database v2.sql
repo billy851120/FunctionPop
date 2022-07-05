@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-06-30 03:19:13
+-- 產生時間： 2022-07-05 07:30:10
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `functionpop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `admin_user`
+--
+
+CREATE TABLE `admin_user` (
+  `id` int(10) NOT NULL,
+  `aAccount` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `aPassword` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `admin_user`
+--
+
+INSERT INTO `admin_user` (`id`, `aAccount`, `aPassword`) VALUES
+(1, 'abc', '123'),
+(2, 'admin1', '123');
 
 -- --------------------------------------------------------
 
@@ -52,7 +72,7 @@ INSERT INTO `categories` (`category_id`, `category_name`) VALUES
 --
 
 CREATE TABLE `customer_id` (
-  `id` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
   `cName` varchar(20) NOT NULL,
   `cBirth` varchar(10) NOT NULL,
   `cgender` enum('M','F','X') NOT NULL,
@@ -82,11 +102,11 @@ INSERT INTO `customer_id` (`id`, `cName`, `cBirth`, `cgender`, `cAccount`, `cPho
 (13, '林柯基', '1994-02-18', 'X', 'pekkffk3434ky@superstar.com', '0916556883', '臺中市北區天津一街16號', '4v216u'),
 (14, '李豐瑤', '1972-04-11', 'F', 'qaz5151ne@superstar.com', '0946777535', '臺北市南港區重陽路21號', '1svvww'),
 (15, '李文婷', '1987-03-15', 'M', 'qzaqz11@superstar.com', '0916551742', '高雄市大寮區會昭街30號', '4bfdmd'),
-(16, '張金鳳', '1978-12-04', 'F', 'wcd516222@superstar.com', '0907454512', '高雄市大社區民族路20號', 'sfdfdf'),
-(17, '吳文華', '1969-02-15', 'X', 'werre34455@superstar.com', '0918979999', '宜蘭縣三星鄉忠平路22號', 'sfdf33'),
-(18, '黃君幸', '1975-07-01', 'F', 'wsx435bfb@superstar.com', '0957272230', '桃園市新屋區清華路4號', '1s855w'),
-(19, '黃好輪', '1984-10-17', 'M', 'zhsdg5gbgr3ng@superstar.com', '0951988366', '台北市三民路1巷10號', 'v52747'),
-(20, '楊維瑞', '1977-07-07', 'F', 'zhsdwsxedcr3ng@superstar.com', '0956688366', ' 雲林縣元長鄉中洽3號', '1s8sv5');
+(16, '藍先生', '2000-01-01', 'M', 'test@gmail.com', '0912345678', '台中市南屯區公益路二段51號18樓', '123'),
+(17, '張金鳳', '1978-12-04', 'F', 'wcd516222@superstar.com', '0907454512', '高雄市大社區民族路20號', 'sfdfdf'),
+(18, '吳文華', '1969-02-15', 'X', 'werre34455@superstar.com', '0918979999', '宜蘭縣三星鄉忠平路22號', 'sfdf33'),
+(19, '黃君幸', '1975-07-01', 'F', 'wsx435bfb@superstar.com', '0957272230', '桃園市新屋區清華路4號', '1s855w'),
+(20, '黃好輪', '1984-10-17', 'M', 'zhsdg5gbgr3ng@superstar.com', '0951988366', '台北市三民路1巷10號', 'v52747');
 
 -- --------------------------------------------------------
 
@@ -325,6 +345,7 @@ INSERT INTO `inventories` (`inventory_id`, `product_all_id`, `inventory_quantity
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
+  `order_list` varchar(20) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `user_phone` int(11) NOT NULL,
@@ -341,11 +362,12 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_items` (
-  `item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
+  `order_list` varchar(20) NOT NULL,
   `product_id` varchar(255) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_image` varchar(255) NOT NULL,
+  `UnitPrice` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `Discount` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -742,6 +764,12 @@ INSERT INTO `sizes` (`size_id`, `category_name`, `size_name`) VALUES
 --
 
 --
+-- 資料表索引 `admin_user`
+--
+ALTER TABLE `admin_user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `categories`
 --
 ALTER TABLE `categories`
@@ -765,12 +793,6 @@ ALTER TABLE `inventories`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
-
---
--- 資料表索引 `order_items`
---
-ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`item_id`);
 
 --
 -- 資料表索引 `payments`
@@ -801,10 +823,16 @@ ALTER TABLE `sizes`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `admin_user`
+--
+ALTER TABLE `admin_user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `customer_id`
 --
 ALTER TABLE `customer_id`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `inventories`
@@ -817,12 +845,6 @@ ALTER TABLE `inventories`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `order_items`
---
-ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `payments`
