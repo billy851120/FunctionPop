@@ -9,7 +9,6 @@
     <%- title %>
   </title>
   <link rel="stylesheet" type="text/css" href="/css/all.css" />
-  <script src="/js/shop_cart/cookie.js"></script>
   <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
   <script src="/js/shop_cart/jquery.js"></script>
 </head>
@@ -74,40 +73,7 @@
                 <div class="col-12 text-center mb-3">
                   <p style="color: red; font-size: 0.6em;">請拍照或儲存以便日後查詢</p>
                 </div>
-                <!-- <div class="col-12 mb-4">
-                  <div style="border-radius: 5px" class="d-flex bg-gary px-4 py-2 align-items-center ">
-                    <h6 class="flex-grow-1 fw-600">訂單資訊</h6>
-                  </div>
-
-                  <div class="order_infoContent">
-                    <% cart.forEach(function(item){ %>
-
-                      <p>商品碼 : <span>
-                          <%- item.code %>
-                        </span> 商品名稱 : <span>
-                          <%- item.name %>
-                        </span> 數量 : <span>
-                          <%- item.quantity %>
-                        </span> 金額 : <span>
-                          <%- item.price %>
-                        </span></p>
-
-
-                      <% }) %>
-                  </div>
-                </div>
-
-                <div class="col-12 mb-4">
-                  <div style="border-radius: 5px" class="d-flex bg-gary px-4 py-2 align-items-center ">
-                    <h6 class="flex-grow-1 fw-600">收件人資訊</h6>
-                  </div>
-                  <div class="order_infoContent">
-                    <span class="order_info">收件人</span> <span id="name"></span><br>
-                    <span class="order_info">地址</span> <span id="city"></span> <span id="address"></span><br>
-                    <span class="order_info">手機號碼 </span> <span id="phone"></span><br>
-                    <span class="order_info">信箱 </span> <span id="email"></span><br>
-                  </div>
-                </div> -->
+                
               </div>
 
 
@@ -121,12 +87,25 @@
                   <p>
                     <b>總計商品件數:</b>
                     <span class="float-right"><span id="total_count">
-                        <%- cartCount %>
+                      <% let count = 0;
+                        result.forEach(function(item){
+                          count +=  parseInt(item.Quantity);
+                        })
+                      
+                      %>
+                        <%- count.toString() %>
                       </span> 件</span>
                   </p>
                   <p>
                     <b>小計:</b><span class="float-right">NT$<span id="total_price">
-                        <%- total %>
+                      <% let total_Price = 0;
+                        result.forEach(function(item){
+                          let ad = parseInt(item.Quantity) * parseInt(item.price)
+                          total_Price += ad ;
+                        })
+                      
+                      %>
+                        <%- total.toString() %>
                       </span></span>
                   </p>
                   <p>
@@ -352,8 +331,6 @@
   </script>
 
   <script src="/js/shop_cart/owl.carousel.js"></script>
-  <script src="/js/shop_cart/server.js"></script>
-  <script src="/js/shop_cart/cart.js"></script>
   <script src="/js/shop_cart/owl.js"></script>
   <script src="/js/shop_cart/bootstrap.js"></script>
 </body>
