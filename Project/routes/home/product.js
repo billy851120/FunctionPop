@@ -50,7 +50,7 @@ router.post('/:gender', function (rqs, res) {
       // console.log(!(rqs.body.content));
       // console.log(!!(rqs.body.content));
       if (rqs.body.content) {
-        console.log(arr+" post");
+        console.log(arr + " post");
         if (arr.includes(content)) {
           console.log("true")
           db.exec(
@@ -61,7 +61,7 @@ router.post('/:gender', function (rqs, res) {
               res.redirect(`/home/product/${gender}`);
               // if (err) return cb(err);
               // cb(null)
-              
+
             }
           );
         } else {
@@ -91,33 +91,33 @@ router.post('/:gender', function (rqs, res) {
 
 // Female Product
 var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
-router.get('/:gender', function (rqs, res) {
-router.get('/:gender', getUrl, function (rqs, res) {
-  db.exec(
-    sql,
-    [rqs.params.gender, 1],
-    function (results, fields, error) {
-      // console.log(error);
-      // console.log(results);
-      // console.log(fields);
-      if (error) {
-        throw error;
-        console.log("SSSSSSSSSSSSSSSSSSSSSSSSS");
-      }
-      var arr = [];
-      for (var i = 0; i < results[1].length; i++) {
-        arr[i] = results[1][i].product_id;
-      }
-      console.log(arr+" get");
-      res.render('shop', {
-        result: results[0],
-        // todos: results[1],
-        favorArr: arr
-      });
-      // console.log(results[0]);
-      // console.log(results[1]);
-    })
-});
+
+  router.get('/:gender', getUrl, function (rqs, res) {
+    db.exec(
+      sql,
+      [rqs.params.gender, 1],
+      function (results, fields, error) {
+        // console.log(error);
+        // console.log(results);
+        // console.log(fields);
+        if (error) {
+          throw error;
+          console.log("SSSSSSSSSSSSSSSSSSSSSSSSS");
+        }
+        var arr = [];
+        for (var i = 0; i < results[1].length; i++) {
+          arr[i] = results[1][i].product_id;
+        }
+        console.log(arr + " get");
+        res.render('shop', {
+          result: results[0],
+          // todos: results[1],
+          favorArr: arr
+        });
+        // console.log(results[0]);
+        // console.log(results[1]);
+      })
+  });
 
 // Male Product
 
