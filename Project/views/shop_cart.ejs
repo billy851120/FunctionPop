@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>assd</title>
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <script src="/js/shop_cart/cookie.js"></script>
     <script
       src="https://kit.fontawesome.com/93e1c8f0af.js"
       crossorigin="anonymous"
@@ -17,26 +16,32 @@
       .owl-theme .owl-dots .owl-dot span {
         display: none;
       }
+      .owl-carousel .img {
+        max-width: 374px;
+        width: 100%;
+        background-color: #ccc;
+        max-height: 561px;
+        height: 100%;
+      }
     </style>
   </head>
 
   <body>
     <div class="wrapper">
-      <%- include("navbar.ejs") %>
-      <table>
-        <thead>
-          <th colspan=""></th>
-        </thead>
-      </table>
+      <%- include("navbar.ejs") %> <%if(memberprofile){%>
+      <span id="member" style="display: none"><%- memberprofile.cName %></span>
+      <% } %>
+
       <!-- outline_class  oib oig oi  oir-->
       <div class="container">
+        <%- include("template/loginbar") %>
         <div class="cart_content">
           <div class="row content_text">
             <div class="col-9" style="padding: 0">
               <div class="row cart_banner">
                 <div class="col-12 top_link">
                   <ul class="cart-link">
-                    <li><a href="/">首頁</a></li>
+                    <li><a href="/home">首頁</a></li>
                     <li>
                       <a href="#">購物車</a>
                     </li>
@@ -213,7 +218,7 @@
         <hr style="border-top: 0.9px solid #000" />
         <div class="container">
           <div class="row">
-            <div style="font-weight: 900" class="col text-center mb-5 mt-2">
+            <div style="font-weight: 900" class="col text-center mb-3 mt-2">
               熱門商品
             </div>
           </div>
@@ -255,7 +260,7 @@
       </div>
       <div class="push"></div>
     </div>
-    <footer class="footer"><%- include("footer.ejs") %></footer>
+    <%- include("footer.ejs") %>
     <script>
       $(document).ready(function () {
         //更新總數量
@@ -302,12 +307,19 @@
           num++;
           var Count = parseInt($(this).siblings("#number").val());
           var to_Count = parseInt(Count + num);
-          var price = parseInt($(this).parent().parent().find(".price").text());
+          var price = parseInt(
+            $(this).parent().parent().parent().find(".price").text()
+          );
           var to_price = 0;
           to_price = price * to_Count;
           console.log(to_price);
           $(this).siblings("#number").val(to_Count);
-          $(this).parent().parent().find(".to_price").html(to_price.toString());
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .find(".to_price")
+            .html(to_price.toString());
 
           //更新總數量
           var total_count = 0;
@@ -319,9 +331,10 @@
           //更新總小計
           var total_price = 0;
           $("#css_tbody .product").each(function (idx, ele) {
-            total_price += parseInt($(ele).find(".to_price").text());
+            total_price += parseInt($(ele).parent().find(".to_price").text());
           });
-          $("#total_price").text(total_price.toString());
+          console.log(total_price);
+          $("#total_price").html(total_price.toString());
 
           //更新運費
           var fare = 1000;
@@ -369,12 +382,12 @@
           } else {
             Count--;
             var price = parseInt(
-              $(this).parent().parent().find(".price").text()
+              $(this).parent().parent().parent().find(".price").text()
             );
             var to_price = 0;
             to_price = price * Count;
-            console.log(to_price);
             $(this)
+              .parent()
               .parent()
               .parent()
               .find(".to_price")
@@ -386,13 +399,12 @@
             $("#css_tbody .product").each(function (idx, ele) {
               total_count += parseInt($(ele).find("#number").val());
             });
-            console.log(total_count);
             $("#total_count").text(total_count.toString());
 
             //更新總小計
             var total_price = 0;
             $("#css_tbody .product").each(function (idx, ele) {
-              total_price += parseInt($(ele).find(".to_price").text());
+              total_price += parseInt($(ele).parent().find(".to_price").text());
             });
             $("#total_price").text(total_price.toString());
 
@@ -446,7 +458,7 @@
             $(this).parent().parent().remove();
             $.ajax({
               url: "/home/shop_cart/del",
-              type: "POST",
+              type: "DELETE",
               data: all_id,
 
               success: function (res) {
@@ -461,7 +473,9 @@
                 //更新總小計
                 var total_price = 0;
                 $("#css_tbody .product").each(function (idx, ele) {
-                  total_price += parseInt($(ele).find(".to_price").text());
+                  total_price += parseInt(
+                    $(ele).parent().find(".to_price").text()
+                  );
                 });
                 $("#total_price").text(total_price.toString());
 
@@ -495,7 +509,24 @@
         });
         $("#sub").click(function () {
           if ($("#css_tbody ").has(".product").length ? true : false) {
-            return true;
+            if ($("#member").length ? true : false) {
+              // $.ajax({
+              //   url:"/home/shop_cart/orderCheck",
+              //   type:"GET",
+              //   success:function(res){
+              //     console.log("傳送成功");
+              //   },
+              //   error:function(){
+              //     console.log("傳送失敗")
+              //   }
+              // });
+              $("#buy").prop("action", "/home/shop_cart/orderCheck");
+              return true;
+            } else {
+              $("#buy").prop("action", "/home/member/login");
+              alert("請先登入");
+              return true;
+            }
           } else {
             alert("目前沒有任何商品");
             return false;
@@ -505,8 +536,6 @@
     </script>
 
     <script src="/js/shop_cart/owl.carousel.js"></script>
-    <!-- <script src="/js/shop_cart/server.js"></script> -->
-    <!-- <script src="/js/shop_cart/cart.js"></script> -->
     <script src="/js/shop_cart/owl.js"></script>
     <script src="/js/shop_cart/bootstrap.js"></script>
   </body>

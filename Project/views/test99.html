@@ -111,3 +111,99 @@
     
 </body>
 </html>
+
+
+
+<!-- Star 2 -->
+<svg style="display:none;" class="star5" width="20" height="20">
+    <defs class="star5 mx-auto d-flex justify-content-center">
+      <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
+        <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
+        <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
+        <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
+        <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
+        <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
+      </symbol>
+    </defs>
+  </svg>
+  <div class="rating mx-auto">
+  <!--   <div class="rating-bg" style="width: 90%;"></div> -->
+    <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
+    <svg width="20" height="20"><use xlink:href="#fivestars"/></svg>
+  </div>
+  
+
+  <!-- CSS -->
+  .star-progress{
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    background-image: url("/img/product/star2.jpg"); /* 星星的大小大約是15px*/
+    background-repeat: repeat-x; /* 作爲背景的星星圖案水平重複*/
+    width: 100px; /* 進度條的寬度爲5個星星的寬度*/
+}
+
+.star-progress-bar{
+    float: left;
+    width: 0; 
+    height: 100%;
+    text-align: center;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .85);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .85);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+    background-image: url("/img/product/star1.jpg");  /* 被點亮的星星圖案*/
+    background-repeat: repeat-x; /* 水平重複*/
+}
+
+.star5 {
+box-sizing: border-box;
+width: var(--size, 20px);
+height: var(--size, 20px);
+}
+
+.rating {
+width: 120px;
+height: 24px;
+position: relative;
+background-color: gray;
+}
+
+.rating progress.rating-bg {
+-webkit-appearance: none;
+-moz-appearence: none;
+appearance: none;
+border: none;
+display: inline-block;
+height: 24px;
+width: 100%;
+color: orange;
+}
+
+.rating progress.rating-bg::-webkit-progress-value {
+background-color: orange;
+}
+
+.rating progress.rating-bg::-moz-progress-bar {
+background-color: orange;
+}
+
+.rating svg {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+#productOuter {
+    width: 100%;
+    text-align: center;
+}
+
+.productInner {
+    display: inline-block;
+}
+
+

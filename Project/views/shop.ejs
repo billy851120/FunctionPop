@@ -71,7 +71,7 @@
 
 
         /* 24. Featured Design */
-        .my_product .buy-btn {
+        /* .my_product .buy-btn {
             color: #FFE200;
             transform: translateY(50px);
             opacity: 0;
@@ -95,7 +95,7 @@
         .my_product:hover .favo-btn {
             transform: translateY(0px);
             opacity: 1;
-        }
+        } */
 
         .my_button {
             font-size: 0.8rem;
@@ -123,6 +123,16 @@
             background-repeat: repeat-x; /* 作爲背景的星星圖案水平重複*/
             width: 100px; /* 進度條的寬度爲5個星星的寬度*/
         }
+        .pIconbtn {
+            /* border-radius: 5px; */
+            width: 80px;
+            height: 45px;
+            background: white;
+             color: black;
+            border: 0px ;
+            width: 60px; 
+            height: 45px;
+        }
 
         .star-progress-bar{
             float: left;
@@ -140,6 +150,8 @@
 
         .star5 {
         box-sizing: border-box;
+        width: var(--size, 24px;)
+        height: var(--size, 24px);
         }
 
         .rating {
@@ -185,6 +197,46 @@
             display: inline-block;
         }
 
+        /* All */
+        .all {
+            float: left;
+            background-color: #2196F3;
+            color: #ffffff;
+            width: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 2px;
+            display: none;
+        }
+
+            .show {
+            display: block;
+        }   
+
+        .listBtn {
+            background-color: white;
+            border: 0px solid rgb(206, 200, 200);
+            border-radius: 5px;
+            padding: 3px 2px;
+            margin: 3px 2px;
+        }
+
+        .listBtn:hover {
+            background-color: yellow;
+            opacity: 1;
+            ;
+            
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:link {
+            text-decoration: none;
+            /* cursor:pointer; */
+            color: black;
+        }
     </style>
     <!-- <link rel="stylesheet" href="./assets/css/Nice-breadcrumb.css"> -->
 </head>
@@ -283,7 +335,35 @@
                                         <div class="row mx-auto container">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <p>分類</p>
-                                                <div class="form-check">
+                                                <!-- <div id="categoryButton"> -->
+                                                    <!-- <button class="categorybtn active" onclick="filterSelection('all')">Show ALL</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('上衣')">上衣</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('下著')">下著</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('鞋')">鞋</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('包')">包</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('洋裝')">洋裝</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('裙子')">裙子</button> -->
+                                                    <!-- <button class="categorybtn" onclick="filterSelection('帽子')">帽子</button> -->
+                                                <!-- </div> -->
+                                                
+                                                
+                                                    
+                                                <div id="categoryButton">
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8A%E8%A1%A3">上&emsp;&emsp;衣</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下&emsp;&emsp;著</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋&emsp;&emsp;裝</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙&emsp;&emsp;子</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn"><a href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽&emsp;&emsp;子</button>
+                                                </div>
+
+
+                                                
+
+
+                                                <!-- <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="productType">
                                                     <label class="form-check-label" for="allProduct_checkbox">All</label>
                                                 </div>
@@ -302,7 +382,7 @@
                                                         name="productType">
                                                     <label class="form-check-label"
                                                         for="acessories_checkbox">Accessories</label>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <br><hr>
@@ -383,25 +463,30 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                                    <img class="img-fluid mb-3" src="/img/product/<%= item.product_image %>" alt="">
-                                    <h5><%= item.product_name %></h5>
-                                    <svg style="display:none;" class="star5">
-                                        <defs class="star5 mx-auto d-flex justify-content-center">
-                                          <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
-                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
-                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
-                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
-                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
-                                            <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
-                                          </symbol>
-                                        </defs>
-                                      </svg>
-                                      <div class="rating mx-auto">
-                                      <!--   <div class="rating-bg" style="width: 90%;"></div> -->
-                                        <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
-                                        <svg><use xlink:href="#fivestars"/></svg>
-                                      </div>
+                                <div class="my_product text-center col-lg-3 col-md-4 col-sm-1 align-items-center justify-content-center">
+                                    
+                                    <img class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt="">
+                                    <!-- <div>
+                                        <svg style="display:none;" class="star5" width="20" height="20">
+                                            <defs class="star5 mx-auto d-flex justify-content-center">
+                                            <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
+                                            </symbol>
+                                            </defs>
+                                        </svg>
+                                        <div class="rating mx-auto">
+                                          
+                                            <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
+                                            <svg width="20" height="20"><use xlink:href="#fivestars"/></svg>
+                                        </div>
+                                    </div> -->
+                                    <br>
+                                    <h5 style="font-size: 15px;"><%= item.product_name %></h5>
+                                    
                                       
 
 
@@ -439,7 +524,23 @@
                                             </form>
                                         </div>
                                         <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="productInner"><button class="my_button buy-btn">購物車</button></div>
+                                    <div id="productOuter" class="row  align-items-center mx-auto">
+                                        <div class="col-6">
+                                            <button class="pIconbtn" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="col-6" >
+                                            <button class="pIconbtn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
+
                                 </div>
 
                                 <% }); %>
@@ -461,6 +562,10 @@
                     </div>
                 </div>
             </div>
+            <!-- <span id="filterQ"><% result.forEach(function(item){ %>
+                <p><%- item.product_price %></p>
+
+           <% }) %></span> -->
         </section>
         <div class="push"></div>
     </div>  
@@ -469,7 +574,7 @@
     
         <!-- Footer -->
 
-
+    
 
     <!-- Bootstrap setting -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -481,6 +586,11 @@
     <script src="js/product/jquery.min.js"></script>
 
     <script>
+        
+
+            console.log(document.getElementById('filterQ'));
+        
+
         let select = document.querySelector("#selectMode");
         select.addEventListener("change", selectFun);
 
@@ -512,15 +622,25 @@
         //         return a.product_price > b.product_price;
         //     })
         //     alert(item);
+        //     var allproduct = [];
+        //     // document.getElementById('filterQ') forEach(x => {allproduct.push(allproduct.product_price);
+        //     console.log(allproduct)});
         // }
         
         // Price Low to High
         function option_02() {
-            alert("選到 option_02");
+            var allproduct = [];
+            result.forEach(x => {allproduct.push(x.product_price);
+            console.log(allproduct)});
+
+            var lowHigh = allproduct.sort(function (a, b) {
+                return a-b;
+            })
         }
         
         function option_03() {
-            alert("選到 option_03");
+            // alert("選到 option_03");
+            console.log(result);
         }
         
         function option_04() {
@@ -528,6 +648,51 @@
         }
     </script>
 
+    <!-- Filter ALL -->
+    <!-- <script>
+        filterSelection("all")
+        function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("productAll");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+        }
+
+        function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+} -->
+
+
+<!-- var btnContainer = document.getElementById("categoryButton");
+var btns = btnContainer.getElementsByClassName("categorybtn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+} -->
+    <!-- </script> -->
 
 </body>
 

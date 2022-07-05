@@ -23,10 +23,10 @@ localhost:3000/xxxxx
 會員頁面
 /home/member
 /home/member/memberData
-/home/member/frame7
-/home/member/frame8
-/home/member/frame9
-/home/member/test3
+/home/member/memberData_changePw
+/home/member/myFavourite
+/home/member/orderList
+/home/member/orderDetail
 
 商品頁面
 /home/product
@@ -44,7 +44,6 @@ localhost:3000/xxxxx
 /admin/goods/item_shelf
 /admin/goods/login
 /admin/goods/member
-/admin/goods/orderMgat__refund
 /admin/goods/orderMgat_num
 /admin/goods/register
 /admin/goods/stockMgat_all

@@ -6051,7 +6051,7 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 1040;
@@ -10929,7 +10929,19 @@ h3 {
  * 	Default theme - Owl Carousel CSS File
  */
 .owl-theme .owl-nav {
-  margin-top: 30px;
+  position: absolute;
+  z-index: -5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0;
+  width: 100%;
   text-align: center;
   -webkit-tap-highlight-color: transparent;
 }
@@ -10946,8 +10958,8 @@ h3 {
 }
 
 .owl-theme .owl-nav [class*=owl-]:hover {
-  background: #869791;
-  color: #FFF;
+  background: rgba(104, 98, 98, 0.095);
+  color: #000 129, 119, 119;
   text-decoration: none;
 }
 
@@ -11023,6 +11035,8 @@ h3 {
 
 .owl-carousel .owl-stage-outer {
   position: relative;
+  -webkit-transform: scale(0.9) !important;
+          transform: scale(0.9) !important;
   overflow: hidden;
   /* fix for flashing background */
   -webkit-transform: translate3d(0px, 0px, 0px);
@@ -11067,13 +11081,39 @@ h3 {
   user-select: none;
 }
 
+.owl-carousel .owl-nav button.owl-next {
+  -webkit-transform: translateX(90px);
+          transform: translateX(90px);
+}
+
+.owl-nav button.owl-prev {
+  -webkit-transform: translateX(-90px);
+          transform: translateX(-90px);
+}
+
+.owl-nav button.owl-next span,
+.owl-nav button.owl-prev span {
+  opacity: 0.5;
+  font-size: 8em;
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+  padding-bottom: 47px !important;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+  padding-bottom: 47px !important;
+}
+
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next,
 .owl-carousel button.owl-dot {
   background: none;
   color: inherit;
   border: none;
-  padding: 0 !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 0 !important;
   font: inherit;
 }
 

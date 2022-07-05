@@ -2,12 +2,20 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <!-- <link href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css" rel="stylesheet"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script> -->
     <!-- <link href="../fpop_css/admin.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../_css/bootstrap.css">
     <link rel="stylesheet" href="../fpop_css/fpop.css">
@@ -24,34 +32,219 @@
 
     <%- include("admin_navbar.ejs") %>
 
-    <!-- ---------------------------------------------------------------------- -->
+        <!-- ---------------------------------------------------------------------- -->
 
-    <!-- Main Content -->
-    <div class="fpop-main p-5">
-        <h2>我是刪除</h2>
+        <!-- Main Content -->
+        <div class="fpop-main p-5">
+            <h2>我是刪除</h2>
 
-        <p>The sidebar with is set with "style="width:25%".</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
-        <p>The left margin of the page content is set to the same value.</p>
+            <p>The sidebar with is set with "style="width:25%".</p>
+            <p>The left margin of the page content is set to the same value.</p>
+            <p>The left margin of the page content is set to the same value.</p>
+            <div class="container">
 
-    </div>
-    <!-- Main Content end-->
+                <div class="container">
+                    <div tabindex="-1" id="action_modal">
+                        <div class="">
+                            <div class="">
+                                <form method="post" id="sample_form">
+                                    <div class="modal-header" id="dynamic_modal_title">
+                                        <h5 class="modal-title"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" name="cName" id="cName" class="form-control" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" name="cBirth" id="cBirth" class="form-control" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">cAccount</label>
+                                            <input type="text" name="cAccount" id="cAccount" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="id" id="id" />
+                                        <input type="hidden" name="action" id="action" value="Add" />
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id="action_button">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="mt-4 mb-4 text-center text-primary"><b>
+                            <%= title %>
+                        </b></h1>
+
+                    <span id="message"></span>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col col-sm-9">Sample Data</div>
+                                <div class="col col-sm-3">
+                                    <button type="button" id="add_data"
+                                        class="btn btn-success btn-sm float-end">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id="sample_data">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Gender</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</body>
+
+</html>
 
 
+</div>
+</div>
+<!-- Main Content end-->
+<script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    // 重新載入
+    function load_data() {
+        $.ajax({
+            url: "http://localhost:3000/admin/goods/item_del",
+            method: "POST",
+            data: { action: 'fetch' },
+            dataType: "JSON",
+            success: function (data) {
+                var html = '';
+                if (data.data.length > 0) {
+                    for (var count = 0; count < data.data.length; count++) {
+                        html += `
+                            <tr>
+                            <td id="newName`+ count + `">` + data.data[count].cName + `</td>
+                            <td id="newBirth`+ count + `">` + data.data[count].cBirth + `</td>
+                            <td id="newAccount`+ count + `">` + data.data[count].cAccount + `</td>
+                            <td> <button type="button" onclick="deleItem(`+ data.data[count].cName + `,` + data.data[count].cBirth + `,` + data.data[count].cAccount + `)"
+                            class="btn btn-success btn-sm float-end">刪除</button></td>
+                    </tr>
+                    `;
+                    }
+                }
+                $('#sample_data tbody').html(html);
+            }
+        });
+    }
+
+    // 新增
+    function addItem() {
+        $.ajax({
+            url: "http://localhost:3000/admin/goods/addItem",
+            method: "POST",
+            data: {
+                // 這裡還需要調整
+                cName: $("#cName").val(),
+                cBirth: $("#cBirth").val(),
+                cAccount: $("#cAccount").val()
+            },
+            dataType: "JSON",
+            success: function (data) {
+                console.log("success!!!")
+            },
+            error: function () {
+                console.log("error!!!")
+            }
+        });
+    }
+
+    // 刪除
+    function deleItem(name, birth, account) {
+        console.log("deleItem!!!")
+        // console.log("deleItem!!!  name:"+name+",birth:"+birth+",account:"+account)
+        // $.ajax({
+        //     url: "http://localhost:3000/admin/goods/deletItem",
+        //     method: "POST",
+        //     data: {
+        //         // 這裡還需要調整
+        //         cName: $("#cName").val(),
+        //         cBirth: $("#cBirth").val(),
+        //         cAccount: $("#cAccount").val()
+        //     },
+        //     dataType: "JSON",
+        //     success: function (data) {
+        //         console.log("success!!!")
+        //     },
+        //     error : function(){
+        //         console.log("error!!!")
+        //     }
+        // });
+    }
+
+    $(document).ready(function () {
+        load_data();
+    });
+
+
+    // 新增
+    $('#add_data').click(function () {
+
+        $('#dynamic_modal_title').text('Add Data');
+
+        // $('#sample_form')[0].reset();
+
+        $('#action').val('Add');
+
+        $('#action_button').text('Add');
+
+        // $('#action_modal').modal('show');
+
+    });
+
+    // 這邊先註解一下，因為我不是很懂
+    // $('#sample_form').on('submit', function (event) {
+
+    //     event.preventDefault();
+
+    //     $.ajax({
+    //         url: "http://localhost:3000/admin/goods/item_del",
+    //         method: "POST",
+    //         data: $('#sample_form').serialize(),
+    //         dataType: "JSON",
+    //         beforeSend: function () {
+    //             $('#action_button').attr('disabled', 'disabled');
+    //         },
+    //         success: function (data) {
+    //             $('#action_button').attr('disabled', false);
+
+    //             $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+    //             $('#action_modal').modal('hide');
+
+    //             load_data();
+
+    //             setTimeout(function () {
+    //                 $('#message').html('');
+    //             }, 5000);
+    //         }
+    //     });
+
+    // });
+
+</script>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

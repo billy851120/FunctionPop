@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%- title %>
+    </title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/js/member/member.css">
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+
+    <style>
+        .subTitle{
+            background-color: #FBEAAD;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("../navbar.ejs") %>
+    
+    <!-- 產品分類導覽列 -->
+    <div class="container">
+        <%- include("../template/loginbar") %>
+        
+            <!-- 左邊選單列 -->
+            <div class="row mt-4">
+                <div class="col-12 col-lg-2 text-center mb-4 ">
+                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData"
+                            class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
+                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/orderList"
+                            class="nav-link text-dark font-weight-bold  d-inline d-lg-block">訂單&退貨</a></p>
+                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite"
+                            class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
+                </div>
+                <!-- 右邊資訊欄 -->
+                <% if(memberprofile) { %> 
+                <div class="col-12 col-lg-10 row-box p-3 mb-5">
+                    <div class="row mb-4">
+                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1">
+                            <h4>訂單資訊</h4>
+                        </a>
+                    </div>
+
+                    <p>訂單編號：TW8000201170592 <span
+                            class="px-3 py-1 ml-2 border border-success text-success rounded">完成</span></p>
+                    <p>訂單日期：2022/4/1 10:08</p>
+                    <p class="p-3 subTitle font-weight-bold">商品明細</p>
+                    <hr>
+                    <div class="row row-cols-4 ">
+                        <div class="col">商品名稱</div>
+                        <div class="col">金額</div>
+                        <div class="col">數量</div>
+                        <div class="col">小計</div>
+                    </div>
+                    <hr>
+                    <div class="row row-cols-4 py-3">
+                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
+                        <div class="col">NT$891.00</div>
+                        <div class="col">數量: 1</div>
+                        <div class="col">NT$891.00</div>
+                    </div>
+                    <div class="row row-cols-4 py-3">
+                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
+                        <div class="col">NT$891.00</div>
+                        <div class="col">數量: 1</div>
+                        <div class="col">NT$891.00</div>
+                    </div>
+                    <div class="row row-cols-4 py-3">
+                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
+                        <div class="col">NT$891.00</div>
+                        <div class="col">數量: 1</div>
+                        <div class="col">NT$891.00</div>
+                    </div>
+                    <p class="p-3 subTitle font-weight-bold">商品總結</p>
+                    <div class="row">
+                        <div class="col-2 py-2">商品數量：</div>
+                        <div class="col-10 py-2">3件商品</div>
+                        <div class="col-2 py-2">小計：</div>
+                        <div class="col-10 py-2">2673元</div>
+                    </div>
+                    <div class="text-center my-5"> <a href="#" class="px-3 py-2 btn_GO">檢視所有訂單資訊</a>
+                    </div>
+                    <% } else { %>
+                        <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
+                     
+                        <%   } %> 
+                </div> <!-- col-10 -->
+            </div> <!-- row -->
+    </div> <!-- container -->
+
+
+
+
+    <footer class="footer">
+        <%- include("../footer.ejs") %>
+    </footer>
+</body>
+
+</html>
