@@ -23,10 +23,10 @@ localhost:3000/xxxxx
 會員頁面
 /home/member
 /home/member/memberData
-/home/member/frame7
-/home/member/frame8
-/home/member/frame9
-/home/member/test3
+/home/member/memberData_changePw
+/home/member/myFavourite
+/home/member/orderList
+/home/member/orderDetail
 
 商品頁面
 /home/product
