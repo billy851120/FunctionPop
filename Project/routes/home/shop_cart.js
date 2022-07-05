@@ -5,6 +5,7 @@ var shop_cartController = require('../../controller/shop_cartController');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var db = require('../../dataBase');
+const { apply } = require('file-loader');
 
 // 回到前頁
 function redirectBack(req, res, next) {
@@ -15,6 +16,11 @@ function redirectBack(req, res, next) {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(session({ secret: 'secret' }));
+router.use((req, res, next) => {  //  登入後返回原本頁面
+  var url = req.originalUrl;
+  req.session.url = url;
+  return next();
+})
 
 // 查看購物車-----------------------------------------------
 
@@ -28,7 +34,7 @@ router.post('/del', shop_cartController.productDel, redirectBack);
 //訂單確認-------------------------------------------
 
 router.get('/orderCheck', shop_cartController.orderCheck);
-router.post('/orderCheck', function (req, res) {});
+router.post('/orderCheck', function (req, res) { });
 router.post('/orderCheck/add', shop_cartController.newOrder);
 
 // 訂單完成--------------------------------------------

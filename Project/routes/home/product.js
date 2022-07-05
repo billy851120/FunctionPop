@@ -12,7 +12,11 @@ router.use(
   })
 );
 router.use(bodyParser.urlencoded({ extended: true }));
-
+router.use((req, res, next) => {  //  登入後返回原本頁面
+  var url = req.originalUrl;
+  req.session.url = url;
+  return next();
+})
 // Female Product
 
 router.get('/:gender', function (rqs, res) {

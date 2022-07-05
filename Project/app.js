@@ -6,7 +6,11 @@ var app = express();
 var moment = require('moment');
 var shortDataFormat = 'YYYY-MM-DD hh:mm:ss';
 
-
+function getUrl(req, res, next) {
+  var url = req.originalUrl;
+  req.session.url = url;
+  return next();
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,6 +25,7 @@ app.use((req, res, next) => {
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
   res.locals.cartCount = req.session.cartCount;
+  res.locals.url = req.session.url;
   next();
 });
 
@@ -53,3 +58,5 @@ app.use('/admin', admin);
 app.listen(3000, function () {
   console.log('run');
 });
+
+
