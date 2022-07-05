@@ -13,7 +13,8 @@
     <title>f.pop 後台管理</title>
     <style>
         .fpop-card-text {
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .modal-inp {
@@ -26,12 +27,7 @@
             padding: 0 10px;
         }
 
-        input:disabled {
-            cursor: default;
-            background-color: -internal-light-dark(rgba(239, 239, 239, 0.5), rgba(59, 59, 59, 0.5));
-            color: -internal-light-dark(rgb(84, 84, 84), rgb(243, 14, 14));
-            /* border-color: rgba(255, 8, 8, 0.3); */
-        }
+   
     </style>
 
 </head>
@@ -54,9 +50,7 @@
 
             <div class="col-11 m-auto">
                 <div>
-                    <div class="card-title pr">
-                        <h4 class="text-center pt-3">會員資料</h4>
-                    </div>
+                    
                     <div class=" text-center">
                         <a href="/admin/goods/member/<%= i %>"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                 height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
@@ -76,14 +70,14 @@
                                             d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
                                     </svg></a>
 
-                                <p>會員 <%= total_nums%> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
+                                <p>會員資料共 <%= total_nums%> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
                     </div>
                     <div class="modal" id="myModal">
                         <form id="form" class="modal-content" style="width: 400px;">
                             <div class="text-center p-4">
                                 <input type="hidden" name="id">
-                                <h4 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
-                                </h4><br>
+                                <h3 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
+                                </h3><br>
                                 <h4 class="font-weight-bold">生日: 　<input class="modal-inp" type="text" name="cBirth"
                                         disabled></h4><br>
                                 <h4 class="font-weight-bold">性別: 　<input class="modal-inp" type="text" name="cgender"
@@ -108,9 +102,9 @@
                                         <div class="card m-2">
                                             <div class="card-body">
 
-                                                <h5 class="card-title">
+                                                <h4 class="card-title">
                                                     姓名: <%= item.cName %>
-                                                </h5>
+                                                </h4>
                                                 <p class="fpop-card-text">
                                                     生日: <%= item.cBirth %>
                                                 </p>
@@ -170,28 +164,28 @@
                         },
                     })
                 }
-                function Delete(id) {
-                    var JSONData = { "id": id }
-                    JSONData = JSON.stringify(JSONData)
-                    $.ajax({
-                        url: "http://localhost:3000/admin/goods/member/delete",
-                        type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        data: JSONData,
-                        success: function (res) {
-                            var res = JSON.parse(res)
-                            if (res.errno === 1) {
-                                alert("刪除成功!")
-                                location.reload()
-                            } else if (res.errno === 0) {
-                                alert("刪除失敗!")
-                            }
-                        },
-                        error: function () {
-                            alert("系統錯誤!")
-                        }
-                    })
-                }
+                // function Delete(id) {
+                //     var JSONData = { "id": id }
+                //     JSONData = JSON.stringify(JSONData)
+                //     $.ajax({
+                //         url: "http://localhost:3000/admin/goods/member/delete",
+                //         type: "POST",
+                //         contentType: "application/json; charset=utf-8",
+                //         data: JSONData,
+                //         success: function (res) {
+                //             var res = JSON.parse(res)
+                //             if (res.errno === 1) {
+                //                 alert("刪除成功!")
+                //                 location.reload()
+                //             } else if (res.errno === 0) {
+                //                 alert("刪除失敗!")`
+                //             }
+                //         },
+                //         error: function () {
+                //             alert("系統錯誤!")
+                //         }
+                //     })
+                // }
                 $('#submit').on('click', function () {
 
                     //整理表單資料到變數
