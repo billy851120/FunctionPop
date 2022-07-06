@@ -14,10 +14,14 @@ function getUrl(req, res, next) {  // 登入後返回前頁
   return next();
 }
 
-// 會員登入/登出-------------------------------------------------
+// 會員登入/登出/註冊-------------------------------------------------
 router.get('/login', memberController.login);
 router.post('/login', memberController.handlelogin, redirectBack);
 router.get('/logout', memberController.logout);
+
+router.get('/register', memberController.register);
+
+router.post("/register",memberController.handleregister);
 
 // 會員資料頁面------------以下登入才看得到-------------------------
 router.get('/memberData', getUrl, memberController.memberData);
@@ -74,7 +78,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
   res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
   }
 });
-
+ 
 
 
 

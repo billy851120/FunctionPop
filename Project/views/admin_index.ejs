@@ -47,7 +47,9 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="card-text p-1" style="font-size: 9px;">今日訂單數量</p>
-                            <p class="card-text">1</p>
+                            <p class="card-text">
+                                <%= order_today %>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -61,31 +63,38 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="card-text p-1" style="font-size: 10px;">今日銷售總額</p>
-                            <p class="card-text">$ 30,000</p>
+                            <p class="card-text">$ <%= sale_today %>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="card text-bg-info m-4 fpopCard">
                     <div class="card-body row">
-                        <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" style="color:rgb(76, 143, 44) ;" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
-                          </svg></div>
+                        <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                style="color:rgb(76, 143, 44) ;" fill="currentColor" class="bi bi-graph-up-arrow"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
+                            </svg></div>
                         <div class="col-8">
                             <p class="card-text p-1" style="font-size: 10px;">近7日銷售額</p>
-                            <p class="card-text">$ 30,000</p>
+                            <p class="card-text">$ <%= sale_7today %>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="card text-bg-info m-4 fpopCard">
                     <div class="card-body row">
                         <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"
-                                fill="currentColor" style="color:rgb(76, 143, 44) ;" class="bi bi-bag" viewBox="0 0 16 16">
+                                fill="currentColor" style="color:rgb(76, 143, 44) ;" class="bi bi-bag"
+                                viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                             </svg></div>
                         <div class="col-8">
                             <p class="card-text p-1" style="font-size: 10px;">商品總數量</p>
-                            <p class="card-text">200</p>
+                            <p class="card-text">$ <%= total %>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -105,17 +114,17 @@
 
                                         <h6 class="mt-3">包</h6>
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 25%"
+                                            <div class="progress-bar" role="progressbar" style="width: 45%"
                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <h6 class="mt-3">鞋</h6>
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 40%"
+                                            <div class="progress-bar" role="progressbar" style="width: 65%"
                                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <h6 class="mt-3">上衣</h6>
                                         <div class="progress">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 85%"
                                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
@@ -151,21 +160,20 @@
                     purple: 'rgb(153, 102, 255)',
                     grey: 'rgb(201, 203, 207)'
                 };
-                function chartColors(){
-                    
+                function chartColors() {
+
                     $.ajax({
                         url: "http://localhost:3000/admin/goods",
                         type: "POST",
-                        data: {action:'fetch'},
-                        success:function(){
-                        
+                        data: { action: 'fetch' },
+                        success: function () {
+
                         }
                     })
                 }
 
 
                 var config = {
-
                     type: 'pie',
                     data: {
                         datasets: [{
@@ -202,44 +210,59 @@
                 });
 
                 // bar
-                var MONTHS = ["上衣", "下著", "包", "帽子", "洋裝", "裙子", "鞋"];
-                var colors = Chart.helpers.color;
-                var barChartData = {
-                    labels: ["上衣", "下著", "包", "帽子", "洋裝", "裙子", "鞋"],
-                    datasets: [{
-                        label: 'Female',
-                        backgroundColor: colors(window.chartColors.red).alpha(0.5).rgbString(),
-                        borderColor: window.chartColors.red,
-                        borderWidth: 1,
-                        data: [
-                            10,
-                            10,
-                            10,
-                            10,
-                            10,
-                            10,
-                            10
-                        ]
-                    }, {
-                        label: 'Male',
-                        backgroundColor: colors(window.chartColors.blue).alpha(0.5).rgbString(),
-                        borderColor: window.chartColors.blue,
-                        borderWidth: 1,
-                        data: [
-                            10,
-                            10,
-                            10,
-                            10,
-                            10,
-                            10,
-                            10
-                        ]
-                    }]
+                function chartColors() {
 
-                };
+                    $.ajax({
+                        url: "http://localhost:3000/admin/goods",
+                        type: "POST",
+                        data: { 
+                            
+                        },
+                        success: function () {
+
+                        }
+                    })
+                }
+
 
                 window.onload = function () {
                     // pie
+                    var MONTHS = ["上衣", "下著", "包", "帽子", "洋裝", "裙子", "鞋"];
+                    var colors = Chart.helpers.color;
+                    var barChartData = {
+                        labels: ["上衣", "下著", "包", "帽子", "洋裝", "裙子", "鞋"],
+                        datasets: [{
+                            label: 'Female',
+                            backgroundColor: colors(window.chartColors.red).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.red,
+                            borderWidth: 1,
+                            data: [
+                                12,
+                                8,
+                                3,
+                                2,
+                                9,
+                                8,
+                                5,
+                            ]
+                        }, {
+                            label: 'Male',
+                            backgroundColor: colors(window.chartColors.blue).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.blue,
+                            borderWidth: 1,
+                            data: [
+                                11,
+                                11,
+                                3,
+                                7,
+                                1,
+                                1,
+                                7,
+                            ]
+                        }]
+
+                    };
+
                     document.querySelectorAll('.chart-item').forEach(function (item) {
                         config.data.datasets.forEach(function (dataset) {
                             dataset.data = dataset.data.map(function () {
@@ -267,6 +290,7 @@
                             }
                         }
                     });
+
 
                 };
             </script>

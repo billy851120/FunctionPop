@@ -4,8 +4,109 @@ var bodyParser = require('body-parser');
 var db = require('../../dataBase');
 var router = express.Router();
 var events = require(`events`);
+const { data } = require('jquery');
 var emitter = new events.EventEmitter();
+var moment = require('moment');
+var shortDataFormat = 'YYYY-MM-DD hh:mm:ss';
 router.use(bodyParser.json());
+
+
+router.use((req, res, next) => {
+  res.locals.moment = moment;
+  res.locals.shortDataFormat = shortDataFormat;
+  next();
+});
+
+//------------訂單編號指令---------------
+router.get('/orderMgat_num', function (rqs, res) {
+  res.render('admin_orderMgat_num');
+  res.redirect('/admin/goods/orderMgat_num/1');
+});
+
+router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
+  var page = rqs.params.page //把<=0的id強制改成1
+  if (page <= 0) {
+    res.redirect('/orderMgat_num')
+    return
+  }//每頁資料數
+  var nums_per_page = 10       //定義資料偏移量
+  var offset = (page - 1) * nums_per_page
+  db.exec(`SELECT * FROM orders ORDER BY orders.order_list DESC LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
+    db.exec(`SELECT COUNT(*) AS COUNT FROM orders`, [], function (nums, fields) {
+      var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
+      //避免請求超過最大頁數
+      if (page > last_page) {
+        res.redirect('/admin/goods/orderMgat_num/' + last_page)
+        return
+      }
+      res.render('admin_orderMgat_num', {
+        data: data,
+        curr_page: page,//本頁資料數量
+        total_nums: nums[0].COUNT, //總數除以每頁筆數，再無條件取整數
+        last_page: last_page,
+
+      })
+    })
+  })
+})
+router.get('/orderMgat_num/:order_id([0-9]+)', function (rqs, res) {
+  var sql = `SELECT * FROM orders WHERE order_id = ?;`
+  var data = [rqs.params.id]
+  db.exec(sql, data, function (results, fields) {
+    console.log(results)
+    if (results[0]) {
+      res.end(
+        JSON.stringify(new Success(results[0]))
+      )
+    } else {
+      res.end(
+        JSON.stringify(new Error('no result'))
+      )
+    }
+  })
+})
+
+
+router.get('/orderMgat_num', function (rqs, res) {
+  res.render('admin_orderMgat_num', { title: '後台管理系統' });
+});
+
+
+
+
+//------------訂單編號指令---------------
+//------------首頁指令---------------
+
+router.get('/', function (rqs, res) {
+  var sql = `SELECT COUNT(*) AS COUNT FROM products_all`;
+  var sql1 = `SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());`;
+  var sql2 = `SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE to_days(order_date) = to_days(now());`;
+  var sql3 = `SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE order_date>=date_sub(curdate(),interval 7 day);`;
+  db.exec(sql, [], function (results, fields) {
+    db.exec(sql1, [], function (results1, fields) {
+      db.exec(sql2, [], function (results2, fields) {
+        db.exec(sql3, [], function (results3, fields) {
+
+          res.render('admin_index', {
+            total: results[0].COUNT,
+            order_today: results1[0].COUNT,
+            sale_today: results2[0].COUNT,
+            sale_7today: results3[0].COUNT,
+
+          });
+
+        })
+      })
+    })
+  })
+})
+
+router.get('/', function (rqs, res) {
+  res.render('admin_index');
+});
+
+//------------首頁指令---------------
+
 
 //------------製作會員分頁---------------
 
@@ -14,27 +115,21 @@ router.get('/member', function (rqs, res) {
   res.redirect('/admin/goods/member/1');
 });
 router.get('/member/:page([0-9]+)', function (rqs, res) {
-
-  var page = rqs.params.page
-  //把<=0的id強制改成1
+  var page = rqs.params.page //把<=0的id強制改成1
   if (page <= 0) {
     res.redirect('/member')
     return
-  }
-  //每頁資料數
-  var nums_per_page = 10 //定義資料偏移量
+  }//每頁資料數
+  var nums_per_page = 10       //定義資料偏移量
   var offset = (page - 1) * nums_per_page
-
   db.exec(`SELECT * FROM customer_id ORDER BY customer_id.id DESC LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
     db.exec(`SELECT COUNT(*) AS COUNT FROM customer_id`, [], function (nums, fields) {
       var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
-
       //避免請求超過最大頁數
       if (page > last_page) {
         res.redirect('/admin/goods/member/' + last_page)
         return
       }
-
       res.render('admin_member', {
         data: data,
         curr_page: page,
@@ -46,6 +141,7 @@ router.get('/member/:page([0-9]+)', function (rqs, res) {
     })
   })
 })
+
 router.get('/member/detail/:id([0-9]+)', function (rqs, res) {
   var sql = `SELECT * FROM customer_id WHERE id = ?;`
   var data = [rqs.params.id]
@@ -66,24 +162,6 @@ router.get('/member/detail/:id([0-9]+)', function (rqs, res) {
 router.get('/member/add', function (rqs, res) {
   res.render('add')
 })
-
-router.post('/member/insert', function (rqs, res) {
-  var body = rqs.body
-  var sql = `INSERT INTO customer_id(cName,cBirth,cgender,cAccount,cPhone,cAddr) VALUES(?,?,?,?,?,?);`
-  var data = [body.cName, body.cBirth, body.cgender, body.cAccount, body.cPhone, body.cAddr]
-  db.exec(sql, data, function (results, fields) {
-    if (results.insertId) {
-      res.end(
-        JSON.stringify(new Success('insert success'))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('insert failed'))
-      )
-    }
-  })
-})
-
 
 router.post('/member/delete', function (rqs, res) {
   var body = rqs.body
@@ -116,14 +194,9 @@ function DELETE(id) {
 router.post('/member/update', function (rqs, res) {
   var body = rqs.body
   var sql = `UPDATE customer_id SET cName = ?, cAccount = ?, cPhone = ? ,cAddr = ? WHERE id = ?;`;
-  var data = [body.cName, body.cAccount, body.cPhone, body.cAddr,body.id]
+  var data = [body.cName, body.cAccount, body.cPhone, body.cAddr, body.id]
   db.exec(sql, data, function (results, fields) {
-    console.log("sql")
-    console.log(sql)
-    console.log("results")
-    console.log(results)
-    console.log("results.affectedRows")
-    console.log(results.affectedRows)
+
     if (results.affectedRows) {
       res.end(
         JSON.stringify(new Success('update success'))
@@ -136,11 +209,10 @@ router.post('/member/update', function (rqs, res) {
   })
 })
 
-function UPDATE(cName,  cgender, cAccount, cAddr,id) {
+function UPDATE(cName, cgender, cAccount, cAddr, id) {
   const sql = `UPDATE customer_id SET cName = ?, cgender = ?, cAccount = ?, cPhone = ? ,cAddr = ? WHERE id = ?;`;
-  const data = [cName,  cgender, cAccount, cPhone, cAddr, parseInt(body.id)];
+  const data = [cName, cgender, cAccount, cPhone, cAddr, parseInt(body.id)];
   db.exec(sql, data, function (results, fields) {
-    console.log("UPDATE-2")
     console.log(results)
     if (results.affectedRows) {
       console.log(JSON.stringify(new Success('update success')));
@@ -227,53 +299,6 @@ router.get('/member', function (rqs, res) {
 });
 
 
-//--------------刪除--------------------
-
-
-
-router.get('/item_del', function (rqs, res) {
-  res.render('admin_item_del', { title: '安安' });
-});
-
-router.post('/item_del', function (rqs, res) {
-
-  var action = rqs.body.action;
-
-  if (action == 'fetch') {
-    var query = "SELECT * FROM customer_id ORDER BY id DESC";
-
-    db.exec(query, function (error, data) {
-
-      res.json({ data: data });
-    })
-  }
-  if (action == 'Add') {
-    var cName = rqs.body.cName;
-
-    var cBirth = rqs.body.cBirth;
-
-    var cAccount = rqs.body.cAccount;
-
-
-    var query = `
-		INSERT INTO customer_id 
-		(cName, cBirth, cAccount) 
-		VALUES ("${cName}", "${cBirth}", "${cAccount}"
-		`;
-
-    db.exec(query, function (error, data) {
-      console.log("ddddddddddd")
-      res.json({
-        message: 'Data Added'
-      });
-    });
-  }
-
-
-})
-
-
-//--------------刪除--------------------
 //--------------新增菜單--------------------
 
 
@@ -367,9 +392,6 @@ router.get('/item_del', function (rqs, res) {
 });
 
 
-router.get('/orderMgat_num', function (rqs, res) {
-  res.render('admin_orderMgat_num', { title: '後台管理系統' });
-});
 
 router.get('/stockMgat_all', function (rqs, res) {
   res.render('admin_stockMgat_all', { title: '後台管理系統' });
