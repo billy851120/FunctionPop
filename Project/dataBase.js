@@ -7,10 +7,11 @@ exports.exec = (sql, data, callback) => {
     user: 'root',
     password: '',
     database: 'functionpop',
+    multipleStatements: true
   });
   connection.connect();
 
-  connection.query(sql, data, function (err, results, fields ) {
+  connection.query(sql, data, function (err, results, fields) {
     if (err) {
       console.log(err);
     }

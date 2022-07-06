@@ -26,6 +26,10 @@ SET time_zone = "+00:00";
 --
 -- 資料表結構 `admin_user`
 --
+CREATE TABLE `favorite` (
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `admin_user` (
   `id` int(10) NOT NULL,

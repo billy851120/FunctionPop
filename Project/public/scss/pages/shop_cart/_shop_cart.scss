@@ -24,6 +24,9 @@
 //     text-decoration: none;
 //     color: #000;
 // }
+.q_sub:hover,.q_add:hover{
+    background-color: #dcd7c969;
+}
 
 .cart {
     font-size: 0.6em;
@@ -222,12 +225,18 @@
 
     border-radius: 5px;
 }
-
 .payCh {
-    border: 1px solid #000;
+    box-shadow: 1px 1px 3px #ccc;
     padding: 8px 7px;
     border-radius: 5px;
 }
+.checkBg{
+    background-color: #EEEEEE;
+}
+.payCh:hover{
+    box-shadow: 2px 3px 5px #aaa;
+}
+
 
 .payCh+.payCh {
     margin-left: 20px;

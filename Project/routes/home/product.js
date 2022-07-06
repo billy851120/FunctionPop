@@ -18,20 +18,107 @@ router.use(
     name: 'product',
   })
 );
+
 router.use(bodyParser.urlencoded({ extended: true }));
 
-// Female Product
+router.use(bodyParser.json())
 
-router.get('/:gender', getUrl, function (rqs, res) {
+var sqlpost = 'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
+router.post('/:gender', function (rqs, res) {
   db.exec(
-    'SELECT * FROM products WHERE product_gender = ?',
-    [rqs.params.gender],
-    (result, fields) => {
-      // console.log(result);
-      res.render('shop', { result: result });
-    }
-  );
-});
+    sqlpost,
+    1,
+    function (results, fields, error) {
+      if (error) {
+        throw error;
+        console.log("RRRRRRRRRRR");
+      }
+      var arr = [];
+      for (var i = 0; i < results.length; i++) {
+        arr[i] = results[i].product_id;
+      }
+      // console.log(arr);
+
+      // res.render('shop', {
+      //   result: results[0],
+      //   // todos: results[1],
+      //   favorArr: arr
+      // })
+      var gender = rqs.params.gender;
+      const content = parseInt(rqs.body.content);
+      console.log(rqs.body.content);
+      // console.log(!(rqs.body.content));
+      // console.log(!!(rqs.body.content));
+      if (rqs.body.content) {
+        console.log(arr + " post");
+        if (arr.includes(content)) {
+          console.log("true")
+          db.exec(
+            'DELETE FROM favorite WHERE product_id = ?', [content], (results, err) => {
+              console.log(results);
+              console.log(err);
+              // res.redirect('/');
+              res.redirect(`/home/product/${gender}`);
+              // if (err) return cb(err);
+              // cb(null)
+
+            }
+          );
+        } else {
+          console.log("555")
+          db.exec(
+            'INSERT INTO favorite VALUES(1,?)', [content], (results, err) => {
+              console.log(results);
+              console.log(err);
+              // res.redirect('/');
+              res.redirect(`/home/product/${gender}`);
+              // if (err) return cb(err);
+              // cb(null)
+            }
+
+          );
+        }
+      }
+
+      //  res.redirect('/:gender');
+
+
+    })
+})
+
+// router.get('/todos', todoController.getAll)
+// router.get('/female', todoController.addTodo)
+
+// Female Product
+var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
+
+  router.get('/:gender', getUrl, function (rqs, res) {
+    var url =rqs.url;
+    db.exec(
+      sql,
+      [rqs.params.gender, 1],
+      function (results, fields, error) {
+        // console.log(error);
+        // console.log(results);
+        // console.log(fields);
+        if (error) {
+          throw error;
+          console.log("SSSSSSSSSSSSSSSSSSSSSSSSS");
+        }
+        var arr = [];
+        for (var i = 0; i < results[1].length; i++) {
+          arr[i] = results[1][i].product_id;
+        }
+        console.log(arr + " get");
+        res.render('shop', {
+          result: results[0],url,
+          // todos: results[1],
+          favorArr: arr
+        });
+        // console.log(results[0]);
+        // console.log(results[1]);
+      })
+  });
 
 // Male Product
 
