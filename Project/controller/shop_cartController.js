@@ -76,17 +76,12 @@ var shop_cartController = {
     if (req.body.allId) {
       var cart = req.session.cart;
       var all_id = req.body.allId;
-      var qua = 0;
       if (shop_cartModel.isProductInCart(cart, all_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == all_id) {
-            console.log(cart[i].quantity);
-
-            qua = parseInt(cart[i].quantity);
-            console.log(qua);
+            var qua = parseInt(cart[i].quantity);
             qua++;
             cart[i].quantity = qua.toString();
-            console.log(cart[i]);
           }
         }
       }
@@ -138,7 +133,7 @@ var shop_cartController = {
         if (!result[0]) {
           oid = 1;
         } else {
-          oid = result[0].order_id + 1;
+          oid = result[0].order_id;
         }
         // console.log(result[0]);
         res.render('orderCheck', {
