@@ -127,7 +127,10 @@ var memberController = {
     },
 
     register: (req, res) => {
-        res.render('register', {});
+        console.log(req.session.url);
+        res.render('register', {
+
+        });
     },
 
     handleregister: (req, res, next) => {

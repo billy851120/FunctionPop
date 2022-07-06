@@ -105,6 +105,7 @@
             </div>
     </div>
     <script>
+        console.log(history.back);
         $("#cName").on('input', function () {
             if (!($("#cName").val() == '')) {
                 $("#cName").addClass("inp_right")
@@ -218,7 +219,9 @@
                 success: function (data) {    //    alert後臺的返回值  
                     if (data == "ok") {
                         alert("註冊成功")
-                        window.location.href = req.session.url;
+                        // console.log(res.locals.url);
+
+                        window.location.href = history.go(-2);
                     } else {
                         alert(data);
                     }
