@@ -1,269 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>assd</title>
-    <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <script
-      src="https://kit.fontawesome.com/93e1c8f0af.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/js/shop_cart/cart.js"></script>
-    <script src="/js/shop_cart/jquery.js"></script>
 
-    <style>
-      .owl-theme .owl-dots .owl-dot span {
-        display: none;
-      }
-      .owl-carousel .img {
-        max-width: 374px;
-        width: 100%;
-        background-color: #ccc;
-        max-height: 561px;
-        height: 100%;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>assd</title>
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+  <script src="/js/shop_cart/cart.js"></script>
+  <script src="/js/shop_cart/jquery.js"></script>
 
-  <body>
-    <div class="wrapper">
-      <%- include("navbar.ejs") %> <%if(memberprofile){%>
-      <span id="member" style="display: none"><%- memberprofile.cName %></span>
-      <% } %>
+  <style>
+    .owl-theme .owl-dots .owl-dot span {
+      display: none;
+    }
 
-      <!-- outline_class  oib oig oi  oir-->
-      <div class="container">
-        <%- include("template/loginbar") %>
-        <div class="cart_content">
-          <div class="row content_text">
-            <div class="col-12 col-md-9" style="padding: 0">
-              <div class="row cart_banner">
-                <div style="display: none" class="col-12 top_link d-md-block">
-                  <ul class="cart-link">
-                    <li><a href="/home">首頁</a></li>
-                    <li>
-                      <a href="#">購物車</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-12 mid mb-3">
-                  <h6 style="font-size: 1.2em; font-weight: 900">購物車</h6>
-                </div>
-                <div class="col-12 cart-step">
-                  <ul class="fz-dark">
-                    <li style="color: #000">
-                      <span style="background-color: #000">1</span>
-                      查看購物車
-                    </li>
-                    <li>
-                      <span>2</span>
-                      訂單確認
-                    </li>
-                    <li>
-                      <span>3</span>
-                      訂單完成
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-3 d-md-block" style="display: none"></div>
-          </div>
-          <div class="row content_pid">
-            <div class="col-12 col-md-9">
-              <div
-                class="cart container-fluid d-md-block"
-                style="display: none"
-              >
-                <div class="row fz-dark cart_title">
-                  <div class="col-2">
-                    <input type="checkbox" class="to_ck" checked />全選
-                  </div>
-                  <div class="col-3">商品名稱</div>
-                  <div class="col-2">金額</div>
-                  <div class="col-2">數量</div>
-                  <div class="col">小計</div>
-                  <div class="col"></div>
-                </div>
-              </div>
+    .owl-carousel .img {
+      max-width: 374px;
+      width: 100%;
+      background-color: #ccc;
+      max-height: 561px;
+      height: 100%;
+    }
+  </style>
+</head>
 
-              <div id="css_tbody" class="container-fluid css_tbody">
-                <% if(cart){ %> <% cart.forEach(function(item){ %>
-                <div class="row product" style="padding: 0 18px 11px 18px">
-                  <div class="col-2 css_tb d-flex">
-                    <div style="margin-right: 5px">
-                      <input type="checkbox" class="ck" checked />
-                    </div>
-                    <div
-                      style="
-                        max-height: 134px;
-                        max-width: 93px;
-                        height: 100%;
-                        width: 100%;
-                      "
-                    >
-                      <img
-                        class="pImg"
-                        style="width: 100%; height: 100%"
-                        src="/img/product/<%- item.image %>"
-                        alt=""
-                      />
+<body>
+  <div class="wrapper">
+    <%- include("navbar.ejs") %>
+      <%if(memberprofile){%>
+        <span id="member" style="display: none">
+          <%- memberprofile.cName %>
+        </span>
+        <% } %>
+
+          <!-- outline_class  oib oig oi  oir-->
+          <div class="container-lg">
+            <%- include("template/loginbar") %>
+              <div class="cart_content">
+                <div class="row content_text">
+                  <div class="col-12 col-lg-9" style="padding: 0">
+                    <div class="row cart_banner">
+                      <div style="display: none" class="col-12 top_link d-lg-block">
+                        <ul class="cart-link">
+                          <li><a href="/home">首頁</a></li>
+                          <li>
+                            <a href="#">購物車</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-12 mid mb-lg-3 ">
+                        <div class="phTitle d-block d-lg-none mb-4"></div>
+                        <h6 class="phTitleH" style="font-size: 1.2em; font-weight: 900">購物車</h6>
+                      </div>
+                      <div class="col-12 d-none d-lg-block cart-step">
+                        <ul class="fz-dark">
+                          <li style="color: #000">
+                            <span style="background-color: #000">1</span>
+                            查看購物車
+                          </li>
+                          <li>
+                            <span>2</span>
+                            訂單確認
+                          </li>
+                          <li>
+                            <span>3</span>
+                            訂單完成
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-3 css_tb align-self-center">
-                    <p class="pDesc" style="margin-bottom: 10px">
-                      <%- item.name %>
-                    </p>
-                    <p class="pColor">顏色:<%- item.color %></p>
-                    <p class="pSize">尺寸:<%- item.size %></p>
-                  </div>
-                  <div class="col-2 css_tb align-self-center">
-                    NT$ <span class="price"> <%- item.price %> </span>
-                  </div>
-                  <div class="col-2 css_tb pCount align-self-center">
-                    <span style="box-shadow: 0px 0px 1px #000; padding: 6px 0">
-                      <a
-                        href="javascript:"
-                        class="q_sub"
-                        data-allId="<%- item.all_id %>"
-                        style="
+                  <div class="col-3 d-lg-block" style="display: none"></div>
+                </div>
+                <div class="row content_pid">
+                  <div class="col-12 col-lg-9">
+                    <div class="cart container-fluid d-lg-block" style="display: none">
+                      <div class="row fz-dark cart_title">
+                        <div class="col-2">
+                          <input type="checkbox" class="to_ck" checked />全選
+                        </div>
+                        <div class="col-3">商品名稱</div>
+                        <div class="col-2">金額</div>
+                        <div class="col-2">數量</div>
+                        <div class="col">小計</div>
+                        <div class="col"></div>
+                      </div>
+                    </div>
+
+                    <div id="css_tbody" class="container-fluid css_tbody pt-lg-4 pt-3 pb-lg-2 pb-3">
+                      <% if(cart){ %>
+                        <% cart.forEach(function(item){ %>
+                          <div class="row product mb-lg-0 mb-3" style="position: relative; padding: 0 18px 11px 18px">
+                            <div class="col-lg-2 col-4 css_tb d-flex">
+                              <div class="d-none d-lg-block" style="margin-right: auto">
+                                <input type="checkbox" class="ck" checked />
+                              </div>
+                              <div style="
+                                margin: auto;
+                                max-height: 268px;
+                                max-width: 186px;
+                                height: 100%;
+                                width: 100%;
+                              ">
+                                <img class="pImg" style="width: 100%; height: 100%" src="/img/product/<%- item.image %>"
+                                  alt="" />
+                              </div>
+                            </div>
+                            <div class="col-3 css_tb align-self-lg-center pt-2">
+                              <p class="pDesc" style="margin-bottom: 10px">
+                                <%- item.name %>
+                              </p>
+
+                              <p class="pColor">顏色:<%- item.color %>
+                              </p>
+                              <p class="pSize">尺寸:<%- item.size %>
+                              </p>
+                              <p class="d-lg-none" style="display: block">
+                                NT$ <span class="price">
+                                  <%- item.price %>
+                                </span>
+                              </p>
+                            </div>
+                            <div class="col-2 css_tb align-self-center d-lg-block" style="display: none">
+                              NT$ <span class="price">
+                                <%- item.price %>
+                              </span>
+
+                              <!-- NT$ <span class="price"> <%- item.price %> </span> -->
+                            </div>
+                            <div class="col-2 d-none d-lg-block css_tb pCount align-self-center">
+                              <span style="box-shadow: 0px 0px 1px #000; padding: 6px 0">
+                                <a href="javascript:" class="q_sub" data-allId="<%- item.all_id %>" style="
                           display: inline-block;
                           padding: 6px;
                           border-right: 1px solid #000;
                           color: #000;
-                        "
-                        >-</a
-                      >
-                      <input
-                        type="text"
-                        id="number"
-                        value="<%- item.quantity %>"
-                        style="width: 25px; border: none; text-align: center"
-                      />
-                      <a
-                        href="javascript:"
-                        class="q_add"
-                        data-allId="<%- item.all_id %>"
-                        style="
+                        ">-</a>
+                                <input type="text" id="number" value="<%- item.quantity %>"
+                                  style="width: 25px; border: none; text-align: center" />
+                                <a href="javascript:" class="q_add" data-allId="<%- item.all_id %>" style="
                           display: inline-block;
                           padding: 6px;
                           border-left: 1px solid #000;
                           color: #000;
-                        "
-                        >+</a
-                      >
-                    </span>
-                  </div>
-                  <% let toP=item.quantity * item.price %>
-                  <div class="col css_tb align-self-center">
-                    NT$ <span class="to_price"> <%- toP %> </span>
-                  </div>
-                  <div class="col css_tb align-self-center">
-                    <a
-                      style="color: #000"
-                      href="javascript:"
-                      class="del"
-                      data-allId="<%- item.all_id %>"
-                      ><i class="fa-solid fa-trash-can"></i
-                    ></a>
-                  </div>
-                </div>
-                <% }); %> <% } %>
-              </div>
-            </div>
+                        ">+</a>
+                              </span>
+                            </div>
+                            <% let toP=item.quantity * item.price %>
+                              <div class="col css_tb d-none d-lg-block align-self-center">
+                                NT$ <span class="to_price">
+                                  <%- toP %>
+                                </span>
+                              </div>
+                              <div
+                                class="col css_tb d-lg-block d-flex flex-column flex-lg-row align-self-lg-center text-right text-lg-left">
+                                <a style="color: #000" href="javascript:" class="del" data-allId="<%- item.all_id %>"><i
+                                    class="pr-3 pr-lg-0 fa-solid fa-trash-can"></i></a>
+                                <div style="font-size: 1.8em; padding: 0px 0px 20px 7px"
+                                  class="pr-3 pr-lg-0 mt-auto d-lg-none pb-2">
+                                  <span style="font-weight: 600">
+                                    <input type="text" value="<%- item.quantity %>" style="
+                            width: 25px;
+                            text-align: center;
+                            vertical-align: bottom;
+                          " />
 
-            <div class="col-12 col-md-3" style="padding: 0">
-              <div class="div cart_Order">
-                <div style="text-align: center">
-                  <p>訂單確認</p>
-                </div>
-                <div class="py-2">
-                  <p>
-                    <b>總計商品件數:</b>
-                    <span class="float-right"
-                      ><span id="total_count">0</span> 件</span
-                    >
-                  </p>
-                  <p>
-                    <b>小計:</b
-                    ><span class="float-right"
-                      >NT$<span id="total_price">0</span></span
-                    >
-                  </p>
-                  <p>
-                    <b>運費:</b
-                    ><span class="float-right"
-                      >NT$<span id="fare" class="fare">0</span></span
-                    >
-                  </p>
-                </div>
-                <div class="py-3" class="canFare" id="canFare">
-                  只差NT$ <span>0</span>，即可享有免費標準運送。
-                </div>
-                <div class="pt-2 mb-4">
-                  <p>
-                    <b>總額:</b
-                    ><span class="float-right"
-                      >NT$<span id="tototoPrice">0</span></span
-                    >
-                  </p>
-                </div>
-                <!-- action="/home/shop_cart/orderCheck" -->
-                <form class="text-center" id="buy" action="">
-                  <button id="sub" type="submit">結帳</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr style="border-top: 0.9px solid #000" />
-        <div class="container">
-          <div class="row">
-            <div style="font-weight: 900" class="col text-center mb-3 mt-2">
-              熱門商品
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="owl-carousel owl-theme">
-                <% result.forEach(function(item){ %>
-                <div class="item">
-                  <div>
-                    <a
-                      href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>"
-                    >
-                      <div class="img">
-                        <img
-                          style="width: 100%; height: 100%; border-radius: 2px"
-                          src="/img/product/<%- item.product_image %>"
-                          alt=""
-                        />
+                                    件
+                                  </span>
+                                </div>
+                              </div>
+                          </div>
+                          <% }); %>
+                            <% } %>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-3 p-lg-0">
+                    <hr class="d-lg-none" style="border-top: 0.9px solid #000">
+                    <div class="div cart_Order">
+                      <div class="d-none d-lg-block" style="text-align: center">
+                        <p>訂單確認</p>
                       </div>
-                    </a>
+                      <div class="py-2 borderOut">
+                        <p class="d-none d-lg-block">
+                          <b>總計商品件數:</b>
+                          <span class="float-right"><span id="total_count">0</span> 件</span>
+                        </p>
+                        <p>
+                          <b>小計:</b><span class="float-right">NT$<span id="total_price">0</span></span>
+                        </p>
+                        <p>
+                          <b>運費:</b><span class="float-right">NT$<span id="fare" class="fare">0</span></span>
+                        </p>
+                      </div>
+                      <div class="py-3 d-none d-lg-block" class="canFare" id="canFare">
+                        只差NT$ <span>0</span>，即可享有免費標準運送。
+                      </div>
+                      <div class="pt-2 mb-4">
+                        <p>
+                          <b>總額:</b><span class="float-right">NT$<span id="tototoPrice">0</span></span>
+                        </p>
+                      </div>
+                      <!-- action="/home/shop_cart/orderCheck" -->
+                      <form class="text-center" id="buy" action="">
+                        <button id="sub" type="submit">結帳</button>
+                      </form>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <hr style="border-top: 0.9px solid #000" />
+              <div class="container">
+                <div class="row">
+                  <div style="font-weight: 900" class="col text-center mb-3 mt-2">
+                    熱門商品
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="owl-carousel owl-theme">
+                      <% result.forEach(function(item){ %>
+                        <div class="item">
+                          <div>
+                            <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
+                              <div class="img" style="margin:auto;">
+                                <img style=" width: 100%; height: 100%; border-radius: 2px"
+                                  src="/img/product/<%- item.product_image %>" alt="" />
+                              </div>
+                            </a>
+                          </div>
 
-                  <div
-                    style="
+                          <div style="
                       font-weight: 700;
                       text-align: center;
                       margin-top: 7px;
                       font-size: 0.9em;
-                    "
-                  >
-                    <p><%- item.product_name %></p>
+                    ">
+                            <p>
+                              <%- item.product_name %>
+                            </p>
+                          </div>
+                        </div>
+                        <% }); %>
+                    </div>
                   </div>
                 </div>
-                <% }); %>
               </div>
-            </div>
           </div>
-        </div>
-      </div>
-      <div class="push"></div>
-    </div>
-    <%- include("footer.ejs") %>
+          <div class="push"></div>
+  </div>
+  <%- include("footer.ejs") %>
     <script>
       $(document).ready(function () {
         $("input[class='ck']").on("change", function (x) {
@@ -417,5 +404,6 @@
     <script src="/js/shop_cart/owl.carousel.js"></script>
     <script src="/js/shop_cart/owl.js"></script>
     <script src="/js/shop_cart/bootstrap.js"></script>
-  </body>
+</body>
+
 </html>
