@@ -93,6 +93,7 @@ router.post('/:gender', function (rqs, res) {
 var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
 
   router.get('/:gender', getUrl, function (rqs, res) {
+    var url =rqs.url;
     db.exec(
       sql,
       [rqs.params.gender, 1],
@@ -110,7 +111,7 @@ var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id,
         }
         console.log(arr + " get");
         res.render('shop', {
-          result: results[0],
+          result: results[0],url,
           // todos: results[1],
           favorArr: arr
         });

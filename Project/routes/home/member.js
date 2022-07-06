@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../../dataBase');
 var memberController = require('../../controller/memberController');
 
 // 中介程式-------------------------------------------------
@@ -42,7 +43,40 @@ router.get('/orderDetail', getUrl, function (req, res) {
 // 我的最愛-------------------------------------------------
 router.get('/myFavourite', getUrl, function (req, res) {
 
+  console.log("GGG");
+  // console.log(req.session.memberprofile);
+  var checkmem = req.session.memberprofile;
+  console.log(checkmem != 'null');
+  if(checkmem != null){
+    var memid = req.session.memberprofile.id;
+    // console.log(checkmem);
+    db.exec(
+      'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
+      memid,
+      function (results, fields, error) {
+        // console.log(error);
+        // console.log(results);
+        // console.log(fields);
+        if (error) {
+          throw error;
+          console.log("SSSSSSSSSSSSSSSSSSSSSSSSS");
+        }
+        var arr = [];
+        for (var i = 0; i < results.length; i++) {
+          arr[i] = results[i].product_id;
+        }
+        // console.log(arr + " get");
+        res.render('member/myFavourite', {
+          title: '會員資料｜我的最愛',
+          // result: results,
+          todos: results,
+          favorArr: arr
+        });
+
+      })
+  }else{
   res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
+  }
 });
  
 
