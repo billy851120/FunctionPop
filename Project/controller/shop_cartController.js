@@ -79,12 +79,7 @@ var shop_cartController = {
       if (shop_cartModel.isProductInCart(cart, all_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == all_id) {
-<<<<<<< HEAD
             var qua = parseInt(cart[i].quantity);
-=======
-
-            qua = parseInt(cart[i].quantity);
->>>>>>> 2587704d6fd7e2ff1dff03ef192147fe925a76c9
             qua++;
             cart[i].quantity = qua.toString();
           }
