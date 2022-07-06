@@ -12,7 +12,7 @@ var shop_cartModel = {
     return false;
   },
 
-  updateCart: (cart, req) => {
+  updateCartCount: (cart, req) => {
     let count = 0;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].quantity) {
@@ -21,7 +21,6 @@ var shop_cartModel = {
         count += parseInt(cart[i].quantity);
       }
     }
-    console.log(req);
     req.session.cartCount = count.toString();
     return count;
   },
