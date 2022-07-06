@@ -26,8 +26,6 @@
             margin: 5px 0;
             padding: 0 10px;
         }
-
-   
     </style>
 
 </head>
@@ -50,27 +48,30 @@
 
             <div class="col-11 m-auto">
                 <div>
-                    
+
                     <div class=" text-center">
-                        <a href="/admin/goods/member/<%= i %>"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <a href="/admin/goods/member/<%= i %>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-left-short" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-                            </svg></a>
+                            </svg>
+                        </a>
                         <a href="/admin/goods/member/<%= i %>"></a>
                         <% for(var i=1; i <=last_page; i++) { %>
                             <a href="/admin/goods/member/<%= i %>">
-                                <%= i%>
+                                <%= i %>
                             </a>
                             <% } %>
-                                <a href="/admin/goods/member/<%= i+1 %>"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short"
-                                        viewBox="0 0 16 16">
+                                <a href="/admin/goods/member/<%= i+1 %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                             d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                                    </svg></a>
+                                    </svg>
+                                </a>
 
-                                <p>會員資料共 <%= total_nums%> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
+                                <p>會員資料共 <%= total_nums %> 筆，共 <%= curr_page %> / <%= last_page%> 頁</p>
                     </div>
                     <div class="modal" id="myModal">
                         <form id="form" class="modal-content" style="width: 400px;">
@@ -78,12 +79,13 @@
                                 <input type="hidden" name="id">
                                 <h3 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
                                 </h3><br>
-                                <h4 class="font-weight-bold">生日: 　<input class="modal-inp" type="text" name="cBirth"
-                                        disabled></h4><br>
-                                <h4 class="font-weight-bold">性別: 　<input class="modal-inp" type="text" name="cgender"
-                                        disabled></h4><br>
-                                <h4 class="font-weight-bold">信箱: 　<input class="modal-inp" type="text" name="cAccount"
-                                        disabled>
+                                <h4 class="font-weight-bold">生日: 　<input class="modal-inp" disabled="disabled"
+                                        type="text" name="cBirth">
+                                </h4><br>
+                                <h4 class="font-weight-bold">性別: 　<input class="modal-inp" disabled="disabled"
+                                        type="text" name="cgender">
+                                </h4><br>
+                                <h4 class="font-weight-bold">信箱: 　<input class="modal-inp" type="text" name="cAccount">
                                 </h4><br>
                                 <h4 class="font-weight-bold">電話: 　<input class="modal-inp" type="text" name="cPhone">
                                 </h4><br>
@@ -178,7 +180,7 @@
                 //                 alert("刪除成功!")
                 //                 location.reload()
                 //             } else if (res.errno === 0) {
-                //                 alert("刪除失敗!")`
+                //                 alert("刪除失敗!")` 
                 //             }
                 //         },
                 //         error: function () {

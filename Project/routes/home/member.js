@@ -8,16 +8,19 @@ function redirectBack(req, res, next) {
   res.redirect('back');
 }
 function getUrl(req, res, next) {  // 登入後返回前頁
-  var url = req.originalUrl;
-  req.session.url = null;
-  req.session.url = url;
+  // var url = req.originalUrl;
+  req.session.url = req.originalUrl;
   return next();
 }
 
-// 會員登入/登出-------------------------------------------------
+// 會員登入/登出/註冊-------------------------------------------------
 router.get('/login', memberController.login);
 router.post('/login', memberController.handlelogin, redirectBack);
 router.get('/logout', memberController.logout);
+
+router.get('/register', memberController.register);
+
+router.post("/register", memberController.handleregister);
 
 // 會員資料頁面------------以下登入才看得到-------------------------
 router.get('/memberData', getUrl, memberController.memberData);
@@ -43,7 +46,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
   // console.log(req.session.memberprofile);
   var checkmem = req.session.memberprofile;
   console.log(checkmem != 'null');
-  if(checkmem != null){
+  if (checkmem != null) {
     var memid = req.session.memberprofile.id;
     // console.log(checkmem);
     db.exec(
@@ -70,8 +73,8 @@ router.get('/myFavourite', getUrl, function (req, res) {
         });
 
       })
-  }else{
-  res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
+  } else {
+    res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
   }
 });
 
