@@ -23,11 +23,11 @@
 
 <body>
   <!-- content -->
-  <%- include("navbar.ejs") %>
+  <%- include("../navbar.ejs") %>
 
   <div class="container ">
       
-      <%- include("template/loginbar") %>
+      <%- include("../template/loginbar") %>
 
          <!-- 左邊選單列 -->
          <div class="row mt-4">
@@ -52,7 +52,7 @@
                         <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
                         <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
                         <div class="col-12 col-md-6 my-2 ">
-                            <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                            <a href="/home/member/orderDetail" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
                         </div>
                     </div>
                     <hr>
@@ -90,7 +90,7 @@
     </div>  <!-- container -->
 
     <!-- footer -->
-        <%- include("footer.ejs") %>
+        <%- include("../footer.ejs") %>
         <script>
 
             var xx =[{

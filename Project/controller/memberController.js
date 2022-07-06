@@ -5,7 +5,7 @@ var memberController = {
     memberData: (req, res) => {
         var url = req.url;
         // console.log(url);
-        res.render('memberData', {
+        res.render('member/memberData', {
             title: '會員資料｜個人資料',
             url
         })
@@ -24,10 +24,8 @@ var memberController = {
             })
     },
     changePw: (req, res) => {
-        var url = req.url;
-        res.render('memberData_changePw', {
+        res.render('member/memberData_changePw', {
             title: '會員資料｜變更密碼',
-            url
         });
     },
     handlechangePw: (req, res, next) => {
@@ -110,25 +108,7 @@ var memberController = {
     logout: (req, res) => {
         req.session.memberprofile = null;
         res.redirect(req.session.url);
-    },
-
-    frame7: (rqs, res) => {
-        res.render('frame7', { title: '會員資料｜我的最愛' });
-    },
-
-    frame8: (rqs, res) => {
-        res.render('frame8', { title: '會員資料｜我的最愛' });
-    },
-
-    frame9: (rqs, res) => {
-        res.render('frame9', { title: '會員資料｜我的最愛' });
-    },
-
-    test3: (rqs, res) => {
-        res.render('test3', { title: '會員資料｜我的最愛' });
     }
-
-
 
 }
 

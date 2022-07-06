@@ -29,17 +29,19 @@ router.post('/memberData_changePw', getUrl, memberController.handlechangePw, red
 // 訂單詳情-----------------------------------------------------
 router.get('/orderList', getUrl, function (req, res) {
   var url = req.url;
-  res.render('orderList', { title: '會員資料｜訂單清單', url });
+  res.render('member/orderList', { title: '會員資料｜訂單清單', url });
 });
 router.get('/orderDetail', getUrl, function (req, res) {
   var url = req.url;
-  res.render('orderDetail', { title: '會員資料｜訂單內容', url });
+  res.render('member/orderDetail', { title: '會員資料｜訂單內容', url });
 });
 // 我的最愛-------------------------------------------------
 router.get('/myFavourite', getUrl, function (req, res) {
 
-  res.render('myFavourite', { title: '會員資料｜我的最愛' });
+  res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
 });
+
+
 
 
 
