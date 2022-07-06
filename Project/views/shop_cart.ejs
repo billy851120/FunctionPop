@@ -73,7 +73,10 @@
           </div>
           <div class="row content_pid">
             <div class="col-12 col-md-9">
-              <div class="cart container-fluid">
+              <div
+                class="cart container-fluid d-md-block"
+                style="display: none"
+              >
                 <div class="row fz-dark cart_title">
                   <div class="col-2">
                     <input type="checkbox" class="to_ck" checked />全選
@@ -120,14 +123,15 @@
                     NT$ <span class="price"> <%- item.price %> </span>
                   </div>
                   <div class="col-2 css_tb pCount align-self-center">
-                    <span style="border: 1px solid #000; padding: 6px 0">
+                    <span style="box-shadow: 0px 0px 1px #000; padding: 6px 0">
                       <a
                         href="javascript:"
                         class="q_sub"
                         data-allId="<%- item.all_id %>"
                         style="
+                          display: inline-block;
                           padding: 6px;
-                          border: 1px solid #000;
+                          border-right: 1px solid #000;
                           color: #000;
                         "
                         >-</a
@@ -143,8 +147,9 @@
                         class="q_add"
                         data-allId="<%- item.all_id %>"
                         style="
+                          display: inline-block;
                           padding: 6px;
-                          border: 1px solid #000;
+                          border-left: 1px solid #000;
                           color: #000;
                         "
                         >+</a
