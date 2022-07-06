@@ -306,6 +306,8 @@
             </section>
         </div>
 
+        
+
         <!-- 1. Breadcrumb -->
         <!-- <section>
             <div class="container">
@@ -453,7 +455,10 @@
                             <div class="container mt-2 pt-2">
                                 <h3>商品清單</h3>
                                 <hr>
-                                <p>Here you can check out our products</p>
+                                <span>Here you can check out our products</span>
+                                <!-- <span><button type="button" onclick="function2col()" class="btn btn-primary">2</button></span> -->
+                                <span><button type="button" class="btn btn-success" id="become3Col">3</button></span>
+                                <span><button type="button" onclick="function4col()" class="btn btn-info active">4</button></span>
                             </div>
                             <!-- Imgs Start -->
                             <div class="row mx-auto container">
@@ -463,7 +468,7 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div class="my_product text-center col-lg-3 col-md-4 col-sm-1 align-items-center justify-content-center">
+                                <div id="ChangeCol" class="my_product text-center col-lg-3 col-md-4 col-sm-12 align-items-center justify-content-center">
                                     
                                     <img class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt="">
                                     <!-- <div>
@@ -663,6 +668,27 @@ for (var i = 0; i < btns.length; i++) {
   });
 } -->
     <!-- </script> -->
+
+    <!-- Change Column of Number (X) Can't Use this way because DOM-->
+    <!-- <script>
+        function function4col(){
+            document.getElementById("ChangeCol").classList.add("col-lg-3");
+            document.getElementById("ChangeCol").classList.remove("col-lg-4");
+        }
+    </script> -->
+
+    <script>
+        $(document).ready(function(){
+            $("#become3Col").click(function(){
+                $("#ChangeCol").each(function(){
+                    $(this).addClass("col-lg-4");
+                    $(this).removeClass("col-lg-3");
+                })
+                
+            });
+        });
+    </script>
+
 
 </body>
 </html>
