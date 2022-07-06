@@ -76,12 +76,15 @@ var shop_cartController = {
     if (req.body.allId) {
       var cart = req.session.cart;
       var all_id = req.body.allId;
-      var qua = 0;
       if (shop_cartModel.isProductInCart(cart, all_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == all_id) {
+<<<<<<< HEAD
+            var qua = parseInt(cart[i].quantity);
+=======
 
             qua = parseInt(cart[i].quantity);
+>>>>>>> 2587704d6fd7e2ff1dff03ef192147fe925a76c9
             qua++;
             cart[i].quantity = qua.toString();
           }
@@ -151,7 +154,7 @@ var shop_cartController = {
         if (!result[0]) {
           oid = 1;
         } else {
-          oid = result[0].order_id + 1;
+          oid = result[0].order_id;
         }
         res.render('orderCheck', {
           title: '訂單確認',
