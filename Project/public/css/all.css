@@ -12153,7 +12153,8 @@ figcaption {
 }
 
 .q_sub:hover, .q_add:hover {
-  background-color: rgba(220, 215, 201, 0.4117647059);
+  -webkit-box-shadow: 0px 0px 2px #666;
+          box-shadow: 0px 0px 2px #666;
 }
 
 .cart {
@@ -12413,6 +12414,27 @@ figcaption {
   padding: 11px;
 }
 
+@media (max-width: 992px) {
+  #css_tbody .product + .product::before {
+    position: absolute;
+    border-bottom: 1px solid #ddd;
+    top: -14px;
+    width: 89%;
+    margin: auto;
+    right: 0;
+    left: 0;
+    content: "";
+  }
+
+  .cart_Order {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: #000;
+  }
+}
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
 * Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css

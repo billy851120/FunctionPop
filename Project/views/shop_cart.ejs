@@ -38,9 +38,9 @@
         <%- include("template/loginbar") %>
         <div class="cart_content">
           <div class="row content_text">
-            <div class="col-12 col-md-9" style="padding: 0">
+            <div class="col-12 col-lg-9" style="padding: 0">
               <div class="row cart_banner">
-                <div style="display: none" class="col-12 top_link d-md-block">
+                <div style="display: none" class="col-12 top_link d-lg-block">
                   <ul class="cart-link">
                     <li><a href="/home">首頁</a></li>
                     <li>
@@ -69,12 +69,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-3 d-md-block" style="display: none"></div>
+            <div class="col-3 d-lg-block" style="display: none"></div>
           </div>
           <div class="row content_pid">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-lg-9">
               <div
-                class="cart container-fluid d-md-block"
+                class="cart container-fluid d-lg-block"
                 style="display: none"
               >
                 <div class="row fz-dark cart_title">
@@ -89,15 +89,22 @@
                 </div>
               </div>
 
-              <div id="css_tbody" class="container-fluid css_tbody">
+              <div
+                id="css_tbody"
+                class="container-fluid css_tbody pt-lg-4 pt-5 pb-lg-2 pb-3"
+              >
                 <% if(cart){ %> <% cart.forEach(function(item){ %>
-                <div class="row product" style="padding: 0 18px 11px 18px">
-                  <div class="col-2 css_tb d-flex">
-                    <div style="margin-right: 5px">
+                <div
+                  class="row product mb-lg-0 mb-3"
+                  style="position: relative; padding: 0 18px 11px 18px"
+                >
+                  <div class="col-lg-2 col-3 css_tb d-flex">
+                    <div class="d-none d-lg-block" style="margin-right: auto">
                       <input type="checkbox" class="ck" checked />
                     </div>
                     <div
                       style="
+                        margin: auto;
                         max-height: 134px;
                         max-width: 93px;
                         height: 100%;
@@ -112,17 +119,28 @@
                       />
                     </div>
                   </div>
-                  <div class="col-3 css_tb align-self-center">
+                  <div class="col-3 css_tb align-self-lg-center pt-2">
                     <p class="pDesc" style="margin-bottom: 10px">
                       <%- item.name %>
                     </p>
+
                     <p class="pColor">顏色:<%- item.color %></p>
                     <p class="pSize">尺寸:<%- item.size %></p>
+                    <p class="d-lg-none" style="display: block">
+                      NT$ <span class="price"> <%- item.price %> </span>
+                    </p>
                   </div>
-                  <div class="col-2 css_tb align-self-center">
+                  <div
+                    class="col-2 css_tb align-self-center d-lg-block"
+                    style="display: none"
+                  >
                     NT$ <span class="price"> <%- item.price %> </span>
+
+                    <!-- NT$ <span class="price"> <%- item.price %> </span> -->
                   </div>
-                  <div class="col-2 css_tb pCount align-self-center">
+                  <div
+                    class="col-2 d-none d-lg-block css_tb pCount align-self-center"
+                  >
                     <span style="box-shadow: 0px 0px 1px #000; padding: 6px 0">
                       <a
                         href="javascript:"
@@ -157,29 +175,49 @@
                     </span>
                   </div>
                   <% let toP=item.quantity * item.price %>
-                  <div class="col css_tb align-self-center">
+                  <div class="col css_tb d-none d-lg-block align-self-center">
                     NT$ <span class="to_price"> <%- toP %> </span>
                   </div>
-                  <div class="col css_tb align-self-center">
+                  <div
+                    class="col css_tb d-lg-block d-flex flex-column flex-lg-row align-self-lg-center text-right text-lg-left"
+                  >
                     <a
                       style="color: #000"
                       href="javascript:"
                       class="del"
                       data-allId="<%- item.all_id %>"
-                      ><i class="fa-solid fa-trash-can"></i
+                      ><i class="pr-3 pr-lg-0 fa-solid fa-trash-can"></i
                     ></a>
+                    <div
+                      style="font-size: 1.8em; padding: 0px 0px 20px 7px"
+                      class="pr-3 pr-lg-0 mt-auto d-lg-none pb-2"
+                    >
+                      <span style="font-weight: 600">
+                        <input
+                          type="text"
+                          value="<%- item.quantity %>"
+                          style="
+                            width: 25px;
+                            text-align: center;
+                            vertical-align: bottom;
+                          "
+                        />
+
+                        件
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <% }); %> <% } %>
               </div>
             </div>
 
-            <div class="col-12 col-md-3" style="padding: 0">
+            <div class="col-12 col-lg-3" style="padding: 0">
               <div class="div cart_Order">
-                <div style="text-align: center">
+                <div class="d-none d-lg-block" style="text-align: center">
                   <p>訂單確認</p>
                 </div>
-                <div class="py-2">
+                <div class="py-2 d-none d-lg-block">
                   <p>
                     <b>總計商品件數:</b>
                     <span class="float-right"
@@ -199,7 +237,11 @@
                     >
                   </p>
                 </div>
-                <div class="py-3" class="canFare" id="canFare">
+                <div
+                  class="py-3 d-none d-lg-block"
+                  class="canFare"
+                  id="canFare"
+                >
                   只差NT$ <span>0</span>，即可享有免費標準運送。
                 </div>
                 <div class="pt-2 mb-4">
