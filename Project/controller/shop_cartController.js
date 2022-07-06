@@ -64,7 +64,7 @@ var shop_cartController = {
       var cart = req.session.cart;
     }
     //計算總數量
-    shop_cartModel.updateCart(cart, req);
+    shop_cartModel.updateCartCount(cart, req);
     // 計算總額
     shop_cartModel.calculateTotal(cart, req);
 
@@ -79,12 +79,21 @@ var shop_cartController = {
       if (shop_cartModel.isProductInCart(cart, all_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == all_id) {
+<<<<<<< HEAD
             var qua = parseInt(cart[i].quantity);
+=======
+
+            qua = parseInt(cart[i].quantity);
+>>>>>>> 2587704d6fd7e2ff1dff03ef192147fe925a76c9
             qua++;
             cart[i].quantity = qua.toString();
           }
         }
       }
+      shop_cartModel.updateCartCount(cart, req);
+      shop_cartModel.calculateTotal(cart, req);
+     
+      res.redirect('back');
     }
   },
   productSub: (req, res) => {
@@ -100,6 +109,13 @@ var shop_cartController = {
           }
         }
       }
+   
+      shop_cartModel.updateCartCount(cart, req);
+      shop_cartModel.calculateTotal(cart, req);
+       console.log(req.session.cartCount);
+      console.log(req.session.total);
+      res.redirect('back');
+
     }
   },
   productDel: (req, res) => {
@@ -107,12 +123,13 @@ var shop_cartController = {
       var cart = req.session.cart;
       var del_id = req.body.allId;
 
+      console.log(cart);
       if (shop_cartModel.isProductInCart(cart, del_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == del_id) {
             cart.splice(i, i + 1);
             req.session.cart = cart;
-            console.log('已刪除all_id :' + del_id + '商品');
+            console.log('已刪除all_id:' + del_id + ' 商品');
           } else {
             console.log(' ');
           }
@@ -121,6 +138,10 @@ var shop_cartController = {
         console.log('err');
       }
     }
+    shop_cartModel.updateCartCount(cart, req);
+      shop_cartModel.calculateTotal(cart, req);
+    res.redirect('back');
+
   },
   orderCheck: (req, res) => {
     var cart = req.session.cart;
@@ -135,7 +156,6 @@ var shop_cartController = {
         } else {
           oid = result[0].order_id;
         }
-        // console.log(result[0]);
         res.render('orderCheck', {
           title: '訂單確認',
           o_id: oid,
@@ -150,8 +170,6 @@ var shop_cartController = {
     var total = req.session.total;
     var orderLise = req.body;
     console.log(orderLise);
-    // console.log(cart);
-    // console.log(total);
 
     var sql_orders =
       'INSERT INTO orders (order_list,user_name,user_phone,user_email,user_city,user_address 	) VALUES(?,?,?,?,?,?); ';

@@ -11023,6 +11023,10 @@ figcaption {
   list-style: none;
 }
 
+.q_sub:hover, .q_add:hover {
+  background-color: rgba(220, 215, 201, 0.4117647059);
+}
+
 .cart {
   font-size: 0.6em;
   padding: 12px 20px;

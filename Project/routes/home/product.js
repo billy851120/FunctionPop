@@ -25,9 +25,11 @@ router.use(bodyParser.json())
 
 var sqlpost = 'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
 router.post('/:gender', function (rqs, res) {
+  // console.log("QQQQQ");
+  // console.log(rqs.body.memid);
   db.exec(
     sqlpost,
-    1,
+    rqs.body.memid,
     function (results, fields, error) {
       if (error) {
         throw error;
@@ -46,7 +48,8 @@ router.post('/:gender', function (rqs, res) {
       // })
       var gender = rqs.params.gender;
       const content = parseInt(rqs.body.content);
-      console.log(rqs.body.content);
+      const memid = parseInt(rqs.body.memid);
+      // console.log(rqs.body.content);
       // console.log(!(rqs.body.content));
       // console.log(!!(rqs.body.content));
       if (rqs.body.content) {
@@ -54,9 +57,9 @@ router.post('/:gender', function (rqs, res) {
         if (arr.includes(content)) {
           console.log("true")
           db.exec(
-            'DELETE FROM favorite WHERE product_id = ?', [content], (results, err) => {
-              console.log(results);
-              console.log(err);
+            'DELETE FROM favorite WHERE product_id = ? and customer_id = ?', [content,memid], (results, err) => {
+              // console.log(results);
+              // console.log(err);
               // res.redirect('/');
               res.redirect(`/home/product/${gender}`);
               // if (err) return cb(err);
@@ -67,9 +70,9 @@ router.post('/:gender', function (rqs, res) {
         } else {
           console.log("555")
           db.exec(
-            'INSERT INTO favorite VALUES(1,?)', [content], (results, err) => {
-              console.log(results);
-              console.log(err);
+            'INSERT INTO favorite VALUES(?,?)', [memid,content], (results, err) => {
+              // console.log(results);
+              // console.log(err);
               // res.redirect('/');
               res.redirect(`/home/product/${gender}`);
               // if (err) return cb(err);
@@ -93,9 +96,18 @@ router.post('/:gender', function (rqs, res) {
 var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
 
   router.get('/:gender', getUrl, function (rqs, res) {
+    var url =rqs.url;
+    console.log("DDDD");
+    var mem_customer_id = 0;
+    // console.log(rqs.session.memberprofile.id);
+    if(rqs.session.memberprofile == null){
+      mem_customer_id = 0;
+    }else{
+      mem_customer_id = rqs.session.memberprofile.id;
+    }
     db.exec(
       sql,
-      [rqs.params.gender, 1],
+      [rqs.params.gender, mem_customer_id],
       function (results, fields, error) {
         // console.log(error);
         // console.log(results);
@@ -110,7 +122,7 @@ var sql = 'SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id,
         }
         console.log(arr + " get");
         res.render('shop', {
-          result: results[0],
+          result: results[0],url,
           // todos: results[1],
           favorArr: arr
         });

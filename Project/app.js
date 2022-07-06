@@ -21,6 +21,7 @@ app.use((req, res, next) => {
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
   res.locals.cartCount = req.session.cartCount;
+  res.locals.url = req.session.url;
   next();
 });
 
