@@ -23,12 +23,9 @@ function updateAllPrice() {
   //更新運費
   var fare = 1000;
   if (total_price >= fare) {
-    console.log($('.canFare').html());
     $('#fare').html('0');
     $('#canFare').html('<p>免費標準運送。</p>');
   } else {
-    console.log('B');
-
     var diff = 0;
     diff = fare - total_price;
     $('#fare').html('60');
