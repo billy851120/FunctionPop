@@ -206,23 +206,23 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="/home"><i class="fas fa-home"></i>首頁</a>
+                <a href="/home"><i class="fas fa-home"  style="color: black;"></i><span style="color: black;">首頁</span></a>
               </li>
               <li class="breadcrumb-item">
                 <a href="/home/product/<%= result[0].product_gender %>"
-                  ><span><%= result[0].product_gender %></span></a
+                  ><span style="color: black;"><%= result[0].product_gender %></span></a
                 >
               </li>
               <li class="breadcrumb-item">
                 <a
                   href="/home/product/<%= result[0].product_gender %>/<%= result[0].product_category %>"
-                  ><span><%= result[0].product_category %></span></a
+                  ><span style="color: black;"><%= result[0].product_category %></span></a
                 >
               </li>
               <li class="breadcrumb-item">
                 <a
                   href="/home/product/<%= result[0].product_gender %>/single_product/<%= result[0].product_id %>"
-                  ><span><%= result[0].product_name %></span></a
+                  ><span style="color: black;"><%= result[0].product_name %></span></a
                 >
               </li>
             </ol>
@@ -239,7 +239,7 @@
           <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-4">
             <img
               id="mainImg"
-              class="img-fluid w-100 py-2 px-2"
+              class="img-fluid w-100 py-2 px-2 zoomImg"
               src="/img/product/<%= result[0].product_image %>"
               alt=""
             />
@@ -291,15 +291,15 @@
             <h4><%= result[0].product_name %></h4>
             <p>商品編號 <%= result[0].product_code %></p>
             <p>價　格： $ <span><%= result[0].product_price %></span> 元</p>
-            <p>顏　色： <span id="cho_color">米白色</span></p>
+            <p>顏　色： <span id="cho_color">米白</span><span>色</span></p>
             <span style="color: red">顏色選單</span>
-            <span class="colorflexBox mx-auto py-3">
+            <span class="colorflexBox mx-auto px-2">
               <label >
                 <input
                 type="radio"
                 value="WH"
                 name="color_ch"
-                style="width: 40px; height: 40px"
+                style="width: 20px; height: 20px"
                 data-col="白"
                 checked
               />白
@@ -310,7 +310,7 @@
                 value="BK"
                 name="color_ch"
                 data-col="黑"
-                style="width: 40px; height: 40px"
+                style="width: 20px; height: 20px"
               />黑
               </label>
              
@@ -319,7 +319,8 @@
             <br />
             <h6>尺　寸：<span id="cho_size"></span></h6>
             <span style="color: red">尺寸選單</span><img src="" alt="" />
-            <span class="sizeflexBox mx-auto py-3">
+            <br>
+            <span class="sizeflexBox mx-auto py-3 col-4">
               <% result.forEach(function(item){ %>
                 <% let ch = "" %>
                 <% if(ch != item.size_name){ %>
@@ -328,9 +329,10 @@
                     type="radio"
                     value="<%- item.size_name %>"
                     name="size_ch"
-                    style="width: 40px; height: 40px"
+                    style="width: 20px; height: 20px"
                     data-allId="<%- item.product_all_id %>"
-                  /><%- item.size_name %>
+                  />
+                  <br><%- item.size_name %>
                   </label>
               
               <% ch = item.size_name %>
@@ -343,7 +345,7 @@
             <div class="d-flex flex-row"></div>
             <span>數　量：</span>
             <span>
-              <div class="col-2 css_tb pCount align-self-center">
+              <div class="col-2 css_tb pCount d-flex align-self-center">
                 <a
                   href="javascript:"
                   class="q_sub"
@@ -804,5 +806,35 @@
         });
       });
     </script>
+    <!-- <script>
+      $(document).ready(function () {
+        $(".zoomImg").blowup({
+          "background" : #F39C12,
+          "width": 450,
+          "height": 450
+        });
+        })
+    </script> -->
+
+    <!--  -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <script type="text/javascript" src="/js/product/blowup.js"></script>
+    <!-- blowup zoom-img -->
+    <script>
+       $(function() { 
+            $(".zoomImg").blowup({
+                "width" : 400,
+                "height" : 400,
+                "round" : false,
+                "zIndex" : 99999,
+                "scale" : 1
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/sticky-sidebar.min.js"></script>
+
+
+
   </body>
 </html>

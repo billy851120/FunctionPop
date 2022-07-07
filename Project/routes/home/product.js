@@ -181,7 +181,7 @@ router.get('/Male/%E4%B8%8A%E8%A1%A3', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "上衣"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -202,7 +202,7 @@ router.get('/Male/%E4%B8%8B%E8%91%97', function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "下著"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -223,7 +223,7 @@ router.get('/Male/%E5%8C%85', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "包"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -244,7 +244,7 @@ router.get('/Male/%E9%9E%8B', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "鞋"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -265,7 +265,7 @@ router.get('/Female/%E4%B8%8A%E8%A1%A3', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "上衣"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -286,7 +286,7 @@ router.get('/Female/%E6%B4%8B%E8%A3%9D', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "洋裝"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -307,7 +307,7 @@ router.get('/Female/%E8%A3%99%E5%AD%90', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "裙子"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -328,7 +328,7 @@ router.get('/Female/%E9%9E%8B', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "鞋"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
@@ -349,7 +349,7 @@ router.get('/Female/%E5%B8%BD%E5%AD%90', getUrl, function (rqs, res) {
     'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "帽子"',
     [],
     (result, fields) => {
-      res.render('shop', { result: result });
+      res.render('shop', { result: result, favorArr:[] });
     }
   );
 });
