@@ -20,24 +20,12 @@ var memberController = {
         console.log(cPhone);
         console.log(cAddr);
         memberModel.updateMemberData({ cPhone, cAddr, s_cAccount }, (err) => {
-
             console.log('更新資料');
             req.session.memberprofile.cPhone = cPhone;
             req.session.memberprofile.cAddr = cAddr;
             res.redirect('/home/member/memberData')
             console.log('in');
-            // console.log(req.session.memberprofile.cPhone)
         })
-        // db.exec('update customer_id set cPhone = ? , cAddr = ? where cAccount = ? ',
-        //     [cPhone, cAddr, req.session.memberprofile.cAccount],
-        //     (result, fields, err) => {
-        //         console.log('更新資料');
-        //         req.session.memberprofile.cPhone = cPhone;
-        //         req.session.memberprofile.cAddr = cAddr;
-        //         res.redirect('/home/member/memberData')
-        //         console.log('in');
-        //         console.log(req.session.memberprofile.cPhone)
-        //     })
     },
     changePw: (req, res) => {
         res.render('member/memberData_changePw', {
@@ -46,6 +34,7 @@ var memberController = {
     },
     handlechangePw: (req, res, next) => {
         var { oldpw, newpw, newpwAgain } = req.body;
+        var s_cAccount = req.session.memberprofile.cAccount;
         console.log(oldpw);
         console.log(newpw);
         console.log(newpwAgain);
@@ -62,12 +51,10 @@ var memberController = {
             req.flash('errorMessage', '新密碼必須為一致')
             return next();
         } else {
-            db.exec('update customer_id set cPassword = ? where cAccount = ? ',
-                [newpw, req.session.memberprofile.cAccount],
-                (result, fields, err) => {
-                    console.log('pass database')
-                    res.redirect('/home/member/memberData_changePw');
-                })
+            memberModel.memberPwChange({ newpw, s_cAccount }, (err, result) => {
+                console.log('already change pw');
+                res.redirect('/home/member/memberData_changePw');
+            })
         }
     },
 
@@ -80,46 +67,32 @@ var memberController = {
         var { cAccount, cPassword } = req.body;
         if (!cAccount || !cPassword) { req.flash('errorMessage', '請輸入帳密'); return next() }
         // 資料庫撈資料
-        db.exec('select * from customer_id where cAccount = ?',
-            [cAccount],
-            (result, fields, err) => {
-                console.log('result.........');
-                console.log(result);
-                if (result[0]?.cAccount != cAccount) {
-                    req.flash('errorMessage', '無此使用者');
+        memberModel.handlelogin(cAccount, (err, result) => {
+            console.log('result.........');
+            console.log(result);
+            if (!result) {
+                req.flash('errorMessage', '無此使用者');
+                return next();
+            }
+            // if (result.cPassword != cPassword) {
+            //     req.flash('errorMessage', '密碼不正確');
+            //     return next();
+            // }
+            //    驗證密碼是否正確，三個參數代表: 明碼, 雜湊密碼, 方法
+            bcrypt.compare(cPassword, result.cPassword, (err, isSuccess) => {
+                if (err || !isSuccess) {
+                    req.flash('errorMessage', '密碼錯誤');
                     return next();
-                } else if (result[0].cPassword != cPassword) {
-                    req.flash('errorMessage', '密碼不正確');
-                    return next();
-                } else {
-                    // 將撈到的資料存入memberprofile session之中
-                    req.session.memberprofile = result[0];
-                    console.log(req.session.url);
-                    res.redirect(req.session.url);
                 }
-            });
 
-        // res.send(result[0].cAccount)
-        //             if (err) {
-        //                 req.flash('errorMessage', err.toString());
-        //                 return next();
-        //             }
-        //             if (!cAccount) {
-        //                 req.flash('errorMessage', '使用者不存在');
-        //                 return next();
-        //             }
-        // if(cAccount===)
-        // 驗證密碼是否正確，三個參數代表: 明碼, 雜湊密碼, 方法
-        // bcrypt.compare(password, user.password, (err, isSuccess) => {
-        //     if (err || !isSuccess) {
-        //         req.flash('errorMessage', '密碼錯誤');
-        //         return next();
-        //     }
-        //     req.session.username = user.username;
-        //     req.session.nickname = user.nickname;
-        //     res.redirect('/');
-        // });
+                // 將撈到的資料存入memberprofile session之中
+                console.log('寫入session');
+                req.session.memberprofile = result;
+                console.log(req.session.url);
+                res.redirect(req.session.url);
 
+            })
+        })
     },
     logout: (req, res) => {
         req.session.memberprofile = null;
@@ -152,22 +125,24 @@ var memberController = {
 
             memberModel.add_member({ cName, cBirth, cgender, cAccount, cPhone, cAddr, cPassword: hash },
                 (err) => {
-                    console.log('register SUCCESS');
-                    emitter.emit("ok");    //    返回成功
-                    console.log(req.session.url);
-                    // res.redirect(req.session.url);
+                    if (err) {
+                        console.log(err);    //    輸出資料庫錯誤資訊
+                        console.log('register ERROR')
+                        emitter.emit("false");    //    返回失敗
+                    } else {
+                        console.log('register SUCCESS');
+                        emitter.emit("ok");    //    返回成功
+                        req.session.regi_cAccount = cAccount;
+                        console.log(`req.session.regi_cAccount : ${req.session.regi_cAccount}`);
+                    }
                 })
-
-            // var sql = "insert into customer_id(cName,cBirth,cgender,cAccount,cPhone,cAddr,cPassword) values(?,?,?,?,?,?,?)"; //向user這個表裡寫入資料
-            // var data = [body.cName, body.cBirth, body.cgender, body.cAccount, body.cPhone, body.cAddr, body.cPassword: hash];
-            // db.exec(sql, [body.cName, body.cBirth, body.cgender, body.cAccount, body.cPhone, body.cAddr, body.cPassword], (results, fields, err) => {    //    執行sql語句
-            // if (err) {
-            //     console.log(err.message);    //    輸出資料庫錯誤資訊
-            //     emitter.emit("false");    //    返回失敗
-            // }
-
         });
         // })
+    },
+    registerCheck: (req, res) => {
+        res.render('member/register_success',{
+            title:'註冊成功'
+        })
     }
 
 }

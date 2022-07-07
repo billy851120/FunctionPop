@@ -2,16 +2,28 @@ var express = require('express');
 var router = express.Router();
 var db = require('../../dataBase');
 var memberController = require('../../controller/memberController');
+const { apply } = require('file-loader');
 
 // 中介程式-------------------------------------------------
 function redirectBack(req, res, next) {
   res.redirect('back');
 }
+
+router.use((req, res, next) => {
+  console.log('status........');
+  if(!req.originalUrl){
+    res.redirect('/home/product/male');
+  }
+  return next(); 
+})
+
 function getUrl(req, res, next) {  // 登入後返回前頁
   // var url = req.originalUrl;
   req.session.url = req.originalUrl;
   return next();
 }
+
+
 
 // 會員登入/登出/註冊-------------------------------------------------
 router.get('/login', memberController.login);
@@ -21,6 +33,7 @@ router.get('/logout', memberController.logout);
 router.get('/register', memberController.register);
 
 router.post("/register", memberController.handleregister);
+router.get('/register_success', memberController.registerCheck);
 
 // 會員資料頁面------------以下登入才看得到-------------------------
 router.get('/memberData', getUrl, memberController.memberData);
@@ -50,11 +63,11 @@ router.get('/myFavourite', getUrl, function (req, res) {
     var memid = req.session.memberprofile.id;
     // console.log(checkmem);
     db.exec(
-      'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
+      'SELECT F.customer_id, F.product_id,P.product_gender, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
       memid,
       function (results, fields, error) {
         // console.log(error);
-        // console.log(results);
+        console.log(results);
         // console.log(fields);
         if (error) {
           throw error;

@@ -27,6 +27,8 @@ app.use((req, res, next) => {
 
 
 
+
+
 //      前後台路徑
 //前台模組
 var home = require('./routes/home.js');
@@ -53,6 +55,12 @@ app.use('/admin', admin);
 
 app.listen(3000, function () {
   console.log('run');
+});
+
+app.get('*', function (req, res) {  // 找不到路由時導向404 NOT FOUND
+  res.render('404', {
+    title: '404 NOT FOUND'
+  });
 });
 
 

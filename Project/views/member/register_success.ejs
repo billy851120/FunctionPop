@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%- title  %>   </title>
+    <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/js/member/member.css">
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    <!-- <script src="/js/member/LeftNavBar.js"></script> -->
+</head>
+
+<body>
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-12 mx-auto">
+                <div class="row-box p-3 text-center">
+                    <h1> 感謝您的註冊，確認信已發至您的信箱，請接收確認信 </h1>
+                    <h4 id="timeBox" class="font-weight-bold"></h4><br>
+                    <a href="/home/member/memberData" class="btn_GO col-3 py-3 m-3">會員中心</a>
+                    <script>
+                        // 設定秒數
+                        var count = 5;
+                        function countDown() {
+                            // 將秒數寫在指定元素中
+                            document.getElementById("timeBox").innerHTML = count;
+                            // 每次執行就減1
+                            count -= 1;
+                            // 當 count = 0 時跳轉頁面
+                            if (count == 0) {
+                                location.href = "/home/product/male";
+                            }
+                            // 設定每秒執行1次
+                            setTimeout("countDown()", 1000);
+                        }
+                        // 執行 countDown
+                        countDown();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
