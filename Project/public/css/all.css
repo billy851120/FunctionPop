@@ -4419,7 +4419,7 @@ input[type=button].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: #ffffff;
   border-radius: 0.25rem;
 }
 
@@ -4429,7 +4429,7 @@ input[type=button].btn-block {
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: 0.5rem;
-  color: #6c757d;
+  color: #374f5a;
   content: "/";
 }
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -4439,7 +4439,7 @@ input[type=button].btn-block {
   text-decoration: none;
 }
 .breadcrumb-item.active {
-  color: #6c757d;
+  color: #262b30;
 }
 
 .pagination {
@@ -5338,7 +5338,6 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1040;

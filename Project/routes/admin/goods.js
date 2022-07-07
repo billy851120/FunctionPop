@@ -18,63 +18,47 @@ router.use((req, res, next) => {
 });
 
 //------------訂單編號指令---------------
+
+
 router.get('/orderMgat_num', function (rqs, res) {
   res.render('admin_orderMgat_num');
-  res.redirect('/admin/goods/orderMgat_num/1');
+  res.redirect('/admin/goods/orderMgat_num/1');//把<=0的id強制改成1
 });
 
 router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
-  var page = rqs.params.page //把<=0的id強制改成1
+  var page = rqs.params.page  
   if (page <= 0) {
     res.redirect('/orderMgat_num')
     return
   }//每頁資料數
   var nums_per_page = 10       //定義資料偏移量
   var offset = (page - 1) * nums_per_page
+  var sql1 = `SELECT * FROM orders WHERE to_days(order_update) = to_days(now());`;
   db.exec(`SELECT * FROM orders ORDER BY orders.order_list DESC LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
     db.exec(`SELECT COUNT(*) AS COUNT FROM orders`, [], function (nums, fields) {
-      var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
-      //避免請求超過最大頁數
-      if (page > last_page) {
-        res.redirect('/admin/goods/orderMgat_num/' + last_page)
-        return
-      }
-      res.render('admin_orderMgat_num', {
-        data: data,
-        curr_page: page,//本頁資料數量
-        total_nums: nums[0].COUNT, //總數除以每頁筆數，再無條件取整數
-        last_page: last_page,
+      db.exec(sql1, [], function (results1, fields) {
+        var last_page = Math.ceil(nums[0].COUNT / nums_per_page)   //避免請求超過最大頁數
+        if (page > last_page) {
+          res.redirect('/admin/goods/orderMgat_num/' + last_page)
+          return
+        }
+        res.render('admin_orderMgat_num', {
+          data1: results1,
+          data: data,
+          curr_page: page,   //本頁資料數量
+          total_nums: nums[0].COUNT,    //總數除以每頁筆數，再無條件取整數
+          last_page: last_page,
 
+        })
       })
     })
   })
 })
-router.get('/orderMgat_num/:order_id([0-9]+)', function (rqs, res) {
-  var sql = `SELECT * FROM orders WHERE order_id = ?;`
-  var data = [rqs.params.id]
-  db.exec(sql, data, function (results, fields) {
-    console.log(results)
-    if (results[0]) {
-      res.end(
-        JSON.stringify(new Success(results[0]))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('no result'))
-      )
-    }
-  })
-})
-
-
-router.get('/orderMgat_num', function (rqs, res) {
-  res.render('admin_orderMgat_num', { title: '後台管理系統' });
-});
-
 
 
 
 //------------訂單編號指令---------------
+
 //------------首頁指令---------------
 
 router.get('/', function (rqs, res) {
