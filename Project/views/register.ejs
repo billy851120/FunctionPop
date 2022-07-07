@@ -105,7 +105,6 @@
             </div>
     </div>
     <script>
-        console.log(history.back);
         $("#cName").on('input', function () {
             if (!($("#cName").val() == '')) {
                 $("#cName").addClass("inp_right")
@@ -219,16 +218,14 @@
                 success: function (data) {    //    alert後臺的返回值  
                     if (data == "ok") {
                         alert("註冊成功")
-                        // console.log(res.locals.url);
-
-                        window.location.href = history.go(-2);
+                        window.location.href = '/home/member/register_success';
                     } else {
                         alert(data);
                     }
                 },
-                // error: function () {
-                //     // alert(`連線失敗`);
-                // }
+                error: function () {
+                    // alert(`連線失敗`);
+                }
             })
         });
     </script>

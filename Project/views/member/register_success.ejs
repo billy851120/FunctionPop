@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container row  border border-danger h-100 align-items-center ">
+        <div class="col-12 col-lg-10 text-center offset-lg-1 row-box p-3 mb-5">
+
+            <h1> 感謝您的註冊，確認信已發至您的信箱，請接收確認信 </h1>
+            <div id="timeBox"></div>
+            <script>
+                // 設定秒數
+                var count = 5;
+                function countDown() {
+                    // 將秒數寫在指定元素中
+                    document.getElementById("timeBox").innerHTML = count;
+                    // 每次執行就減1
+                    count -= 1;
+                    // 當 count = 0 時跳轉頁面
+                    if (count == 0) {
+                        location.href = "/home/member/memberData";
+                    }
+                    // 設定每秒執行1次
+                    setTimeout("countDown()", 1000);
+                }
+                // 執行 countDown
+                countDown();
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
