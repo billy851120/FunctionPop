@@ -43,45 +43,7 @@
             </nav>
             <h2>我是上架商品</h2>
 
-            <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
-                <label>產品名稱*:</label>
-                <input class="fpop_inp" type="text" id="product_name" placeholder="產品名稱*"> <br>
-                <label>敘述*:</label>
-                <input class="fpop_inp" type="text" id="product_description" placeholder="敘述*"> <br>
-                <label>價格*：</label>
-                <input class="fpop_inp" type="text" id="product_price" placeholder="價格*"> <br>
-                <label>類別*:</label>
-                <select class="fpop_inp" id="product_category">
-                    <option value="上衣">上衣</option>
-                    <option value="下著">下著</option>
-                    <option value="鞋">鞋</option>
-                    <option value="包">包</option>
-                    <option value="洋裝">洋裝</option>
-                    <option value="裙子">裙子</option>
-                    <option value="帽子">帽子</option>
-                </select>
-                <button class="btn btn-dark" id="register">新增商品</button>
-            </div>
-            <script>
-                $("#register").click(function () {
-                    $.ajax({
-                        url: "http://localhost:3000/admin/goods/item_shelf",
-                        type: "POST",
-                        data: {
-                            product_name: $("#product_name").val(),
-                            product_category: $("#product_category").val(),
-                            product_description: $("#product_description").val(),
-                            product_price: $("#product_price").val(),
-                        },
-                        success: function (data) {    //    alert後臺的返回值
-                            alert(data);
-                        },
-                        error: function () {
-                            alert(`訪問失敗`);
-                        }
-                    })
-                });
-            </script>
+          
             <br>
             <br>
 

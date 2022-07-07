@@ -79,20 +79,20 @@
                         <form id="form" class="modal-content" style="width: 400px;">
                             <div class="text-center p-4">
                                 <input type="hidden" name="id">
-                                <h3 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
-                                </h3><br>
-                                <h4 class="font-weight-bold">生日: 　<input class="modal-inp" disabled="disabled"
+                                <h6 class="font-weight-bold">姓名: 　<input class="modal-inp" type="text" name="cName">
+                                </h6><br>
+                                <h6 class="font-weight-bold">生日: 　<input class="modal-inp" disabled="disabled"
                                         type="text" name="cBirth">
-                                </h4><br>
-                                <h4 class="font-weight-bold">性別: 　<input class="modal-inp" disabled="disabled"
+                                </h6><br>
+                                <h6 class="font-weight-bold">性別: 　<input class="modal-inp" disabled="disabled"
                                         type="text" name="cgender">
-                                </h4><br>
-                                <h4 class="font-weight-bold">信箱: 　<input class="modal-inp" type="text" name="cAccount">
-                                </h4><br>
-                                <h4 class="font-weight-bold">電話: 　<input class="modal-inp" type="text" name="cPhone">
-                                </h4><br>
-                                <h4 class="font-weight-bold">地址: 　<input class="modal-inp" type="text" name="cAddr">
-                                </h4><br>
+                                </h6><br>
+                                <h6 class="font-weight-bold">信箱: 　<input class="modal-inp" type="text" name="cAccount">
+                                </h6><br>
+                                <h6 class="font-weight-bold">電話: 　<input class="modal-inp" type="text" name="cPhone">
+                                </h6><br>
+                                <h6 class="font-weight-bold">地址: 　<input class="modal-inp" type="text" name="cAddr">
+                                </h6><br>
                                 <button class="btn btn-dark btn-sm mt-2 text-center" type="button"
                                     id="submit">更新</button>
                             </div>
@@ -106,9 +106,9 @@
                                         <div class="card m-2">
                                             <div class="card-body">
 
-                                                <h4 class="card-title">
+                                                <h6 class="card-title">
                                                     姓名: <%= item.cName %>
-                                                </h4>
+                                                </h6>
                                                 <p class="fpop-card-text">
                                                     生日: <%= item.cBirth %>
                                                 </p>
@@ -125,7 +125,8 @@
                                                     地址: <%= item.cAddr %>
                                                 </p>
                                                 <p class="fpop-card-text pt-2">
-                                                    創建日期: <%= item.cUpdate %>
+                                                    
+                                                    創建日期: <%=  moment(item.cUpdate).format(shortDataFormat) %>
                                                 </p>
                                                 <div class="mt-2 text-center">
                                                     <button class="btn btn-outline-info btn-sm "
