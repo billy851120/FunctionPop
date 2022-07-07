@@ -140,8 +140,9 @@ var memberController = {
         // })
     },
     registerCheck: (req, res) => {
-
-        res.render('member/register_success')
+        res.render('member/register_success',{
+            title:'註冊成功'
+        })
     }
 
 }

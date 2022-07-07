@@ -63,11 +63,11 @@ router.get('/myFavourite', getUrl, function (req, res) {
     var memid = req.session.memberprofile.id;
     // console.log(checkmem);
     db.exec(
-      'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
+      'SELECT F.customer_id, F.product_id,P.product_gender, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
       memid,
       function (results, fields, error) {
         // console.log(error);
-        // console.log(results);
+        console.log(results);
         // console.log(fields);
         if (error) {
           throw error;

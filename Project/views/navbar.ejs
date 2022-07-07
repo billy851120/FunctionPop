@@ -1,6 +1,7 @@
 <!-- 最top導覽列 -->
 <nav class="container navbar navbar-light sticky-top" style="background-color: #ffffff; height: 90px">
-  <a class="navbar-brand pl-4" href="/home"> <!-- 首頁 -->
+  <a class="navbar-brand pl-4" href="/home">
+    <!-- 首頁 -->
     <img src="/img/logo/logo_black.svg" alt="" style="width: 50px; height: 50px" />
     <img src="/img/logo/logo_text_black.svg" alt="" id="logo_text" style="width: 140px; height: 70px" />
   </a>
@@ -41,14 +42,17 @@
           </svg>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownqazwsx" style="margin: 9px 300px 0px 0px">
-          <% if(!memberprofile){ %> 
-          <a class="dropdown-item" href="/home/member/memberData">我的帳戶</a>
-          <a class="dropdown-item" href="/home/member/login">登入</a>
-          <a class="dropdown-item" href="/home//member/register">註冊</a>
-          <% } else {%> 
-            <a class="dropdown-item" href="/home/member/memberData"><%- memberprofile.cName %>  你好！</a>
-          <a class="dropdown-item" href="/home/member/logout">登出</a>
-         <% } %>  
+          <% if(!memberprofile){ %>
+            <a class="dropdown-item" href="/home/member/memberData">我的帳戶</a>
+            <a class="dropdown-item" href="/home/member/login">登入</a>
+            <a class="dropdown-item" href="/home//member/register">註冊</a>
+            <% } else {%>
+              <a class="dropdown-item" href="/home/member/memberData">
+                <%- memberprofile.cName %> 你好！
+              </a>
+              <a class="dropdown-item" href="/home/member/orderList">查詢訂單</a>
+              <a class="dropdown-item" href="/home/member/logout">登出</a>
+              <% } %>
         </div>
       </li>
     </div>
