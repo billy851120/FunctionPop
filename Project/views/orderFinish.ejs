@@ -23,9 +23,9 @@
 
         <div class="cart_content">
           <div class="row content_text">
-            <div class="col-9" style="padding: 0">
+            <div class="col-12 col-lg-9" style="padding: 0">
               <div class="row cart_banner">
-                <div class="col-12 top_link">
+                <div class="col-12 top_link d-none d-lg-block">
                   <ul class="cart-link">
                     <li><a href="/home">首頁</a></li>
                     <li>
@@ -54,10 +54,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-3"></div>
+            <div class="col-3 d-none d-lg-block"></div>
           </div>
           <div class="row content_text">
-            <div class="col-9">
+            <div class="col-12 col-lg-9">
               <div class="row">
                 <div class="col-12 text-center mb-3">
                   <div><img src="/img/shop_cart/Finish.png" alt=""></div>
@@ -76,13 +76,14 @@
 
 
             </div>
-            <div class="col-3" style="padding: 0">
+            <div class="col-12 col-lg-3 p-lg-0" >
+              <hr class="d-lg-none" style="border-top: 0.9px solid #000">
               <div class="div cart_Order">
-                <div style="text-align: center">
+                <div class="d-none d-lg-block" style="text-align: center">
                   <p>訂單確認</p>
                 </div>
-                <div class="py-2">
-                  <p>
+                <div class="py-2 borderOut">
+                  <p class="d-none d-lg-block">
                     <b>總計商品件數:</b>
                     <span class="float-right"><span id="total_count">
                       <% let count = 0;
@@ -111,7 +112,7 @@
                     <b>運費:</b><span class="float-right">NT$<span id="fare" class="fare">0</span></span>
                   </p>
                 </div>
-                <div class="py-3" class="canFare" id="canFare">
+                <div class="py-3 d-none d-lg-block" class="canFare" id="canFare">
                   只差NT$ <span>0</span>，即可享有免費標準運送。
                 </div>
                 <div class="pt-2 mb-4">

@@ -9,7 +9,6 @@ var memberModel = {
         db.exec('update customer_id set cPhone = ? , cAddr = ? where cAccount = ? ',
             [user.cPhone, user.cAddr, user.s_cAccount],
             (result, fields, err) => {
-
                 if (err) return cb(err);
                 cb(null)
             })
@@ -23,6 +22,22 @@ var memberModel = {
                 if (err) return cb(err);
                 cb(null);
             });
+    },
+    memberPwChange: (user, cb) => {
+        db.exec('update customer_id set cPassword = ? where cAccount = ? ',
+            [user.newpw, user.s_cAccount],
+            (result, fields, err) => {
+                console.log('pass database')
+                if (err) return cb(err);
+                cb(null);
+            })
+    },
+    handlelogin: (cAccount, cb) => {
+        db.exec('select * from customer_id where cAccount = ?',
+            [cAccount],
+            (result, fields, err) => {
+                cb(null, result[0]);
+            })
     }
 
 }

@@ -11648,10 +11648,6 @@ img.avatar {
   border-radius: 50%;
 }
 
-.container {
-  padding: 16px;
-}
-
 span .psw {
   float: right;
   padding-top: 16px;
@@ -12201,10 +12197,6 @@ figcaption {
   /* left: 50%; */
 }
 
-.container {
-  margin-top: -10px;
-}
-
 .fnicon {
   /* margin-top: -20px; */
   width: 60%;
@@ -12258,8 +12250,8 @@ figcaption {
 }
 @media screen and (max-width: 769px) {
   /* .fnicon {
-      width: 75%;
-  } */
+        width: 75%;
+    } */
   .icon_posi {
     right: 17px;
   }
@@ -12272,8 +12264,8 @@ figcaption {
 }
 @media screen and (max-width: 400px) {
   /* .fnicon {
-      width: 70%;
-  } */
+        width: 70%;
+    } */
   .icon_posi {
     top: -75px;
     left: -85px;
@@ -12602,6 +12594,10 @@ figcaption {
 
   .owl-theme .owl-nav {
     display: none;
+  }
+
+  #payCh .getPay {
+    margin: 0;
   }
 }
 /*! jQuery UI - v1.12.1 - 2016-09-14
@@ -14701,10 +14697,6 @@ button:hover {
 img.avatar {
   width: 40%;
   border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
 }
 
 span.psw {

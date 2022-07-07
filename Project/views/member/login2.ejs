@@ -63,7 +63,7 @@
                     <img src="/img/index/f3.jpg" alt="">
                 </div>
                 <% if(!memberprofile) {%>
-                <div class="col-12 col-lg-6 px-5 pt-5 mb-5">
+                <div class="col-12 col-lg-6 px-5 pt-5 mb-5 ">
                      
                     <h1 class="font-weight-blod py-3">FunctionPOP</h1>
                     <h4>登入您的帳戶</h4>
@@ -89,14 +89,14 @@
                             </div>
                         </div>
                         <a href="#">忘記密碼</a>
-                        <p>沒有帳戶嗎？<a href="#">註冊</a> </p>
+                        <p>沒有帳戶嗎？<a href="/home/member/register">註冊</a> </p>
                     </form>
-                </div> <!-- col-lg-7 -->
+                </div> <!-- col-lg-6 -->
               <% } else { %>
-                <div class="col-lg-7 px-5 pt-5 text-center  align-items-end">
+                <div class="col-12 col-lg-6 px-5  mb-lg-0 mb-5 text-center align-self-center  ">
                     <h1 class="font-weight-blod py-3">您已登入 </h1> 
-                    <p class="font-weight-blod py-3">是否登出？</p> 
-                     <a href="/home/member/logout" class="btn btn-outline-dark d-block">Logout</a> 
+                    <p class="font-weight-blod py-3 ">是否登出？</p> 
+                     <a href="/home/member/logout" class="btn btn-outline-dark col-lg-6">Logout</a> 
                 </div>
             
                 <% } %>
