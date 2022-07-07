@@ -43,8 +43,47 @@
           box-sizing: border-box;
 }
 
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
+}
+
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 abbr[title],
@@ -62,6 +101,38 @@ address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+b,
+strong {
+  font-weight: bolder;
 }
 
 small {
@@ -82,6 +153,25 @@ sub {
 
 sup {
   top: -0.5em;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:not([href]):not([class]) {
+  color: inherit;
+  text-decoration: none;
+}
+a:not([href]):not([class]):hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 pre,
@@ -135,6 +225,35 @@ label {
   margin-bottom: 0.5rem;
 }
 
+button {
+  border-radius: 0;
+}
+
+button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
 [role=button] {
   cursor: pointer;
 }
@@ -155,6 +274,14 @@ button:not(:disabled),
 [type=reset]:not(:disabled),
 [type=submit]:not(:disabled) {
   cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
 }
 
 input[type=radio],
@@ -226,6 +353,37 @@ template {
 
 [hidden] {
   display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-size: 2.5rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
 }
 
 .lead {
@@ -5050,7 +5208,7 @@ input[type=button].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
+  background-color: #ffffff;
   border-radius: 0.25rem;
 }
 
@@ -5060,7 +5218,7 @@ input[type=button].btn-block {
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: 0.5rem;
-  color: #6c757d;
+  color: #374f5a;
   content: "/";
 }
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -5070,7 +5228,7 @@ input[type=button].btn-block {
   text-decoration: none;
 }
 .breadcrumb-item.active {
-  color: #6c757d;
+  color: #262b30;
 }
 
 .pagination {
@@ -6051,7 +6209,6 @@ a.close.disabled {
 }
 
 .modal-backdrop {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1040;
@@ -11896,15 +12053,6 @@ figcaption {
   color: white;
 }
 
-.col-lg-4 h2 {
-  padding-top: 10px;
-}
-
-.col-lg-4 p {
-  text-align: left;
-  padding: 20px;
-}
-
 @media screen and (max-width: 768px) {
   .coupon {
     /* border: 1px red solid; */
@@ -12152,8 +12300,10 @@ figcaption {
   list-style: none;
 }
 
-.q_sub:hover, .q_add:hover {
-  background-color: rgba(220, 215, 201, 0.4117647059);
+.q_sub:hover,
+.q_add:hover {
+  -webkit-box-shadow: 0px 0px 2px #666;
+          box-shadow: 0px 0px 2px #666;
 }
 
 .cart {
@@ -12413,6 +12563,46 @@ figcaption {
   padding: 11px;
 }
 
+@media (max-width: 992px) {
+  #css_tbody .product + .product::before {
+    position: absolute;
+    border-bottom: 1px solid #ddd;
+    top: -14px;
+    width: 89%;
+    margin: auto;
+    right: 0;
+    left: 0;
+    content: "";
+  }
+
+  .phTitleH {
+    margin-bottom: -30px !important;
+  }
+
+  .cart_content #css_tbody {
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .cart_Order {
+    border: none;
+    margin-top: 20px;
+    background-color: #fff;
+  }
+
+  .text-center #sub {
+    width: 90%;
+  }
+
+  .cart_Order .borderOut {
+    border-top: 0px solid #fff !important;
+  }
+
+  .owl-theme .owl-nav {
+    display: none;
+  }
+}
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
 * Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css
