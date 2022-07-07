@@ -17,9 +17,13 @@
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
     <!-- <script src="/js/member/LeftNavBar.js"></script> -->
     <style>
-.bb{
-    border:1px solid red;
-}
+    .bb{
+        border:1px solid red;
+    }   
+    .product_desc img {
+        width: 100%;
+
+    }
     </style>
 </head>
 
@@ -57,7 +61,7 @@
                                 </div>
                                 <div class="col-4 text-center border-right border-secondary"><a href="">清空全部商品</a>
                                 </div>
-                                <div class="col-4 text-center text-secondary ">Ｎ件商品</div>
+                                <div class="col-4 text-center text-secondary "><span class="mr-1"><%- todos.length %></span>件商品</div>
                             </div>
                             <!-- <div class="row p-3 text-center align-items-center">
                     <div class="d-none d-sm-inline col-8 col-xl-4 col-xl-4">商品名稱</div>
@@ -96,8 +100,8 @@
 
                             <% for (var i=0; i<todos.length; i++) { %>
                             <div class="row p-3 align-items-center text-center">
-                                <div class="col-4 col-xl-2 text-center"><img class=""
-                                        src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
+                                <div class="col-4 col-xl-2 text-center product_desc"><img class=""
+                                   src="/img/product/<%= todos[i].product_image %>" alt=""></div>
                                 <div class="col-4 col-xl-2"><%- todos[i].product_name %></div>
                                 <div class="col-2 col-xl"><%- todos[i].product_gender %></div>
                                 <div class="col-2 col-xl-2"><%- todos[i].product_description %></div>
