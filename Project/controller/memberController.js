@@ -89,25 +89,14 @@ var memberController = {
                 console.log('寫入session');
                 req.session.memberprofile = result;
                 console.log(req.session.url);
-                if (!req.session.url) {
-                    res.render('404', {
-                        title: '404 NOT FOUND'
-                    });
-                } else {
-                    res.redirect(req.session.url);
-                }
+                res.redirect(req.session.url);
+
             })
         })
     },
     logout: (req, res) => {
         req.session.memberprofile = null;
-        if (!req.session.url) {
-            res.render('404', {
-                title: '404 NOT FOUND'
-            });
-        } else {
-            res.redirect(req.session.url);
-        }
+        res.redirect(req.session.url);
     },
 
     register: (req, res) => {
