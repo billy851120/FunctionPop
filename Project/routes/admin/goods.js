@@ -1,26 +1,24 @@
 const { json } = require('body-parser');
+const { data } = require('jquery');
 var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../../dataBase');
 var router = express.Router();
 var events = require(`events`);
-const { data } = require('jquery');
 var emitter = new events.EventEmitter();
 var moment = require('moment');
 var shortDataFormat = 'YYYY-MM-DD';
 router.use(bodyParser.json());
-
-
 router.use((req, res, next) => {
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
   next();
 });
+//--------------------------------------
+
 
 //------------所有商品指令---------------
-// router.get('/item_all', function (rqs, res) {
-//   res.render('admin_item_all', { title: '後台管理系統' });
-// });
+
 
 router.get('/item_all', function (rqs, res) {
   res.render('admin_item_all');
@@ -55,7 +53,9 @@ router.get('/item_all/:page([0-9]+)', function (rqs, res) {
   })
 })
 
+
 //------------所有商品指令---------------
+
 //------------訂單編號指令---------------
 
 router.get('/orderMgat_num', function (rqs, res) {
@@ -95,9 +95,9 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
       orderWeek: results[3][0].COUNT,
       curr_page: page,   //本頁資料數量
       last_page: last_page,
-      sale_today :results[4][0].COUNT,
-      orderToday_count :results[5][0].COUNT,
-      allSumcount :results[6][0].COUNT
+      sale_today: results[4][0].COUNT,
+      orderToday_count: results[5][0].COUNT,
+      allSumcount: results[6][0].COUNT
 
     })
 

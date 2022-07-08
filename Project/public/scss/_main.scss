@@ -28,3 +28,9 @@ body {
 .push {
     height: 283px;
 }
+.modal-backdrop{
+    z-index: -1 !important;
+} 
+.breadcrumb{
+    background-color: #fff !important;
+}

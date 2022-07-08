@@ -17,26 +17,29 @@
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
     <!-- <script src="/js/member/LeftNavBar.js"></script> -->
     <style>
-    .bb{
-        border:1px solid red;
-    }   
+    
     .product_info img {
         width: 100%;
+        height: 100%;    }
+    .product_desc{
+        overflow :hidden;
+         display: -webkit-box;
+        -webkit-line-clamp: 5; 
+        -webkit-box-orient: vertical;
     }
+    .follow_content{
+            /* border-radius: 5px;
+            box-shadow: 6px 6px 12px  rgb(226, 226, 226); */
+
+    }
+    .b_radius{
+        border-radius: 8px;
+    }
+    
     @media screen and (max-width: 767px){
        .product_aa {font-size: 10px;} 
        .product_name{font-size: 13px;}
     }
-    /* .pIconbtn {
-            border-radius: 5px;
-            width: 80px;
-            height: 45px;
-            background: white;
-            color: black;
-            border: 0px ;
-            width: 60px; 
-            height: 45px;
-        } */
      .product_desc{
         font-size: 8px;
         overflow :hidden;
@@ -59,7 +62,7 @@
           
                 <!-- 左邊選單列 -->
                 <div class="row mt-4">
-                    <div class="col-12 col-lg-2 text-center mb-4 ">
+                    <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
                         <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData"
                                 class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
                         <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/orderList"
@@ -78,45 +81,43 @@
                                 </div>
                             </div>
                             <div class="row p-2 mb-3">
-                                <div class="col-4 text-center border-right border-secondary"><a href="">全部加入購物車</a>
-                                </div>
-                                <div  id="clearFavor" class="col-4 text-center border-right border-secondary">
+                                <div  id="clearFavor" class="col-6 text-center border-right border-secondary">
                                     <form method="POST" action="/home/member/myFavourite" id="clearAll" name="clearAll">
                                         <input type="hidden" name="clearallcontent" value="0912383555">
                                         <input type="hidden" name="memcontent" value="<%- memberprofile.id %>">
                                         <button type="submit" class="btn">清空全部商品</button>
                                     </form>
                                 </div>
-                                <div class="col-4 text-center text-secondary "><span class="mr-1"><%- todos.length %></span>件商品</div>
+                                <div class="col-6 text-center text-secondary align-self-center"><span class="mr-1"><%- todos.length %></span>件商品</div>
                             </div>
 
 
 
                             <% for (var i=0; i<todos.length; i++) { %>
-                            <div class="row  align-items-lg-center text-center border p-2 mx-1 ">
-                                <div class="col-4 col-lg-3  text-center align-items-lg-center product_info ">
+                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius">
+                                <div class="col-4 col-lg-3 product_info py-3">
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
                                     src="/img/product/<%= todos[i].product_image %>" title="<%- todos[i].product_description %>"></a>
                                     
                                     
                                 </div>
 
-                                <div class="col-6 col-lg-2 text-left align-items-lg-start product_aa">
+                                <div class="col-5 col-lg-2 text-left align-items-lg-start product_aa py-2">
                                      <p class="font-weight-bold product_name" ><%- todos[i].product_name %> </p>
-       <!-- < lg disappear -->       <p class="d-lg-block d-none text-secondary  "><%- todos[i].product_description  %> </p>
+       <!-- < lg disappear -->       <p class="d-lg-block d-none text-secondary product_desc "><%- todos[i].product_description  %> </p>
        <!-- < lg display -->         <p class="d-lg-none"><%- todos[i].product_gender %></p>
        <!-- < lg display -->         <p class="d-lg-none text-secondary product_desc"><%- todos[i].product_description  %> </p>
                                 </div>
 
-      <!-- < lg disappear -->      <div class="col-lg-1 d-lg-block d-none "><%- todos[i].product_gender %></div>
+       <!-- < lg disappear -->  <div class="col-lg-1 d-lg-block d-none "><%- todos[i].product_gender %></div>
 
-      <!-- < lg disappear -->      <div class="col-lg-2 d-lg-block d-none " style="color:red">$<%- todos[i].product_price %></div>
+       <!-- < lg disappear -->  <div class="col-lg-2 d-lg-block d-none " style="color:red">$<%- todos[i].product_price %></div>
 
          
-      <!-- < lg display -->        <div class="d-flex col-2 d-lg-none d-block mt-2 align-items-end flex-column bd-highlight">
-                                         <button class="btn text-right"> 
-                                                <svg xmlns="http://www.w3.org/2000/svg"  class="bd-highlight"
-                                                 width="24" height="24" fill="currentColor" class="bi bi-trash3-fill"
+       <!-- < lg display -->    <div class="d-flex col-3 d-lg-none d-block mt-2 align-items-center flex-column bd-highlight ">
+                                         <button class="btn"> 
+                                                <svg xmlns="http://www.w3.org/2000/svg"  class="text-secondary"
+                                                 width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
                                                  viewBox="0 0 16 16">
                                                  <path
                                                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
@@ -124,31 +125,26 @@
                                              
                                          </button>
                                             <p class="d-lg-none mt-auto" style="color:red ;">$<%- todos[i].product_price %></p> 
-                                    </div>
-                                <a href="#" class="mt-2 col-12 col-lg-2 btn_GO ">移至購物車</a>
-                        
-                                
-                                <% var memid =0; %>
-                                <% if(memberprofile != null){ %>
-                                    <% memid = memberprofile.id;}else{memid = 0;} %>
-     <!-- < xl disappear -->  <% var memid =0; %>
-     <% if(memberprofile != null){ %>
-        <% memid = memberprofile.id;}else{memid = 0;} %>
-    <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-xl-2 d-lg-block d-none text-dark btn">
-        <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
-        <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-            fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-            <path
-                d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-        </svg>
-    </button>
+                                 </div>
+                                 <div class="col-12 col-lg-2  mb-2 b_radius">
+                                    <a href="#" class="btn_GO d-block w-100">移至購物車</a>
+                                </div >
+                                     <% var memid =0; %>
+                                      <% if(memberprofile != null){ %>
+                                         <% memid = memberprofile.id;}else{memid = 0;} %>
+       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none text-dark btn">
+                                         <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
+                                         <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                             fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                             <path
+                                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                         </svg>
+                                     </button>
                                     
                             </div>  <!-- row -->
                             
                             <%}%>
-
-                            
 
                         </div> <!-- col-10 -->
                         <% } else { %>
@@ -165,11 +161,7 @@
                         <li data-target="#carouselExampleControls" data-slide-to="1"></li>
                         <li data-target="#carouselExampleControls" data-slide-to="2"></li>
                     </ol>
-                    <!-- <div class="carousel-indicators bg-danger mb-0 p-2">
-                <button type="button" data-target="#carouselExampleControls" data-slide-to="0" class="" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-target="#carouselExampleControls" data-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-target="#carouselExampleControls" data-slide-to="2" aria-label="Slide 3"></button>
-            </div> -->
+                
                     <div class="carousel-inner">
                         <div class="carousel-item active text-center  ">
                             <img class="mr-4" src="https://dummyimage.com/100x150/f7f7f7/7cfa5c.jpg&text=1">
