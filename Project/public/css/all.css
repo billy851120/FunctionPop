@@ -5208,7 +5208,7 @@ input[type=button].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #fff;
+  background-color: #e9ecef;
   border-radius: 0.25rem;
 }
 
@@ -11441,7 +11441,7 @@ h3 {
 
 a {
   text-decoration: none;
-  color: #000 !important;
+  color: #000;
 }
 
 html,
@@ -11460,6 +11460,14 @@ body {
 .footer,
 .push {
   height: 283px;
+}
+
+.modal-backdrop {
+  z-index: -1 !important;
+}
+
+.breadcrumb {
+  background-color: #fff !important;
 }
 
 @media (max-width: 750px) {

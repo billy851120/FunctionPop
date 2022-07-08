@@ -8,7 +8,7 @@
 
 a {
     text-decoration: none;
-    color: #000 !important;
+    color: #000;
 }
 
 html,
@@ -27,4 +27,10 @@ body {
 .footer,
 .push {
     height: 283px;
+}
+.modal-backdrop{
+    z-index: -1 !important;
+} 
+.breadcrumb{
+    background-color: #fff !important;
 }

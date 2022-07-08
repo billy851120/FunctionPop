@@ -6,6 +6,7 @@
 
 .title_1 {
     /* background-color: black; */
+    font-size: 18px;
     color: black;
     border-bottom: 5px solid #FFE200;
     border-radius: 4px;
@@ -37,6 +38,8 @@
     background-color: black;
     color: white;
     border-radius: 5px;
+    text-align: center;
+    line-height:40px;
 }
 
 .btn_GO:hover {
@@ -47,7 +50,10 @@
 
 @media screen and (max-width: 767px){
     *{
-        font-size: 13px;
+        font-size: 10px;
     }
-    .title_1 p{font-size: px;}
+    .title_1 p{font-size :13px;}
+    .btn_GO{
+        border-radius: 5px;
+    }
  }
