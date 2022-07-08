@@ -6,6 +6,7 @@
 
 .title_1 {
     /* background-color: black; */
+    font-size: 18px;
     color: black;
     border-bottom: 5px solid #FFE200;
     border-radius: 4px;
@@ -49,7 +50,7 @@
 
 @media screen and (max-width: 767px){
     *{
-        font-size: 13px;
+        font-size: 10px;
     }
     .title_1 p{font-size :13px;}
     .btn_GO{
