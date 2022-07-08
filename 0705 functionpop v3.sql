@@ -24,6 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+CREATE TABLE `custompic` (
+  `pic` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 -- 資料表結構 `admin_user`
 --
 CREATE TABLE `favorite` (

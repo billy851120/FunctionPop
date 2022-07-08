@@ -20,6 +20,7 @@ var shop_cartController = {
     );
   },
   updateCart: (req, res) => {
+    console.log(req.body);
     var cart = req.session.cart;
     var code = req.body.code;
     var all_id = req.body.all_id;

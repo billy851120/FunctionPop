@@ -28,6 +28,7 @@ function getUrl(req, res, next) {  // 登入後返回前頁
 router.get('/', getUrl, shop_cartController.shop_cart);
 router.post('/', getUrl, shop_cartController.updateCart);
 
+
 router.post('/q_add', shop_cartController.productAdd);
 router.post('/q_sub', shop_cartController.productSub);
 router.post('/del', shop_cartController.productDel);
@@ -36,7 +37,6 @@ router.post('/del', shop_cartController.productDel);
 
 router.get('/orderCheck', shop_cartController.orderCheck);
 router.post('/orderCheck/', shop_cartController.newOrder);
-
 // 訂單完成--------------------------------------------
 router.get('/orderFinish', getUrl, shop_cartController.orderFinish);
 
