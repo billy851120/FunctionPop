@@ -50,4 +50,7 @@
         font-size: 13px;
     }
     .title_1 p{font-size: px;}
+    .btn_GO{
+        border-radius: 5px;
+    }
  }
