@@ -20,7 +20,7 @@
     .bb{
         border:1px solid red;
     }   
-    .product_desc img {
+    .product_info img {
         width: 100%;
     }
     @media screen and (max-width: 767px){
@@ -36,6 +36,13 @@
             border: 0px ;
             width: 60px; 
             height: 45px;
+        }
+     .product_desc{
+        font-size: 8px;
+        overflow :hidden;
+         display: -webkit-box;
+        -webkit-line-clamp: 4; 
+        -webkit-box-orient: vertical;
         }
 
     </style>
@@ -77,44 +84,12 @@
                                 </div>
                                 <div class="col-4 text-center text-secondary "><span class="mr-1"><%- todos.length %></span>件商品</div>
                             </div>
-                            <!-- <div class="row p-3 text-center align-items-center">
-                    <div class="d-none d-sm-inline col-8 col-lg-4 col-lg-4">商品名稱</div>
-                    <div class="d-none d-sm-inline col-2 col-lg-2 col-lg-2">顏色</div>
-                    <div class="d-none d-sm-inline col-2 col-lg-1 col-lg">尺寸</div>
-                    <div class="col-lg-1 col-lg text-lg-center  d-none d-lg-inline">金額</div>
-                </div> -->
-
-
-                            <!-- <div class="row-lg p-3 align-items-center text-center">
-                                <div class="row">
-                                    <div class="col-2 col-lg-2 text-center border border-success">
-                                        <img class="" src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1"
-                                            alt="">
-                                    </div>
-
-                                    <div class="col-8 col-lg-2  text-lg-center text-left align-items-center bb">
-                                        <p>Micah 草編真皮厚底涼鞋</p>
-                                        <p class="">石白灰</p>
-                                        <p>36碼</p>
-                                    </div>
-                                   
-
-                                    <div class="col-lg mt-2 text-center ">$890</div>
-                                    <a href="#" class="mt-2 col-12 col-lg-2 py-2 btn_GO d-inline">移至購物車</a>
-                                    <a href="" class="col-2 col-lg-2 text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                        </svg></a>
-                                </div>
-                            </div> -->
 
 
 
                             <% for (var i=0; i<todos.length; i++) { %>
-                            <div class="row  align-items-lg-center text-center ">
-                                <div class="col-4 col-lg-3  text-cent   er align-items-lg-center product_desc  ">
+                            <div class="row  align-items-lg-center text-center border p-2 mx-1 ">
+                                <div class="col-4 col-lg-3  text-center align-items-lg-center product_info">
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
                                     src="/img/product/<%= todos[i].product_image %>" title="<%- todos[i].product_description %>"></a>
                                     
@@ -125,38 +100,32 @@
                                      <p class="font-weight-bold product_name" ><%- todos[i].product_name %> </p>
        <!-- < lg disappear -->       <p class="d-lg-block d-none text-secondary  "><%- todos[i].product_description  %> </p>
        <!-- < lg display -->         <p class="d-lg-none"><%- todos[i].product_gender %></p>
-       <!-- < lg display -->         
-                                     <p class="d-lg-none text-secondary"><%- todos[i].product_description  %> </p>
+       <!-- < lg display -->         <p class="d-lg-none text-secondary product_desc"><%- todos[i].product_description  %> </p>
                                 </div>
 
       <!-- < lg disappear -->      <div class="col-lg-1 d-lg-block d-none "><%- todos[i].product_gender %></div>
 
       <!-- < lg disappear -->      <div class="col-lg-2 d-lg-block d-none " style="color:red">$<%- todos[i].product_price %></div>
 
-      <!-- < lg display -->    <button class="col-2 d-lg-none d-block mt-2 text-dark text-right"   > 
-                                     <svg xmlns="http://www.w3.org/2000/svg"  class="align-self-start"
-                                         width="24" height="24" fill="currentColor" class="bi bi-trash3-fill"
-                                         viewBox="0 0 16 16">
-                                         <path
-                                             d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                     </svg>
-                                     <p class="d-lg-none mt-5 " style="color:red ;">$<%- todos[i].product_price %></p> 
-                                </div>
-
-                                <a href="#" class="mt-2 col-12 col-lg-2 py-2 btn_GO d-inline">移至購物車</a>
-
-       <!-- < xl disappear -->  
-       <!-- <svg xmlns="http://www.w3.org/2000/svg" class="col-xl-2 d-xl-block d-none text-dark"
-                                        width="32" height="32" fill="currentColor" class="bi bi-trash3-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                 </svg> -->
-
+         
+      <!-- < lg display -->        <div class="d-flex col-2 d-lg-none d-block mt-2 align-items-end flex-column bd-highlight text-right">
+                                         <button class="pIconbtn text-right"> 
+                                                <svg xmlns="http://www.w3.org/2000/svg"  class="bd-highlight"
+                                                 width="24" height="24" fill="currentColor" class="bi bi-trash3-fill"
+                                                 viewBox="0 0 16 16">
+                                                 <path
+                                                     d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                </svg>
+                                             
+                                         </button>
+                                            <p class="d-lg-none mt-auto" style="color:red ;">$<%- todos[i].product_price %></p> 
+                                    </div>
+                                <a href="#" class="mt-2 col-12 col-lg-2 btn_GO d-block align-center">移至購物車</a>
+                        
                                 
+     <!-- < xl disappear --> <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-xl-2 d-lg-block d-none text-dark pIconbtn">
                                     <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
                                     <!-- <input type="submit" id="inputSend" value="送出"> -->
-                                    <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-xl-2 d-xl-block d-none text-dark pIconbtn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                             fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                             <path
@@ -164,9 +133,8 @@
                                         </svg>
                                     </button>
                                     
-                                
                             </div>  <!-- row -->
-                            <hr>
+                            
                             <%}%>
 
                             

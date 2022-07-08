@@ -37,6 +37,8 @@
     background-color: black;
     color: white;
     border-radius: 5px;
+    text-align: center;
+    line-height:40px;
 }
 
 .btn_GO:hover {
@@ -49,7 +51,7 @@
     *{
         font-size: 13px;
     }
-    .title_1 p{font-size: px;}
+    .title_1 p{font-size :13px;}
     .btn_GO{
         border-radius: 5px;
     }
