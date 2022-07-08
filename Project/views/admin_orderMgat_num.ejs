@@ -58,6 +58,11 @@
             margin-bottom: 0px !important;
 
         }
+
+        .productName {
+            text-align: left;
+            padding-left: 30px;
+        }
     </style>
 
 </head>
@@ -76,6 +81,26 @@
                 </ol>
             </nav>
             <div class="row justify-content-center align-items-center">
+                <div class="card text-bg-info m-4 fpopCard">
+                    <div class="card-body row">
+                        <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" style="color:rgb(76, 143, 44) ;"
+                                width="40" height="40" fill="currentColor" class="bi bi-clipboard-check"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                <path
+                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                <path
+                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                            </svg></div>
+                        <div class="col-8">
+                            <p class="card-text p-1" style="font-size: 10px;">今日訂單數量</p>
+                            <p class="card-text">
+                                <%= orderToday_count %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="card text-bg-primary m-4 fpopCard ">
                     <div class="card-body row">
                         <div class="col-4"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
@@ -96,21 +121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card text-bg-info m-4 fpopCard">
-                    <div class="card-body row">
-                        <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" style="color:rgb(76, 143, 44) ;" width="40" height="40" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                          </svg></div>
-                        <div class="col-8">
-                            <p class="card-text p-1" style="font-size: 10px;">今日訂單數量</p>
-                            <p class="card-text">
-                                <%= orderToday_count %>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="card text-bg-info m-4 fpopCard ">
                     <div class="card-body row">
                         <div class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
@@ -136,8 +147,8 @@
                                     d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
                             </svg></div>
                         <div class="col-8">
-                            <p class="card-text p-1" style="font-size: 10px;">近7日銷售額</p>
-                            <p class="card-text">$ 1</p>
+                            <p class="card-text p-1" style="font-size: 10px;">總銷售額</p>
+                            <p class="card-text">$ <%= allSumcount %></p>
                         </div>
                     </div>
                 </div>
@@ -282,23 +293,48 @@
 
                     <div class="modal" id="myModal">
                         <form id="form" class="modal-content" style="width: 400px;">
-                            <div id="mgatMod" class="text-center p-4">
-                                <input type="hidden" name="order_id">
-                                <p>訂單編號: <input class="modal-inp" type="text" name="modalInp1">
-                                </p>
-                                <br>
-                                <p>姓　　名: <input class="modal-inp" type="text" name="modalInp2">
-                                </p>
-                                <br>
-                                <p>信　　箱: <input class="modal-inp" type="text" name="modalInp3">
-                                </p>
-                                <br>
-                                <p>電　　話: <input class="modal-inp" type="text" name="modalInp4">
-                                </p>
-                                <br>
-                                <p>地　　址: <input class="modal-inp" type="text" name="modalInp5">
-                                </p>
-                                <br>
+                            <div id="mgatMod" class=" p-4">
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>訂單編號: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp1" type="text"></p>
+                                    </div>
+                                </div>
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>姓　　名: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp2" type="text"></p>
+                                    </div>
+                                </div>
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>信　　箱: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp3" type="text"></p>
+                                    </div>
+                                </div>
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>電　　話: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp4" type="text"></p>
+                                    </div>
+                                </div>
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>地　　址: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp5" type="text"></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -324,7 +360,7 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-4">會員資料共 <%= total_nums %> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
+            <p class="text-center mt-4">共 <%= total_nums %> 筆，共 <%= curr_page%>/<%= last_page%> 頁</p>
 
         </div>
         <script>
@@ -343,14 +379,18 @@
                             console.log(item);
                             var a = document.createElement("p");
                             $(a).prop("class", 'productName');
-                            a.innerHTML = item.product_code + item.product_name + item.product_category + item.size_name;
+                            a.innerHTML =
+                                " 衣服編號: " + item.product_code + "<br>"
+                                + " 商品名稱: " + item.product_name + "<br>"
+                                + " 類　　別: " + item.product_category + "<br>"
+                                + " 尺　　寸: " + item.size_name + "<br>";
                             document.getElementById("mgatMod").appendChild(a);
                             console.log(a);
-                            $("input[name='modalInp1']").val(item.order_list)
-                            $("input[name='modalInp2']").val(item.user_name)
-                            $("input[name='modalInp3']").val(item.user_email)
-                            $("input[name='modalInp4']").val(item.user_phone)
-                            $("input[name='modalInp5']").val(item.user_address)
+                            $("p[name='modalInp1']").text(item.order_list)
+                            $("p[name='modalInp2']").text(item.user_name)
+                            $("p[name='modalInp3']").text(item.user_email)
+                            $("p[name='modalInp4']").text(item.user_phone)
+                            $("p[name='modalInp5']").text(item.user_address)
                         });
                     },
                     error: function () {
