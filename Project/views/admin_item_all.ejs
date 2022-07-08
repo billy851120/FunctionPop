@@ -13,6 +13,17 @@
         .fp-item>li>span {
             padding: 15px;
         }
+        
+        .modal-inp {
+            height: 35px;
+            width: 200px;
+            border: 1px solid #acacac;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 5px 0;
+            padding: 0 10px;
+        }
+
     </style>
 </head>
 
@@ -28,58 +39,39 @@
                     <li class="breadcrumb-item active" aria-current="page">所有商品</li>
                 </ol>
             </nav>
-            <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
-                <label>產品名稱*:</label>
-                <input class="fpop_inp" type="text" id="product_name" placeholder="產品名稱*"> <br>
-                <label>敘述*:</label>
-                <input class="fpop_inp" type="text" id="product_description" placeholder="敘述*"> <br>
-                <label>價格*：</label>
-                <input class="fpop_inp" type="text" id="product_price" placeholder="價格*"> <br>
-                <label>類別*:</label>
-                <select class="fpop_inp" id="product_category">
-                    <option value="上衣">上衣</option>
-                    <option value="下著">下著</option>
-                    <option value="鞋">鞋</option>
-                    <option value="包">包</option>
-                    <option value="洋裝">洋裝</option>
-                    <option value="裙子">裙子</option>
-                    <option value="帽子">帽子</option>
-                </select>
-                <button class="btn btn-dark" id="register">新增商品</button>
-            </div>
-            <script>
-                $("#register").click(function () {
-                    $.ajax({
-                        url: "http://localhost:3000/admin/goods/item_shelf",
-                        type: "POST",
-                        data: {
-                            product_name: $("#product_name").val(),
-                            product_category: $("#product_category").val(),
-                            product_description: $("#product_description").val(),
-                            product_price: $("#product_price").val(),
-                        },
-                        success: function (data) {    //    alert後臺的返回值
-                            alert(data);
-                        },
-                        error: function () {
-                            alert(`訪問失敗`);
-                        }
-                    })
-                });
-            </script>
-            <button type="button" class=" my-btn-color my-left-radius appendMenu" data-bs-toggle="modal"
+
+            <button type="button" class=" my-btn-color my-left-radius btn btn-dark" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                新增菜單
+                新增商品
             </button>
             <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
                 data-bs-backdrop="static">
                 <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content" style="border-right-width: 0px;">
-                        <div class=" modal-header my-color1">
-                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">x</button>
+                    <div class="modal-content" style="width: 500px;">
+                        <div class="modal-header">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                aria-label="Close">x</button>
                         </div>
                         <div class="modal-body">
-
+                            <div class="inputbox">
+                                <label>產品名稱*:</label>
+                                <input class="modal-inp" type="text" id="product_name" placeholder="產品名稱*"> <br>
+                                <label>敘述*:</label>
+                                <input class="modal-inp" type="text" id="product_description" placeholder="敘述*"> <br>
+                                <label>價格*：</label>
+                                <input class="modal-inp" type="text" id="product_price" placeholder="價格*"> <br>
+                                <label>類別*:</label>
+                                <select class="modal-inp" id="product_category">
+                                    <option value="上衣">上衣</option>
+                                    <option value="下著">下著</option>
+                                    <option value="鞋">鞋</option>
+                                    <option value="包">包</option>
+                                    <option value="洋裝">洋裝</option>
+                                    <option value="裙子">裙子</option>
+                                    <option value="帽子">帽子</option>
+                                </select><br>
+                                <button class="btn btn-dark" id="register">新增商品</button>
+                            </div>
                         </div>
                         <div class="modal-footer  my-color1">
                             <div style="float:right;">
@@ -90,9 +82,8 @@
                     </div>
                 </div>
             </div>
-            <h2>我是所有商品</h2>
-            <div class="input-group mb-3">
-                <div class="input">
+            <div class="input-group mb-3" style="width: 200px;">
+                <div>
                     <button class="btn btn-outline-secondary" type="button">搜尋類別</button>
                 </div>
                 <select class="custom-select light-table-filter " aria-label="Example select with button addon"
@@ -105,53 +96,75 @@
                     <option>洋裝</option>
                 </select>
             </div>
+            <div class="col-lg mt-5">
+                <div class="card h-100">
+                    <div class="card-header">所有產品</div>
+                    <div class="card-body d-flex align-items-center">
+                        <table class="table table-hover order-table">
+                            <thead>
+                                <th class="col-1" style="vertical-align:text-top;">編號</th>
+                                <th class="col-1" style="vertical-align:text-top;">產品名稱</th>
+                                <th class="col-2" style="vertical-align:text-top;">圖片</th>
+                                <th class="col-1" style="vertical-align:text-top;">類別</th>
+                                <th class="col-2" style="vertical-align:text-top;">敘述</th>
+                                <th class="col-1" style="vertical-align:text-top;">價格</th>
+                                <th class="col-2" style="vertical-align:text-top;">上架日期</th>
+                            </thead>
+                            <tbody>
+                                <% data.forEach((item ,index)=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= item.product_code %>
+                                        </td>
+                                        <td>
+                                            <%= item.product_name%>
+                                        </td>
+                                        <td>
+                                            <img style="height: 50px;" src="/img/product/<%= item.product_image %>"
+                                                alt="">
+                                            <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>"
+                                                alt="">
+                                            <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>"
+                                                alt="">
+                                            <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>"
+                                                alt="">
+                                        </td>
+                                        <td>
+                                            <%= item.product_category %>
+                                        </td>
 
-            <div class="container">
-                <table class="table table-hover order-table">
-                    <thead>
-                        <th class="col-1" style="vertical-align:text-top;">編號</th>
-                        <th class="col-1" style="vertical-align:text-top;">產品名稱</th>
-                        <th class="col-2" style="vertical-align:text-top;">圖片</th>
-                        <th class="col-1" style="vertical-align:text-top;">類別</th>
-                        <th class="col-2" style="vertical-align:text-top;">敘述</th>
-                        <th class="col-1" style="vertical-align:text-top;">價格</th>
-                        <th class="col-2" style="vertical-align:text-top;">上架日期</th>
-                    </thead>
-                    <tbody>
-                        <% data.forEach((item ,index)=> { %>
-                            <tr>
-                                <td>
-                                    <%= item.product_code %>
-                                </td>
-                                <td>
-                                    <%= item.product_name%>
-                                </td>
-                                <td>
-                                    <img style="height: 50px;" src="/img/product/<%= item.product_image %>" alt="">
-                                    <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>" alt="">
-                                    <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>" alt="">
-                                    <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>" alt="">
-                                </td>
-                                <td>
-                                    <%= item.product_category %>
-                                </td>
+                                        <td>
+                                            <%= item.product_description %>
+                                        </td>
+                                        <td>
+                                            <%= item.product_price %> $
+                                        </td>
+                                        <td>
 
-                                <td>
-                                    <%= item.product_description %>
-                                </td>
-                                <td>
-                                    <%= item.product_price %> $
-                                </td>
-                                <td>
+                                            <%= moment(item.product_upload).format(shortDataFormat) %>
+                                        </td>
 
-                                    <%= moment(item.product_upload).format(shortDataFormat) %>
-                                </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                        <!-- <canvas class="chart-item"></canvas> -->
+                    </div>
 
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+                    <div class=" text-center">
+
+                        <a href="/admin/goods/item_all/<%= i %>"></a>
+                        <% for(var i=1; i <=last_page; i++) { %>
+                            <a href="/admin/goods/item_all/<%= i %>">
+                                <%= i %>
+                            </a>
+                            <% } %>
+
+                                <p>會員資料共 <%= total_nums %> 筆，共 <%= curr_page %> / <%= last_page%> 頁</p>
+                    </div>
+                </div>
             </div>
+    
             <script>
                 (function (document) {
                     'use strict';

@@ -17,8 +17,46 @@ router.use((req, res, next) => {
   next();
 });
 
-//------------訂單編號指令---------------
+//------------所有商品指令---------------
+// router.get('/item_all', function (rqs, res) {
+//   res.render('admin_item_all', { title: '後台管理系統' });
+// });
 
+router.get('/item_all', function (rqs, res) {
+  res.render('admin_item_all');
+  res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
+});
+
+router.get('/item_all/:page([0-9]+)', function (rqs, res) {
+  var page = rqs.params.page
+  if (page <= 0) {
+    res.redirect('/item_all')
+    return
+  }//每頁資料數
+  var nums_per_page = 10       //定義資料偏移量
+  var offset = (page - 1) * nums_per_page
+  db.exec(`SELECT * FROM products LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
+    db.exec(`SELECT COUNT(*) AS COUNT FROM products`, [], function (nums, fields) {
+      var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
+      //避免請求超過最大頁數
+      if (page > last_page) {
+        res.redirect('/admin/goods/member/' + last_page)
+        return
+      }
+      res.render('admin_item_all', {
+        data: data,
+        curr_page: page,
+        //本頁資料數量
+        total_nums: nums[0].COUNT,
+        //總數除以每頁筆數，再無條件取整數
+        last_page: last_page
+      })
+    })
+  })
+})
+
+//------------所有商品指令---------------
+//------------訂單編號指令---------------
 
 router.get('/orderMgat_num', function (rqs, res) {
   res.render('admin_orderMgat_num');
@@ -39,7 +77,9 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
   SELECT * FROM orders WHERE to_days(order_update) = to_days(now());
   SELECT COUNT(*) AS COUNT FROM orders WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(order_update);
   SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE to_days(order_date) = to_days(now());
-  SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());`;
+  SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());
+  SELECT SUM(UnitPrice) AS COUNT FROM order_items;`;
+
 
   db.exec(sql, [], function (results, fields) {
     var last_page = Math.ceil(results[1][0].COUNT / nums_per_page)   //避免請求超過最大頁數
@@ -56,7 +96,8 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
       curr_page: page,   //本頁資料數量
       last_page: last_page,
       sale_today :results[4][0].COUNT,
-      orderToday_count :results[5][0].COUNT
+      orderToday_count :results[5][0].COUNT,
+      allSumcount :results[6][0].COUNT
 
     })
 
@@ -83,8 +124,6 @@ router.get('/orderMgat_num/detail/:id([0-9]+)', function (rqs, res) {
     }
   })
 })
-
-
 
 //------------訂單編號指令---------------
 
@@ -228,44 +267,7 @@ function UPDATE(cName, cgender, cAccount, cAddr, id) {
 
 //------------製作會員分頁---------------
 
-class Success {
-  constructor(data, message) {
-    if (typeof data === 'string') {
-      this.message = data
-      data = null
-      message = null
-    }
-    if (data) {
-      this.data = data
-    }
-    if (message) {
-      this.message = message
-    }
-    this.errno = 1
-  }
-}
 
-class Error {
-  constructor(data, message) {
-    if (typeof data === 'string') {
-      this.message = data
-      data = null
-      message = null
-    }
-    if (data) {
-      this.data = data
-    }
-    if (message) {
-      this.message = message
-    }
-    this.errno = 0
-  }
-}
-
-module.exports = {
-  Success,
-  Error
-}
 
 //------後端MYSQL下指令地方-----------------
 
@@ -285,13 +287,6 @@ router.post('/member', function (rqs, res) {
     res.render('admin_member', { data: result });
   });
 });
-
-router.get('/item_all', function (rqs, res) {
-  db.exec('SELECT * FROM products', [], (result, fields) => {
-    res.render('admin_item_all', { data: result });
-  });
-});
-
 
 
 router.get('/member', function (rqs, res) {
@@ -383,9 +378,7 @@ router.post("/login", function (rqs, res) {
 //--------------------------讀檔案--------------------------------
 
 
-router.get('/item_all', function (rqs, res) {
-  res.render('admin_item_all', { title: '後台管理系統' });
-});
+
 router.get('/', function (rqs, res) {
   res.render('admin_index', { title: '後台管理系統' });
 });
@@ -401,7 +394,44 @@ router.get('/stockMgat_all', function (rqs, res) {
 //--------------------------讀檔案--------------------------------
 
 
+class Success {
+  constructor(data, message) {
+    if (typeof data === 'string') {
+      this.message = data
+      data = null
+      message = null
+    }
+    if (data) {
+      this.data = data
+    }
+    if (message) {
+      this.message = message
+    }
+    this.errno = 1
+  }
+}
 
+class Error {
+  constructor(data, message) {
+    if (typeof data === 'string') {
+      this.message = data
+      data = null
+      message = null
+    }
+    if (data) {
+      this.data = data
+    }
+    if (message) {
+      this.message = message
+    }
+    this.errno = 0
+  }
+}
+
+module.exports = {
+  Success,
+  Error
+}
 
 
 module.exports = router;
