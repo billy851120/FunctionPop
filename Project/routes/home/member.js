@@ -10,7 +10,6 @@ function redirectBack(req, res, next) {
 }
 
 router.use((req, res, next) => {
-  console.log('status........');
   if(!req.originalUrl){
     res.redirect('/home/product/male');
   }
@@ -78,7 +77,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
           arr[i] = results[i].product_id;
         }
         // console.log(arr + " get");
-        res.render('member/myFavourite', {
+        res.render('member/myFavourite2', {
           title: '會員資料｜我的最愛',
           // result: results,
           todos: results,

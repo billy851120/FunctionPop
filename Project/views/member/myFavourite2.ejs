@@ -10,7 +10,7 @@
     </title>
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/js/member/member.css">
-    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+<link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
     <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
     <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
@@ -22,8 +22,12 @@
     }   
     .product_desc img {
         width: 100%;
-
     }
+    @media screen and (max-width: 767px){
+       .product_aa {font-size: 10px;} 
+       .product_name{font-size: 13px;}
+    }
+
     </style>
 </head>
 
@@ -53,10 +57,10 @@
                         <div class="col-12 col-xl-10 row-box p-3">
                             <div class="row">
                                 <div class="col-12 p-2 text-center title_1">
-                                    <h4>我的最愛</h4>
+                                    <p>我的最愛</p>
                                 </div>
                             </div>
-                            <div class="row p-2">
+                            <div class="row p-2 mb-3">
                                 <div class="col-4 text-center border-right border-secondary"><a href="">全部加入購物車</a>
                                 </div>
                                 <div class="col-4 text-center border-right border-secondary"><a href="">清空全部商品</a>
@@ -71,7 +75,7 @@
                 </div> -->
 
 
-                            <div class="row-xl p-3 align-items-center text-center">
+                            <!-- <div class="row-xl p-3 align-items-center text-center">
                                 <div class="row">
                                     <div class="col-2 col-xl-2 text-center border border-success">
                                         <img class="" src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1"
@@ -94,96 +98,51 @@
                                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                         </svg></a>
                                 </div>
-                            </div>
+                            </div> -->
 
 
 
                             <% for (var i=0; i<todos.length; i++) { %>
-                            <div class="row p-3 align-items-center text-center">
-                                <div class="col-6 col-xl-2 mb-2 text-center product_desc"><a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
-                                    src="/img/product/<%= todos[i].product_image %>" alt=""></a></div>
-                                <div class="col-6 col-xl-2  ">
-                                    <p> <%- todos[i].product_name %> </p>
-                                    <p><%- todos[i].product_gender %></p>
-                                    <p style="color:red ;">$<%- todos[i].product_price %></p>
+                            <div class="row p-xl-3  align-items-xl-center text-center">
+                                <div class="col-4 col-xl-3 mb-2 text-center align-items-xl-center product_desc border ">
+                                    <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
+                                    src="/img/product/<%= todos[i].product_image %>" title="<%- todos[i].product_description %>"></a>
+                                    <br><br>
+                                    <p class="d-xl-none" style="color:red ;">$<%- todos[i].product_price %></p> 
                                 </div>
-                                
-                                <div class="col-12 col-xl-4 mb-2"><%- todos[i].product_description %></div>
-                                
-                                <a href="#" class="mt-2 col-6 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 col-6 col-xl-2 text-dark"
-                                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
+
+                                <div class="col-6 col-xl-2  text-left align-items-xl-start product_aa">
+                                     <p class="font-weight-bold product_name" ><%- todos[i].product_name %> </p>
+       <!-- < xl disappear -->       <p class="d-xl-block d-none text-secondary  "><%- todos[i].product_description  %> </p>
+       <!-- < xl display -->         <p class="d-xl-none"><%- todos[i].product_gender %></p>
+       <!-- < xl display -->         
+                                     <p class="d-xl-none text-secondary"><%- todos[i].product_description  %> </p>
+                                </div>
+
+      <!-- < xl disappear -->      <div class="col-xl-1 d-xl-block d-none "><%- todos[i].product_gender %></div>
+
+      <!-- < xl disappear -->      <div class="col-xl-2 d-xl-block d-none " style="color:red">$<%- todos[i].product_price %></div>
+
+      <!-- < xl display -->     <svg xmlns="http://www.w3.org/2000/svg" class="col-2 d-xl-none d-block  mt-2 text-dark text-right align-self-start"
+                                         width="24" height="24" fill="currentColor" class="bi bi-trash3-fill"
+                                         viewBox="0 0 16 16">
+                                         <path
+                                             d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                 </svg>
+
+                                <a href="#" class="mt-2 col-12 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
+
+       <!-- < xl disappear -->  <svg xmlns="http://www.w3.org/2000/svg" class="col-xl-2 d-xl-block d-none text-dark"
+                                        width="32" height="32" fill="currentColor" class="bi bi-trash3-fill"
                                         viewBox="0 0 16 16">
                                         <path
                                             d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                    </svg>
-                            </div>
+                                 </svg>
+                            </div>  <!-- row -->
                             <hr>
                             <%}%>
 
-                            <!-- <div class="row p-3 align-items-center text-center">
-                                <div class="col-4 col-xl-2 text-center"><img class=""
-                                        src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
-                                <div class="col-4 col-xl-2">Micah 草編真皮厚底涼鞋</div>
-                                <div class="col-2 col-xl-2">石白灰</div>
-                                <div class="col-2 col-xl">36碼</div>
-                                <div class="col-4 col-xl mt-2 text-center ">$890</div>
-                                <a href="#" class="mt-2 col-5 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
-                                <a href="" class="mt-2 col-3 col-xl-2 text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                    </svg></a>
-                            </div>
-
-                            <div class="row p-3 align-items-center text-center">
-                                <div class="col-4 col-xl-2 text-center"><img class=""
-                                        src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
-                                <div class="col-4 col-xl-2">Micah 草編真皮厚底涼鞋</div>
-                                <div class="col-2 col-xl-2">石白灰</div>
-                                <div class="col-2 col-xl">36碼</div>
-                                <div class="col-4 col-xl mt-2 text-center ">$890</div>
-                                <a href="#" class="mt-2 col-5 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
-                                <a href="" class="mt-2 col-3 col-xl-2 text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                    </svg></a>
-                            </div>
-
-                            <div class="row p-3 align-items-center text-center">
-                                <div class="col-4 col-xl-2 text-center"><img class=""
-                                        src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
-                                <div class="col-4 col-xl-2">Micah 草編真皮厚底涼鞋</div>
-                                <div class="col-2 col-xl-2">石白灰</div>
-                                <div class="col-2 col-xl">36碼</div>
-                                <div class="col-4 col-xl mt-2 text-center ">$890</div>
-                                <a href="#" class="mt-2 col-5 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
-                                <a href="" class="mt-2 col-3 col-xl-2 text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                    </svg></a>
-                            </div>
-
-                            <div class="row p-3 align-items-center text-center">
-                                <div class="col-4 col-xl-2 text-center"><img class=""
-                                        src="https://dummyimage.com/100x150/e8ecfc/f7cb0a&text=demo1" alt=""></div>
-                                <div class="col-4 col-xl-2">Micah 草編真皮厚底涼鞋</div>
-                                <div class="col-2 col-xl-2">石白灰</div>
-                                <div class="col-2 col-xl">36碼</div>
-                                <div class="col-4 col-xl mt-2 text-center ">$890</div>
-                                <a href="#" class="mt-2 col-5 col-xl-2 py-2 btn_GO d-inline">移至購物車</a>
-                                <a href="" class="mt-2 col-3 col-xl-2 text-dark"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                    </svg></a>
-                            </div> -->
+                            
 
                         </div> <!-- col-10 -->
                         <% } else { %>

@@ -44,3 +44,10 @@
     color: black;
     text-decoration:none;
 }
+
+@media screen and (max-width: 767px){
+    *{
+        font-size: 13px;
+    }
+    .title_1 p{font-size: px;}
+ }
