@@ -66,7 +66,7 @@ router.get('/orderMgat_num', function (rqs, res) {
 router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
   var page = rqs.params.page
   if (page <= 0) {
-    res.redirect('/orderMgat_num')
+    res.redirect('/orderMgat_num/1')
     return
   }//每頁資料數
   var nums_per_page = 10       //定義資料偏移量
@@ -158,7 +158,7 @@ router.get('/member', function (rqs, res) {
 router.get('/member/:page([0-9]+)', function (rqs, res) {
   var page = rqs.params.page //把<=0的id強制改成1
   if (page <= 0) {
-    res.redirect('/member')
+    res.redirect('/member/1')
     return
   }//每頁資料數
   var nums_per_page = 10       //定義資料偏移量
