@@ -243,6 +243,7 @@
               src="/img/product/<%= result[0].product_image %>"
               alt=""
             />
+          
             <div class="small-img-group">
               <div class="small-img-col">
                 <img
@@ -639,16 +640,30 @@
     <!-- <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/myJs.js"></script> -->
     <script>
+  
+
       var mainImg = document.getElementById("mainImg");
       var smallImg = document.getElementsByClassName("small-img");
+console.log(mainImg.src);
 
       for (let i = 0; i < 4; i++) {
         smallImg[i].onclick = function () {
           mainImg.src = smallImg[i].src;
+          $(".zoomImg").blowup({
+                "width" : 400,
+                "height" : 400,
+                "round" : false,
+                "zIndex" : 99999,
+                "scale" : 1
+            });
+
         };
       }
 
       $(document).ready(function () {
+       
+
+
         $('#cartCount').html("<%- cartCount %>");
 
 

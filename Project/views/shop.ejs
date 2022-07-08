@@ -573,7 +573,7 @@
                                     
                                     <div id="productOuter" class="row justify-content-around">
                                         <div class="col-6">
-                                            <form method="POST" action="/home/product/<%= url%>" id="form<%=item.product_id%>" name="form<%=item.product_id%>">
+                                            <form method="POST" action="<%= url%>" id="form<%=item.product_id%>" name="form<%=item.product_id%>">
                                                 <input type="hidden" name="content" value="<%-item.product_id %>" />
                                                 <input type="hidden" name="memid" value="<%-memid %>" />
                                                 <button type="submit" id="aa" onclick="formSubmit(this)" class="pIconbtn" <%= disabled%> >
