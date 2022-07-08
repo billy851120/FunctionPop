@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../../dataBase');
+var bodyParser = require('body-parser');
 var memberController = require('../../controller/memberController');
 const { apply } = require('file-loader');
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+  extended: false,
+}));
 
 // 中介程式-------------------------------------------------
 function redirectBack(req, res, next) {
@@ -77,7 +83,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
           arr[i] = results[i].product_id;
         }
         // console.log(arr + " get");
-        res.render('member/myFavourite2', {
+        res.render('member/myFavourite', {
           title: '會員資料｜我的最愛',
           // result: results,
           todos: results,
@@ -88,6 +94,35 @@ router.get('/myFavourite', getUrl, function (req, res) {
   } else {
     res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
   }
+});
+
+router.post('/myFavourite', function(req, res) {
+  console.log('post');
+  console.log(req.body);
+  
+  if(req.body.clearallcontent != null){
+    var memcontent = req.body.memcontent;
+    db.exec(
+      'DELETE FROM favorite WHERE customer_id = ?', [memcontent], (err, results) => {
+        // if (err) return cb(err);
+        // cb(null)
+        res.redirect(`/home/member/myFavourite`);
+      }
+    );
+  }
+  var cid = parseInt(req.body.cid);
+  var pid = parseInt(req.body.pid);
+  db.exec(
+    'DELETE FROM favorite WHERE product_id = ? and customer_id = ?', [pid,cid], (results, err) => {
+      // console.log(results);
+      // console.log(err);
+      // res.redirect('/home/member/myFovourite');
+      // if (err) return cb(err);
+      // cb(null)
+
+    }
+  );
+  // res.send(req.body);
 });
 
 

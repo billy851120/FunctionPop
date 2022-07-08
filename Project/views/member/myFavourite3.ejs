@@ -27,16 +27,7 @@
        .product_aa {font-size: 10px;} 
        .product_name{font-size: 13px;}
     }
-    .pIconbtn {
-            /* border-radius: 5px; */
-            width: 80px;
-            height: 45px;
-            background: white;
-            color: black;
-            border: 0px ;
-            width: 60px; 
-            height: 45px;
-        }
+
 
     </style>
 </head>
@@ -73,7 +64,12 @@
                             <div class="row p-2 mb-3">
                                 <div class="col-4 text-center border-right border-secondary"><a href="">全部加入購物車</a>
                                 </div>
-                                <div class="col-4 text-center border-right border-secondary"><a href="">清空全部商品</a>
+                                <div id="clearFavor" class="col-4 text-center border-right border-secondary">
+                                    <form method="POST" action="/home/member/myFavourite" id="clearAll" name="clearAll">
+                                        <input type="hidden" name="clearallcontent" value="0912383555">
+                                        <input type="hidden" name="memcontent" value="<%- memberprofile.id %>">
+                                        <button type="submit" class="btn">清空全部商品</button>
+                                    </form>
                                 </div>
                                 <div class="col-4 text-center text-secondary "><span class="mr-1"><%- todos.length %></span>件商品</div>
                             </div>
@@ -151,15 +147,21 @@
                                  </svg> -->
 
                                 
-                                    <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
+                                    
                                     <!-- <input type="submit" id="inputSend" value="送出"> -->
-                                    <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-xl-2 d-xl-block d-none text-dark pIconbtn">
+                                    <% var memid =0; %>
+                                    <% if(memberprofile != null){ %>
+                                        <% memid = memberprofile.id;}else{memid = 0;} %>
+                                    <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-xl-2 d-xl-block d-none text-dark btn">
+                                        <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
+                                        <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                             fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                         </svg>
                                     </button>
+                                    
                                     
                                 
                             </div>  <!-- row -->
@@ -241,9 +243,34 @@
 
 <script>
     function formSubmit(obj) {
-        var content = obj.prev;
-        console.log(obj);
-  
+        console.log();
+        var pid = obj.children[0].value;
+        var cid = obj.children[1].value;
+        // var send = obj.id;
+        var send = document.querySelector(`#${obj.id}`);
+        console.log(send);
+        // const value = content.value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
+      
+      // json 格式
+      xhr.setRequestHeader('Content-type', 'application/json');
+      var data = JSON.stringify(
+        {
+            pid: pid,
+            cid: cid,
+        //   list: [1, 2, 3],
+        },
+      );
+      xhr.send(data);
+      xhr.onload = function() {
+        console.log(JSON.parse(xhr.responseText));
+      }
+      $(obj).parent().remove();
     };
+
+    function clearAll(){
+      document.getElementById('clearFavor').submit();
+    }
 </script>
 </html>
