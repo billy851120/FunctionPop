@@ -377,7 +377,7 @@
             <div class="container mt-2 pt-2">
                 <div class="row">
                     <!-- 4.1 Left Side -->
-                    <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="col-lg-2 col-md-3 col-sm-12">
                         <div class="row">
                             <div class="col">
                                 <!-- Search -->
@@ -460,7 +460,7 @@
 
                     </div>
                     <!-- 4.2 Right Side -->
-                    <div class="col-9">
+                    <div class="col-lg-9 col-md-8 offset-md-1 col-sm-8">
                         <!-- Filter -->
                         <section>
 
@@ -494,8 +494,7 @@
                         <!-- Shop -->
                         <section id="shop" class="mt-2 pt-2">
                             <div class="container mt-2 pt-2">
-                                <p>檢視全部</span>                    
-                                           <hr>
+                                <span class="justify-content-start">檢視全部</span>                    
                                 <!-- <span><button type="button" onclick="function2col()" class="btn btn-primary">2</button></span> -->
                                 <span class="justify-content-end">
                                     <button type="button" class="btn float-right active" id="become4Col" style="padding:0 5px; cursor: zoom-out;" title="小圖示">
@@ -510,16 +509,8 @@
                                     </button>
                                 </span>
 
-                              
-<!--                                 
-                                <span><button type="button" class="btn" id="become3Col" style="border: 1px solid black;"><img src="/img/product/grid3.png" alt="" style="height: 30px;"></button></span>
-                                <span><button type="button" class="btn" id="become4Col" style="border: 1px solid black;"><img src="/img/product/grid4.png" alt="" style="height: 30px;"></button></span>
-                                
+                                <hr class="mx-auto w-100" style="background-color: rgb(27, 116, 164); height: 2px;">
 
-                                <img src="/img/product/grid3.png" alt="" id="become3Col" style="border: 1 solid black; height:36px;">
-                                <img src="/img/product/grid4.png" alt="" id="become4Col" style="border: 1 solid black; height:41px;"> -->
-                            </div>
-                            <!-- Imgs Start -->
                             <div class="row mx-auto container">
 
                                 <!-- Database connect -->
@@ -542,7 +533,7 @@
                                             </symbol>
                                             </defs>
                                         </svg>
-                                        <div class="rating mx-auto">
+                                        <div class="rating mx-auto" title="<%= item.product_rating %> / 5">
                                           
                                             <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
                                             <svg width="20" height="20"><use xlink:href="#fivestars"/></svg>
@@ -625,10 +616,17 @@
                     </div>
                 </div>
             </div>
-            <!-- <span id="filterQ"><% result.forEach(function(item){ %>
-                <p><%- item.product_price %></p>
 
-           <% }) %></span> -->
+            <p>Click the button to sort the list alphabetically:</p>
+            <button onclick="sortList()">Sort</button>
+            <span id="filterQ">
+                <% result.forEach(function(item){ %>
+                <ul>
+                    <li><%- item.product_price %></li>
+                </ul>
+                <% }) %>
+            </span>
+
         </section>
         <div class="push"></div>
     </div>  
@@ -828,10 +826,47 @@ for (var i = 0; i < btns.length; i++) {
                 }
             });
             $backToTop.click(function () {
-                $('hide, body').animate({scrollTop: 0 }, 3000);
+                $('html, body').animate({scrollTop: 0 }, 3000);
             });
         });
     </script>
+
+
+    <!-- Test Sort -->
+    <script>
+        function sortList() {
+          var list, i, switching, b, shouldSwitch;
+          list = document.getElementById("filterQ");
+          switching = true;
+          /* Make a loop that will continue until
+          no switching has been done: */
+          while (switching) {
+            // start by saying: no switching is done:
+            switching = false;
+            b = list.getElementsByTagName("LI");
+            // Loop through all list-items:
+            for (i = 0; i < (b.length - 1); i++) {
+              // start by saying there should be no switching:
+              shouldSwitch = false;
+              /* check if the next item should
+              switch place with the current item: */
+              if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                /* if next item is alphabetically
+                lower than current item, mark as a switch
+                and break the loop: */
+                shouldSwitch = true;
+                break;
+              }
+            }
+            if (shouldSwitch) {
+              /* If a switch has been marked, make the switch
+              and mark the switch as done: */
+              b[i].parentNode.insertBefore(b[i + 1], b[i]);
+              switching = true;
+            }
+          }
+        }
+        </script>
 
 
 </body>
