@@ -11,11 +11,22 @@ var shop_cartController = {
       'SELECT * FROM `products` order by product_id DESC',
       [],
       function (result, fields) {
-        res.render('shop_cart', {
-          cart: cart,
-          total: total,
-          result: result,
-        });
+        db.exec(
+          'SELECT * FROM `custompic`',
+          [],
+          function(custPic, fields){
+            var url = Buffer.from(custPic[0].pic.toString('base64'));
+
+            res.render('shop_cart', {
+              cart: cart,
+              total: total,
+              result: result,
+              custPic:url
+            });
+          }
+        )
+
+       
       }
     );
   },

@@ -47,6 +47,7 @@ router.post('/', upload.single('image'), async (req, res, next) => {
   db.exec(`insert into custompic values(1,?)`, [req.file.buffer], (result, fields) => {
     console.log(result);
     res.send({
+      img:req.file,
       success: true,
       message: '上傳圖片成功'
     });
