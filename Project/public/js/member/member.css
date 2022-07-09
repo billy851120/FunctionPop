@@ -15,6 +15,7 @@
 .title_1:hover {
     text-decoration: none;
     color: black;
+    font-size: 18px;
 }
 
 .title_2 {
@@ -35,9 +36,9 @@
     width: 20%;
     border: none;
     outline: none;
+    border-radius: 8px;
     background-color: black;
     color: white;
-    border-radius: 5px;
     text-align: center;
     line-height:40px;
 }
@@ -46,6 +47,9 @@
     background-color: #FFE200;
     color: black;
     text-decoration:none;
+}
+.b_radius{
+    border-radius: 8px;
 }
 
 @media screen and (max-width: 767px){

@@ -20,7 +20,10 @@
     
     .product_info img {
         width: 100%;
-        height: 100%;    }
+        height: 100%; 
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+   }
     .product_desc{
         overflow :hidden;
          display: -webkit-box;
@@ -36,7 +39,7 @@
         border-radius: 8px;
     }
     
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 768px){
        .product_aa {font-size: 10px;} 
        .product_name{font-size: 13px;}
     }
@@ -54,7 +57,7 @@
 <body>
 
     <!-- content -->
-    <%- include("../navbar.ejs") %>
+     <%- include("../navbar.ejs") %> 
 
         <div class="container">
 
@@ -63,36 +66,38 @@
                 <!-- 左邊選單列 -->
                 <div class="row mt-4">
                     <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
-                        <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData"
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
                                 class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
-                        <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/orderList"
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
                                 class="nav-link text-dark   d-inline d-lg-block">訂單&退貨</a></p>
-                        <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite"
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
                                 class="nav-link text-dark font-weight-bold orderList myFavourite d-inline d-lg-block">我的最愛</a>
                         </p>
                     </div>
 
                     <!-- 右邊內容：我的最愛 -->
                     <% if(memberprofile) { %>
-                        <div class="col-12 col-lg-10 row-box p-3">
+                        <div class="col-12 col-lg-10 p-3">
                             <div class="row">
                                 <div class="col-12 p-2 text-center title_1">
                                     <p>我的最愛</p>
                                 </div>
                             </div>
-                            <div class="row p-2 mb-3">
-                                <div  id="clearFavor" class="col-6 text-center border-right border-secondary">
+
+                     <!-- 小功能列 -->    
+                            <div class="row pt-1 pb-1 pl-1 mx-1" style="font-size: 8px;"> 
+                                <div  id="clearFavor" class="offset-sm-7 offset-5 col-sm-3 col-4 text-right border-right">
                                     <form method="POST" action="/home/member/myFavourite" id="clearAll" name="clearAll">
                                         <input type="hidden" name="clearallcontent" value="0912383555">
                                         <input type="hidden" name="memcontent" value="<%- memberprofile.id %>">
-                                        <button type="submit" class="btn">清空全部商品</button>
+                                        <button type="submit" class="btn" style="font-size: 8px;">清空全部商品</button>
                                     </form>
                                 </div>
-                                <div class="col-6 text-center text-secondary align-self-center"><span class="mr-1"><%- todos.length %></span>件商品</div>
+                                <div class="col-sm-2 col-3 d-flex justify-content-end align-items-center text-secondary "><%- todos.length %> 件商品</div>
                             </div>
 
 
-
+                    <!-- 我的最愛內容 -->
                             <% for (var i=0; i<todos.length; i++) { %>
                             <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius">
                                 <div class="col-4 col-lg-3 product_info py-3">
@@ -126,16 +131,16 @@
                                          </button>
                                             <p class="d-lg-none mt-auto" style="color:red ;">$<%- todos[i].product_price %></p> 
                                  </div>
-                                 <div class="col-12 col-lg-2  mb-2 b_radius">
-                                    <a href="#" class="btn_GO d-block w-100">移至購物車</a>
+                                 <div class="col-12 col-lg-2 mb-2">
+                                    <a href="#" class="btn_GO d-block w-100 b_radius">移至購物車</a>
                                 </div >
                                      <% var memid =0; %>
                                       <% if(memberprofile != null){ %>
                                          <% memid = memberprofile.id;}else{memid = 0;} %>
-       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none text-dark btn">
+       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none  btn">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                              fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                              <path
                                                  d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
