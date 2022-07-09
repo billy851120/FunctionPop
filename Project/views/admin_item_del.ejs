@@ -3,14 +3,30 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../_css/bootstrap.css">
-    <link rel="stylesheet" href="../fpop_css/fpop.css">
-    <script src="../_js/bootstrap.min.js"></script>
-    <link rel="icon" href="/img/black_icon.png" type="image/gif" sizes="16x16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>f.pop 後台管理</title>
     <style>
+        .fpop-card-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
 
+        .modal-inp {
+            height: 35px;
+            width: 200px;
+            border: 1px solid #acacac;
+            border-radius: 6px;
+            font-size: 10px;
+            margin: 5px 0;
+            padding: 0 10px;
+        }
+
+    
     </style>
 
 </head>
@@ -22,31 +38,164 @@
 
         <!-- Main Content -->
         <div class="fpop-main p-5">
-            <h2>本周上市新品</h2>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad"
-                style="padding-top:30px">
-                <% if (message.length> 0) { %>
-                    <div class="alert alert-danger col-sm-12">
-                        <%= message %>
-                    </div>
-                    <% } else {%>
-                        
-                        <% data2.forEach((item ,index)=> { %>
-                            <tr>
-                                <td>
-                                    <%= item.product_name %>
-                                </td>
-                            
-                                    <div class="col-md-3 col-lg-3"> <img alt="User Pic" style="width: 100px;"
-                                        src="http://localhost:3000/img/product/<%=item.product_image %>"
-                                        class="img-circle img-responsive"> </div>
-                                 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
+                    <li class="breadcrumb-item"><a href="#">商品管理</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">本週新品</li>
+                </ol>
+            </nav>
 
-                            </tr>
-                            <% }) %>
-                        <% } %>
+            <table class="table table-hover order-table">
+                <thead>
+                    <th class="col-2" style="vertical-align:text-top;">產品名稱</th>
+                    <th class="col-2" style="vertical-align:text-top;">圖片</th>
+                    <th class="col-1" style="vertical-align:text-top;">類別</th>
+                    <th class="col-2" style="vertical-align:text-top;">敘述</th>
+                    <th class="col-1" style="vertical-align:text-top;">價格</th>
+                    <th class="col-2" style="vertical-align:text-top;">上架日期</th>
+                    <th class="col-1" style="vertical-align:text-top;">庫存數量</th>
+                    <th class="col-1" style="vertical-align:text-top;">操作</th>
+                </thead>
+                <tbody>
+                    <% data2.forEach((item ,index)=> { %>
+                        <tr>
+
+                            <td>
+                                <%= item.product_name%>
+                            </td>
+                            <td>
+                                <img style="height: 50px;" src="/img/product/<%= item.product_image %>" alt="">
+                                <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>" alt="">
+                                <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>" alt="">
+                                <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>" alt="">
+                            </td>
+                            <td>
+                                <%= item.product_category %>
+                            </td>
+
+                            <td>
+                                <%= item.product_description %>
+                            </td>
+                            <td>
+                                <%= item.product_price %> $
+                            </td>
+                            <td>
+
+                                <%= moment(item.product_update).format(shortDataFormat) %>
+                            </td>
+                            <td class="text-center">10</td>
+                            <td>
+                                <div class="mt-2">
+                                    <button class="btn btn-outline-info btn-sm " onclick="Edit( <%= item.product_id%> )"
+                                        class="btn btn-primary" data-toggle="modal" data-target="#myModal">編輯</button>
+                                    <!-- <button class="btn btn-outline-danger btn-sm"
+                                    onclick="Delete( <%= item.id%> )">刪除</button> -->
+                                </div>
+                            </td>
+
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <div class="modal" id="myModal">
+                <form id="form" class="modal-content" style="width: 400px;">
+                    <div class="text-center p-4">
+                        <input type="hidden" name="id">
+                        <h6 class="font-weight-bold">產品名稱:<input class="modal-inp" type="text" name="product_name">
+                        </h6><br>
+                        <h6 class="font-weight-bold">類　　別:<input class="modal-inp" type="text" name="product_category">
+                        </h6><br>
+                        <h6 class="font-weight-bold">敘　　述:<input class="modal-inp" type="text" name="product_description">
+                        </h6><br>
+                        <h6 class="font-weight-bold">價　　格:<input class="modal-inp" type="text" name="product_price">
+                        </h6><br>
+                        <button class="btn btn-dark btn-sm mt-2 text-center" type="button" id="submit">更新</button>
+                    </div>
+                </form>
             </div>
+
         </div>
+        <script>
+            function Edit(id) {
+                $.ajax({
+                    url: "http://localhost:3000/admin/goods/item_del/detail/" + id,
+                    type: "GET",
+                    success: function (res) {
+                        console.log(id)
+                        var res = JSON.parse(res)
+                        //將值傳遞進input裏頭
+                        $("input[name='id']").val(res.data.id)
+                        $("input[name='product_name']").val(res.data.product_name)
+                        $("input[name='product_category']").val(res.data.product_category)
+                        $("input[name='product_description']").val(res.data.product_description)
+                        $("input[name='product_price']").val(res.data.product_price)
+                    },
+                    error: function () {
+                        alert("系統錯誤!")
+                    },
+                })
+            }
+
+            $('#submit').on('click', function () {
+
+                //整理表單資料到變數
+                var data = $('#form').serializeArray()
+                JSONData = serializeToJSON(data)
+                // console.log(data)
+                // console.log(JSONData)
+
+                $.ajax({
+                    url: "http://localhost:3000/admin/goods/item_del/update",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSONData,
+                    success: function (res) {
+                        var res = JSON.parse(res)
+                        if (res.errno === 1) {
+                            alert("更新成功!")
+                            location.reload()
+                        } else if (res.errno === 0) {
+                            alert("更新失敗!")
+                        }
+                    },
+                    error: function () {
+                        alert("系統錯誤!")
+                    }
+                })
+            })
+            function serializeToJSON(data) {
+                var values = {};
+                for (index in data) {
+                    values[data[index].name] = data[index].value;
+                }
+                return JSON.stringify(values)
+            }
+                // function Delete(id) {
+            //     var JSONData = { "id": id }
+            //     JSONData = JSON.stringify(JSONData)
+            //     $.ajax({
+            //         url: "http://localhost:3000/admin/goods/member/delete",
+            //         type: "POST",
+            //         contentType: "application/json; charset=utf-8",
+            //         data: JSONData,
+            //         success: function (res) {
+            //             var res = JSON.parse(res)
+            //             if (res.errno === 1) {
+            //                 alert("刪除成功!")
+            //                 location.reload()
+            //             } else if (res.errno === 0) {
+            //                 alert("刪除失敗!")`
+            //             }
+            //         },
+            //         error: function () {
+            //             alert("系統錯誤!")
+            //         }
+            //     })
+            // }
+
+
+        </script>
 
 
         </div>

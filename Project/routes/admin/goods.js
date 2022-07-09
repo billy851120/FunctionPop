@@ -14,16 +14,189 @@ router.use((req, res, next) => {
   res.locals.shortDataFormat = shortDataFormat;
   next();
 });
+//-----------------編輯新品---------------------
+router.get('/item_del/detail/:id([0-9]+)', function (rqs, res) {
+  var sql = `SELECT * FROM products WHERE product_id = ?;`
+  var data = [rqs.params.id]
+  db.exec(sql, data, function (results, fields) {
+    console.log("ok")
+    if (results[0]) {
+      console.log("ok1")
+      res.end(
+        JSON.stringify(new Success(results[0]))
+      )
+    } else {
+      res.end(
+        JSON.stringify(new Error('no result'))
+      )
+    }
+  })
+})
+router.get('/item_del', function (req, res) {
+  var message = '';
+  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_update`);";
+  db.exec(sql, function (err, result) {
+    if (result.length <= 0)
+      message = "Profile not found!";
+    res.render('admin_item_del', {
+
+      message: message,
+      data2: result,
+    });
+  });
+
+});
+router.post('/item_del/update', function (rqs, res) {
+  var body = rqs.body
+  var sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? , product_price = ? WHERE product_id = ?;`;
+  var data = [body.product_name, body.product_category, body.product_description, body.product_price, body.id]
+  db.exec(sql, data, function (results, fields) {
+    console.log("results222")
+    console.log(results)
+    if (results.affectedRows) {
+      console.log("results affectedRows")
+      console.log(results.affectedRows)
+      res.end(
+        JSON.stringify(new Success('update success'))
+        )
+      } else {
+      console.log("results5757")
+      console.log(results)
+      res.end(
+        JSON.stringify(new Error('update failed'))
+      )
+    }
+  })
+})
+
+function UPDATE(product_name, product_category, product_description, product_price, id) {
+  const sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? ,product_price = ? WHERE product_id = ?;`;
+  const data = [product_name, product_category, product_description, product_price, parseInt(body.id)];
+  db.exec(sql, data, function (results, fields) {
+    console.log("results1")
+    console.log(results)
+    if (results.affectedRows) {
+      console.log(JSON.stringify(new Success('update success')));
+    } else {
+      console.log(JSON.stringify(new Error('update failed')));
+    }
+  });
+}
+
+//-----------------編輯新品---------------------
+
+
 //-----------------新增商品---------------------
+// var path = require('path');
+// var fileUpload = require('express-fileupload');
+// router.use(bodyParser.urlencoded({ extended: false }));
+// router.use(express.static(path.join(__dirname, 'public')));
+// router.use(fileUpload());
+
+
+// router.post('/item_shelf', function (req, res) {
+//   message = '';
+//   if (req.method == "POST") {
+//     var post = req.body;
+//     var name = post.product_name;
+//     var category = post.product_category;
+//     var gender = post.product_gender;
+//     var description = post.product_description;
+//     var composition = post.product_composition;
+//     var price = post.product_price;
+
+//     if (!req.files) {
+//       console.log("ok1")
+//       return res.status(400).send('No files were uploaded.');
+//     }
+//     var file = req.files.product_image;
+//     var img_name = file.name;
+//     var file2 = req.files.product_image2;
+//     var img_name2 = file2.name;
+//     var file3 = req.files.product_image3;
+//     var img_name3 = file3.name;
+
+//     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+
+//       file.mv('public/img/product/' + file.name, function (err) {
+//         file2.mv('public/img/product/' + file2.name, function (err) {
+//           file3.mv('public/img/product/' + file3.name, function (err) {
+//             if (err)
+//               return res.status(500).send(err);
+//             var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
+//             var query = db.exec(sql, function (err, result) {
+//               res.redirect('/admin/goods/item_shelf');
+//             });
+//           });
+//         });
+//       })
+//     } else {
+//       message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+//       res.render('/admin/goods/item_shelf', { message: "上傳成功" });
+//     }
+//   } else {
+
+//     res.render('admin_item_shelf');
+//   }
+
+// });
+
+// router.get('/item_shelf', function (rqs, res) {
+//   res.render('admin_item_shelf', {
+//     title: '後台管理系統',
+//     message: "新增商品"
+//   });
+// });
+
+//-----------------新增商品---------------------
+// router.get('/item_all', function (rqs, res) {
+//   res.render('admin_item_all');
+//   res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
+// });
+
+// router.get('/item_all/:page([0-9]+)', function (rqs, res) {
+
+//   var sql = `
+//   SELECT COUNT(*) AS COUNT FROM products;
+//   SELECT * FROM products ORDER BY products.product_update DESC;`;
+//   db.exec(sql, [], function (data, fields) {
+//       res.render('admin_item_all', {
+//         total_nums: data[0][0].COUNT,
+//         data2 : data[1]
+//       })
+//     // })
+//   })
+// })
+
 var path = require('path');
 var fileUpload = require('express-fileupload');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(express.static(path.join(__dirname, 'public')));
 router.use(fileUpload());
 
+router.get('/item_all', function (rqs, res) {
+  res.render('admin_item_all');
+  res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
+});
 
-router.post('/item_shelf', function (req, res) {
-  message = '';
+router.get('/item_all/:page([0-9]+)', function (rqs, res) {
+
+  var sql = `
+  SELECT COUNT(*) AS COUNT FROM products;
+  SELECT * FROM products ORDER BY products.product_update DESC;`;
+  db.exec(sql, [], function (data, fields) {
+      res.render('admin_item_all', {
+        total_nums: data[0][0].COUNT,
+        data2 : data[1]
+      })
+    // })
+  })
+})
+
+
+router.post('/item_all', function (req, res) {
+  console.log("ok")
+  // message = '';
   if (req.method == "POST") {
     var post = req.body;
     var name = post.product_name;
@@ -47,86 +220,28 @@ router.post('/item_shelf', function (req, res) {
     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
 
       file.mv('public/img/product/' + file.name, function (err) {
-
-        if (err)
-          return res.status(500).send(err);
-        var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
-        var query = db.exec(sql, function (err, result) {
-          res.redirect('/admin/goods/item_shelf');
+        file2.mv('public/img/product/' + file2.name, function (err) {
+          file3.mv('public/img/product/' + file3.name, function (err) {
+            if (err)
+              return res.status(500).send(err);
+            var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
+            var query = db.exec(sql, function (err, result) {
+              res.redirect('/admin/goods/item_all');
+            });
+          });
         });
-      });
+      })
     } else {
       message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-      res.render('/admin/goods/item_shelf', { message: "上傳成功" });
+      res.render('/admin/goods/item_all', { message: "上傳成功" });
     }
   } else {
 
-    res.render('admin_item_shelf');
+    res.render('admin_item_all');
   }
 
 });
 
-router.get('/item_shelf', function (rqs, res) {
-  res.render('admin_item_shelf', {
-    title: '後台管理系統',
-    message: "新增商品"
-  });
-});
-
-
-router.get('/item_del', function (req, res) {
-  var message = '';
-  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_update`);";
-  db.exec(sql, function (err, result) {
-    if (result.length <= 0)
-      message = "Profile not found!";
-    res.render('admin_item_del', {
-
-      message: message,
-      data2: result,
-    });
-  });
-
-});
-
-//------------所有商品指令---------------
-
-
-router.get('/item_all', function (rqs, res) {
-  res.render('admin_item_all');
-  res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
-});
-
-router.get('/item_all/:page([0-9]+)', function (rqs, res) {
-  var page = rqs.params.page
-  if (page <= 0) {
-    res.redirect('/item_all')
-    return
-  }//每頁資料數
-  var nums_per_page = 10       //定義資料偏移量
-  var offset = (page - 1) * nums_per_page
-  db.exec(`SELECT * FROM products LIMIT ${offset}, ${nums_per_page};`, [], function (data, fields) {
-    db.exec(`SELECT COUNT(*) AS COUNT FROM products`, [], function (nums, fields) {
-      var last_page = Math.ceil(nums[0].COUNT / nums_per_page)
-      //避免請求超過最大頁數
-      if (page > last_page) {
-        res.redirect('/admin/goods/member/' + last_page)
-        return
-      }
-      res.render('admin_item_all', {
-        data: data,
-        curr_page: page,
-        //本頁資料數量
-        total_nums: nums[0].COUNT,
-        //總數除以每頁筆數，再無條件取整數
-        last_page: last_page
-      })
-    })
-  })
-})
-
-
-//------------所有商品指令---------------
 
 //------------訂單編號指令---------------
 
