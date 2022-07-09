@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%- title %></title>
+    <title>
+        <%- title %>
+    </title>
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/js/member/member.css">
     <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
@@ -22,101 +24,111 @@
 </head>
 
 <body>
-  <!-- content -->
-  <%- include("../navbar.ejs") %>
+    <!-- content -->
+    <%- include("../navbar.ejs") %>
 
-  <div class="container ">
-      
-      <%- include("../template/loginbar") %>
+        <div class="container ">
 
-         <!-- 左邊選單列 -->
-         <div class="row mt-4">
-            <div class="col-12 col-lg-2 text-center mb-4 ">
-                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData" class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
-                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline" ><a href="/home/member/orderList" class="nav-link text-dark font-weight-bold  d-inline d-lg-block">訂單&退貨</a></p>
-                <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite" class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
-            </div> 
+            <%- include("../template/loginbar") %>
 
-            <!-- 右邊資訊欄 -->
-            <% if(memberprofile) { %> 
-                <div class="col-12 col-lg-10 row-box p-3 mb-5">
-                    <div class="row">
-                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1"><h4>訂單&退貨紀錄</h4></a>
-                     </div>
-         
-
-                    <div class="row p-3">
-                        <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
-                        <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
-                        <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
-                        <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
-                        <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
-                        <div class="col-12 col-md-6 my-2 ">
-                            <a href="/home/member/orderDetail" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
-                        </div>
+                <!-- 左邊選單列 -->
+                <div class="row mt-4 ">
+                    <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
+                                class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
+                                class="nav-link text-dark font-weight-bold d-inline d-lg-block">訂單&退貨</a></p>
+                        <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
+                                class="nav-link text-dark  orderList myFavourite d-inline d-lg-block">我的最愛</a>
+                        </p>
                     </div>
-                    <hr>
-                    <div class="row p-3">
-                        <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
-                        <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
-                        <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
-                        <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
-                        <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
-                        <div class="col-12 col-md-6 my-2 "> 
-                           <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row p-3">
-                        <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
-                        <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
-                        <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
-                        <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
-                        <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
-                        <div class="col-12 col-md-6 my-2 ">
-                           <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+
+                    <!-- 右邊訂單清單 -->
+                    <% if(memberprofile) { %>
+                        <div class="col-12 col-lg-10 p-3 ">
+                            <div class="row mb-4">
+                                <div class="col-12 p-2 text-center title_1">
+                                    <p>訂單&退貨紀錄</p>
+                                </div>
                             </div>
-                    </div>
-                    
-                <% } else { %>
-                    <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
-                 
-                    <%   } %> 
-                
-            </div>  <!-- col-10 -->
-            <br>
-        </div>  <!-- row -->
 
-    </div>  <!-- container -->
 
-    <!-- footer -->
+                            <div class="row p-3 mx-1 mb-4 border b_radius align-items-center">
+                                <div class="col-12 col-sm-8 my-2 border">訂單編號：TW8000201170592</div>
+                                <div class="col-12 col-sm-4 my-2">商品數量：2 件商品</div>
+                                <div class="col-12 col-sm-8 my-2 border">訂單金額：＄2481.00</div>
+                                <div class="col-12 col-sm-4 my-2">訂單狀態：完成</div>
+                                <div class="col-12 col-sm-8 my-2 border">訂單日期：2022.04.01</div>
+                                <div class="col-12 col-sm-4 my-2 ">
+                                    <a href="/home/member/orderDetail" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                                </div>
+                            </div>
+                           
+                            <div class="row p-3 mx-1 border b_radius ">
+                                <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
+                                <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
+                                <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
+                                <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
+                                <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
+                                <div class="col-12 col-md-6 my-2 ">
+                                    <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row p-3">
+                                <div class="col-12 col-md-6 my-2">訂單編號：TW8000201170592</div>
+                                <div class="col-12 col-md-6 my-2">商品數量：2 件商品</div>
+                                <div class="col-12 col-md-6 my-2">訂單金額：＄2481.00</div>
+                                <div class="col-12 col-md-6 my-2">訂單狀態：完成</div>
+                                <div class="col-12 col-md-6 my-2">訂單日期：2022.04.01</div>
+                                <div class="col-12 col-md-6 my-2 ">
+                                    <a href="#" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                                </div>
+                            </div>
+
+                            <% } else { %>
+                                <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center"
+                                    role="alert">請先登入</div>
+
+                                <% } %>
+
+                        </div> <!-- col-10 -->
+                        <br>
+                </div> <!-- row -->
+
+        </div> <!-- container -->
+
+        <!-- footer -->
         <%- include("../footer.ejs") %>
-        <script>
+            <script>
 
-            var xx =[{
-                price:1000
-            },
-            {
-                 price:20
-             },
-            {   price:30
+                var xx = [{
+                    price: 1000
                 },
-            {price:50}];
+                {
+                    price: 20
+                },
+                {
+                    price: 30
+                },
+                { price: 50 }];
 
-            // xx.forEach(x=> {return x.price});
-            // var yy= xx.sort(function (a, b) {
-            //         return a.price - b.price;
-            // });
-            // console.log(yy);
-            // aa.push(x.price)
-            var aa=[];
-            xx.forEach( x => {aa.push(x.price);
-            console.log(aa)});
+                // xx.forEach(x=> {return x.price});
+                // var yy= xx.sort(function (a, b) {
+                //         return a.price - b.price;
+                // });
+                // console.log(yy);
+                // aa.push(x.price)
+                var aa = [];
+                xx.forEach(x => {
+                    aa.push(x.price);
+                    console.log(aa)
+                });
 
-            var yy= aa.sort(function (a, b) {
+                var yy = aa.sort(function (a, b) {
                     return a - b;
-            });
-            console.log(yy);
+                });
+                console.log(yy);
 
 // var numbers = [4, 2, 5, 1,,1000, 3];
 // numbers.sort(function(a, b) {
@@ -125,7 +137,7 @@
 // console.log(numbers);
 
 // [1, 2, 3, 4, 5]
-        </script>
+            </script>
 
 
 </body>
