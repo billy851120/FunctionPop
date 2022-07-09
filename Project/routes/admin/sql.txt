@@ -1,0 +1,17 @@
+1，查詢當天（今天）的資料
+SELECT * FROM `order` WHERE TO_DAYS(order_time) = TO_DAYS(NOW());
+
+2，查詢最近7天的資料（包括今天一共7天）
+SELECT * FROM `order` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(order_time);
+
+3，查詢最近30天的資料（包括今天一共30天）
+SELECT * FROM `order` where DATE_SUB(CURDATE(), INTERVAL 30 DAY) < date(order_time);
+
+4，查詢昨天的資料
+SELECT * FROM `order` WHERE TO_DAYS(NOW()) - TO_DAYS(order_time) = 1;
+
+
+
+
+
+

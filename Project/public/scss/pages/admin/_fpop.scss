@@ -103,15 +103,10 @@ img.avatar {
     border-radius: 50%;
 }
 
-// .container {
-//     padding: 16px;
-// }
-
 span.psw {
     float: right;
     padding-top: 16px;
 }
-
 
 
 .close {
@@ -173,7 +168,7 @@ span.psw {
 
 .fpop-sidebar {
     height: 100%;
-    width: 200px;
+    width: 250px;
     background-color: rgb(225, 184, 0);
     position: fixed !important;
     z-index: 1;
@@ -187,7 +182,7 @@ span.psw {
 }
 
 .fp-item {
-    width: 190px;
+    width: 200px;
     display: block;
     padding: 8px 20px;
     text-align: left;
@@ -195,15 +190,12 @@ span.psw {
     outline: 0
 }
 
-//  span {
-//     color: white;
-// }
 
 .fpop-inner {
     white-space: nowrap;
     padding: 10px 20px;
     font-weight: 800;
-    width: 150px;
+    width: 160px;
     margin: 0 auto;
 }
 
@@ -267,7 +259,7 @@ body {
     background-color: rgb(255, 255, 255);
     padding: 15px;
     height: 80px;
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 // * {
@@ -300,7 +292,7 @@ body {
 }
 
 .fp-item>li>span {
-    padding: 15px;
+    padding: 10px;
 }
 
 .footerMell>div>div>a {
