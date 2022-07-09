@@ -44,7 +44,7 @@ const upload = multer({
 
 router.post('/', upload.single('image'), async (req, res, next) => {
   console.log(req.file.buffer);  // 取得檔案
-  db.exec(`insert into custompic values(?)`, [req.file.buffer], (result, fields) => {
+  db.exec(`insert into custompic values(1,?)`, [req.file.buffer], (result, fields) => {
     console.log(result);
     res.send({
       success: true,
