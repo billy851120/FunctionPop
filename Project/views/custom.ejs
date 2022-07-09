@@ -11,6 +11,7 @@
   <script src="/js/index/popper.min.js"></script>
   <script src="/js/index/bootstrap.min.js"></script>
   <script src="/js/index/html2canvas_min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <style>
     .nav_class {
@@ -48,15 +49,18 @@
   </style>
 </head>
 
-<body>
-  <div>
-    <%- include("navbar.ejs") %>
+<body">
+  <%- include("navbar.ejs") %>
     <div class="container">
       <%- include("./template/loginbar") %>
     </div>
-    
+    <div style="width: 1526px;">
+      <% var memid =0; %>
+      <% if(memberprofile != null){ %>
+        <% console.log(memberprofile.id);memid =memberprofile.id; }%>
+
       <!-- 小連結 -->
-      <div style="position: relative; width: 50%; top: 180px; left: 16.875%">
+      <div style="position: relative; width: 50%; top: 180px; left: 16.875%;">
         <a href="" style="left: 16.875%"> <b>首頁</b> </a>|
         <b>我的設計</b>
       </div>
@@ -134,34 +138,35 @@
         </div>
 
         <!-- 中間衣服畫板 -->
-        <div id="capture" class="row middleboard" style="border: black solid 1px; height: 533px; margin-top: 60px">
-          <div class="col-6 move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
-            style="position: absolute; text-align: center; padding: 0; left: 0">
+        <div id="capture" class="middleboard"
+          style="border: black solid 1px; height: 533px; margin-top: 60px;width: 1000px;">
+          <div class="move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
+            style="position: absolute; text-align: center; left: 15px; width: 450px;">
             <img ondragover="over(event)" ondrop="drop(event)" id="cloth_front" src="/img/index/Tshirt/black_f.png"
-              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -13px;" />
+              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -13px;" class="img-fluid" />
             <!-- /img/index/Tshirt_2 -->
             <img id="cloth_fronto" src="/img/index/Tshirt_2/black_fo.png" alt="" style="
                 position: relative;
                 left: -13px;
-                top: -528px;
+                top: -452px;
                 z-index: 1500;
                 pointer-events: none;
                 margin-top: 2px;
-              " />
+              " class="img-fluid" />
           </div>
 
-          <div class="col-6 move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
-            style="position: absolute; text-align: center; padding: 0; right: 1px">
+          <div class="move_place" id="target-container" ondragover="over(event)" ondrop="drop(event)"
+            style="position: absolute; text-align: center; width: 450px; right: 10px;">
             <img ondragover="over(event)" ondrop="drop(event)" id="cloth_back" src="/img/index/Tshirt/black_b.png"
-              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -8px;" />
+              alt="" style="position: relative; z-index: 500; margin-top: 2px; left: -8px;" class="img-fluid" />
             <img id="cloth_backo" src="/img/index/Tshirt_2/black_bo.png" alt="" style="
                 position: relative;
                 left: -8px;
-                top: -524px;
+                top: -449px;
                 z-index: 1500;
                 pointer-events: none;
                 margin-top: 2px;
-              " />
+              " class="img-fluid" />
           </div>
         </div>
 
@@ -189,13 +194,16 @@
 
         <div class="row" style="height: 350px">
           <div class="col-6" style="text-align: center">
-            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">4. 儲存</b> <br /><br /><br /><br />
-            <a href="#"><button onclick="divtoimg()" style="background-color: white; border-radius: 5px">
+            <span style="font-size: 15px">STEP</span><b style="font-size: 18px">4. 儲存&上傳檔案</b> <br /><br /><br /><br />
+            <a href="#">
+              <button onclick="divtoimg()" style="background-color: white; border-radius: 5px">
                 儲存設計
               </button>
+              <input type="file" id="uploadfinal">
             </a>
-          </div>
 
+          </div>
+          
           <div class="col-6" style="text-align: center">
             <span style="font-size: 15px">STEP</span><b style="font-size: 18px">5. 訂購數量&尺寸</b>
             <table style="
@@ -211,23 +219,23 @@
               </tr>
               <tr>
                 <td>S</td>
-                <td><input type="text" style="width: 50px; height: 22px" /></td>
+                <td><input id="Snum" type="text" style="width: 50px; height: 22px" placeholder="0" /></td>
                 <td>NT$ 450</td>
               </tr>
               <tr>
                 <td>M</td>
-                <td><input type="text" style="width: 50px; height: 22px" /></td>
+                <td><input id="Mnum" type="text" style="width: 50px; height: 22px" placeholder="0" /></td>
                 <td>NT$ 450</td>
               </tr>
               <tr>
                 <td>L</td>
-                <td><input type="text" style="width: 50px; height: 22px" /></td>
+                <td><input id="Lnum" type="text" style="width: 50px; height: 22px" placeholder="0" /></td>
                 <td>NT$ 450</td>
               </tr>
               <tr>
                 <td>所有項目：</td>
                 <td></td>
-                <td>小計： NT$ <span>66666</span></td>
+                <td>小計： NT$ <span id="totalprice"></span></td>
               </tr>
               <tr style="border-top: 1px solid rgb(165, 165, 165)">
                 <td></td>
@@ -238,7 +246,7 @@
                 <td></td>
                 <td></td>
                 <td style="margin-top: 20px">
-                  <button style="background-color: white; border-radius: 5px">
+                  <button id="addprod" style="background-color: white; border-radius: 5px">
                     加入購物車
                   </button>
                 </td>
@@ -274,355 +282,435 @@
         <br />
         <img src="/img/index/product_more.png" alt="" style="width: 550px" />
       </div>
-  </div>
+    </div>
 
-  <%- include("footer.ejs") %>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <%- include("footer.ejs") %>
 
 
 
 
-</body>
+      </body>
 
-<script>
-  var color_choose = function () {
-    console.log(this.id);
-    switch (this.id) {
-      case 'blackc':
-        cloth_front.src = '/img/index/Tshirt/black_f.png';
-        cloth_back.src = '/img/index/Tshirt/black_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/black_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/black_bo.png';
-        cloth_backo.style.top = '-523px';
-        break;
-      case 'whitec':
-        cloth_front.src = '/img/index/Tshirt/white_f.png';
-        cloth_back.src = '/img/index/Tshirt/white_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/white_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/white_bo.png';
-        cloth_backo.style.top = '-527px';
-        break;
-      case 'redc':
-        cloth_front.src = '/img/index/Tshirt/darkred_f.png';
-        cloth_back.src = '/img/index/Tshirt/darkred_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/darkred_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/darkred_bo.png';
-        cloth_backo.style.top = '-529px';
-        break;
-      case 'purplec':
-        cloth_front.src = '/img/index/Tshirt/purple_f.png';
-        cloth_back.src = '/img/index/Tshirt/purple_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/purple_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/purple_bo.png';
-        cloth_backo.style.top = '-528px';
-        break;
-      case 'yellowc':
-        cloth_front.src = '/img/index/Tshirt/yellow_f.png';
-        cloth_back.src = '/img/index/Tshirt/yellow_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/yellow_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/yellow_bo.png';
-        cloth_backo.style.top = '-528px';
-        break;
-      case 'greenc':
-        cloth_front.src = '/img/index/Tshirt/green_f.png';
-        cloth_back.src = '/img/index/Tshirt/green_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/green_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/green_bo.png';
-        cloth_backo.style.top = '-529px';
-        break;
-      case 'bluec':
-        cloth_front.src = '/img/index/Tshirt/blue_f.png';
-        cloth_back.src = '/img/index/Tshirt/blue_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/blue_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/blue_bo.png';
-        cloth_backo.style.top = '-527px';
-        break;
-      case 'darkbluec':
-        cloth_front.src = '/img/index/Tshirt/darkblue_f.png';
-        cloth_back.src = '/img/index/Tshirt/darkblue_b.png';
-        cloth_fronto.src = '/img/index/Tshirt_2/darkblue_fo.png';
-        cloth_backo.src = '/img/index/Tshirt_2/darkblue_bo.png';
-        cloth_backo.style.top = '-529px';
-        break;
-    }
-  };
-
-  blackc.onclick = color_choose;
-  whitec.onclick = color_choose;
-  redc.onclick = color_choose;
-  purplec.onclick = color_choose;
-  yellowc.onclick = color_choose;
-  greenc.onclick = color_choose;
-  bluec.onclick = color_choose;
-  darkbluec.onclick = color_choose;
-</script>
-
-<script>
-  var real = true;
-  var imgsrc = '';
-  var src_arr = [];
-  var uploadNum = 0;
-  var fstmovsrc = '';
-  // const myImg = new Image();
-
-  myFile.onchange = function () {
-    const reader = new FileReader();
-    reader.readAsDataURL(myFile.files[0]);
-    // console.log(myFile.files);
-    reader.onload = function () {
-      // console.log(reader.result);
-      // 15. 透過 new Image() 記錄圖片
-      //      * Image.src
-
-      // 20. 將圖片顯示到網頁上
-
-      const aamyImg = new Image(); // document.createElement('img'); // <img>
-      src_arr[0] = reader.result;
-      aamyImg.src = src_arr[0]; // <img src='data....'>
-      aamyImg.id = 'aamyImg';
-      aamyImg.draggable = 'true';
-      aamyImg.style.zIndex = 1000;
-      aamyImg.style.margin = '10px';
-      aamyImg.addEventListener(
-        'dragstart',
-        function () {
-          start(event);
-        },
-        false
-      );
-      // real = false;
-      // var new_img_src = myImg.src;
-
-      const bbmyImgb = new Image(); // document.createElement('img'); // <img>
-      src_arr[1] = reader.result;
-      bbmyImgb.src = src_arr[1]; // <img src='data....'>
-      bbmyImgb.id = 'bbmyImgb';
-      bbmyImgb.draggable = 'true';
-      bbmyImgb.style.margin = '10px';
-      bbmyImgb.addEventListener(
-        'dragstart',
-        function () {
-          start(event);
-        },
-        false
-      );
-      // real = false;
-      // var new_img_src = myImg.src;
-
-      if (uploadNum == 0) {
-        aamyImg.onload = function () {
-          // 　　a. 透過 <img>
-          aamyImg.style.width = '100px';
-          document.getElementById('upload_place').append(aamyImg);
-
-          $('#upload_place img').bind('mousewheel', function () {
-            zoomImg(this);
-            return false;
-          });
-          aamyImg.addEventListener('mousedown', (event) => {
-            console.log(this);
-            fstmovsrc = this.src;
-          });
-
-          uploadNum++;
+      <script>
+        var color_choose = function () {
+          console.log(this.id);
+          switch (this.id) {
+            case 'blackc':
+              cloth_front.src = '/img/index/Tshirt/black_f.png';
+              cloth_back.src = '/img/index/Tshirt/black_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/black_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/black_bo.png';
+              cloth_backo.style.top = '-449px';
+              break;
+            case 'whitec':
+              cloth_front.src = '/img/index/Tshirt/white_f.png';
+              cloth_back.src = '/img/index/Tshirt/white_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/white_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/white_bo.png';
+              cloth_backo.style.top = '-453px';
+              break;
+            case 'redc':
+              cloth_front.src = '/img/index/Tshirt/darkred_f.png';
+              cloth_back.src = '/img/index/Tshirt/darkred_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/darkred_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/darkred_bo.png';
+              cloth_backo.style.top = '-452px';
+              break;
+            case 'purplec':
+              cloth_front.src = '/img/index/Tshirt/purple_f.png';
+              cloth_back.src = '/img/index/Tshirt/purple_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/purple_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/purple_bo.png';
+              cloth_backo.style.top = '-452px';
+              break;
+            case 'yellowc':
+              cloth_front.src = '/img/index/Tshirt/yellow_f.png';
+              cloth_back.src = '/img/index/Tshirt/yellow_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/yellow_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/yellow_bo.png';
+              cloth_backo.style.top = '-453px';
+              break;
+            case 'greenc':
+              cloth_front.src = '/img/index/Tshirt/green_f.png';
+              cloth_back.src = '/img/index/Tshirt/green_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/green_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/green_bo.png';
+              cloth_backo.style.top = '-452px';
+              break;
+            case 'bluec':
+              cloth_front.src = '/img/index/Tshirt/blue_f.png';
+              cloth_back.src = '/img/index/Tshirt/blue_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/blue_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/blue_bo.png';
+              cloth_backo.style.top = '-454px';
+              break;
+            case 'darkbluec':
+              cloth_front.src = '/img/index/Tshirt/darkblue_f.png';
+              cloth_back.src = '/img/index/Tshirt/darkblue_b.png';
+              cloth_fronto.src = '/img/index/Tshirt_2/darkblue_fo.png';
+              cloth_backo.src = '/img/index/Tshirt_2/darkblue_bo.png';
+              cloth_backo.style.top = '-453px';
+              break;
+          }
         };
-      } else {
-        bbmyImgb.onload = function () {
-          // 　　a. 透過 <img>
-          bbmyImgb.style.width = '100px';
-          document.getElementById('upload_placeii').append(bbmyImgb);
 
-          $('#upload_placeii img').bind('mousewheel', function () {
-            zoomImg(this);
-            return false;
-          });
-          bbmyImgb.addEventListener('mousedown', (event) => {
-            console.log(this);
-            fstmovsrc = this.src;
-          });
+        blackc.onclick = color_choose;
+        whitec.onclick = color_choose;
+        redc.onclick = color_choose;
+        purplec.onclick = color_choose;
+        yellowc.onclick = color_choose;
+        greenc.onclick = color_choose;
+        bluec.onclick = color_choose;
+        darkbluec.onclick = color_choose;
+      </script>
+      <script>
+        var real = true;
+        var imgsrc = '';
+        var src_arr = [];
+        var uploadNum = 0;
+        var fstmovsrc = '';
+        // const myImg = new Image();
 
-          uploadNum++;
+        myFile.onchange = function () {
+          const reader = new FileReader();
+          reader.readAsDataURL(myFile.files[0]);
+          // console.log(myFile.files);
+          reader.onload = function () {
+            // console.log(reader.result);
+            // 15. 透過 new Image() 記錄圖片
+            //      * Image.src
+
+            // 20. 將圖片顯示到網頁上
+
+            const aamyImg = new Image(); // document.createElement('img'); // <img>
+            src_arr[0] = reader.result;
+            aamyImg.src = src_arr[0]; // <img src='data....'>
+            aamyImg.id = 'aamyImg';
+            aamyImg.draggable = 'true';
+            aamyImg.style.zIndex = 1000;
+            aamyImg.style.margin = '10px';
+            aamyImg.addEventListener(
+              'dragstart',
+              function () {
+                start(event);
+              },
+              false
+            );
+            // real = false;
+            // var new_img_src = myImg.src;
+
+            const bbmyImgb = new Image(); // document.createElement('img'); // <img>
+            src_arr[1] = reader.result;
+            bbmyImgb.src = src_arr[1]; // <img src='data....'>
+            bbmyImgb.id = 'bbmyImgb';
+            bbmyImgb.draggable = 'true';
+            bbmyImgb.style.margin = '10px';
+            bbmyImgb.addEventListener(
+              'dragstart',
+              function () {
+                start(event);
+              },
+              false
+            );
+            // real = false;
+            // var new_img_src = myImg.src;
+
+            if (uploadNum == 0) {
+              aamyImg.onload = function () {
+                // 　　a. 透過 <img>
+                aamyImg.style.width = '100px';
+                document.getElementById('upload_place').append(aamyImg);
+
+                $('#upload_place img').bind('mousewheel', function () {
+                  zoomImg(this);
+                  return false;
+                });
+                aamyImg.addEventListener('mousedown', (event) => {
+                  console.log(this);
+                  fstmovsrc = this.src;
+                });
+
+                uploadNum++;
+              };
+            } else {
+              bbmyImgb.onload = function () {
+                // 　　a. 透過 <img>
+                bbmyImgb.style.width = '100px';
+                document.getElementById('upload_placeii').append(bbmyImgb);
+
+                $('#upload_placeii img').bind('mousewheel', function () {
+                  zoomImg(this);
+                  return false;
+                });
+                bbmyImgb.addEventListener('mousedown', (event) => {
+                  console.log(this);
+                  fstmovsrc = this.src;
+                });
+
+                uploadNum++;
+              };
+            }
+          };
         };
-      }
-    };
-  };
 
-  function zoomImg(o) {
-    var zoom = parseInt(o.style.width);
-    // console.log(event.wheelDelta)
-    zoom += event.wheelDelta / 12;
-    if (zoom > 0) o.style.width = zoom + 'px';
-    if (zoom > 500) o.style.width = '500px';
-  }
-</script>
-<script>
-  // 40. ondragover 拖動過程中，允許元素接受 drop
-
-  var co = 0;
-  function over(evtobj) {
-    evtobj.preventDefault();
-  }
-
-  // 50. ondragstart 當元素開始被拖動的時候，紀錄元素id
-  // var moving_src = "";
-  function start(evtobj) {
-    console.log(evtobj);
-    console.log(evtobj.target);
-    // console.log(this);
-    // moving_src = evtobj.target.src;
-    var x = evtobj.offsetX,
-      y = evtobj.offsetY;
-
-    evtobj.dataTransfer.setData('text/plain', evtobj.target.id);
-    evtobj.dataTransfer.setData('X', x);
-    evtobj.dataTransfer.setData('Y', y);
-    // evtobj.dataTransfer.setData('src', moving_src);
-  }
-
-  // 60. ondrop 滑鼠放開時，將元素附加到指定位置
-  var drop_count = 0;
-  var temp = '';
-  function drop(evtobj) {
-    drop_count++;
-    // console.log(evtobj);
-    // console.log(evtobj.target);
-    // console.log(evtobj.target.tagName);
-    var x = parseInt(evtobj.dataTransfer.getData('X'));
-    var y = parseInt(evtobj.dataTransfer.getData('Y'));
-    // var nsrc = evtobj.dataTransfer.getData('src');
-
-    if (evtobj.target.tagName != 'ASG') {
-      temp = evtobj.dataTransfer.getData('text/plain');
-      // document.getElementById(temp).src = nsrc;
-      console.log(evtobj.target.id.substr(0, 2) != 'aa');
-      console.log(evtobj.target.id.substr(0, 2) != 'bb');
-      console.log(
-        evtobj.target.id.substr(0, 2) != 'aa' ||
-        evtobj.target.id.substr(0, 2) != 'bb'
-      );
-
-      if (
-        evtobj.target.id.substr(0, 2) != 'aa' &&
-        evtobj.target.id.substr(0, 2) != 'bb'
-      ) {
-        document.getElementById(temp).style.position = 'absolute';
-        document.getElementById(temp).style.left = evtobj.layerX - x + 'px';
-        document.getElementById(temp).style.top = evtobj.layerY - y + 'px';
-        document.getElementById(temp).style.margin = 0;
-        document.getElementById(temp).addEventListener(
-          'dragstart',
-          function () {
-            start(event);
-          },
-          false
-        );
-
-        evtobj.target.parentNode.appendChild(document.getElementById(temp));
-        console.log(evtobj.target);
-        console.log(temp);
-
-        var tempstr = temp.substr(0, 2);
-        console.log(tempstr);
-        if (tempstr == 'aa') {
-          appendnewimg();
-        } else {
-          appendnewimgb();
+        function zoomImg(o) {
+          var zoom = parseInt(o.style.width);
+          // console.log(event.wheelDelta)
+          zoom += event.wheelDelta / 12;
+          if (zoom > 0) o.style.width = zoom + 'px';
+          if (zoom > 500) o.style.width = '500px';
         }
-        // if(appendnum > 1){
-        //     document.getElementById(`myImgaa${appendnum}`).remove();
-        // }
-        // // 刪除移動後會複製的原生物，只留下一個
-        var ci = upload_place.children;
-        var lis = Array.from(ci);
-        console.log(lis);
+      </script>
+      <script>
+        // 40. ondragover 拖動過程中，允許元素接受 drop
 
-        lis.forEach((index, e) => {
-          // console.log(index);
-          if (e > 0) {
-            index.remove();
+        var co = 0;
+        function over(evtobj) {
+          evtobj.preventDefault();
+        }
+
+        // 50. ondragstart 當元素開始被拖動的時候，紀錄元素id
+        // var moving_src = "";
+        function start(evtobj) {
+          console.log(evtobj);
+          console.log(evtobj.target);
+          // console.log(this);
+          // moving_src = evtobj.target.src;
+          var x = evtobj.offsetX,
+            y = evtobj.offsetY;
+
+          evtobj.dataTransfer.setData('text/plain', evtobj.target.id);
+          evtobj.dataTransfer.setData('X', x);
+          evtobj.dataTransfer.setData('Y', y);
+          // evtobj.dataTransfer.setData('src', moving_src);
+        }
+
+        // 60. ondrop 滑鼠放開時，將元素附加到指定位置
+        var drop_count = 0;
+        var temp = '';
+        function drop(evtobj) {
+          drop_count++;
+          // console.log(evtobj);
+          // console.log(evtobj.target);
+          // console.log(evtobj.target.tagName);
+          var x = parseInt(evtobj.dataTransfer.getData('X'));
+          var y = parseInt(evtobj.dataTransfer.getData('Y'));
+          // var nsrc = evtobj.dataTransfer.getData('src');
+
+          if (evtobj.target.tagName != 'ASG') {
+            temp = evtobj.dataTransfer.getData('text/plain');
+            // document.getElementById(temp).src = nsrc;
+            console.log(evtobj.target.id.substr(0, 2) != 'aa');
+            console.log(evtobj.target.id.substr(0, 2) != 'bb');
+            console.log(
+              evtobj.target.id.substr(0, 2) != 'aa' ||
+              evtobj.target.id.substr(0, 2) != 'bb'
+            );
+
+            if (
+              evtobj.target.id.substr(0, 2) != 'aa' &&
+              evtobj.target.id.substr(0, 2) != 'bb'
+            ) {
+              document.getElementById(temp).style.position = 'absolute';
+              document.getElementById(temp).style.left = evtobj.layerX - x + 'px';
+              document.getElementById(temp).style.top = evtobj.layerY - y + 'px';
+              document.getElementById(temp).style.margin = 0;
+              document.getElementById(temp).addEventListener(
+                'dragstart',
+                function () {
+                  start(event);
+                },
+                false
+              );
+
+              evtobj.target.parentNode.appendChild(document.getElementById(temp));
+              console.log(evtobj.target);
+              console.log(temp);
+
+              var tempstr = temp.substr(0, 2);
+              console.log(tempstr);
+              if (tempstr == 'aa') {
+                appendnewimg();
+              } else {
+                appendnewimgb();
+              }
+              // if(appendnum > 1){
+              //     document.getElementById(`myImgaa${appendnum}`).remove();
+              // }
+              // // 刪除移動後會複製的原生物，只留下一個
+              var ci = upload_place.children;
+              var lis = Array.from(ci);
+              console.log(lis);
+
+              lis.forEach((index, e) => {
+                // console.log(index);
+                if (e > 0) {
+                  index.remove();
+                }
+              });
+
+              var vi = upload_placeii.children;
+              var lisv = Array.from(vi);
+              console.log(lisv);
+
+              lisv.forEach((index, e) => {
+                // console.log(index);
+                if (e > 0) {
+                  index.remove();
+                }
+              });
+            }
           }
-        });
+          co++;
+        }
 
-        var vi = upload_placeii.children;
-        var lisv = Array.from(vi);
-        console.log(lisv);
+        // 移動後原本圖片會消失，重新加入
+        var appendnum = 0;
+        var appendnewimg = function () {
+          // 　　a. 透過 <img>
+          var ntemp = document.getElementById(temp).cloneNode(true);
+          ntemp.id = `aamyImgaa${appendnum}`;
 
-        lisv.forEach((index, e) => {
-          // console.log(index);
-          if (e > 0) {
-            index.remove();
+          // console.log(ntemp);
+          document.getElementById('upload_place').appendChild(ntemp);
+          document.getElementById(`aamyImgaa${appendnum}`).style.position =
+            'relative';
+          document.getElementById(`aamyImgaa${appendnum}`).style.left = 0;
+          document.getElementById(`aamyImgaa${appendnum}`).style.top = 0;
+          document.getElementById(`aamyImgaa${appendnum}`).addEventListener(
+            'dragstart',
+            function () {
+              start(event);
+            },
+            false
+          );
+          $('#upload_place img').bind('mousewheel', function () {
+            // console.log(myImg);
+            zoomImg(this);
+            return false;
+          });
+          appendnum++;
+        };
+
+        var appendbnum = 0;
+        var appendnewimgb = function () {
+          // 　　a. 透過 <img>
+          var nbtemp = document.getElementById(temp).cloneNode(true);
+          nbtemp.id = `bbmyImgbb${appendbnum}`;
+
+          // console.log(ntemp);
+          document.getElementById('upload_placeii').appendChild(nbtemp);
+          document.getElementById(`bbmyImgbb${appendbnum}`).style.position =
+            'relative';
+          document.getElementById(`bbmyImgbb${appendbnum}`).style.left = 0;
+          document.getElementById(`bbmyImgbb${appendbnum}`).style.top = 0;
+          document.getElementById(`bbmyImgbb${appendbnum}`).addEventListener(
+            'dragstart',
+            function () {
+              start(event);
+            },
+            false
+          );
+          $('#upload_placeii img').bind('mousewheel', function () {
+            // console.log(myImg);
+            zoomImg(this);
+            return false;
+          });
+          appendbnum++;
+        };
+      </script>
+      <script>
+        function divtoimg() {
+          html2canvas(document.querySelector('#capture')).then(function (canvas) {
+            a = document.createElement('a');
+            a.href = canvas
+              .toDataURL('image/jpeg', 0.92)
+              .replace('image/jpeg', 'image/octet-stream');
+            a.download = 'image.jpg';
+            a.click();
+          });
+        }
+      </script>
+      <script>
+        $("#addprod").click(function () {
+
+          // console.log(document.getElementById("Snum").value);
+          var Snum = parseInt(document.getElementById("Snum").value);
+          var Mnum = parseInt(document.getElementById("Mnum").value);
+          var Lnum = parseInt(document.getElementById("Lnum").value);
+          var arr = [];
+          var size = "S";
+          arr[0] = Snum;
+          arr[1] = Mnum;
+          arr[2] = Lnum;
+          console.log(Snum + Mnum + Lnum);
+          totprice = (Snum + Mnum + Lnum) * 450;
+          console.log(totprice);
+          document.getElementById('totalprice').innerText = totprice;
+
+          for (let i = 0; i < 3; i++) {
+            var sizee = ""
+            if (arr[i] != 0) {
+              if (i == 0) {
+                sizee = "S"
+              } else if (i == 1) {
+                sizee = "M"
+              } else if (i == 2) {
+                sizee = "L"
+              }
+
+              var a = {
+                code: '',
+                all_id: '212',
+                id: '55',
+                name: '客製化T恤',
+                image: '',
+                size: sizee,
+                color: '',
+                price: arr[i] * 450,
+                quantity: arr[i]
+
+              };
+
+              $.ajax({
+                url: "http://localhost:3000/home/shop_cart",
+                type: "POST",
+                data: a,
+                success: function (res) {
+                  console.log("成功");
+                },
+                err: function () {
+                  console.log("錯誤");
+
+                },
+              })
+            }
           }
+
+
+
         });
-      }
-    }
-    co++;
-  }
+      </script>
+      <script>
 
-  // 移動後原本圖片會消失，重新加入
-  var appendnum = 0;
-  var appendnewimg = function () {
-    // 　　a. 透過 <img>
-    var ntemp = document.getElementById(temp).cloneNode(true);
-    ntemp.id = `aamyImgaa${appendnum}`;
-
-    // console.log(ntemp);
-    document.getElementById('upload_place').appendChild(ntemp);
-    document.getElementById(`aamyImgaa${appendnum}`).style.position =
-      'relative';
-    document.getElementById(`aamyImgaa${appendnum}`).style.left = 0;
-    document.getElementById(`aamyImgaa${appendnum}`).style.top = 0;
-    document.getElementById(`aamyImgaa${appendnum}`).addEventListener(
-      'dragstart',
-      function () {
-        start(event);
-      },
-      false
-    );
-    $('#upload_place img').bind('mousewheel', function () {
-      // console.log(myImg);
-      zoomImg(this);
-      return false;
-    });
-    appendnum++;
-  };
-
-  var appendbnum = 0;
-  var appendnewimgb = function () {
-    // 　　a. 透過 <img>
-    var nbtemp = document.getElementById(temp).cloneNode(true);
-    nbtemp.id = `bbmyImgbb${appendbnum}`;
-
-    // console.log(ntemp);
-    document.getElementById('upload_placeii').appendChild(nbtemp);
-    document.getElementById(`bbmyImgbb${appendbnum}`).style.position =
-      'relative';
-    document.getElementById(`bbmyImgbb${appendbnum}`).style.left = 0;
-    document.getElementById(`bbmyImgbb${appendbnum}`).style.top = 0;
-    document.getElementById(`bbmyImgbb${appendbnum}`).addEventListener(
-      'dragstart',
-      function () {
-        start(event);
-      },
-      false
-    );
-    $('#upload_placeii img').bind('mousewheel', function () {
-      // console.log(myImg);
-      zoomImg(this);
-      return false;
-    });
-    appendbnum++;
-  };
-</script>
-<script>
-  function divtoimg() {
-    html2canvas(document.querySelector('#capture')).then(function (canvas) {
-      a = document.createElement('a');
-      a.href = canvas
-        .toDataURL('image/jpeg', 0.92)
-        .replace('image/jpeg', 'image/octet-stream');
-      a.download = 'image.jpg';
-      a.click();
-    });
-  }
-</script>
+        const file = document.getElementById("uploadfinal");
+        function uploadImg(e) {
+          // 檔案位置
+          console.log(e.target.files[0]);
+          // 新增 formData
+          const formData = new FormData();
+          formData.append('image', e.target.files[0]);
+          // 傳送資料
+          axios.post("http://localhost:3000/home/custom", formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then((response) => {
+            console.log(response.data)
+          });
+        }
+        file.addEventListener('change', uploadImg);
+      </script>
 
 </html>

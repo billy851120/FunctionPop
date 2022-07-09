@@ -24,6 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+
+CREATE TABLE `custompic` (
+  `pic` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 -- 資料表結構 `admin_user`
 --
 CREATE TABLE `favorite` (
@@ -922,3 +928,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO products_all VALUES(212,55,'客製化T恤','衣服','all',"","","","","","",450,0,'FP2_10500005',"","","",15,'衣服','full size');
