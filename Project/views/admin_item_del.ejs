@@ -19,11 +19,35 @@
 
     <%- include("admin_navbar.ejs") %>
 
-        <!-- ---------------------------------------------------------------------- -->
 
         <!-- Main Content -->
         <div class="fpop-main p-5">
-            <h2>我是刪除</h2>
+            <h2>本周上市新品</h2>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad"
+                style="padding-top:30px">
+                <% if (message.length> 0) { %>
+                    <div class="alert alert-danger col-sm-12">
+                        <%= message %>
+                    </div>
+                    <% } else {%>
+                        
+                        <% data2.forEach((item ,index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.product_name %>
+                                </td>
+                            
+                                    <div class="col-md-3 col-lg-3"> <img alt="User Pic" style="width: 100px;"
+                                        src="http://localhost:3000/img/product/<%=item.product_image %>"
+                                        class="img-circle img-responsive"> </div>
+                                 
+
+                            </tr>
+                            <% }) %>
+                        <% } %>
+            </div>
+        </div>
+
 
         </div>
 </body>

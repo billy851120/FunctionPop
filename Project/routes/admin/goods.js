@@ -14,8 +14,80 @@ router.use((req, res, next) => {
   res.locals.shortDataFormat = shortDataFormat;
   next();
 });
-//--------------------------------------
+//-----------------新增商品---------------------
+var path = require('path');
+var fileUpload = require('express-fileupload');
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(express.static(path.join(__dirname, 'public')));
+router.use(fileUpload());
 
+
+router.post('/item_shelf', function (req, res) {
+  message = '';
+  if (req.method == "POST") {
+    var post = req.body;
+    var name = post.product_name;
+    var category = post.product_category;
+    var gender = post.product_gender;
+    var description = post.product_description;
+    var composition = post.product_composition;
+    var price = post.product_price;
+
+    if (!req.files) {
+      console.log("ok1")
+      return res.status(400).send('No files were uploaded.');
+    }
+    var file = req.files.product_image;
+    var img_name = file.name;
+    var file2 = req.files.product_image2;
+    var img_name2 = file2.name;
+    var file3 = req.files.product_image3;
+    var img_name3 = file3.name;
+
+    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+
+      file.mv('public/img/product/' + file.name, function (err) {
+
+        if (err)
+          return res.status(500).send(err);
+        var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
+        var query = db.exec(sql, function (err, result) {
+          res.redirect('/admin/goods/item_shelf');
+        });
+      });
+    } else {
+      message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+      res.render('/admin/goods/item_shelf', { message: "上傳成功" });
+    }
+  } else {
+
+    res.render('admin_item_shelf');
+  }
+
+});
+
+router.get('/item_shelf', function (rqs, res) {
+  res.render('admin_item_shelf', {
+    title: '後台管理系統',
+    message: "新增商品"
+  });
+});
+
+
+router.get('/item_del', function (req, res) {
+  var message = '';
+  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_update`);";
+  db.exec(sql, function (err, result) {
+    if (result.length <= 0)
+      message = "Profile not found!";
+    res.render('admin_item_del', {
+
+      message: message,
+      data2: result,
+    });
+  });
+
+});
 
 //------------所有商品指令---------------
 
@@ -131,10 +203,11 @@ router.get('/orderMgat_num/detail/:id([0-9]+)', function (rqs, res) {
 
 router.get('/', function (rqs, res) {
   var sql = `
-  SELECT COUNT(*) AS COUNT FROM products_all ;
+  SELECT COUNT(*) AS COUNT FROM products ;
   SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());
   SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE to_days(order_date) = to_days(now());
-  SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE order_date>=date_sub(curdate(),interval 7 day);`;
+  SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE order_date>=date_sub(curdate(),interval 7 day);
+  SELECT COUNT(*) AS COUNT FROM products_all ;`;
 
   db.exec(sql, [], function (results, fields) {
     res.render('admin_index', {
@@ -299,33 +372,30 @@ router.get('/member', function (rqs, res) {
 //--------------新增菜單--------------------
 
 
-router.get('/item_shelf', function (rqs, res) {
-  res.render('admin_item_shelf', { title: '後台管理系統' });
-});
 
-router.get('/item_shelf', function (rqs, res) {
-  res.render('admin_item_shelf', {})
-})
-router.post("/item_shelf", function (rqs, res) {
-  var body = rqs.body; //    監聽資料庫寫入返回的引數
-  emitter.on("ok", function () {
-    return res.end("新增成功");    //    向前臺返回資料
-  });
-  emitter.on("false", function () {
-    return res.end("新增失敗");    //    向前臺返回資料
-  });
+// router.get('/item_shelf', function (rqs, res) {
+//   res.render('admin_item_shelf', {})
+// })
+// router.post("/item_shelf", function (rqs, res) {
+//   var body = rqs.body; //    監聽資料庫寫入返回的引數
+//   emitter.on("ok", function () {
+//     return res.end("新增成功");    //    向前臺返回資料
+//   });
+//   emitter.on("false", function () {
+//     return res.end("新增失敗");    //    向前臺返回資料
+//   });
 
-  var sql = "insert into products(product_name,product_gender,product_description,product_price) values(?,?,?,?)"; //向user這個表裡寫入資料
-  var data = [body.product_name, body.product_gender, body.product_description, body.product_price];
-  db.exec(sql, data, function (results, fields, err) {    //    執行sql語句
-    if (err) {
-      console.log(err.message);    //    輸出資料庫錯誤資訊
-      emitter.emit("false");    //    返回失敗
-    }
-    emitter.emit("ok");    //    返回成功
-  });
+//   var sql = "insert into products(product_name,product_gender,product_description,product_price) values(?,?,?,?)"; //向user這個表裡寫入資料
+//   var data = [body.product_name, body.product_gender, body.product_description, body.product_price];
+//   db.exec(sql, data, function (results, fields, err) {    //    執行sql語句
+//     if (err) {
+//       console.log(err.message);    //    輸出資料庫錯誤資訊
+//       emitter.emit("false");    //    返回失敗
+//     }
+//     emitter.emit("ok");    //    返回成功
+//   });
 
-})
+// })
 
 //--------------新增菜單--------------------
 
@@ -376,21 +446,15 @@ router.post("/login", function (rqs, res) {
 
 
 //--------------------------讀檔案--------------------------------
-
+router.get('/stockMgat_all', function (rqs, res) {
+  res.render('admin_stockMgat_all', { title: '後台管理系統' });
+});
 
 
 router.get('/', function (rqs, res) {
   res.render('admin_index', { title: '後台管理系統' });
 });
-router.get('/item_del', function (rqs, res) {
-  res.render('admin_item_del', { title: '後台管理系統' });
-});
 
-
-
-router.get('/stockMgat_all', function (rqs, res) {
-  res.render('admin_stockMgat_all', { title: '後台管理系統' });
-});
 //--------------------------讀檔案--------------------------------
 
 

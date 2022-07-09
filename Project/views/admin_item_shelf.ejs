@@ -2,38 +2,19 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/all.css">
     <script src="/js/admin/bootstrap.min.js"></script>
     <script src="/js/admin/jquery.min.js"></script>
     <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
     <title>f.pop 後台管理</title>
-    <style>
-        .fp-item>li>span {
-            padding: 15px;
-        }
 
-        .fpop_inp {
-            height: 35px;
-            width: 100%;
-            border: 1px solid #acacac;
-            border-radius: 6px;
-            font-size: 10px;
-            margin: 10px 0;
-            padding: 0 10px;
-        }
-    </style>
 </head>
 
 <body id="page-top">
     <%- include("admin_navbar.ejs") %>
         <!-- Main Content -->
         <div class="fpop-main p-5">
-
-
-
-
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
@@ -41,12 +22,204 @@
                     <li class="breadcrumb-item active" aria-current="page">所有商品</li>
                 </ol>
             </nav>
+
+
             <h2>我是上架商品</h2>
+            <!-- <div class="container col-sm-12" id="mainform">
+                <div id="signupbox" style=" margin-top:50px">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">新品上架</div>
+                        </div>
+                        <div >
+                            <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_shelf"
+                                enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label class="col-md-3 ">First Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="first_name"
+                                            placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="last_name"
+                                            placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mob_no" class="col-md-3 control-label">Mobile Number</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="mob_no"
+                                            placeholder="Mobile Number">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mob_no" class="col-md-3 control-label">Profile Image</label>
+                                    <img id="preview_progressbarTW_img" src="" style="width: 100px;"/>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" type="file" name="uploaded_image" onchange="readURL(this)" targetID="preview_progressbarTW_img"
+                                        accept="image/gif, image/jpeg, image/png" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user_name" class="col-md-3 control-label">User Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="user_name"
+                                            placeholder="User Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i
+                                                class="icon-hand-right"></i> &nbsp Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="container col-sm-12" id="mainform">
+                <div id="signupbox" style=" margin-top:50px">
+                    <div class="panel-title">新品上架</div>
+                    <% if (message.length> 0) { %>
+                        <div class="alert alert-danger col-sm-12">
+                            <%= message %> <% } %></div>
 
-          
-            <br>
-            <br>
+                    <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_shelf"
+                        enctype="multipart/form-data">
+                        <div>
+                            <label class="col-md-3">產品名稱</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="product_name" placeholder="產品名稱">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="product_category" class="col-md-3 control-label">類別</label>
+                            <div class="col-md-9">
+                                <!-- <input type="text" class="form-control" name="product_category" placeholder="類別"> -->
+                                <select class="custom-select light-table-filter " name="product_category"
+                                    aria-label="Example select with button addon" data-table="order-table">
+                                    <option>上衣</option>
+                                    <option>下著</option>
+                                    <option>鞋</option>
+                                    <option>包</option>
+                                    <option>洋裝</option>
+                                    <option>帽子</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="product_gender" class="col-md-3 control-label">F / M</label>
+                            <div class="col-md-9">
+                                <select class="custom-select light-table-filter " name="product_gender"
+                                    aria-label="Example select with button addon" data-table="order-table">
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3">產品敘述</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="product_description" placeholder="產品敘述">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3">產品成分</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="product_composition" placeholder="產品成分">
+                            </div>
+                        </div>
 
+                        <div>
+                            <label for="product_price" class="col-md-3 control-label">產品價格</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="product_price" placeholder="產品價格">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image" onchange="readURL(this)"
+                                    targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img" src="" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image2" onchange="readURL1(this)"
+                                    targetID1="preview_progressbarTW_img1" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img1" src="" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image3" onchange="readURL2(this)"
+                                    targetID2="preview_progressbarTW_img2" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img2" src="" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-signup" type="submit" class="btn btn-info mt-5">
+                                <i class="icon-hand-right"></i> 送出</button>
+                            <!-- &nbsp -->
+                        </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+        </div>
+
+        <script>
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID = input.getAttribute("targetID");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID1 = input.getAttribute("targetID1");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID1);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID2 = input.getAttribute("targetID2");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID2);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
 
         </div>
         <!-- Main Content end-->
