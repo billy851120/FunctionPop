@@ -25,6 +25,7 @@
 
 
             <h2>我是上架商品</h2>
+
             <!-- <div class="container col-sm-12" id="mainform">
                 <div id="signupbox" style=" margin-top:50px">
                     <div class="panel panel-info">
@@ -91,12 +92,32 @@
             <div class="container col-sm-12" id="mainform">
                 <div id="signupbox" style=" margin-top:50px">
                     <div class="panel-title">新品上架</div>
-                    <% if (message.length> 0) { %>
-                        <div class="alert alert-danger col-sm-12">
-                            <%= message %> <% } %></div>
-
                     <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_shelf"
                         enctype="multipart/form-data">
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image" onchange="readURL(this)"
+                                    targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img" src="" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image2" onchange="readURL1(this)"
+                                    targetID1="preview_progressbarTW_img1" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img1" src="" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="col-md-3 control-label">圖片上傳</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="product_image3" onchange="readURL2(this)"
+                                    targetID2="preview_progressbarTW_img2" accept="image/gif, image/jpeg, image/png" />
+                                <img id="preview_progressbarTW_img2" src="" style="width: 100px;" />
+                            </div>
+                        </div>
                         <div>
                             <label class="col-md-3">產品名稱</label>
                             <div class="col-md-9">
@@ -131,7 +152,9 @@
                         <div>
                             <label class="col-md-3">產品敘述</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="product_description" placeholder="產品敘述">
+                                <!-- <input type="text" class="form-control" name="product_description" placeholder="產品敘述"> -->
+                                <textarea name="product_description"   type="text" required>
+                                </textarea>
                             </div>
                         </div>
                         <div>
@@ -147,30 +170,7 @@
                                 <input type="text" class="form-control" name="product_price" placeholder="產品價格">
                             </div>
                         </div>
-                        <div>
-                            <label class="col-md-3 control-label">圖片上傳</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="file" name="product_image" onchange="readURL(this)"
-                                    targetID="preview_progressbarTW_img" accept="image/gif, image/jpeg, image/png" />
-                                <img id="preview_progressbarTW_img" src="" style="width: 100px;" />
-                            </div>
-                        </div>
-                        <div>
-                            <label class="col-md-3 control-label">圖片上傳</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="file" name="product_image2" onchange="readURL1(this)"
-                                    targetID1="preview_progressbarTW_img1" accept="image/gif, image/jpeg, image/png" />
-                                <img id="preview_progressbarTW_img1" src="" style="width: 100px;" />
-                            </div>
-                        </div>
-                        <div>
-                            <label class="col-md-3 control-label">圖片上傳</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="file" name="product_image3" onchange="readURL2(this)"
-                                    targetID2="preview_progressbarTW_img2" accept="image/gif, image/jpeg, image/png" />
-                                <img id="preview_progressbarTW_img2" src="" style="width: 100px;" />
-                            </div>
-                        </div>
+
                         <!-- Button -->
                         <div class="col-md-offset-3 col-md-9">
                             <button id="btn-signup" type="submit" class="btn btn-info mt-5">

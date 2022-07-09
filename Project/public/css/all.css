@@ -11823,7 +11823,7 @@ body {
 }
 
 .fpop-main {
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .fp-item > li > span {
@@ -14778,7 +14778,7 @@ span.psw {
 }
 
 .fp-item {
-  width: 190px;
+  width: 200px;
   display: block;
   padding: 8px 20px;
   text-align: left;
@@ -14790,7 +14790,7 @@ span.psw {
   white-space: nowrap;
   padding: 10px 20px;
   font-weight: 800;
-  width: 150px;
+  width: 160px;
   margin: 0 auto;
 }
 
@@ -14850,7 +14850,7 @@ body {
   background-color: rgb(255, 255, 255);
   padding: 15px;
   height: 80px;
-  margin-left: 200px;
+  margin-left: 300px;
 }
 
 .fpop-item:hover {
@@ -14874,11 +14874,11 @@ body {
 }
 
 .fpop-main {
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .fp-item > li > span {
-  padding: 15px;
+  padding: 10px;
 }
 
 .footerMell > div > div > a {
