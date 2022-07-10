@@ -1,47 +1,68 @@
+<script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+
+
 <!-- 最top導覽列 -->
-<nav class=" navbar navbar-light sticky-top" style="background-color: #ffffff; z-index: 50000; padding: 0 1rem !important; ">
-  <div class="container">
-    <div class="row" style="width: 100%; margin: 0 !important; position: relative; padding: 5px 0;">
-      <div class="col">
-        <a class="navbar-brand " href="/home" style="
-        transform: scale(1.3);
+<nav class="topNav navbar navbar-light sticky-top"
+  style="background-color: #ffffff; z-index: 50000; padding: 0 1rem ; ">
+  <div class="container-lg navContent">
+    <div class="row" style="width: 100%; margin: 0 !important; position: relative; padding: 14px 0;">
+      <div class="col navContent">
+        <a class="navbar-brand logoContent" href="/home" style="
         margin-left: 15px;
         ">
           <!-- 首頁 -->
-          <img src="/img/logo/logo_black.svg" alt="" style="width: 50px; height: 50px" />
-          <img src="/img/logo/logo_text_black.svg" alt="" id="logo_text" style="width: 140px; height: 70px" />
+          <div class="d-inline-block" style="max-width: 50px; max-height:50px;">
+            <img src="/img/logo/logo_black.svg" alt="" style="width: 100%; height: 100%" />
+          </div>
+          <div class="d-inline-block" style="max-width: 140px; max-height:70px;">
+            <img src="/img/logo/logo_text_black.svg" alt="" id="logo_text" style="width: 100%; height: 100%" />
+          </div>
         </a>
       </div>
 
-      <div class="col-4 d-flex align-items-center" id="navbar_li" style="padding:0px;">
+      <div class="col-3 d-none d-lg-flex align-items-center" id="navbar_li" style="padding:0px;">
         <form class="navbar-nav " id="search__input" style="margin: 0 0 0 auto ">
-          <input class="search__input mr-sm-2" type="search" placeholder="搜尋"
-            style="    width: 228px;
+          <input class="search__input mr-sm-2" type="search" placeholder="搜尋" style="    width: 100%;
             position: relative;
             height: 40px;
             transform: translateY(2px);" />
         </form>
       </div>
-      <div class="col-2 d-flex align-items-center" id="fpopnavericon" style="padding:0px;">
+      <div class="col-2 d-flex align-items-center" id="fpopnavericon" style="min-width: 181px; padding:0px;">
         <div class="row" style="margin: 0 0 0 15px !important; width: 100%;">
 
-          <div class="col-4 m-auto text-center" style="padding: 0 !important">
+          <div class="col-4 ml-auto m-lg-auto text-center" style="padding: 0 !important">
             <a id="fpopnav_cart" style="width: 100%;
             height: 100%; padding-bottom: 5px; padding-left: 15px;" class="d-inline-block" href="/home/shop_cart">
-
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2 "
                 viewBox="0 0 16 16" style="color: rgb(0, 0, 0); ">
                 <path
                   d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
               </svg>
-              <span id="cartCount" style="position: absolute; top: -5px; left: 46px">
-                <% if(parseInt(cartCount)>= 1){ %> <%- cartCount %>
-                    <% } %>
-              </span>
+              <% if(parseInt(cartCount)>= 1){ %>
+              <span id="cartCount" class="d-none d-lg-inline" style="        
+              position: absolute;
+              top: -10px;
+              left: 46px;">
+                <i style="    
+                position: relative;
+                font-size: 18px;" 
+                class="far fa-comment-alt">
+                    <p style="    
+                        position: absolute;
+                        top: 1px;
+                        left: 6px;
+                        font-size: 0.7rem;">
+
+<%- cartCount %>
+</p>
+</i>
+</span>
+<% } %>
             </a>
 
           </div>
-          <div style="padding: 0 !important;" class="col-4 m-auto text-center">
+          <div style="padding: 0 !important;" class="col-4 d-none d-md-block m-auto text-center">
             <a class="d-inline-block" style="width: 100%;
             height: 100%;" id="fpopnav_heart" href="/home/member/myFavourite">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" viewBox="0 0 16 16"
@@ -83,57 +104,58 @@
 
       </div>
 
-      
-    </div>
-    <div class="row mt-2"
-        style="font-size: 12px; width: 100%; margin: 0 !important; padding: 0 0;">
-        <nav class="navbar navbar-expand-md navbar-dark rounded" style="background-color: rgb(0, 0, 0); width: 100%;">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10"
-            aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
 
-          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
-            <ul class="navbar-nav">
-              <!-- <span><svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 211.93 150.94"><defs><style>.b{fill:#ffe200;}</style></defs><path class="b" d="M70.55,30.31l-2.02,10.32h-1.36l2.02-10.32h-6.76v-2.24h7.2l1.8-8.83h-6.94v-2.24h7.38l1.71-8.43h1.36l-1.71,8.43h11.28l1.62-8.43h1.36l-1.62,8.43h6.81v2.24h-7.25l-1.71,8.83h6.89v2.24h-7.33l-1.98,10.32h-1.36l1.98-10.32h-11.37Zm.44-2.24h11.37l1.71-8.83h-11.29l-1.8,8.83Z"/><g><path class="b" d="M68.51,30.64l-2.02,10.32,2.9-1.26h-1.36l1.17,.6,2.02-10.32c.12-.62-.78-.6-1.17-.6h-6.76l1.19,.38v-2.24l-2.92,1.48h7.2c.62,0,2.72-.4,2.9-1.26l1.8-8.83c.13-.62-.79-.6-1.17-.6h-6.94l1.19,.38v-2.24l-2.92,1.48h7.38c.62,0,2.72-.4,2.9-1.26l1.71-8.43-2.9,1.26h1.36l-1.17-.6-1.71,8.43c-.13,.62,.79,.6,1.17,.6h11.28c.61,0,2.73-.41,2.9-1.26l1.62-8.43-2.9,1.26h1.36l-1.17-.6-1.62,8.43c-.12,.62,.78,.6,1.17,.6h6.81l-1.19-.38v2.24l2.92-1.48h-7.25c-.61,0-2.73,.41-2.9,1.26l-1.71,8.83c-.12,.62,.78,.6,1.17,.6h6.89l-1.19-.38v2.24l2.92-1.48h-7.33c-.61,0-2.73,.41-2.9,1.26l-1.98,10.32,2.9-1.26h-1.36l1.17,.6,1.98-10.32c.12-.62-.78-.6-1.17-.6h-11.37c-.74,0-2.33,.31-2.74,1.03-.44,.77,.38,.84,1.02,.84h11.37l-1.17-.6-1.98,10.32c-.12,.62,.78,.6,1.17,.6h1.36c.61,0,2.73-.41,2.9-1.26l1.98-10.32-2.9,1.26h7.33c.76,0,2.92-.44,2.92-1.48v-2.24c0-.42-.99-.38-1.19-.38h-6.89l1.17,.6,1.71-8.83-2.9,1.26h7.25c.76,0,2.92-.44,2.92-1.48v-2.24c0-.42-.99-.38-1.19-.38h-6.81l1.17,.6,1.62-8.43c.12-.62-.78-.6-1.17-.6h-1.36c-.61,0-2.73,.41-2.9,1.26l-1.62,8.43,2.9-1.26h-11.28l1.17,.6,1.71-8.43c.13-.62-.79-.6-1.17-.6h-1.36c-.62,0-2.72,.4-2.9,1.26l-1.71,8.43,2.9-1.26h-7.38c-.76,0-2.92,.44-2.92,1.48v2.24c0,.42,.99,.38,1.19,.38h6.94l-1.17-.6-1.8,8.83,2.9-1.26h-7.2c-.76,0-2.92,.44-2.92,1.48v2.24c0,.42,.99,.38,1.19,.38h6.76l-1.17-.6-2.02,10.32c-.12,.62,.78,.6,1.17,.6h1.36c.62,0,2.73-.41,2.9-1.26l2.02-10.32c.22-1.14-3.85-.47-4.07,.66Z"/><path class="b" d="M70.13,29h11.37c.62,0,1.28-.2,1.84-.45,.32-.14,.98-.41,1.06-.81l1.71-8.83c.12-.62-.78-.6-1.17-.6h-11.29c-.62,0-1.28,.2-1.84,.45-.32,.14-.98,.41-1.06,.81l-1.8,8.83c-.16,.78,1.26,.62,1.69,.55,.54-.1,1.08-.25,1.56-.5,.27-.14,.76-.39,.82-.71l1.8-8.83-2.9,1.26h11.29l-1.17-.6-1.71,8.83,2.9-1.26h-11.37c-.87,0-2.15,.34-2.74,1.03-.63,.72,.55,.84,1.02,.84Z"/></g></svg></span> -->
-              <li class="nav-item active">
-                <a class="nav-link font-weight-bold" href="/home/product/Male">  新品上市<span
-                    class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdownqazwsx" data-toggle="dropdown"
-                  aria-expanded="false">WOMEN</a>
-                <div class="dropdown-menu mt-2" aria-labelledby="dropdownqazwsx">
-                  <a class="dropdown-item" href="/home/product/female/%E4%B8%8A%E8%A1%A3">上衣</a>
-                  <a class="dropdown-item" href="/home/product/female/%E6%B4%8B%E8%A3%9D">洋裝</a>
-                  <a class="dropdown-item" href="/home/product/female/%E8%A3%99%E5%AD%90">裙子</a>
-                  <a class="dropdown-item" href="/home/product/female/%E9%9E%8B">鞋品</a>
-                  <a class="dropdown-item" href="/home/product/female/%E5%B8%BD%E5%AD%90">帽</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">MEN</a>
-                <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
-                  <a class="dropdown-item" href="/home/product/male/%E4%B8%8A%E8%A1%A3">上衣</a>
-                  <a class="dropdown-item" href="/home/product/male/%E4%B8%8B%E8%91%97">下著</a>
-                  <a class="dropdown-item" href="/home/product/male/%E9%9E%8B">鞋款</a>
-                  <a class="dropdown-item" href="/home/product/male/%E5%8C%85">包款</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">ACCESSORY</a>
-                <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+    </div>
+    <div class="row mt-2 " style="font-size: 12px; width: 100%;  margin: 0 !important; padding: 0 0;">
+      <nav class=" navbar navbar-expand-md navbar-dark rounded" style="background-color: rgb(0, 0, 0); width: 100%;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10"
+          aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+          <ul class="navbar-nav">
+            <!-- <span><svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 211.93 150.94"><defs><style>.b{fill:#ffe200;}</style></defs><path class="b" d="M70.55,30.31l-2.02,10.32h-1.36l2.02-10.32h-6.76v-2.24h7.2l1.8-8.83h-6.94v-2.24h7.38l1.71-8.43h1.36l-1.71,8.43h11.28l1.62-8.43h1.36l-1.62,8.43h6.81v2.24h-7.25l-1.71,8.83h6.89v2.24h-7.33l-1.98,10.32h-1.36l1.98-10.32h-11.37Zm.44-2.24h11.37l1.71-8.83h-11.29l-1.8,8.83Z"/><g><path class="b" d="M68.51,30.64l-2.02,10.32,2.9-1.26h-1.36l1.17,.6,2.02-10.32c.12-.62-.78-.6-1.17-.6h-6.76l1.19,.38v-2.24l-2.92,1.48h7.2c.62,0,2.72-.4,2.9-1.26l1.8-8.83c.13-.62-.79-.6-1.17-.6h-6.94l1.19,.38v-2.24l-2.92,1.48h7.38c.62,0,2.72-.4,2.9-1.26l1.71-8.43-2.9,1.26h1.36l-1.17-.6-1.71,8.43c-.13,.62,.79,.6,1.17,.6h11.28c.61,0,2.73-.41,2.9-1.26l1.62-8.43-2.9,1.26h1.36l-1.17-.6-1.62,8.43c-.12,.62,.78,.6,1.17,.6h6.81l-1.19-.38v2.24l2.92-1.48h-7.25c-.61,0-2.73,.41-2.9,1.26l-1.71,8.83c-.12,.62,.78,.6,1.17,.6h6.89l-1.19-.38v2.24l2.92-1.48h-7.33c-.61,0-2.73,.41-2.9,1.26l-1.98,10.32,2.9-1.26h-1.36l1.17,.6,1.98-10.32c.12-.62-.78-.6-1.17-.6h-11.37c-.74,0-2.33,.31-2.74,1.03-.44,.77,.38,.84,1.02,.84h11.37l-1.17-.6-1.98,10.32c-.12,.62,.78,.6,1.17,.6h1.36c.61,0,2.73-.41,2.9-1.26l1.98-10.32-2.9,1.26h7.33c.76,0,2.92-.44,2.92-1.48v-2.24c0-.42-.99-.38-1.19-.38h-6.89l1.17,.6,1.71-8.83-2.9,1.26h7.25c.76,0,2.92-.44,2.92-1.48v-2.24c0-.42-.99-.38-1.19-.38h-6.81l1.17,.6,1.62-8.43c.12-.62-.78-.6-1.17-.6h-1.36c-.61,0-2.73,.41-2.9,1.26l-1.62,8.43,2.9-1.26h-11.28l1.17,.6,1.71-8.43c.13-.62-.79-.6-1.17-.6h-1.36c-.62,0-2.72,.4-2.9,1.26l-1.71,8.43,2.9-1.26h-7.38c-.76,0-2.92,.44-2.92,1.48v2.24c0,.42,.99,.38,1.19,.38h6.94l-1.17-.6-1.8,8.83,2.9-1.26h-7.2c-.76,0-2.92,.44-2.92,1.48v2.24c0,.42,.99,.38,1.19,.38h6.76l-1.17-.6-2.02,10.32c-.12,.62,.78,.6,1.17,.6h1.36c.62,0,2.73-.41,2.9-1.26l2.02-10.32c.22-1.14-3.85-.47-4.07,.66Z"/><path class="b" d="M70.13,29h11.37c.62,0,1.28-.2,1.84-.45,.32-.14,.98-.41,1.06-.81l1.71-8.83c.12-.62-.78-.6-1.17-.6h-11.29c-.62,0-1.28,.2-1.84,.45-.32,.14-.98,.41-1.06,.81l-1.8,8.83c-.16,.78,1.26,.62,1.69,.55,.54-.1,1.08-.25,1.56-.5,.27-.14,.76-.39,.82-.71l1.8-8.83-2.9,1.26h11.29l-1.17-.6-1.71,8.83,2.9-1.26h-11.37c-.87,0-2.15,.34-2.74,1.03-.63,.72,.55,.84,1.02,.84Z"/></g></svg></span> -->
+            <li class="nav-item active">
+              <a class="nav-link font-weight-bold" href="/home/product/Male"> 新品上市<span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a style="user-select: none;" class="nav-link dropdown-toggle" id="dropdownqazwsx" data-toggle="dropdown"
+                aria-expanded="false">WOMEN</a>
+              <div class="dropdown-menu mt-2" aria-labelledby="dropdownqazwsx">
+                <a class="dropdown-item" href="/home/product/female/%E4%B8%8A%E8%A1%A3">上衣</a>
+                <a class="dropdown-item" href="/home/product/female/%E6%B4%8B%E8%A3%9D">洋裝</a>
+                <a class="dropdown-item" href="/home/product/female/%E8%A3%99%E5%AD%90">裙子</a>
+                <a class="dropdown-item" href="/home/product/female/%E9%9E%8B">鞋品</a>
+                <a class="dropdown-item" href="/home/product/female/%E5%B8%BD%E5%AD%90">帽</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a style="user-select: none;" class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">MEN</a>
+              <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
+                <a class="dropdown-item" href="/home/product/male/%E4%B8%8A%E8%A1%A3">上衣</a>
+                <a class="dropdown-item" href="/home/product/male/%E4%B8%8B%E8%91%97">下著</a>
+                <a class="dropdown-item" href="/home/product/male/%E9%9E%8B">鞋款</a>
+                <a class="dropdown-item" href="/home/product/male/%E5%8C%85">包款</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a style="user-select: none;" class="nav-link dropdown-toggle" id="dropdown10" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">ACCESSORY</a>
+              <div class="dropdown-menu mt-2" aria-labelledby="dropdown10">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link font-weight-bold" href="/home/custom"> 客製化團服</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
 
 

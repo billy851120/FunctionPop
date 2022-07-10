@@ -1,11 +1,24 @@
+
 @media (max-width: 750px) {
   #search__input {
     display: none;
   }
+
+ 
 }
 @media (max-width: 450px) {
   #navbar_li {
     display: none;
+  }
+  .topNav,.navContent{
+    padding: 0 !important;
+  }
+ 
+
+}
+@media(min-width: 450px){
+  .logoContent{
+    transform: scale(1.3) ;
   }
 }
 
