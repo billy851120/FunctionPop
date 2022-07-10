@@ -191,6 +191,8 @@
         margin: auto;
         top: 0;
       }
+
+
     </style>
   </head>
   <body>
@@ -202,7 +204,7 @@
       <!-- 2. Breadcrumb -->
 
       <section>
-        <div class="container">
+        <div class="container mt-5 pt-5">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
@@ -292,7 +294,7 @@
             <h4><%= result[0].product_name %></h4>
             <p>商品編號 <%= result[0].product_code %></p>
             <p>價　格： $ <span><%= result[0].product_price %></span> 元</p>
-            <p>顏　色： <span id="cho_color">米白</span><span>色</span></p>
+            <p>顏　色： <span id="cho_color">白</span><span>色</span></p>
             <span style="color: red">顏色選單</span>
             <span class="colorflexBox mx-auto px-2">
               <label >
@@ -300,7 +302,9 @@
                 type="radio"
                 value="WH"
                 name="color_ch"
-                style="width: 20px; height: 20px"
+                style="width: 20px; height: 20px;"
+                
+
                 data-col="白"
                 checked
               />白
@@ -311,7 +315,7 @@
                 value="BK"
                 name="color_ch"
                 data-col="黑"
-                style="width: 20px; height: 20px"
+                style="width: 20px; height: 20px;"
               />黑
               </label>
              
@@ -333,7 +337,7 @@
                     style="width: 20px; height: 20px"
                     data-allId="<%- item.product_all_id %>"
                   />
-                  <br><%- item.size_name %>
+                  <span class="px"><%- item.size_name %></span>
                   </label>
               
               <% ch = item.size_name %>
@@ -349,21 +353,22 @@
               <div class="col-2 css_tb pCount d-flex align-self-center">
                 <a
                   href="javascript:"
-                  class="q_sub"
-                  style="padding: 2px; border: 1px solid #000"
-                  ><i class="fa fa-minus" aria-hidden="true"></i></a
+                  class="q_sub my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"
+                  ><i class="fa fa-minus px-2" aria-hidden="true" style="width: 30px; "></i></a
                 >
                 <input
                   type="text"
                   id="number"
                   value="1"
-                  style="width: 25px; text-align: center"
+                  style="width: 75px; text-align: center"
+                  class="mx-auto my-2 py-2"
                 />
                 <a
                   href="javascript:"
-                  class="q_add"
-                  style="padding: 2px; border: 1px solid #000"
-                  ><i class="fa fa-plus" aria-hidden="true"></i></a
+                  class="q_add my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"
+                  ><i class="fa fa-plus px-2" aria-hidden="true" style="width: 30px;"></i></a
                 >
               </div>
             </span>
@@ -406,8 +411,8 @@
                 id="addCart"
                 type="submit"
                 value="加入購物車"
-                class="btn btn-primary"
-                style="width: 100px"
+                class="btn btn-dark w-50"
+                style="width: 100px;"
               />
             </form>
             <iframe
@@ -608,8 +613,50 @@
           </div>
         </div>
       </section>
+
+      <!-- 6. Recommend -->
+      <hr style="border-top: 0.9px solid #000" />
+      <div class="container">
+        <div class="row">
+          <div style="font-weight: 900" class="col text-center mb-3 mt-2">
+            熱門商品
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="owl-carousel owl-theme">
+              <% result.forEach(function(item){ %>
+                <div class="item">
+                  <div>
+                    <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
+                      <div class="img" style="margin:auto;">
+                        <img style=" width: 100%; height: 100%; border-radius: 2px"
+                          src="/img/product/<%- item.product_image %>" alt="" />
+                      </div>
+                    </a>
+                  </div>
+
+                  <div style="
+              font-weight: 700;
+              text-align: center;
+              margin-top: 7px;
+              font-size: 0.9em;
+            ">
+                    <p>
+                      <%- item.product_name %>
+                    </p>
+                  </div>
+                </div>
+                <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+
+    <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br />

@@ -4,7 +4,7 @@ localhost:3000/xxxxx
 ----------------------前台 0630 更新
 首頁
 //
-/home/index
+/home/index  (x)
 
 客製化團服
 /home/custom
@@ -38,12 +38,12 @@ localhost:3000/xxxxx
 
 庫存頁
 /admin/goods
-/admin/goods/11
+/admin/goods/11   (X)
 /admin/goods/item_all
 /admin/goods/item_del
 /admin/goods/item_shelf
 /admin/goods/login
 /admin/goods/member
 /admin/goods/orderMgat_num
-/admin/goods/register
+/admin/goods/register     (X)
 /admin/goods/stockMgat_all
