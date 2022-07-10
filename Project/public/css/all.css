@@ -10874,7 +10874,11 @@ span .psw {
 .fpop-sidebar {
   height: 100%;
   width: 250px;
+<<<<<<< HEAD
   background-color: #e1b800;
+=======
+  background-color: rgb(225, 184, 0);
+>>>>>>> bdbc4e17e09ed0bc07f4b752a4fed03bf5ebe3c4
   position: fixed !important;
   z-index: 1;
   overflow: auto;
@@ -10957,7 +10961,7 @@ body {
   box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 15px;
-  height: 80px;
+  height: 90px;
   margin-left: 200px;
 }
 
@@ -13881,7 +13885,11 @@ span.psw {
 .fpop-sidebar {
   height: 100%;
   width: 250px;
+<<<<<<< HEAD
   background-color: #e1b800;
+=======
+  background-color: rgb(225, 184, 0);
+>>>>>>> bdbc4e17e09ed0bc07f4b752a4fed03bf5ebe3c4
   position: fixed !important;
   z-index: 1;
   overflow: auto;
@@ -13964,7 +13972,11 @@ body {
   box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.1);
   background-color: white;
   padding: 15px;
+<<<<<<< HEAD
   height: 80px;
+=======
+  height: 90px;
+>>>>>>> bdbc4e17e09ed0bc07f4b752a4fed03bf5ebe3c4
   margin-left: 250px;
 }
 
