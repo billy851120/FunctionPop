@@ -87,86 +87,7 @@ function UPDATE(product_name, product_category, product_description, product_pri
 
 
 //-----------------新增商品---------------------
-// var path = require('path');
-// var fileUpload = require('express-fileupload');
-// router.use(bodyParser.urlencoded({ extended: false }));
-// router.use(express.static(path.join(__dirname, 'public')));
-// router.use(fileUpload());
 
-
-// router.post('/item_shelf', function (req, res) {
-//   message = '';
-//   if (req.method == "POST") {
-//     var post = req.body;
-//     var name = post.product_name;
-//     var category = post.product_category;
-//     var gender = post.product_gender;
-//     var description = post.product_description;
-//     var composition = post.product_composition;
-//     var price = post.product_price;
-
-//     if (!req.files) {
-//       console.log("ok1")
-//       return res.status(400).send('No files were uploaded.');
-//     }
-//     var file = req.files.product_image;
-//     var img_name = file.name;
-//     var file2 = req.files.product_image2;
-//     var img_name2 = file2.name;
-//     var file3 = req.files.product_image3;
-//     var img_name3 = file3.name;
-
-//     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
-
-//       file.mv('public/img/product/' + file.name, function (err) {
-//         file2.mv('public/img/product/' + file2.name, function (err) {
-//           file3.mv('public/img/product/' + file3.name, function (err) {
-//             if (err)
-//               return res.status(500).send(err);
-//             var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
-//             var query = db.exec(sql, function (err, result) {
-//               res.redirect('/admin/goods/item_shelf');
-//             });
-//           });
-//         });
-//       })
-//     } else {
-//       message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-//       res.render('/admin/goods/item_shelf', { message: "上傳成功" });
-//     }
-//   } else {
-
-//     res.render('admin_item_shelf');
-//   }
-
-// });
-
-// router.get('/item_shelf', function (rqs, res) {
-//   res.render('admin_item_shelf', {
-//     title: '後台管理系統',
-//     message: "新增商品"
-//   });
-// });
-
-//-----------------新增商品---------------------
-// router.get('/item_all', function (rqs, res) {
-//   res.render('admin_item_all');
-//   res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
-// });
-
-// router.get('/item_all/:page([0-9]+)', function (rqs, res) {
-
-//   var sql = `
-//   SELECT COUNT(*) AS COUNT FROM products;
-//   SELECT * FROM products ORDER BY products.product_update DESC;`;
-//   db.exec(sql, [], function (data, fields) {
-//       res.render('admin_item_all', {
-//         total_nums: data[0][0].COUNT,
-//         data2 : data[1]
-//       })
-//     // })
-//   })
-// })
 
 var path = require('path');
 var fileUpload = require('express-fileupload');
@@ -183,10 +104,10 @@ router.get('/item_all/:page([0-9]+)', function (rqs, res) {
 
   var sql = `
   SELECT COUNT(*) AS COUNT FROM products;
-  SELECT * FROM products ORDER BY products.product_update DESC;`;
+  SELECT * FROM products ORDER BY products.product_upload DESC;`;
   db.exec(sql, [], function (data, fields) {
       res.render('admin_item_all', {
-        total_nums: data[0][0].COUNT,
+        total : data[0][0].COUNT,
         data2 : data[1]
       })
     // })
@@ -198,13 +119,15 @@ router.post('/item_all', function (req, res) {
   console.log("ok")
   // message = '';
   if (req.method == "POST") {
-    var post = req.body;
-    var name = post.product_name;
-    var category = post.product_category;
-    var gender = post.product_gender;
-    var description = post.product_description;
-    var composition = post.product_composition;
-    var price = post.product_price;
+    var post = req.body,
+     name = post.product_name,
+     category = post.product_category,
+     gender = post.product_gender,
+     description = post.product_description,
+     composition = post.product_composition,
+     price = post.product_price,
+     code = post.product_code;
+    
 
     if (!req.files) {
       console.log("ok1")
@@ -224,7 +147,7 @@ router.post('/item_all', function (req, res) {
           file3.mv('public/img/product/' + file3.name, function (err) {
             if (err)
               return res.status(500).send(err);
-            var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "')";
+            var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "')";
             var query = db.exec(sql, function (err, result) {
               res.redirect('/admin/goods/item_all');
             });
