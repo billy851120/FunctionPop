@@ -25,8 +25,6 @@
             margin: 5px 0;
             padding: 0 10px;
         }
-
-    
     </style>
 
 </head>
@@ -45,6 +43,20 @@
                     <li class="breadcrumb-item active" aria-current="page">本週新品</li>
                 </ol>
             </nav>
+            <div class="input-group mb-5" style="width: 200px;">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">搜尋類別</div>
+                </div>
+                <select class="custom-select light-table-filter " aria-label="Example select with button addon"
+                    data-table="order-table">
+                    <option></option>
+                    <option>上衣</option>
+                    <option>下著</option>
+                    <option>鞋</option>
+                    <option>包</option>
+                    <option>洋裝</option>
+                </select>
+            </div>
 
             <table class="table table-hover order-table">
                 <thead>
@@ -106,7 +118,8 @@
                         </h6><br>
                         <h6 class="font-weight-bold">類　　別:<input class="modal-inp" type="text" name="product_category">
                         </h6><br>
-                        <h6 class="font-weight-bold">敘　　述:<input class="modal-inp" type="text" name="product_description">
+                        <h6 class="font-weight-bold">敘　　述:<input class="modal-inp" type="text"
+                                name="product_description">
                         </h6><br>
                         <h6 class="font-weight-bold">價　　格:<input class="modal-inp" type="text" name="product_price">
                         </h6><br>
@@ -171,7 +184,7 @@
                 }
                 return JSON.stringify(values)
             }
-                // function Delete(id) {
+            // function Delete(id) {
             //     var JSONData = { "id": id }
             //     JSONData = JSON.stringify(JSONData)
             //     $.ajax({
@@ -194,7 +207,50 @@
             //     })
             // }
 
+            (function (document) {
+                'use strict';
 
+                // 建立 LightTableFilter
+                var LightTableFilter = (function (Arr) {
+
+                    var _input;
+
+                    // 資料輸入事件處理函數
+                    function _onInputEvent(e) {
+                        _input = e.target;
+                        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                        Arr.forEach.call(tables, function (table) {
+                            Arr.forEach.call(table.tBodies, function (tbody) {
+                                Arr.forEach.call(tbody.rows, _filter);
+                            });
+                        });
+                    }
+
+                    // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+                    function _filter(row) {
+                        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
+
+                    return {
+                        // 初始化函數
+                        init: function () {
+                            var inputs = document.getElementsByClassName('light-table-filter');
+                            Arr.forEach.call(inputs, function (input) {
+                                input.oninput = _onInputEvent;
+                            });
+                        }
+                    };
+                })(Array.prototype);
+
+                // 網頁載入完成後，啟動 LightTableFilter
+                document.addEventListener('readystatechange', function () {
+                    if (document.readyState === 'complete') {
+                        LightTableFilter.init();
+                    }
+                });
+
+            })(document);
         </script>
 
 
