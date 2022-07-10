@@ -57,14 +57,28 @@
             height: 450px;
             margin: 150px auto;
         }
+
+        #gotop {
+            position: fixed;
+            border-radius: 50px;
+            right: 30px;
+            bottom: 30px;
+            padding: 7px 20px;
+            font-size: 25px;
+            background: rgba(255, 234, 234, 0.36);
+            color: #ffffff;
+            cursor: pointer;
+            z-index: 1000;
+        }
     </style>
 
 </head>
 
 <body class="page-container">
     <div id="preloader">
-        <div id="status"><img src="/img/home/loading2.gif" class="img-fluid"/></div>
+        <div id="status"><img src="/img/home/loading2.gif" class="img-fluid" /></div>
     </div>
+    <div id="gotop"><h1>˄</h1> </div>
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
@@ -313,19 +327,19 @@
 
         <div style="position: relative; width: 85%; margin: 50px auto;" id="thirdmargin">
             <div class="row zzz row_class">
-                <div class="col-lg-4">
+                <div class="col-lg-3" style="margin: 15px auto;">
                     <img src="/img/home/icon/ico1.png" alt="">
                     <h2>免運費</h2>
                     <p>港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。 </p>
                 </div>
 
-                <div class="col-lg-4" style="position:relative ; top: 15px;">
+                <div class="col-lg-3" style="margin: 15px auto;">
                     <img src="/img/home/icon/ico2.png" alt="">
                     <h2>運輸時效快</h2>
                     <p>港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-3" style="margin: 15px auto;">
                     <img src="/img/home/icon/ico3.png" alt="">
                     <h2>輕鬆退換貨</h2>
                     <p>自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p>
@@ -341,7 +355,7 @@
 
     </div>
 
-    
+
 </body>
 
 <script>
@@ -356,10 +370,10 @@
     console.log(window.innerWidth);
     // console.log($(window).width());
     // console.log(document.documentElement.clientWidth);
-    $("#status").delay(2000).fadeOut(1500); //delay --> 延遲幾秒才fadeOut
-        $("#preloader").delay(3000).fadeOut(1500);
+    $("#status").delay(1700).fadeOut(1300); //delay --> 延遲幾秒才fadeOut
+    $("#preloader").delay(2400).fadeOut(1300);
     $(document).ready(function () {
-        
+
         var hei = document.documentElement.clientHeight;
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
@@ -513,6 +527,9 @@
     }
     )
 
+</script>
+<script>
+    
 </script>
 
 <!-- <script src="./mousescroll.js"></script> -->
