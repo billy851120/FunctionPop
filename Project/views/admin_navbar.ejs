@@ -10,22 +10,45 @@
     <style>
         a {
             text-decoration: none !important;
+            font-size: 15px;
+        }
+
+        .fpop_span {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        * {
+            font-family: "微軟正黑體", "Microsoft JhengHei", "Segoe UI Semibold", "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif
         }
     </style>
 </head>
-<div class="fpop-sidebar  w3-bar-block " style="width: 250px;">
-    <div style="margin:20px auto ; width: 145px;">
+<div class="fpop-sidebar  w3-bar-block " style="width:250px;">
+    <div style="margin:20px auto ; width: 250px;">
         <a href="/admin/goods">
-            <img src="/img/admin/logo_white.svg" width="40px" height="40px">
-            <img class="sidebar-brand-text" src="/img/admin/logo_text_white.svg" width="100px" height="30px">
+            <img src="/img/admin/logo_white.svg" width="50px" height="50px">
+            <img class="sidebar-brand-text" src="/img/admin/logo_text_white.svg" width="150px" height="40px">
         </a>
     </div>
     <hr class="ml-3 mr-3 fpop-hr">
-    <div class="sidebar-heading ml-4 mt-4 pb-3">後台系統</div>
-    <a class="fp-item" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+    <div class="sidebar-heading ml-5 pl-4 mb-2">後台系統</div>
+    <a class="fp-item mb-2" href="/admin/goods">
+        <li>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                <path
+                    d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707L7.293 1.5Z" />
+                <path
+                    d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9.293Zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018Z" />
+            </svg>
+            <span>首頁</span>
+        </li>
+    </a>
+    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
         aria-controls="collapseExample">
         <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-clipboard-data" viewBox="0 0 16 16">
                 <path
                     d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
@@ -44,7 +67,7 @@
 
         </div>
     </div>
-    <a class="fp-item" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <li class="bi bi-bag">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
                 viewBox="0 0 16 16">
@@ -64,7 +87,7 @@
     </div>
 
 
-    <a class="fp-item" data-bs-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false"
+    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false"
         aria-controls="collapseFour">
         <li class="bi bi-person-video2">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

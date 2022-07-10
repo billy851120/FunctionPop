@@ -23,6 +23,38 @@
             margin: 5px 0;
             padding: 0 10px;
         }
+
+        label,
+        textarea {
+            font-size: .9rem;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            padding: 10px;
+            max-width: 100%;
+            line-height: 1.5;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            /* box-shadow: 1px 1px 1px #999; */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+
+
+        .ellipsis {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
     </style>
 </head>
 
@@ -38,54 +70,115 @@
                     <li class="breadcrumb-item active" aria-current="page">所有商品</li>
                 </ol>
             </nav>
-            <!-- --------------------- -->
-    
-            <!-- --------------------- -->
-            <button type="button" class=" my-btn-color my-left-radius btn btn-dark" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                新增商品
-            </button>
-            <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                data-bs-backdrop="static">
-                <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content" style="width: 500px;">
-                        <div class="modal-header">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                aria-label="Close">x</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="inputbox">
-                                <label>產品名稱*:</label>
-                                <input class="modal-inp" type="text" id="product_name" placeholder="產品名稱*"> <br>
-                                <label>敘述*:</label>
-                                <input class="modal-inp" type="text" id="product_description" placeholder="敘述*"> <br>
-                                <label>價格*：</label>
-                                <input class="modal-inp" type="text" id="product_price" placeholder="價格*"> <br>
-                                <label>類別*:</label>
-                                <select class="modal-inp" id="product_category">
-                                    <option value="上衣">上衣</option>
-                                    <option value="下著">下著</option>
-                                    <option value="鞋">鞋</option>
-                                    <option value="包">包</option>
-                                    <option value="洋裝">洋裝</option>
-                                    <option value="裙子">裙子</option>
-                                    <option value="帽子">帽子</option>
-                                </select><br>
-                                <button class="btn btn-dark" id="register">新增商品</button>
+            <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width: 600px;">
+                        <button type="button" class="btn btn-danger m-3" data-bs-dismiss="modal" style="width: 40px;"
+                            aria-label="Close">x</button>
+
+                        <div class="container-fluid" id="mainform">
+                            <div class="mx-auto text-center">
+                                <div class="panel-title">新品上架</div>
                             </div>
-                        </div>
-                        <div class="modal-footer  my-color1">
-                            <div style="float:right;">
-                                <button id="add" class="btn btn-light my-right-radius my-left-radius"
-                                    onclick="saveField()"><strong>儲存</strong> </button>
-                            </div>
+
+                            <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_all"
+                                enctype="multipart/form-data">
+                                <div>
+                                    <label class="mx-5">圖片上傳</label>
+                                    <div class="mx-5 row">
+                                        <input class="form-control col-7 mt-3" type="file" name="product_image"
+                                            onchange="readURL(this)" targetID="preview_progressbarTW_img"
+                                            accept="image/gif, image/jpeg, image/png" />
+                                        <img class="col-3 mt-3" id="preview_progressbarTW_img" src="" />
+                                    </div>
+                                    <div class="mx-5 row">
+                                        <input class="form-control col-7 mt-3" type="file" name="product_image2"
+                                            onchange="readURL1(this)" targetID1="preview_progressbarTW_img1"
+                                            accept="image/gif, image/jpeg, image/png" />
+                                        <img class="col-3 mt-3" id="preview_progressbarTW_img1" src="" />
+                                    </div>
+                                    <div class="mx-5 row">
+                                        <input class="form-control col-7 mt-3" type="file" name="product_image3"
+                                            onchange="readURL2(this)" targetID2="preview_progressbarTW_img2"
+                                            accept="image/gif, image/jpeg, image/png" />
+                                        <img class="col-3 mt-3" id="preview_progressbarTW_img2" src="" />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="mx-5">產品名稱</label>
+                                    <div class="mx-5">
+                                        <input type="text" class="form-control col-7 mt-3" name="product_name"
+                                            placeholder="產品名稱">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="product_category" class="mx-5">類別</label>
+                                    <div class="mx-5">
+                                        <select class="custom-select col-7 mt-3" name="product_category"
+                                            data-table="order-table">
+                                            <option>上衣</option>
+                                            <option>下著</option>
+                                            <option>鞋</option>
+                                            <option>包</option>
+                                            <option>洋裝</option>
+                                            <option>帽子</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="product_gender" class="mx-5">F / M</label>
+                                    <div class="mx-5">
+                                        <select class="custom-select col-7 mt-3" name="product_gender"
+                                            data-table="order-table">
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="mx-5">產品敘述</label>
+                                    <div class="mx-5">
+                                        <textarea class="col-7 mt-3" name="product_description" rows="5" cols="33"
+                                            required>輸入文字..
+                                            </textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="mx-5">產品成分</label>
+                                    <div class="mx-5">
+                                        <textarea class="col-7 mt-3" name="product_composition" rows="5" cols="33"
+                                            required>輸入文字..
+                                            </textarea>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="product_price" class="mx-5">產品價格</label>
+                                    <div class="mx-5 ">
+                                        <input type="text" class="form-control col-7 mt-3" name="product_price"
+                                            placeholder="產品價格">
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="mx-5 ">
+                                    <button id="btn-signup" type="submit" class="btn btn-info mt-5 mb-5">
+                                        <i class="icon-hand-right"></i> 送出</button>
+                                    <!-- &nbsp -->
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="input-group mb-3" style="width: 200px;">
-                <div>
-                    <button class="btn btn-outline-secondary" type="button">搜尋類別</button>
+
+            <button type="button" class=" btn btn-dark mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                新增商品
+            </button>
+            <div class="input-group mb-5" style="width: 200px;">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">搜尋類別</div>
                 </div>
                 <select class="custom-select light-table-filter " aria-label="Example select with button addon"
                     data-table="order-table">
@@ -97,75 +190,67 @@
                     <option>洋裝</option>
                 </select>
             </div>
-            <div class="col-lg mt-5">
-                <div class="card h-100">
-                    <div class="card-header">所有產品</div>
-                    <div class="card-body d-flex align-items-center">
-                        <table class="table table-hover order-table">
-                            <thead>
-                                <th class="col-1" style="vertical-align:text-top;">編號</th>
-                                <th class="col-1" style="vertical-align:text-top;">產品名稱</th>
-                                <th class="col-2" style="vertical-align:text-top;">圖片</th>
-                                <th class="col-1" style="vertical-align:text-top;">類別</th>
-                                <th class="col-2" style="vertical-align:text-top;">敘述</th>
-                                <th class="col-1" style="vertical-align:text-top;">價格</th>
-                                <th class="col-2" style="vertical-align:text-top;">上架日期</th>
-                            </thead>
-                            <tbody>
-                                <% data.forEach((item ,index)=> { %>
-                                    <tr>
-                                        <td>
-                                            <%= item.product_code %>
-                                        </td>
-                                        <td>
-                                            <%= item.product_name%>
-                                        </td>
-                                        <td>
-                                            <img style="height: 50px;" src="/img/product/<%= item.product_image %>"
-                                                alt="">
-                                            <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>"
-                                                alt="">
-                                            <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>"
-                                                alt="">
-                                            <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>"
-                                                alt="">
-                                        </td>
-                                        <td>
-                                            <%= item.product_category %>
-                                        </td>
 
-                                        <td>
-                                            <%= item.product_description %>
-                                        </td>
-                                        <td>
-                                            <%= item.product_price %> $
-                                        </td>
-                                        <td>
+            <p>總商品數量 <%= total_nums %> 件</p>
+            <div class="card h-100" style="font-size: 14px;">
+                <div class="card-header">所有產品</div>
+                <div class="card-body d-flex align-items-center">
 
-                                            <%= moment(item.product_upload).format(shortDataFormat) %>
-                                        </td>
+                    <table class="table table-hover order-table">
+                        <thead>
+                            <th class="col-1" style="vertical-align:text-top;">編號</th>
+                            <th class="col-2" style="vertical-align:text-top;">產品名稱</th>
+                            <th class="col-2" style="vertical-align:text-top;">圖片</th>
+                            <th class="col-1" style="vertical-align:text-top;">類別</th>
+                            <th class="col-3" style="vertical-align:text-top;">敘述</th>
+                            <th class="col-1" style="vertical-align:text-top;">價格</th>
+                            <th class="col-1" style="vertical-align:text-top;">上架日期</th>
+                            <th class="col-1" style="vertical-align:text-top;">庫存數量</th>
+                        </thead>
+                        <tbody>
+                            <% data2.forEach((item ,index)=> { %>
+                                <tr>
 
-                                    </tr>
-                                    <% }) %>
-                            </tbody>
-                        </table>
-                        <!-- <canvas class="chart-item"></canvas> -->
-                    </div>
+                                    <td>
+                                        <%= item.product_code %>
+                                    </td>
 
-                    <div class=" text-center">
+                                    <td>
+                                        <%= item.product_name%>
+                                    </td>
+                                    <td><img style="height: 50px;" src="/img/product/<%= item.product_image %>" alt="">
+                                        <img style="height: 50px;" src="/img/product/<%= item.product_image2 %>" alt="">
+                                        <img style="height: 50px;" src="/img/product/<%= item.product_image3 %>" alt="">
+                                        <img style="height: 50px;" src="/img/product/<%= item.product_image4 %>" alt="">
+                                    </td>
+                                    <td>
+                                        <%= item.product_category %>
+                                    </td>
+                                    <td>
+                                        <div class="box">
+                                            <p class="ellipsis">
+                                                <%= item.product_description %>
+                                            </p>
+                                        </div>
+                                        <!-- <%= item.product_description %> -->
+                                    </td>
 
-                        <a href="/admin/goods/item_all/<%= i %>"></a>
-                        <% for(var i=1; i <=last_page; i++) { %>
-                            <a href="/admin/goods/item_all/<%= i %>">
-                                <%= i %>
-                            </a>
-                            <% } %>
+                                    <td>
+                                        <%= item.product_price %> $
+                                    </td>
+                                    <td>
+                                        <%= moment(item.product_upload).format(shortDataFormat) %>
+                                    </td>
+                                    <td class="text-center">
+                                        10
+                                    </td>
 
-                                <p>會員資料共 <%= total_nums %> 筆，共 <%= curr_page %> / <%= last_page%> 頁</p>
-                    </div>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
             <script>
                 (function (document) {
                     'use strict';
@@ -212,6 +297,87 @@
 
                 })(document);
             </script>
+        </div>
+        </div>
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID = input.getAttribute("targetID");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID1 = input.getAttribute("targetID1");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID1);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var imageTagID2 = input.getAttribute("targetID2");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.getElementById(imageTagID2);
+                        img.setAttribute("src", e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            (function (document) {
+                'use strict';
+
+                // 建立 LightTableFilter
+                var LightTableFilter = (function (Arr) {
+
+                    var _input;
+
+                    // 資料輸入事件處理函數
+                    function _onInputEvent(e) {
+                        _input = e.target;
+                        var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                        Arr.forEach.call(tables, function (table) {
+                            Arr.forEach.call(table.tBodies, function (tbody) {
+                                Arr.forEach.call(tbody.rows, _filter);
+                            });
+                        });
+                    }
+
+                    // 資料篩選函數，顯示包含關鍵字的列，其餘隱藏
+                    function _filter(row) {
+                        var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
+
+                    return {
+                        // 初始化函數
+                        init: function () {
+                            var inputs = document.getElementsByClassName('light-table-filter');
+                            Arr.forEach.call(inputs, function (input) {
+                                input.oninput = _onInputEvent;
+                            });
+                        }
+                    };
+                })(Array.prototype);
+
+                // 網頁載入完成後，啟動 LightTableFilter
+                document.addEventListener('readystatechange', function () {
+                    if (document.readyState === 'complete') {
+                        LightTableFilter.init();
+                    }
+                });
+
+            })(document);
+        </script>
         </div>
         <!-- Main Content end-->
 
