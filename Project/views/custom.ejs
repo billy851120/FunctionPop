@@ -617,6 +617,7 @@
           document.getElementById('totalprice').innerText = totprice;
 
           for (let i = 0; i < 3; i++) {
+            var cart={};
             var sizee = ""
             if (arr[i] != 0) {
               if (i == 0) {
@@ -627,7 +628,8 @@
                 sizee = "L"
               }
 
-              var a = {
+              if(i=0){
+              var cart = {
                 code: '',
                 all_id: '212',
                 id: '55',
@@ -638,13 +640,39 @@
                 price: arr[i] * 450,
                 quantity: arr[i]
 
-              };
+              };}
+              if(i=1){
+              var cart = {
+                code: '',
+                all_id: '213',
+                id: '56',
+                name: '客製化T恤',
+                image: '1',
+                size: sizee,
+                color: '',
+                price: arr[i] * 450,
+                quantity: arr[i]
+
+              };}
+              if(i=2){
+              var cart = {
+                code: '',
+                all_id: '214',
+                id: '57',
+                name: '客製化T恤',
+                image: '1',
+                size: sizee,
+                color: '',
+                price: arr[i] * 450,
+                quantity: arr[i]
+
+              };}
 
 
               $.ajax({
                 url: "http://localhost:3000/home/shop_cart",
                 type: "POST",
-                data: a,
+                data: cart,
                 success: function (res) {
                   console.log("成功");
                 },
