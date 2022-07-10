@@ -13,9 +13,9 @@ var numOfPages = 5, //取得section的數量
     scrollLock = false;
 
 
-    if($("#pagethree").css("height")> document.documentElement.clientHeight){
-        numOfPages = 4;
-    }
+if ($("#pagethree").css("height") > document.documentElement.clientHeight) {
+    numOfPages = 4;
+}
 function scrollPage() {
     //滑鼠滾動
     console.log(curPage);
@@ -38,24 +38,24 @@ function scrollPage() {
 
 function pagination() {
     scrollLock = true;
-    console.log(dd.eq(parseInt(curPage/2)));
+    console.log(dd.eq(parseInt(curPage / 2)));
     if ((curPage == 0) || (curPage == 2) || (curPage == 4)) {
         $body.stop().animate({
-            scrollTop: dd.eq(parseInt(curPage/2)).offset().top
+            scrollTop: dd.eq(parseInt(curPage / 2)).offset().top
         }, 1000, 'swing', function () {
             scrollLock = false;
         });
     } else {
         $body.stop().animate({
-            scrollTop: dd.eq(parseInt(curPage/2)).offset().top + (document.documentElement.clientHeight / 2)
+            scrollTop: dd.eq(parseInt(curPage / 2)).offset().top + (document.documentElement.clientHeight / 2)
         }, 1000, 'swing', function () {
             scrollLock = false;
         });
 
     }
-    if((curPage == 2)||(curPage == 3)){
+    if ((curPage == 2) || (curPage == 3)) {
         doAnimateShow();
-    }else{
+    } else {
         doAnimateHide();
     }
 };
@@ -77,7 +77,6 @@ $(function () {
     document.getElementById("story").style.top = "-100px";
     scrollPage();
 });
-// console.log(curPage);
 
 function doAnimateShow() {
     document.getElementById("story").style.top = "15px";
@@ -85,9 +84,20 @@ function doAnimateShow() {
 
 function doAnimateHide() {
     document.getElementById("story").style.top = "-100px";
-    event.cancelBubble=true;
+    event.cancelBubble = true;
 }
 
-// document.getElementById("boxclose").onclick = doAnimateHide;
 
-// document.onclick = doAnimateShow;
+$("#gotop").click(function () {
+    jQuery("html,body").animate({
+        scrollTop: 0
+    }, 1000);
+    curPage = 0;
+});
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+        $('#gotop').fadeIn("fast");
+    } else {
+        $('#gotop').stop().fadeOut("fast");
+    }
+});
