@@ -627,7 +627,6 @@
                 sizee = "L"
               }
 
-              if(i=0){
               var a = {
                 code: '',
                 all_id: '212',
@@ -639,40 +638,13 @@
                 price: arr[i] * 450,
                 quantity: arr[i]
 
-              };}
-              if(i=1){
-              var b = {
-                code: '',
-                all_id: '212',
-                id: '55',
-                name: '客製化T恤',
-                image: '1',
-                size: sizee,
-                color: '',
-                price: arr[i] * 450,
-                quantity: arr[i]
+              };
 
-              };}
-              if(i=2){
-              var c = {
-                code: '',
-                all_id: '212',
-                id: '55',
-                name: '客製化T恤',
-                image: '1',
-                size: sizee,
-                color: '',
-                price: arr[i] * 450,
-                quantity: arr[i]
-
-              };}
 
               $.ajax({
                 url: "http://localhost:3000/home/shop_cart",
                 type: "POST",
                 data: a,
-                data: b,
-                data: c,
                 success: function (res) {
                   console.log("成功");
                 },
@@ -683,8 +655,6 @@
               })
             }
           }
-
-
 
         });
       </script>

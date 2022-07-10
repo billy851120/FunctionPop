@@ -39,11 +39,32 @@
             touch-action: none;
 
         }
+
+        #preloader {
+            /*   這是整個會蓋住畫面的底色色塊  */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0%;
+            top: 0%;
+            background-color: rgb(0, 0, 0);
+            z-index: 9999;
+
+        }
+
+        #status {
+            width: 800px;
+            height: 600px;
+            margin: 150px auto;
+        }
     </style>
 
 </head>
 
 <body class="page-container">
+    <div id="preloader">
+        <div id="status"><img src="/img/home/loading2.gif" class="img-fluid"/></div>
+    </div>
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
@@ -153,7 +174,8 @@
 
             <div class="row" style="display: flex; flex-wrap: wrap;">
 
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" id="rowtwo" style="flex-grow: 1; margin: 10px auto;">
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" id="rowtwo"
+                    style="flex-grow: 1; margin: 10px auto;">
 
                     <figure class="figure">
                         <img class="figure-img img-fluid" src="/img/home/fashion1.jpg" alt="" id="getpagetwoimg">
@@ -174,7 +196,7 @@
                     </figure>
                 </div>
 
-                <div class="col col-3 d-none d-xl-block midpic yy colyy"  style="flex-grow: 1; margin: 10px auto;">
+                <div class="col col-3 d-none d-xl-block midpic yy colyy" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
                         <img class="figure-img img-fluid" src="/img/home/redas.png" alt="" style="height: 100%;">
                         <figcaption>
@@ -185,7 +207,7 @@
                     </figure>
 
                 </div>
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy"  style="flex-grow: 1; margin: 10px auto;">
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
                         <img class="figure-img img-fluid" src="/img/home/fashion2.jpg" alt="">
                         <figcaption class="d-none d-md-block">
@@ -312,22 +334,32 @@
             </div>
         </div>
 
-        <!-- <footer class="footer">
-            <%- include("footer.ejs") %>
-        </footer>  -->
+
+        <%- include("footer.ejs") %>
+
 
 
     </div>
+
+    
 </body>
+
+<script>
+    // $(window).load(function () { // 確認整個頁面讀取完畢再將這三個div隱藏起來
+    //     $("#status").delay(5000).fadeOut(3000); //delay --> 延遲幾秒才fadeOut
+    //     $("#preloader").delay(7000).fadeOut(3000);
+    // })
+</script>
 
 <script>
     // console.log(window.screen.height);
     console.log(window.innerWidth);
     // console.log($(window).width());
     // console.log(document.documentElement.clientWidth);
-
+    $("#status").delay(2000).fadeOut(1500); //delay --> 延遲幾秒才fadeOut
+        $("#preloader").delay(3000).fadeOut(1500);
     $(document).ready(function () {
-
+        
         var hei = document.documentElement.clientHeight;
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
@@ -359,7 +391,7 @@
         }
         if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
             $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
-            $(".downpic").css("left","15px");
+            $(".downpic").css("left", "15px");
             $("#pagetwoin").css("margin-top", "120px");
         }
         else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
@@ -431,7 +463,7 @@
             }
             if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
-                $(".downpic").css("left","15px");
+                $(".downpic").css("left", "15px");
                 $("#pagetwoin").css("margin-top", "120px");
             }
             else if (window.innerWidth < 1200) {
@@ -486,6 +518,6 @@
 <!-- <script src="./mousescroll.js"></script> -->
 <script src="/js/home/scrollii.js"></script>
 <script src="/js/home/spin.js"></script>
-
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> -->
 
 </html>
