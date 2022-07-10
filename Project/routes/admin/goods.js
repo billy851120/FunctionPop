@@ -322,7 +322,14 @@ router.get('/', function (rqs, res) {
   SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());
   SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE to_days(order_date) = to_days(now());
   SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE order_date>=date_sub(curdate(),interval 7 day);
-  SELECT COUNT(*) AS COUNT FROM products_all ;`;
+  SELECT COUNT(*) AS COUNT FROM products_all ;
+  SELECT COUNT(*) AS COUNT FROM products where product_category="上衣";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="下著";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="鞋";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="包";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="洋裝";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="裙子";
+  SELECT COUNT(*) AS COUNT FROM products where product_category="帽子";`;
 
   db.exec(sql, [], function (results, fields) {
     res.render('admin_index', {
@@ -330,6 +337,13 @@ router.get('/', function (rqs, res) {
       order_today: results[1][0].COUNT,
       sale_today: results[2][0].COUNT,
       sale_7today: results[3][0].COUNT,
+      clothes: results[5][0].COUNT,
+      down: results[6][0].COUNT,
+      shoe: results[7][0].COUNT,
+      bag: results[8][0].COUNT,
+      dress: results[9][0].COUNT,
+      skirt: results[10][0].COUNT,
+      hat: results[11][0].COUNT,
     });
   })
 })
@@ -488,9 +502,9 @@ router.get('/member', function (rqs, res) {
 
 
 
-// router.get('/item_shelf', function (rqs, res) {
-//   res.render('admin_item_shelf', {})
-// })
+router.get('/item_shelf', function (rqs, res) {
+  res.render('admin_item_shelf', {})
+})
 // router.post("/item_shelf", function (rqs, res) {
 //   var body = rqs.body; //    監聽資料庫寫入返回的引數
 //   emitter.on("ok", function () {
