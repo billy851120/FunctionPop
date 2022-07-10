@@ -77,6 +77,34 @@ router.post('/item_del/update', function (rqs, res) {
     });
   }
 })
+router.post('/item_all/delete', function (rqs, res) {
+  var body = rqs.body
+  var sql = `DELETE FROM products WHERE product_id = ?;`
+  var data = [body.id]
+  db.exec(sql, data, function (results, fields) {
+  
+    if (results.affectedRows) {
+      res.end(
+        JSON.stringify(new Success('delete success'))
+      )
+    } else {
+      res.end(
+        JSON.stringify(new Error('delete failed'))
+      )
+    }
+  })
+})
+function DELETE(id) {
+  const sql = `DELETE FROM products WHERE product_id = ?;`;
+  const data = [parseInt(body.id)];
+  db.exec(sql, data, function (results, fields) {
+    if (results.affectedRows) {
+      console.log(JSON.stringify(new Success('delete success')));
+    } else {
+      console.log(JSON.stringify(new Error('delete failed')));
+    }
+  });
+}
 
 
 
@@ -90,13 +118,12 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(express.static(path.join(__dirname, 'public')));
 router.use(fileUpload());
 
+// router.get('/item_all', function (rqs, res) {
+//   res.render('admin_item_all');
+
+// });
+
 router.get('/item_all', function (rqs, res) {
-  res.render('admin_item_all');
-  res.redirect('/admin/goods/item_all/1');//把<=0的id強制改成1
-});
-
-router.get('/item_all/:page([0-9]+)', function (rqs, res) {
-
   var sql = `
   SELECT COUNT(*) AS COUNT FROM products;
   SELECT * FROM products ORDER BY products.product_upload DESC;`;
@@ -105,7 +132,6 @@ router.get('/item_all/:page([0-9]+)', function (rqs, res) {
       total: data[0][0].COUNT,
       data2: data[1]
     })
-    // })
   })
 })
 
