@@ -11713,7 +11713,7 @@ span .psw {
 
 .fpop-sidebar {
   height: 100%;
-  width: 200px;
+  width: 250px;
   background-color: rgb(225, 184, 0);
   position: fixed !important;
   z-index: 1;
@@ -11798,7 +11798,7 @@ body {
           box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 255, 255);
   padding: 15px;
-  height: 80px;
+  height: 90px;
   margin-left: 200px;
 }
 
@@ -11823,7 +11823,7 @@ body {
 }
 
 .fpop-main {
-  margin-left: 300px;
+  margin-left: 250px;
 }
 
 .fp-item > li > span {
@@ -14764,7 +14764,7 @@ span.psw {
 
 .fpop-sidebar {
   height: 100%;
-  width: 200px;
+  width: 250px;
   background-color: rgb(225, 184, 0);
   position: fixed !important;
   z-index: 1;
@@ -14849,8 +14849,8 @@ body {
           box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 255, 255);
   padding: 15px;
-  height: 80px;
-  margin-left: 300px;
+  height: 90px;
+  margin-left: 250px;
 }
 
 .fpop-item:hover {
@@ -14874,7 +14874,7 @@ body {
 }
 
 .fpop-main {
-  margin-left: 300px;
+  margin-left: 250px;
 }
 
 .fp-item > li > span {

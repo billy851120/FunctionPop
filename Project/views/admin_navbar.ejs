@@ -13,26 +13,22 @@
             font-size: 15px;
         }
 
-        .fpop_span {
+        .fp-item > li >span {
+            font-weight: 500;
             font-size: 16px;
-            font-weight: 700;
-        }
-
-        * {
-            font-family: "微軟正黑體", "Microsoft JhengHei", "Segoe UI Semibold", "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif
         }
     </style>
 </head>
-<div class="fpop-sidebar  w3-bar-block " style="width:250px;">
-    <div style="margin:20px auto ; width: 250px;">
+<div class="fpop-sidebar" style="width:250px;">
+    <div style="width: 230px;" class="m-2 p-2">
         <a href="/admin/goods">
             <img src="/img/admin/logo_white.svg" width="50px" height="50px">
             <img class="sidebar-brand-text" src="/img/admin/logo_text_white.svg" width="150px" height="40px">
         </a>
     </div>
     <hr class="ml-3 mr-3 fpop-hr">
-    <div class="sidebar-heading ml-5 pl-4 mb-2">後台系統</div>
-    <a class="fp-item mb-2" href="/admin/goods">
+    <div class="sidebar-heading ml-5 pl-4 mb-4">後台系統</div>
+    <a class="fp-item mb-4" href="/admin/goods">
         <li>
 
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -42,55 +38,51 @@
                 <path
                     d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9.293Zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018Z" />
             </svg>
-            <span>首頁</span>
+            <span >首頁</span>
         </li>
     </a>
-    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+    <a class="fp-item mb-4" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
         aria-controls="collapseExample">
         <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
                 <path
-                    d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                    d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
                 <path
-                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path
-                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" />
             </svg>
             <span>訂單管理</span>
         </li>
     </a>
-    <div class="collapse show" id="collapseExample">
+    <div class="collapse " id="collapseExample">
         <div class="bg-white fpop-inner rounded">
             <p class="fpop-header">訂單 :</p>
             <a href="/admin/goods/orderMgat_num" class="fpop-item">訂單編號</a>
 
         </div>
     </div>
-    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+    <a class="fp-item mb-4" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+        aria-controls="collapseTwo">
         <li class="bi bi-bag">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+              </svg>
             <span>商品管理</span>
         </li>
     </a>
-    <div class="collapse show" id="collapseTwo">
+    <div class="collapse " id="collapseTwo">
         <div class="bg-white fpop-inner rounded">
             <p class="fpop-header">商品 :</p>
             <a href="/admin/goods/item_all" class="fpop-item">所有商品</a>
-            <a href="/admin/goods/item_shelf" class="fpop-item">上架商品</a>
             <a href="/admin/goods/item_del" class="fpop-item">本週新品</a>
         </div>
     </div>
 
 
-    <a class="fp-item mb-2" data-bs-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false"
+    <a class="fp-item mb-4" data-bs-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false"
         aria-controls="collapseFour">
         <li class="bi bi-person-video2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-person-video2" viewBox="0 0 16 16">
                 <path d="M10 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
                 <path
@@ -99,14 +91,21 @@
             <span>會員管理</span>
         </li>
     </a>
-
-    <div class="collapse show" id="collapseFour">
+    <div class="collapse " id="collapseFour">
         <div class="bg-white fpop-inner rounded">
             <p class="fpop-header">會員 :</p>
             <a href="/admin/goods/member" class="fpop-item">會員資料</a>
         </div>
     </div>
-    <hr class="ml-3 mr-3 fpop-hr">
+    <a class="fp-item mb-4" href="/admin/goods/item_shelf">
+        <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+              </svg>
+            <span>資料分析</span>
+        </li>
+    </a>
+    <hr class="mx-5 fpop-hr">
 
     <link rel="stylesheet" href="/fpop_js/sb-admin-2.min.js">
 
@@ -115,13 +114,13 @@
 <!-- Left sidebar end-->
 
 <!-- navbar -->
+<!-- navbar-top -->
 <div style="margin-left: 250px;">
-    <!-- navbar-top -->
     <nav class=" fpop-navbar row" style=" margin-right: 0px;margin-left: 0px;">
         <!-- search -->
-        <form class="d-none d-sm-inline-block navbar-search">
-            <div class="input-group">
-                <input type="text" class="form-control bg-light border-1" placeholder="搜尋" aria-label="Search"
+        <form class="d-none d-sm-inline-block navbar-search ">
+            <div class="input-group mt-1">
+                <input type="text" class="form-control bg-light border-1 " placeholder="搜尋" aria-label="Search"
                     style="height: 45px;">
                 <div class="input-group-append">
                     <button class="btn btn-warning" style="height: 45px;width: 45px;">
@@ -138,16 +137,32 @@
 
         <!-- userDropdown -->
         <div class="dropdown  ml-auto mt-3">
-            <a class=" dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                管理員<i class="bi bi-person-fill" style="color: #ffc107">
+            <a href="#">
+                <i class="bi bi-person-fill" style="color: #ffc107"><svg xmlns="http://www.w3.org/2000/svg" width="22"
+                        height="22" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                    </svg>
+                </i>
+            </a>
+            <a href="#" class="ml-4">
+                <i class="bi bi-person-fill" style="color: #ffc107"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                        height="25" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                    </svg>
+                </i>
+            </a>
+            <a class="dropdown-toggle text-secondary ml-3" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: 600;">
+                <i class="bi bi-person-fill" style="color: #ffc107">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                         class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     </svg>
-                </i>
+                </i> Function Pop
             </a>
-            <ul class="dropdown-menu mt-4" aria-labelledby="dropdownMenuLink">
+            <ul class="dropdown-menu mt-4 " aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="/admin/goods/login"><svg xmlns="http://www.w3.org/2000/svg"
                             width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right"
                             viewBox="0 0 16 16">
