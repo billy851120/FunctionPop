@@ -16,7 +16,8 @@ function redirectBack(req, res, next) {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(session({ secret: 'secret' }));
-function getUrl(req, res, next) {  // 登入後返回前頁
+function getUrl(req, res, next) {
+  // 登入後返回前頁
   var url = req.originalUrl;
   req.session.url = null;
   req.session.url = url;
@@ -27,7 +28,6 @@ function getUrl(req, res, next) {  // 登入後返回前頁
 
 router.get('/', getUrl, shop_cartController.shop_cart);
 router.post('/', getUrl, shop_cartController.updateCart);
-
 
 router.post('/q_add', shop_cartController.productAdd);
 router.post('/q_sub', shop_cartController.productSub);
