@@ -173,7 +173,7 @@
         }
 
         .rating progress.rating-bg::-webkit-progress-value {
-        background-color: rgb(249, 124, 124);
+        background-color: rgb(239, 218, 28);
         }
 
         .rating progress.rating-bg::-moz-progress-bar {
@@ -343,9 +343,10 @@
         <button class="js-back-to-top back-to-top" title="回到最上側">&#65085;</button>
 
         <!-- 3. banner -->
-        <div class="container">
+
+        <div class="container mt-4 pt-5">
             <%- include("template/loginbar.ejs") %>
-            <section id="banner" class="my-0 py-0 w-100 mx-auto">
+            <section id="banner" class="my-0 py-0 w-100 mx-auto mt-2">
                 <div class="container">
                     
                     <h4> <img src="/img/Logo/logo_text_white.svg" alt="" width="180px"> 週年慶</h4>
@@ -354,7 +355,8 @@
                             <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>
                         </svg>
                     </h1>
-                    <h3 style="color: rgb(255, 255, 255);">Up to 30% OFF</h2>
+                    <h5 style="color: rgb(255, 255, 255);">Free Shipping $999 up</h2>
+                        <br>
                     <Button class=" my_button">Log In</Button>
                 </div>
             </section>
@@ -509,7 +511,7 @@
                                     </button>
                                 </span>
 
-                                <hr class="mx-auto w-100" style="background-color: rgb(27, 116, 164); height: 2px;">
+                                <hr class="mx-auto w-100" style="background-color: gray; height: 2px;">
 
                             <div class="row mx-auto container">
 
@@ -518,22 +520,28 @@
                                 <% result.forEach(function(item) { %>
                                 
 
-                                <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-sm-12 align-items-center justify-content-center">
+                                <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-6 align-items-center justify-content-center">
                                     
                                     <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt="">
                                     <div>
                                         <svg style="display:none;" class="star5" width="20" height="20">
                                             <defs class="star5 mx-auto d-flex justify-content-center">
                                             <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
+                                                <!-- <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
                                                 <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
                                                 <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
                                                 <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
+                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/> -->
+
+                                                <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
+                                                <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
+                                                <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
+                                                <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
+                                                <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
                                             </symbol>
                                             </defs>
                                         </svg>
-                                        <div class="rating mx-auto" title="<%= item.product_rating %> / 5">
+                                        <div class="rating mx-auto">
                                           
                                             <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
                                             <svg width="20" height="20"><use xlink:href="#fivestars"/></svg>
@@ -542,10 +550,10 @@
                                     <br>
                                     <h5 style="font-size: 15px;"><%= item.product_name %></h5>
                                     
-                                      
 
+                                        <p>$ <%= item.product_price %></p> 
 
-                                    <% if(item.product_special_offer){ %>
+                                    <!-- <% if(item.product_special_offer){ %>
 
                                         <span>$<strong style="color: red;"> <%= item.product_special_offer %></strong></span>
                                         <span style="text-decoration: line-through;">$<strong><%= item.product_price %></strong> </span>
@@ -553,7 +561,7 @@
                                     <% }else{ %>
                                         <p>$<strong><%= item.product_price %></strong> </p>
 
-                                    <% } %>
+                                    <% } %> -->
                                     
 
 
@@ -620,11 +628,14 @@
             <p>Click the button to sort the list alphabetically:</p>
             <button onclick="sortList()">Sort</button>
             <span id="filterQ">
-                <% result.forEach(function(item){ %>
+
+                
                 <ul>
-                    <li><%- item.product_price %></li>
+                    <% result.forEach(function(item){ %>
+                    <li><%- item.product_price %></li>>
+                    <% }) %>
                 </ul>
-                <% }) %>
+
             </span>
 
         </section>
@@ -641,10 +652,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/myJs.js"></script>
-    <script src="js/product/myJs.js"></script>
-    <script src="js/product/jquery.min.js"></script>
+    <!-- <script src="./assets/js/jquery.min.js"></script> -->
+    <!-- <script src="./assets/js/myJs.js"></script> -->
+    <!-- <script src="js/product/myJs.js"></script> -->
+    <!-- <script src="js/product/jquery.min.js"></script> -->
 
     <script>
         
@@ -770,8 +781,8 @@ for (var i = 0; i < btns.length; i++) {
                     // $(this).addClass("col-lg-4");
                     // $(this).removeClass("col-lg-3");
                     // console.log(this.classList);
-                    $(ele).addClass("col-lg-4");
-                    $(ele).removeClass("col-lg-3");
+                    $(ele).addClass("col-lg-4 col-12");
+                    $(ele).removeClass("col-lg-3 col-6");
                     console.log(ele);
                 })
             });
@@ -780,8 +791,8 @@ for (var i = 0; i < btns.length; i++) {
                     // $(this).addClass("col-lg-4");
                     // $(this).removeClass("col-lg-3");
                     // console.log(this.classList);
-                    $(ele).addClass("col-lg-3");
-                    $(ele).removeClass("col-lg-4");
+                    $(ele).addClass("col-lg-3 col-6");
+                    $(ele).removeClass("col-lg-4 col-12");
                     console.log(ele);
                 })
             });
@@ -813,23 +824,27 @@ for (var i = 0; i < btns.length; i++) {
     </script>
 
 
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
     <script>
-        $(function () {
-            var $win = $(window);
-            var $backToTop = $('.js-back-to-top');
-
-            $win.scroll(function () {
-                if ($win.scrollTop() > 100) {
-                    $backToTop.show();
-                } else {
-                    $backToTop.hide();
-                }
-            });
-            $backToTop.click(function () {
-                $('html, body').animate({scrollTop: 0 }, 3000);
-            });
+        $(function() {
+        var $win = $(window);
+        var $backToTop = $('.js-back-to-top');
+        // 当用户滚动到离顶部100像素时，展示回到顶部按钮
+        $win.scroll(function() {
+            if ($win.scrollTop() > 100) {
+            $backToTop.show();
+            } else {
+            $backToTop.hide();
+            }
         });
-    </script>
+        // 当用户点击按钮时，通过动画效果返回头部
+        $backToTop.click(function() {
+            $('html, body').animate({
+            scrollTop: 0
+            }, 200);
+        });
+        });
+    </script> 
 
 
     <!-- Test Sort -->
