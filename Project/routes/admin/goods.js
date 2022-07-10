@@ -14,14 +14,16 @@ router.use((req, res, next) => {
   res.locals.shortDataFormat = shortDataFormat;
   next();
 });
-//-----------------編輯新品---------------------
+
+
+
+
+//-----------------編輯新品* /item_del ---------------------
 router.get('/item_del/detail/:id([0-9]+)', function (rqs, res) {
   var sql = `SELECT * FROM products WHERE product_id = ?;`
   var data = [rqs.params.id]
   db.exec(sql, data, function (results, fields) {
-    console.log("ok")
     if (results[0]) {
-      console.log("ok1")
       res.end(
         JSON.stringify(new Success(results[0]))
       )
@@ -34,7 +36,7 @@ router.get('/item_del/detail/:id([0-9]+)', function (rqs, res) {
 })
 router.get('/item_del', function (req, res) {
   var message = '';
-  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_update`);";
+  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`);";
   db.exec(sql, function (err, result) {
     if (result.length <= 0)
       message = "Profile not found!";
@@ -51,42 +53,35 @@ router.post('/item_del/update', function (rqs, res) {
   var sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? , product_price = ? WHERE product_id = ?;`;
   var data = [body.product_name, body.product_category, body.product_description, body.product_price, body.id]
   db.exec(sql, data, function (results, fields) {
-    console.log("results222")
-    console.log(results)
     if (results.affectedRows) {
-      console.log("results affectedRows")
-      console.log(results.affectedRows)
       res.end(
         JSON.stringify(new Success('update success'))
-        )
-      } else {
-      console.log("results5757")
-      console.log(results)
+      )
+    } else {
       res.end(
         JSON.stringify(new Error('update failed'))
       )
     }
   })
+  function UPDATE(product_name, product_category, product_description, product_price, id) {
+    const sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? ,product_price = ? WHERE product_id = ?;`;
+    const data = [product_name, product_category, product_description, product_price, parseInt(body.id)];
+    db.exec(sql, data, function (results, fields) {
+      console.log("results1")
+      console.log(results)
+      if (results.affectedRows) {
+        console.log(JSON.stringify(new Success('update success')));
+      } else {
+        console.log(JSON.stringify(new Error('update failed')));
+      }
+    });
+  }
 })
 
-function UPDATE(product_name, product_category, product_description, product_price, id) {
-  const sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? ,product_price = ? WHERE product_id = ?;`;
-  const data = [product_name, product_category, product_description, product_price, parseInt(body.id)];
-  db.exec(sql, data, function (results, fields) {
-    console.log("results1")
-    console.log(results)
-    if (results.affectedRows) {
-      console.log(JSON.stringify(new Success('update success')));
-    } else {
-      console.log(JSON.stringify(new Error('update failed')));
-    }
-  });
-}
-
-//-----------------編輯新品---------------------
 
 
-//-----------------新增商品---------------------
+
+//-----------------新增商品* /item_all---------------------
 
 
 var path = require('path');
@@ -106,32 +101,29 @@ router.get('/item_all/:page([0-9]+)', function (rqs, res) {
   SELECT COUNT(*) AS COUNT FROM products;
   SELECT * FROM products ORDER BY products.product_upload DESC;`;
   db.exec(sql, [], function (data, fields) {
-      res.render('admin_item_all', {
-        total : data[0][0].COUNT,
-        data2 : data[1]
-      })
+    res.render('admin_item_all', {
+      total: data[0][0].COUNT,
+      data2: data[1]
+    })
     // })
   })
 })
 
 
 router.post('/item_all', function (req, res) {
-  console.log("ok")
-  // message = '';
   if (req.method == "POST") {
     var post = req.body,
-     name = post.product_name,
-     category = post.product_category,
-     gender = post.product_gender,
-     description = post.product_description,
-     composition = post.product_composition,
-     price = post.product_price,
-     code = post.product_code;
-    
+      name = post.product_name,
+      category = post.product_category,
+      gender = post.product_gender,
+      description = post.product_description,
+      composition = post.product_composition,
+      price = post.product_price,
+      code = post.product_code;
+
 
     if (!req.files) {
-      console.log("ok1")
-      return res.status(400).send('No files were uploaded.');
+      return res.send('請上傳圖片');
     }
     var file = req.files.product_image;
     var img_name = file.name;
@@ -155,8 +147,8 @@ router.post('/item_all', function (req, res) {
         });
       })
     } else {
-      message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-      res.render('/admin/goods/item_all', { message: "上傳成功" });
+      message = "'檔案格式錯誤,請上傳'.png','.gif','.jpg'";
+      res.render('/admin/goods/item_all', { message : message });
     }
   } else {
 

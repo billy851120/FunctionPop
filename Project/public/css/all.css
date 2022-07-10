@@ -10874,14 +10874,10 @@ span .psw {
 .fpop-sidebar {
   height: 100%;
   width: 250px;
-<<<<<<< HEAD
-  background-color: #e1b800;
-=======
   background-color: rgb(225, 184, 0);
->>>>>>> bdbc4e17e09ed0bc07f4b752a4fed03bf5ebe3c4
   position: fixed !important;
   z-index: 1;
-  overflow: auto;
+  overflow: auto
 }
 
 .sidebar-heading {
@@ -13885,16 +13881,11 @@ span.psw {
 .fpop-sidebar {
   height: 100%;
   width: 250px;
-<<<<<<< HEAD
-  background-color: #e1b800;
-=======
   background-color: rgb(225, 184, 0);
->>>>>>> bdbc4e17e09ed0bc07f4b752a4fed03bf5ebe3c4
   position: fixed !important;
   z-index: 1;
-  overflow: auto;
+  overflow: auto
 }
-
 .sidebar-heading {
   font-weight: 600;
   font-size: 13px;
