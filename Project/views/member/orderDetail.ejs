@@ -19,7 +19,7 @@
     <style>
         .subTitle{
             background-color: #FBEAAD;
-            border-radius: 5px;
+
         }
     </style>
 </head>
@@ -32,41 +32,46 @@
         <%- include("../template/loginbar") %>
         
             <!-- 左邊選單列 -->
-            <div class="row mt-4">
-                <div class="col-12 col-lg-2 text-center mb-4 ">
-                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData"
+            <div class="row mt-4 ">
+                <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
+                    <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
                             class="nav-link text-dark memberData d-inline d-lg-block">個人資料</a></p>
-                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/orderList"
-                            class="nav-link text-dark font-weight-bold  d-inline d-lg-block">訂單&退貨</a></p>
-                    <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite"
-                            class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
+                    <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
+                            class="nav-link text-dark font-weight-bold d-inline d-lg-block">訂單&退貨</a></p>
+                    <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
+                            class="nav-link text-dark  orderList myFavourite d-inline d-lg-block">我的最愛</a>
+                    </p>
                 </div>
                 <!-- 右邊資訊欄 -->
                 <% if(memberprofile) { %> 
-                <div class="col-12 col-lg-10 row-box p-3 mb-5">
+                <div class="col-12 col-lg-10 p-3 mb-5">
                     <div class="row mb-4">
                         <a href="/home/member/memberData" class="col-12 text-center p-2 title_1">
-                            <h4>訂單資訊</h4>
+                            <p>訂單資訊</p>
                         </a>
                     </div>
 
-                    <p>訂單編號：TW8000201170592 <span
+                    <p class="mx-1">訂單編號：TW8000201170592 <span
                             class="px-3 py-1 ml-2 border border-success text-success rounded">完成</span></p>
-                    <p>訂單日期：2022/4/1 10:08</p>
-                    <p class="p-3 subTitle font-weight-bold">商品明細</p>
+                    <p class="mx-1">訂單日期：2022/4/1 10:08</p>
+                    <p class="p-3 mx-1 subTitle font-weight-bold b_radius">商品明細</p>
                     <hr>
-                    <div class="row row-cols-4 ">
-                        <div class="col">商品名稱</div>
-                        <div class="col">金額</div>
-                        <div class="col">數量</div>
-                        <div class="col">小計</div>
+                    <div class="row mx-1">
+                        <div class="col-4">商品名稱</div>
+                        <div class="col-3">金額</div>
+                        <div class="col-2">數量</div>
+                        <div class="col-3">小計</div>
                     </div>
                     <hr>
                     <div class="row row-cols-4 py-3">
-                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
-                        <div class="col">NT$891.00</div>
-                        <div class="col">數量: 1</div>
-                        <div class="col">NT$891.00</div>
+                        <div class="col-4">
+                           <p>Micah 草編真皮厚底涼鞋</p> 
+                            <p>石灰白 36碼</p>
+                            
+                    </div>
+                        <div class="col-3">NT$891.00</div>
+                        <div class="col-2">數量: 1</div>
+                        <div class="col-3">NT$891.00</div>
                     </div>
                     <div class="row row-cols-4 py-3">
                         <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
@@ -80,7 +85,7 @@
                         <div class="col">數量: 1</div>
                         <div class="col">NT$891.00</div>
                     </div>
-                    <p class="p-3 subTitle font-weight-bold">商品總結</p>
+                    <p class="p-3 subTitle font-weight-bold b_radius">商品總結</p>
                     <div class="row">
                         <div class="col-2 py-2">商品數量：</div>
                         <div class="col-10 py-2">3件商品</div>

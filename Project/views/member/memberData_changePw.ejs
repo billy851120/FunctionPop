@@ -7,69 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%- title %></title>
     <link rel="stylesheet" href="/css/all.css">
+    <link rel="stylesheet" href="/js/member/member.css">
     <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
     <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
     <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+   <!-- <script src="/js/member/LeftNavBar.js"></script> -->
    <style>
-         .row-box{
-            background-color: rgb(249, 249, 249);
-            border-radius: 30px;
-            box-shadow: 12px 12px 22px rgb(225, 225, 225);
-        }
-        .personalfile{
-            /* background-color: black; */
-            color: grey;
-        }
-        .personalfile:hover{
-            text-decoration: none;
-            color: black;
-        }
-        .changepw{
-            color:black;
-            border-bottom:5px solid #FFE200;
-            border-radius: 4px;
-        }
-        .changepw:hover{
-            text-decoration: none;
-            color: black;
-        }
-
-        .myprofile{
-            border-left: 5px solid black;
-        }
-        .btn_save{
-            height: 40px;
-            width: 20%;
-            border: none;
-            outline: none;
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-        }
-        .btn_save:hover{
-            background-color: #FFE200;
-            color: black;
-            border: 1px solid;
-            border: none;
-        }
-       .btn_cancel{
-            height: 40px;
-            width: 20%;
-            border: none;
-            outline: none;
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-       }
-       .btn_cancel:hover{
-            background-color: #FFE200;
-            color: black;
-            border: 1px solid;
-            border: none;
-        }
-
+    
     </style>
 </head>
 
@@ -80,24 +26,28 @@
                 <%- include("../template/loginbar") %>
         
                 <!-- 左邊選單列 -->
-                <div class="row mt-4">
-                  <div class="col-12 col-lg-2 text-center mb-4">
-                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/memberData" class="nav-link text-dark font-weight-bold memberData d-inline d-lg-block">個人資料</a></p>
-                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline" ><a href="/home/member/orderList" class="nav-link text-dark d-inline d-lg-block">訂單&退貨</a></p>
-                      <p class="mb-3 col-4 col-lg-12 d-lg-block d-inline"><a href="/home/member/myFavourite" class="nav-link text-dark orderList myFavourite d-inline d-lg-block">我的最愛</a></p>
-                  </div> 
-                    
+                <div class="row mt-4 ">
+                  <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
+                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
+                              class="nav-link text-dark font-weight-bold memberData d-inline d-lg-block">個人資料</a></p>
+                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
+                              class="nav-link text-dark d-inline d-lg-block">訂單&退貨</a></p>
+                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
+                              class="nav-link text-dark  orderList myFavourite d-inline d-lg-block">我的最愛</a>
+                      </p>
+                  </div>
+
                     <!-- 右邊資訊欄 -->
                     <% if(memberprofile) { %> 
-                      <div class="col-12 col-lg-10 row-box p-3 mb-5">
-                        <div class="row">
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 personalfile"><h4>個人資料</h4></a>
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 changepw"><h4>變更密碼</h4></a>
+                      <div class="col-12 col-lg-10 p-3 ">
+                        <div class="row mb-4">
+                            <a href="/home/member/memberData" class="col-6 text-center p-2 title_2"><p>個人資料</p></a>
+                            <a href="/home/member/memberData" class="col-6 text-center p-2 title_1"><p>變更密碼</p></a>
                          </div>
                         
-                        <p class="p-2 mt-4 myprofile" style="font-weight:700">修改密碼：</p>
+                        <p class="p-2 mt-4 title_3 mx-1" style="font-weight:700">修改密碼：</p>
 
-                         <form action="/home/member/memberData_changePw" method="POST" class="row p-3">
+                         <form action="/home/member/memberData_changePw" method="POST" class="row p-2 mx-1">
                             <div class="row offset-1 col-11 ">
                             <% if (errorMessage.length > 0) { %>
                                 <div class="alert alert-danger col-7 mt-3 p-3" role="alert">
@@ -105,24 +55,22 @@
                                 </div>
                                 <% } %>
                             </div>
-                            <div class="col-2 my-3 text-right ">請輸入舊密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberoldPw" name="oldpw" class="form-control form-control-sm col-7" placeholder="請輸入舊密碼" value=""></div>
-                            <div class="col-2 my-3 text-right">輸入新密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberNewPw" name="newpw" class="form-control form-control-sm col-7" placeholder="請輸入新密碼" value="">  </div>
-                            <div class="col-2 my-3 text-right">再次輸入新密碼</div><div class="col-10 my-3 text-left"><input type="text" id="memberNewPwAgain" name="newpwAgain" class="form-control form-control-sm col-7" placeholder="請再次輸入新密碼" value="">  </div>
+                            <div class="col-sm-3 col-6 my-3 text-right ">請輸入舊密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="text" id="memberoldPw" name="oldpw" class="form-control form-control-sm col-sm-7" placeholder="請輸入舊密碼" value=""></div>
+                            <div class="col-sm-3 col-6 my-3 text-right">輸入新密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="text" id="memberNewPw" name="newpw" class="form-control form-control-sm col-sm-7" placeholder="請輸入新密碼" value="">  </div>
+                            <div class="col-sm-3 col-6 my-3 text-right">再次輸入新密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="text" id="memberNewPwAgain" name="newpwAgain" class="form-control form-control-sm col-sm-7" placeholder="請再次輸入新密碼" value="">  </div>
                            
-                            <!-- <div class="col-6 my-3 text-right"> <a class="btn btn-outline-dark" href="/home/member/memberData_edit">取消</a></div> -->
-                            <div class="col-6 my-3 text-right"> <a href="/home/member/memberData" id="changeCancel" class="btn btn_cancel" type="button">取消</a></div>
+                            <div class="col-6 my-3 text-right"> <a href="/home/member/memberData" id="changeCancel" class="btn_cancel" type="button">取消</a></div>
                             <script>
                               changeCancel.onclick = function(){
                                 
                             }
                             </script>
-                            <!-- <div class="col-6 my-3 text-left"> <button class="btn_save" type="submit">儲存</button></div> -->
 
-                            <div class="col-6 my-3 text-left"> <button type="button" class="btn_save" data-toggle="modal" data-target="#staticBackdrop">儲存</button></div>
+                            <div class="col-6 my-3 text-left"> <button type="button" class="btn_GO"  data-toggle="modal" data-target="#staticBackdrop">儲存</button></div>
               
                              <!-- Modal -->
                              
-                             <div class="modal fade " id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                             <div class="modal fade" style="z-index: 50001;" id="staticBackdrop"data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                <div class="modal-dialog">
                                  <div class="modal-content">
                                    <div class="modal-header">
@@ -135,8 +83,8 @@
                                     確定要變更密碼嗎？
                                    </div>
                                    <div class="modal-footer">
-                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                     <button type="submit" class="btn_save">確定</button>
+                                     <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
+                                     <button type="submit" class="btn_GO">確定</button>
                                    </div>
                                  </div>
                                </div>

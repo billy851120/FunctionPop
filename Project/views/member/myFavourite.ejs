@@ -27,13 +27,8 @@
     .product_desc{
         overflow :hidden;
          display: -webkit-box;
-        -webkit-line-clamp: 5; 
+        -webkit-line-clamp: 3; 
         -webkit-box-orient: vertical;
-    }
-    .follow_content{
-            /* border-radius: 5px;
-            box-shadow: 6px 6px 12px  rgb(226, 226, 226); */
-
     }
     .b_radius{
         border-radius: 8px;
@@ -55,7 +50,7 @@
 </head>
 
 <body>
-
+   
     <!-- content -->
      <%- include("../navbar.ejs") %> 
 
@@ -77,6 +72,7 @@
 
                     <!-- 右邊內容：我的最愛 -->
                     <% if(memberprofile) { %>
+                        
                         <div class="col-12 col-lg-10 p-3">
                             <div class="row">
                                 <div class="col-12 p-2 text-center title_1">
@@ -132,7 +128,52 @@
                                             <p class="d-lg-none mt-auto" style="color:red ;">$<%- todos[i].product_price %></p> 
                                  </div>
                                  <div class="col-12 col-lg-2 mb-2">
-                                    <a href="#" class="btn_GO d-block w-100 b_radius">移至購物車</a>
+                                    <!-- <button type="submit" id="addToCart" class="btn_GO px-1 d-block w-100 b_radius">移至購物車</button> -->
+                                    <button type="button" id="addToCart_<%- todos[i].product_id %>" class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose" onclick="addtoCart(this)">移至購物車</button>
+                                    <div class="modal fade" style="z-index: 50001;" id="choose"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="chooseLabel">請選擇尺寸及顏色</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                     <div class="col-6 border">尺寸：<br>
+                                                          <input type="radio" name="size" value="S">
+                                                          <label for="size_S" class="mr-2">S</label>
+                                                          
+                                                          <input type="radio" name="size" value="M">
+                                                          <label for="size_M"class="mr-2">M</label>
+                                                          
+                                                          <input type="radio" name="size" value="L">
+                                                          <label for="size_L"class="mr-2">L</label>
+                                                      </div>
+                                                      <div class="col-6">
+                                                         顏色：<br>
+                                                      
+                                                         <input type="radio" name="color" value="BK">
+                                                         <label for="c_black"class="mr-2">黑色</label>
+                                                  
+                                                         <input type="radio" name="color" value="WH">
+                                                         <label for="c_black"class="mr-2">白色</label>
+                                                      </div>
+                                                      <!-- <div class="col-12 text-center">
+                                                         <button id="get">test</button>
+                                                      </div> -->
+                                                </div>
+                                            </div>                                              
+                                                
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
+                                              <button type="submit" class="btn_GO" id="sendToCart" action="/home/member/myFavourite">確定</button>
+                                              <!-- <button  class="btn_GO" id="get" >確定</button> -->
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 </div >
                                      <% var memid =0; %>
                                       <% if(memberprofile != null){ %>
@@ -146,7 +187,23 @@
                                                  d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                          </svg>
                                      </button>
-                                    
+                                     <script>
+                                        function addtoCart(obj){
+                                            console.log(obj.id);
+                                        }
+                                        sendToCart.onclick=function(){
+                                            console.log($('input[name="size"]:checked').val());
+                                            console.log($('input[name="color"]:checked').val());
+                                        }
+                                    $.ajax({
+                                        url:"http://localhost:3000/home/member/myFavourite",
+                                        type:"post",
+                                        data:{
+                                            size:$("#size").val()
+                                        },
+
+                                    })
+                                </script>
                             </div>  <!-- row -->
                             
                             <%}%>

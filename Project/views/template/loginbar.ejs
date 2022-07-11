@@ -1,6 +1,6 @@
 
 
-    <div class="row">   
+    <div class="row my-2 px-3 px-sm-0">   
         <% if (memberprofile) { %>
             <div class="col-6">
             <span class="mr-2"><%- memberprofile.cName %></span> 你好！
@@ -8,11 +8,13 @@
             <div class="col-6 text-right">
                 <a class="btn btn-outline-dark my-1 my-sm-0" href="/home/member/logout">登出</a>
             </div>
+            <hr>
        <% } else{ %>
            <div class="col-12 text-right">
                 <a class="btn btn-outline-dark  " href="/home/member/login">登入</a>
                 <a class="btn btn-outline-warning  " href="/home/member/register">註冊</a>
             </div> 
+            <hr>
         <% } %>
         
         
