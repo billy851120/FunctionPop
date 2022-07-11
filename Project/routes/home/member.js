@@ -58,8 +58,9 @@ router.get('/orderDetail', getUrl, function (req, res) {
   res.render('member/orderDetail', { title: '會員資料｜訂單內容', url });
 });
 // 我的最愛-------------------------------------------------
-router.get('/myFavourite', getUrl, function (req, res) {
 
+// ----------------------載入------------------------------
+router.get('/myFavourite', getUrl, function (req, res) {
   console.log("GGG");
   // console.log(req.session.memberprofile);
   var checkmem = req.session.memberprofile;
@@ -96,6 +97,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
   }
 });
 
+// ----------------------送出------------------------------
 router.post('/myFavourite', function(req, res) {
   console.log('post');
   console.log(req.body);
