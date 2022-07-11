@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>function.pop</title>
-    <link rel="stylesheet" href="/css/all.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
-    <!-- <link rel="stylesheet" href="./assets/css/TonyCss.css"> -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <style>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>function.pop</title>
+  <link rel="stylesheet" href="/css/all.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
+  <!-- <link rel="stylesheet" href="./assets/css/TonyCss.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
     .owl-theme .owl-dots .owl-dot span {
       display: none;
     }
@@ -24,236 +26,250 @@
       height: 100%;
     }
 
-      /* My hr tag */
-      .my_hr {
-        width: 130px;
-        background-color: orange;
-        height: 3px;
-      }
+    /* My hr tag */
+    .my_hr {
+      width: 130px;
+      background-color: orange;
+      height: 3px;
+    }
 
-      .my_product {
-        cursor: pointer;
-        margin-bottom: 2rem;
-      }
+    .my_product {
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
 
-      .my_product img {
-        transition: 0.3s all;
-      }
+    .my_product img {
+      transition: 0.3s all;
+    }
 
-      .my_product:hover img {
-        opacity: 0.7;
-      }
+    .my_product:hover img {
+      opacity: 0.7;
+    }
 
-      /* 24. Featured Design */
-      .my_product .buy-btn {
-        color: #ffe200;
-        transform: translateY(50px);
+    /* 24. Featured Design */
+    .my_product .buy-btn {
+      color: #ffe200;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: 0.3s all;
+      background-color: #395d6c;
+    }
+
+    .my_product:hover .buy-btn {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    .my_button {
+      font-size: 0.8rem;
+      font-weight: 900;
+      outline: none;
+      border: none;
+      background-color: #1d1d1d;
+      color: aliceblue;
+      padding: 13px 30px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+
+    .my_button:hover {
+      background-color: coral;
+    }
+
+    /*  */
+    /* Product Detail Page */
+    /*  */
+    #mainImg {
+      border: 2px solid gray;
+    }
+
+    .small-img-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .small-img-col {
+      flex-basis: 23%;
+      cursor: pointer;
+      margin-top: 12px;
+      opacity: 0.6;
+    }
+
+    .small-img-col:hover {
+      opacity: 0.9;
+    }
+
+    /* 39. Single Product Design */
+    .single-product input {
+      width: 50px;
+      height: 40px;
+      padding-left: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .single-product input:focus {
+      outline: none;
+    }
+
+    .single-product .buy-btn {
+      background-color: #fb774b;
+      opacity: 1;
+      transition: 0.4s all;
+    }
+
+    .single-product .buy-btn:hover {
+      background-color: #222222;
+    }
+
+    /* Ryan新增 */
+
+    @keyframes fadeInDown {
+      0% {
         opacity: 0;
-        transition: 0.3s all;
-        background-color: #395d6c;
+        transform: translate3d(0, -100%, 0);
       }
 
-      .my_product:hover .buy-btn {
-        transform: translateY(0px);
+      50% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
         opacity: 1;
       }
+    }
 
-      .my_button {
-        font-size: 0.8rem;
-        font-weight: 900;
-        outline: none;
-        border: none;
-        background-color: #1d1d1d;
-        color: aliceblue;
-        padding: 13px 30px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: 0.5s ease;
-      }
-
-      .my_button:hover {
-        background-color: coral;
-      }
-
-      /*  */
-      /* Product Detail Page */
-      /*  */
-      #mainImg {
-        border: 2px solid gray;
-      }
-
-      .small-img-group {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .small-img-col {
-        flex-basis: 23%;
-        cursor: pointer;
-        margin-top: 12px;
-        opacity: 0.6;
-      }
-
-      .small-img-col:hover {
-        opacity: 0.9;
-      }
-
-      /* 39. Single Product Design */
-      .single-product input {
-        width: 50px;
-        height: 40px;
-        padding-left: 10px;
-        font-size: 16px;
-        margin-right: 10px;
-      }
-
-      .single-product input:focus {
-        outline: none;
-      }
-
-      .single-product .buy-btn {
-        background-color: #fb774b;
+    @keyframes fadeOutUp {
+      0% {
         opacity: 1;
-        transition: 0.4s all;
+        transform: translate3d(0, 0, 0);
       }
 
-      .single-product .buy-btn:hover {
-        background-color: #222222;
+      50% {
+        transform: translate3d(0, -100%, 0);
       }
 
-      /* Ryan新增 */
+      100% {
+        opacity: 0;
+      }
+    }
 
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translate3d(0, -100%, 0);
-        }
-        50% {
-          transform: translate3d(0, 0, 0);
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      @keyframes fadeOutUp {
-        0% {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
-        50% {
-          transform: translate3d(0, -100%, 0);
-        }
-        100% {
-          opacity: 0;
-        }
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-      * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
+    a {
+      text-decoration: none;
+    }
 
-      a {
-        text-decoration: none;
-      }
-      /* .pcount {
+    /* .pcount {
       } */
-      .pcount a {
-        border: 1px solid #000;
-        padding: 3px;
-      }
-      .number {
-        width: 50px;
-        text-align: center;
-      }
-      .pid {
-        text-align: center;
-      }
-      .pcolor a:hover {
-        border: 1px solid #f00;
-      }
-      .pcolor-active {
-        border: 1px solid #f00;
-      }
-      .psize button {
-        width: 30px;
-      }
-      .psize-active {
-        background-color: #000;
-        color: #fff;
-      }
-      .fadeInDown {
-        animation-name: fadeInDown;
-        animation-duration: 0.5s;
-        animation-timing-function: ease-in-out;
-      }
-      .fadeOutUp {
-        animation-name: fadeOutUp;
-        animation-duration: 0.5s;
-        animation-timing-function: ease-in-out;
-      }
-      .al {
-        z-index: 9999;
-        border: 1px solid #000;
-        width: 30%;
-        text-align: center;
-        padding: 20px 0;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
-        top: 0;
-      }
+    .pcount a {
+      border: 1px solid #000;
+      padding: 3px;
+    }
 
-      .star5 {
-        box-sizing: border-box;
-        width: var(--size, 24px);
-        height: var(--size, 24px);
-        }
+    .number {
+      width: 50px;
+      text-align: center;
+    }
 
-        .rating {
-        width: 120px;
-        height: 24px;
-        position: relative;
-        background-color: gray;
-        }
+    .pid {
+      text-align: center;
+    }
 
-        .rating progress.rating-bg {
-        -webkit-appearance: none;
-        -moz-appearence: none;
-        appearance: none;
-        border: none;
-        display: inline-block;
-        height: 24px;
-        width: 100%;
-        color: orange;
-        }
+    .pcolor a:hover {
+      border: 1px solid #f00;
+    }
 
-        .rating progress.rating-bg::-webkit-progress-value {
-        background-color: rgb(239, 218, 28);
-        }
+    .pcolor-active {
+      border: 1px solid #f00;
+    }
 
-        .rating progress.rating-bg::-moz-progress-bar {
-        background-color: orange;
-        }
+    .psize button {
+      width: 30px;
+    }
 
-        .rating svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        }
+    .psize-active {
+      background-color: #000;
+      color: #fff;
+    }
 
+    .fadeInDown {
+      animation-name: fadeInDown;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    }
 
-    </style>
-  </head>
-  <body>
-    <!-- 0. Wraper -->
-    <div class="wrapper">
-      <!-- 1. NAvbar -->
-      <%- include("navbar.ejs") %>
+    .fadeOutUp {
+      animation-name: fadeOutUp;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    }
+
+    .al {
+      z-index: 9999;
+      border: 1px solid #000;
+      width: 30%;
+      text-align: center;
+      padding: 20px 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+    }
+
+    .star5 {
+      box-sizing: border-box;
+      width: var(--size, 24px);
+      height: var(--size, 24px);
+    }
+
+    .rating {
+      width: 120px;
+      height: 24px;
+      position: relative;
+      background-color: gray;
+    }
+
+    .rating progress.rating-bg {
+      -webkit-appearance: none;
+      -moz-appearence: none;
+      appearance: none;
+      border: none;
+      display: inline-block;
+      height: 24px;
+      width: 100%;
+      color: orange;
+    }
+
+    .rating progress.rating-bg::-webkit-progress-value {
+      background-color: rgb(239, 218, 28);
+    }
+
+    .rating progress.rating-bg::-moz-progress-bar {
+      background-color: orange;
+    }
+
+    .rating svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 0. Wraper -->
+  <div class="wrapper">
+    <!-- 1. NAvbar -->
+    <%- include("navbar.ejs") %>
 
       <!-- 2. Breadcrumb -->
 
@@ -262,24 +278,25 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="/home"><i class="fas fa-home"  style="color: black;"></i><span style="color: black;">首頁</span></a>
+                <a href="/home"><i class="fas fa-home" style="color: black;"></i><span
+                    style="color: black;">首頁</span></a>
               </li>
               <li class="breadcrumb-item">
-                <a href="/home/product/<%= result[0].product_gender %>"
-                  ><span style="color: black;"><%= result[0].product_gender %></span></a
-                >
+                <a href="/home/product/<%= result[0].product_gender %>"><span style="color: black;">
+                    <%= result[0].product_gender %>
+                  </span></a>
               </li>
               <li class="breadcrumb-item">
-                <a
-                  href="/home/product/<%= result[0].product_gender %>/<%= result[0].product_category %>"
-                  ><span style="color: black;"><%= result[0].product_category %></span></a
-                >
+                <a href="/home/product/<%= result[0].product_gender %>/<%= result[0].product_category %>"><span
+                    style="color: black;">
+                    <%= result[0].product_category %>
+                  </span></a>
               </li>
               <li class="breadcrumb-item">
-                <a
-                  href="/home/product/<%= result[0].product_gender %>/single_product/<%= result[0].product_id %>"
-                  ><span style="color: black;"><%= result[0].product_name %></span></a
-                >
+                <a href="/home/product/<%= result[0].product_gender %>/single_product/<%= result[0].product_id %>"><span
+                    style="color: black;">
+                    <%= result[0].product_name %>
+                  </span></a>
               </li>
             </ol>
           </nav>
@@ -293,86 +310,52 @@
 
           <div class="col-2"></div>
           <div class="col-lg-5 col-md-12 col-sm-12 py-2 px-4">
-            <img
-              id="mainImg"
-              class="img-fluid w-100 py-2 px-2 zoomImg"
-              src="/img/product/<%= result[0].product_image %>"
-              alt=""
-            />
-          
+            <img id="mainImg" class="img-fluid w-100 py-2 px-2 zoomImg"
+              src="/img/product/<%= result[0].product_image %>" alt="" />
+
             <div class="small-img-group">
               <div class="small-img-col">
-                <img
-                  class="small-img"
-                  src="/img/product/<%= result[0].product_image %>"
-                  alt=""
-                  width="100%"
-                />
+                <img class="small-img" src="/img/product/<%= result[0].product_image %>" alt="" width="100%" />
               </div>
               <div class="small-img-col">
-                <img
-                  class="small-img"
-                  src="/img/product/<%= result[0].product_image2 %>"
-                  alt=""
-                  width="100%"
-                />
+                <img class="small-img" src="/img/product/<%= result[0].product_image2 %>" alt="" width="100%" />
               </div>
               <div class="small-img-col">
-                <img
-                  class="small-img"
-                  src="/img/product/<%= result[0].product_image3 %>"
-                  alt=""
-                  width="100%"
-                />
+                <img class="small-img" src="/img/product/<%= result[0].product_image3 %>" alt="" width="100%" />
               </div>
               <div class="small-img-col">
-                <img
-                  class="small-img"
-                  src="/img/product/<%= result[0].product_image4 %>"
-                  alt=""
-                  width="100%"
-                />
+                <img class="small-img" src="/img/product/<%= result[0].product_image4 %>" alt="" width="100%" />
               </div>
             </div>
           </div>
 
-          
-          <div
-            class="col-lg-4 col-md-12 col-sm-12 py-3 px-5"
-            id="product_describe"
-          >
-            <h3><%= result[0].product_gender %> | <%= result[0].product_category %></h3>
+
+          <div class="col-lg-4 col-md-12 col-sm-12 py-3 px-5" id="product_describe">
+            <h3>
+              <%= result[0].product_gender %> | <%= result[0].product_category %>
+            </h3>
             <hr style="background-color: #395d6c; height: 2px" />
             <h5 style="color: gray">時尚</h5>
             <br />
-            <h4><%= result[0].product_name %></h4>
-            <p>商品編號 <%= result[0].product_code %></p>
-            <p>價　格： $ <span><%= result[0].product_price %></span> 元</p>
+            <h4>
+              <%= result[0].product_name %>
+            </h4>
+            <p>商品編號 <%= result[0].product_code %>
+            </p>
+            <p>價　格： $ <span>
+                <%= result[0].product_price %>
+              </span> 元</p>
             <p>顏　色： <span id="cho_color">白</span><span>色</span></p>
             <span style="color: red">顏色選單</span>
             <span class="colorflexBox mx-auto px-2">
-              <label >
-                <input
-                type="radio"
-                value="WH"
-                name="color_ch"
-                style="width: 20px; height: 20px;"
-                
+              <label>
+                <input type="radio" value="WH" name="color_ch" style="width: 20px; height: 20px;" data-col="白"
+                  checked />白
+              </label>
+              <label>
+                <input type="radio" value="BK" name="color_ch" data-col="黑" style="width: 20px; height: 20px;" />黑
+              </label>
 
-                data-col="白"
-                checked
-              />白
-              </label>
-              <label >
-                <input
-                type="radio"
-                value="BK"
-                name="color_ch"
-                data-col="黑"
-                style="width: 20px; height: 20px;"
-              />黑
-              </label>
-             
             </span>
             <br />
             <br />
@@ -381,23 +364,20 @@
             <br>
             <span class="sizeflexBox mx-auto py-3 col-4">
               <% result.forEach(function(item){ %>
-                <% let ch = "" %>
-                <% if(ch != item.size_name){ %>
-                  <label >
-                    <input
-                    type="radio"
-                    value="<%- item.size_name %>"
-                    name="size_ch"
-                    style="width: 20px; height: 20px"
-                    data-allId="<%- item.product_all_id %>"
-                  />
-                  <span class="px"><%- item.size_name %></span>
-                  </label>
-              
-              <% ch = item.size_name %>
-              <% } %>
-              <% }) %> 
-              
+                <% let ch="" %>
+                  <% if(ch !=item.size_name){ %>
+                    <label>
+                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="width: 20px; height: 20px"
+                        data-allId="<%- item.product_all_id %>" />
+                      <span class="px">
+                        <%- item.size_name %>
+                      </span>
+                    </label>
+
+                    <% ch=item.size_name %>
+                      <% } %>
+                        <% }) %>
+
             </span>
             <br />
             <br />
@@ -405,93 +385,46 @@
             <span>數　量：</span>
             <span>
               <div class="col-2 css_tb pCount d-flex align-self-center">
-                <a
-                  href="javascript:"
-                  class="q_sub my-2 py-1 mx-auto"
-                  style="border: 1px solid #000; border-radius: 2px;"
-                  ><i class="fa fa-minus px-2" aria-hidden="true" style="width: 30px; "></i></a
-                >
-                <input
-                  type="text"
-                  id="number"
-                  value="1"
-                  style="width: 75px; text-align: center"
-                  class="mx-auto my-2 py-2"
-                />
-                <a
-                  href="javascript:"
-                  class="q_add my-2 py-1 mx-auto"
-                  style="border: 1px solid #000; border-radius: 2px;"
-                  ><i class="fa fa-plus px-2" aria-hidden="true" style="width: 30px;"></i></a
-                >
+                <a href="javascript:" class="q_sub my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"><i class="fa fa-minus px-2" aria-hidden="true"
+                    style="width: 30px; "></i></a>
+                <input type="text" id="number" value="1" style="width: 75px; text-align: center"
+                  class="mx-auto my-2 py-2" />
+                <a href="javascript:" class="q_add my-2 py-1 mx-auto"
+                  style="border: 1px solid #000; border-radius: 2px;"><i class="fa fa-plus px-2" aria-hidden="true"
+                    style="width: 30px;"></i></a>
               </div>
             </span>
 
-            <form id="p_single" target="frameName">
-              <input
-                type="hidden"
-                name="code"
-                value="<%= result[0].product_code %>"
-              />
-              <input
-                type="hidden"
-                name="all_id"
-                value="<%= result[0].product_all_id %>"
-              />
-              <input
-                type="hidden"
-                name="id"
-                value="<%= result[0].product_id %>"
-              />
-              <input
-                type="hidden"
-                name="name"
-                value="<%= result[0].product_name %>"
-              />
-              <input
-                type="hidden"
-                name="image"
-                value="<%= result[0].product_image %>"
-              />
+            <form id="p_single">
+              <input type="hidden" name="code" value="<%= result[0].product_code %>" />
+              <input type="hidden" name="all_id" value="<%= result[0].product_all_id %>" />
+              <input type="hidden" name="id" value="<%= result[0].product_id %>" />
+              <input type="hidden" name="name" value="<%= result[0].product_name %>" />
+              <input type="hidden" name="image" value="<%= result[0].product_image %>" />
               <input type="hidden" name="size" value="" />
               <input type="hidden" name="color" value="" />
-              <input
-                type="hidden"
-                name="price"
-                value="<%= result[0].product_price %>"
-              />
+              <input type="hidden" name="price" value="<%= result[0].product_price %>" />
               <input type="hidden" name="quantity" value="" />
-              <input
-                id="addCart"
-                type="submit"
-                value="加入購物車"
-                class="btn btn-dark w-50"
-                style="width: 100px;"
-              />
+              <input id="addCart" value="加入購物車" class="btn btn-dark w-50" style="width: 100px;" />
             </form>
-            <iframe
-              src=""
-              frameborder="0"
-              style="display: none"
-              name="frameName"
-            ></iframe>
+
 
             <br />
             <br />
 
             <div>
-              <h3
-                style="
+              <h3 style="
                   border-bottom: 1px solid #000;
                   padding-bottom: 10px;
                   margin-bottom: 10px;
-                "
-              >
+                ">
                 商品描述
               </h3>
             </div>
             <div>
-              <p>&emsp;&emsp;<%= result[0].product_description %></p>
+              <p>&emsp;&emsp;<%= result[0].product_description %>
+              </p>
             </div>
 
             <br />
@@ -502,7 +435,9 @@
               </h3>
             </div>
             <ul>
-              <li><%- result[0].product_composition %></li>
+              <li>
+                <%- result[0].product_composition %>
+              </li>
             </ul>
           </div>
           <div class="col-lg-1"></div>
@@ -519,11 +454,7 @@
         <div class="row mx-auto container-fluid">
           <!-- Featured List -->
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100001_beige_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -536,11 +467,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100002_black_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -553,11 +480,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100003_lightgreen_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -570,11 +493,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100004_lightblue_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -598,11 +517,7 @@
         <div class="row mx-auto container-fluid">
           <!-- Featured List -->
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100001_beige_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -615,11 +530,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100002_black_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -632,11 +543,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100003_lightgreen_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -649,11 +556,7 @@
             <button class="my_button buy-btn">Buy Now</button>
           </div>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img
-              class="img-fluid mb-3"
-              src="assets/imgs/FP1_80100004_lightblue_0.jpg"
-              alt=""
-            />
+            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="" />
             <div class="star">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -680,57 +583,79 @@
           <div class="col">
             <div class="owl-carousel owl-theme">
               <% pro.forEach(function(item){ %>
-              <div class="item"><h4><div>
-                <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
-                  <div class="img" style="margin:auto; height: 450px; background-color: white;" >
-                    <p class="mx-auto d-flex justify-content-center"  style="font-size: 0.8em;"><%- item.product_name %></p>
-                    <img style=" width: 80%; height: 80%; border-radius: 2px"
-                      src="/img/product/<%- item.product_image %>" class="mx-auto d-flex justify-content-center" alt="" />
+                <div class="item">
+                  <h4>
                     <div>
-                      <svg style="display:none;" class="star5" width="20" height="20">
-                          <defs class="star5 mx-auto d-flex justify-content-center">
-                          <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
-                              <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
-                              <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
-                              <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
-                              <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
-                              <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/>
-                          </symbol>
-                          </defs>
-                      </svg>
-                      
-                      <div class="rating mx-auto" title="<%- item.product_rating %>/5">
-                          <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
-                          <svg width="20" height="20"><use xlink:href="#fivestars"/></svg>
-                      </div>
-                      <p class="mx-auto d-flex justify-content-center mt-2"  style="font-size: 0.8em;">分數: <%= item.product_rating %> / 5</p>
-                  </div>
-                  </div>
-                </a>
-              </div></h4></div>
-              <% }); %>
-          </div>
+                      <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
+                        <div class="img" style="margin:auto; height: 450px; background-color: white;">
+                          <p class="mx-auto d-flex justify-content-center" style="font-size: 0.8em;">
+                            <%- item.product_name %>
+                          </p>
+                          <img style=" width: 80%; height: 80%; border-radius: 2px"
+                            src="/img/product/<%- item.product_image %>" class="mx-auto d-flex justify-content-center"
+                            alt="" />
+                          <div>
+                            <svg style="display:none;" class="star5" width="20" height="20">
+                              <defs class="star5 mx-auto d-flex justify-content-center">
+                                <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(24)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(48)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(72)" />
+                                  <path class="star5"
+                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24"
+                                    fill="white" fill-rule="evenodd" transform="translate(96)" />
+                                </symbol>
+                              </defs>
+                            </svg>
+
+                            <div class="rating mx-auto" title="<%- item.product_rating %>/5">
+                              <progress class="rating-bg" value="<%= item.product_rating %>" max="5"></progress>
+                              <svg width="20" height="20">
+                                <use xlink:href="#fivestars" />
+                              </svg>
+                            </div>
+                            <p class="mx-auto d-flex justify-content-center mt-2" style="font-size: 0.8em;">分數: <%=
+                                item.product_rating %> / 5</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </h4>
+                </div>
+                <% }); %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  </div>
 
 
 
-    <br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
+  <br /><br /><br /><br /><br />
 
-    <!-- 5. Footer -->
-    <footer class="footer"><%- include("footer.ejs") %></footer>
+  <!-- 5. Footer -->
+  <footer class="footer">
+    <%- include("footer.ejs") %>
+  </footer>
 
-    <!-- Bootstrap setting -->
-    <!-- <script
+  <!-- Bootstrap setting -->
+  <!-- <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script> -->
-    <!-- <script
+  <!-- <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
       crossorigin="anonymous"
@@ -740,194 +665,205 @@
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"
     ></script> -->
-    <script src="../js/product/jquery.min.js"></script>
-    <script src="../public/js/product/myJs.js"></script>
-    <script src="/js/shop_cart/jquery.js"></script>
-    <!-- <script src="./assets/js/jquery.min.js"></script>
+  <script src="../js/product/jquery.min.js"></script>
+  <script src="../public/js/product/myJs.js"></script>
+  <script src="/js/shop_cart/jquery.js"></script>
+  <!-- <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/myJs.js"></script> -->
-    <script>
-  
+  <script>
 
-      var mainImg = document.getElementById("mainImg");
-      var smallImg = document.getElementsByClassName("small-img");
-console.log(mainImg.src);
 
-      for (let i = 0; i < 4; i++) {
-        smallImg[i].onclick = function () {
-          mainImg.src = smallImg[i].src;
-          $(".zoomImg").blowup({
-                "width" : 400,
-                "height" : 400,
-                "round" : false,
-                "zIndex" : 99999,
-                "scale" : 1
-            });
+    var mainImg = document.getElementById("mainImg");
+    var smallImg = document.getElementsByClassName("small-img");
+    console.log(mainImg.src);
 
-        };
+    for (let i = 0; i < 4; i++) {
+      smallImg[i].onclick = function () {
+        mainImg.src = smallImg[i].src;
+        $(".zoomImg").blowup({
+          "width": 400,
+          "height": 400,
+          "round": false,
+          "zIndex": 99999,
+          "scale": 1
+        });
+
+      };
+    }
+
+    $(document).ready(function () {
+
+
+
+      $('#cartCount').html("<%- cartCount %>");
+
+
+      $(".colorflexBox ").find("input[checked]").addClass("pcolor-active");
+
+      $(".colorflexBox input").on("click", function () {
+        $("#cho_color").html(this.dataset.col);
+        $("#p_single input[name='color']").val(this.value);
+        $(".colorflexBox input").removeClass("pcolor-active");
+        $(this).addClass("pcolor-active");
+      });
+      $(".sizeflexBox ").find("input[checked]").addClass("psize-active");
+
+      $(".sizeflexBox input").on("click", function () {
+        $("#cho_size").html(this.value);
+        $("#p_single input[name='size']").val(this.value);
+        $("#p_single input[name='all_id']").val($(this).attr("data-allId"));
+        $(".sizeflexBox input").removeClass("psize-active");
+        $(this).addClass("psize-active");
+      });
+      $(".q_sub,.q_add").on("click", function () {
+        let quantity = $("#number").val();
+        $("#p_single input[name='quantity']").val(quantity);
+      });
+
+      //商品增加
+      $(".q_add").click(function () {
+        var num = 0;
+        num++;
+
+        var Count = parseInt($(this).siblings("#number").val());
+        var to_Count = parseInt(Count + num);
+        $(this).siblings("#number").val(to_Count);
+        let quantity = $("#number").val();
+        $("#p_single input[name='quantity']").val($("#number").val());
+
+        // $(this).siblings("#number").val();
+      });
+
+      //商品減少
+      $(".q_sub").click(function () {
+        var Count = parseInt($(this).siblings("#number").val());
+        Count--;
+
+        if (Count < 1) {
+          Count = 1;
+        } else {
+          $(this).siblings("#number").val(Count);
+          $("#p_single input[name='quantity']").val($("#number").val());
+        }
+      });
+
+      function serializeToJSON(data) {
+        values = {};
+        for (idx in data) {
+          values[data[idx].name] = data[idx].value;
+        }
+        return JSON.stringify(values);
       }
 
-      $(document).ready(function () {
-       
+      $("#addCart").on("click", function () {
+        var pSize = $(".sizeflexBox ").find(" .psize-active").val();
+        var pColor = $(".colorflexBox ").find(".pcolor-active").val();
+        var pColor_ch = false;
+        var pSize_ch = false;
+        var nowCartCount = $('#cartCount').text();
+
+        $(".sizeflexBox ")
+          .find("input")
+          .each(function (idx, ele) {
+            if ($(ele).prop('checked')) {
+              pSize_ch = true;
+              $('#p_single input[name="size"]').val($(ele).val())
+
+            }
+          });
+        $(".colorflexBox ")
+          .find("input")
+          .each(function (idx, ele) {
+            if ($(ele).prop('checked')) {
+              pColor_ch = true;
+              $('#p_single input[name="color"]').val($(ele).val())
+            }
+          });
+        $('#p_single input[name="quantity"]').val($("#number").val());
 
 
-        $('#cartCount').html("<%- cartCount %>");
+        // console.log(pColor_ch);
+        // console.log(pSize_ch);
 
+        // // console.log(pSize_ch);
+        // //判斷尺寸和顏色是否選擇
+        if (pColor_ch && pSize_ch) {
 
-        $(".colorflexBox ").find("input[checked]").addClass("pcolor-active");
-
-        $(".colorflexBox input").on("click", function () {
-          $("#cho_color").html(this.dataset.col);
-          $("#p_single input[name='color']").val(this.value);
-          $(".colorflexBox input").removeClass("pcolor-active");
-          $(this).addClass("pcolor-active");
-        });
-        $(".sizeflexBox ").find("input[checked]").addClass("psize-active");
-
-        $(".sizeflexBox input").on("click", function () {
-          $("#cho_size").html(this.value);
-          $("#p_single input[name='size']").val(this.value);
-          $("#p_single input[name='all_id']").val($(this).attr("data-allId"));
-          $(".sizeflexBox input").removeClass("psize-active");
-          $(this).addClass("psize-active");
-        });
-        $(".q_sub,.q_add").on("click", function () {
-          let quantity = $("#number").val();
-          $("#p_single input[name='quantity']").val(quantity);
-        });
-
-        //商品增加
-        $(".q_add").click(function () {
-          var num = 0;
-          num++;
-
-          var Count = parseInt($(this).siblings("#number").val());
-          var to_Count = parseInt(Count + num);
-          $(this).siblings("#number").val(to_Count);
-          let quantity = $("#number").val();
-          $("#p_single input[name='quantity']").val($("#number").val());
-
-          // $(this).siblings("#number").val();
-        });
-
-        //商品減少
-        $(".q_sub").click(function () {
-          var Count = parseInt($(this).siblings("#number").val());
-          Count--;
-
-          if (Count < 1) {
-            Count = 1;
+          if (nowCartCount) {
+            let update = parseInt(nowCartCount) + parseInt($('#number').val());
+            $('#cartCount').html(update.toString());
           } else {
-            $(this).siblings("#number").val(Count);
-            $("#p_single input[name='quantity']").val($("#number").val());
+            let update = 0;
+            update += parseInt($('#number').val());
+            $('#cartCount').html(update.toString());
           }
-        });
+          var data = $("#p_single").serializeArray();
+          // console.log(data);
+          JSONData = serializeToJSON(data);
+          console.log(JSONData);
 
-        function serializeToJSON(data) {
-          values = {};
-          for (idx in data) {
-            values[data[idx].name] = data[idx].value;
+          var addTo_cart = document.createElement("div");
+          addTo_cart.innerHTML = "已加入購物車";
+          $(addTo_cart).attr("class", "al fadeInDown");
+          document.querySelector(".sticky-top").appendChild(addTo_cart);
+
+          setTimeout(function () {
+            $(addTo_cart).attr("class", "al fadeOutUp");
+          }, 2000);
+          setTimeout(function () {
+            $(addTo_cart).remove();
+          }, 2200);
+
+
+
+          $.ajax({
+            url: "/home/shop_cart/",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSONData,
+            success: function (res) {
+              console.log("已購買")
+              var dot = document.createElement("div")
+              $(dot).css({
+                "background": "#96ff6c",
+                "width": "8px",
+                "height": "8px",
+                "border-radius": "50%",
+                "color": "#fff",
+                "position": "absolute",
+                "left": "88%",
+                "top": "-3px",
+              })
+              document.getElementById("fpopnav_cart").appendChild(dot);
+              var res = JSON.parse(res);
+
+            },
+            error: function () {
+              alert("系統錯誤");
+            },
+          });
+
+
+        } else {
+          if ($(".al").length == 0) {
+            var al = document.createElement("div");
+            console.log(al);
+            al.innerHTML = "請選擇尺寸";
+            $(al).attr("class", "al fadeInDown");
+            document.querySelector(".sticky-top").appendChild(al);
           }
-          return JSON.stringify(values);
+
+          setTimeout(function () {
+            $(al).attr("class", "al fadeOutUp");
+          }, 2000);
+          setTimeout(function () {
+            $(al).remove();
+          }, 2200);
         }
-
-        $("#addCart").on("click", function () {
-          var pSize = $(".sizeflexBox ").find(" .psize-active").val();
-          var pColor = $(".colorflexBox ").find(".pcolor-active").val();
-          var pColor_ch = false;
-          var pSize_ch = false;
-          var nowCartCount = $('#cartCount').text();
-
-          $(".sizeflexBox ")
-            .find("input")
-            .each(function (idx, ele) {
-              if ($(ele).prop('checked')) {
-                pSize_ch = true;
-                $('#p_single input[name="size"]').val($(ele).val())
-
-              }
-            });
-          $(".colorflexBox ")
-            .find("input")
-            .each(function (idx, ele) {
-              if ($(ele).prop('checked')) {
-                pColor_ch = true;
-                $('#p_single input[name="color"]').val($(ele).val())
-              }
-            });
-            $('#p_single input[name="quantity"]').val($("#number").val());
-
-
-          // console.log(pColor_ch);
-          // console.log(pSize_ch);
-
-          // // console.log(pSize_ch);
-          // //判斷尺寸和顏色是否選擇
-          if (pColor_ch && pSize_ch) {
-            
-            if(nowCartCount){
-              let update = parseInt(nowCartCount) + parseInt($('#number').val());
-              $('#cartCount').html(update.toString());
-            }else{
-              let update = 0;
-              update += parseInt($('#number').val());
-              $('#cartCount').html(update.toString());
-            }
-            var data = $("#p_single").serializeArray();
-            // console.log(data);
-            JSONData = serializeToJSON(data);
-            console.log(JSONData);
-
-            var addTo_cart = document.createElement("div");
-            addTo_cart.innerHTML = "已加入購物車";
-            $(addTo_cart).attr("class", "al fadeInDown");
-            document.querySelector(".sticky-top").appendChild(addTo_cart);
-
-            setTimeout(function () {
-              $(addTo_cart).attr("class", "al fadeOutUp");
-            }, 2000);
-            setTimeout(function () {
-              $(addTo_cart).remove();
-            }, 2200);
-
-
-
-            $.ajax({
-              url: "/home/shop_cart/",
-              type: "POST",
-              contentType: "application/json; charset=utf-8",
-              data: JSONData,
-              success: function (res) {
-                var res = JSON.parse(res);
-                alert("成功");
-
-              
-              },
-              error: function () {
-                alert("系統錯誤");
-              },
-            });
-
-
-          } else {
-            if ($(".al").length == 0) {
-              var al = document.createElement("div");
-              console.log(al);
-              al.innerHTML = "請選擇尺寸";
-              $(al).attr("class", "al fadeInDown");
-              document.querySelector(".sticky-top").appendChild(al);
-            }
-
-            setTimeout(function () {
-              $(al).attr("class", "al fadeOutUp");
-            }, 2000);
-            setTimeout(function () {
-              $(al).remove();
-            }, 2200);
-          }
-        });
       });
-    </script>
-    <!-- <script>
+    });
+  </script>
+  <!-- <script>
       $(document).ready(function () {
         $(".zoomImg").blowup({
           "background" : #F39C12,
@@ -937,27 +873,28 @@ console.log(mainImg.src);
         })
     </script> -->
 
-    <!--  -->
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
-    <script type="text/javascript" src="/js/product/blowup.js"></script>
-    <!-- blowup zoom-img -->
-    <script>
-       $(function() { 
-            $(".zoomImg").blowup({
-                "width" : 400,
-                "height" : 400,
-                "round" : false,
-                "zIndex" : 99999,
-                "scale" : 1
-            });
-        });
-    </script>
+  <!--  -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+  <script type="text/javascript" src="/js/product/blowup.js"></script>
+  <!-- blowup zoom-img -->
+  <script>
+    $(function () {
+      $(".zoomImg").blowup({
+        "width": 400,
+        "height": 400,
+        "round": false,
+        "zIndex": 99999,
+        "scale": 1
+      });
+    });
+  </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/sticky-sidebar.min.js"></script>
-    <script src="/js/shop_cart/owl.carousel.js"></script>
-    <script src="/js/product/owl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-sidebar/3.3.1/sticky-sidebar.min.js"></script>
+  <script src="/js/shop_cart/owl.carousel.js"></script>
+  <script src="/js/product/owl.js"></script>
 
 
 
-  </body>
+</body>
+
 </html>

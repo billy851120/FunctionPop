@@ -15,10 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 500;
-    }
+   
     .owl-theme .owl-dots .owl-dot span {
       display: none;
     }
@@ -29,6 +26,9 @@
       background-color: #ccc;
       max-height: 561px;
       height: 100%;
+    }
+    .owl-carousel p{
+      font-weight: 500;
     }
   </style>
 </head>
@@ -59,10 +59,11 @@
                       </div>
                       <div class="col-12 mid mb-lg-3 ">
                         <div class="phTitle d-block d-lg-none mb-4"></div>
-                        <h6 class="phTitleH" style="font-size: 1.4em; font-weight: 900">購物車</h6>
+                        <h6 class="phTitleH" style="font-size: 1.4em; font-weight: 500">購物車</h6>
                       </div>
                       <div class="col-12 d-none d-lg-block cart-step">
-                        <ul class="fz-dark">
+                        <ul class="fz-dark"  style="font-size: 1.4em;
+                        font-weight: 500;">
                           <li style="color: #000">
                             <span style="background-color: #000">1</span>
                             查看購物車
@@ -172,7 +173,7 @@
                               <div
                                 class="col css_tb d-lg-block d-flex flex-column flex-lg-row align-self-lg-center text-right text-lg-left">
                                 <a style="color: #000" href="javascript:" class="del" data-allId="<%- item.all_id %>"><i
-                                    class="pr-3 pr-lg-0 fa-solid fa-trash-can"></i></a>
+                                    class="pr-3 pr-lg-0 fa-solid fa-trash-can" style="font-family: 'Font Awesome 6 Free' !important;"></i></a>
                                 <div style="font-size: 1.8em; padding: 0px 0px 20px 7px"
                                   class="pr-3 pr-lg-0 mt-auto d-lg-none pb-2">
                                   <span style="font-weight: 600">
@@ -213,11 +214,11 @@
                         </p>
                       </div>
                       <div class="py-3 d-none d-lg-block" class="canFare" id="canFare">
-                        只差NT$ <span>0</span>，即可享有免費標準運送。
+                        只差NT$ <span>0</span>，即可享有<span style="color: #f00;">免費</span>標準運送。
                       </div>
                       <div class="pt-2 mb-4">
                         <p style="font-size: 1.6em;">
-                          <b>總額:</b><span class="float-right">NT$<span id="tototoPrice">0</span></span>
+                          <b>總額:</b><span class="float-right" style="font-weight: 700;">NT$<span id="tototoPrice">0</span></span>
                         </p>
                       </div>
                       <!-- action="/home/shop_cart/orderCheck" -->
@@ -231,7 +232,9 @@
               <hr style="border-top: 0.9px solid #000" />
               <div class="container">
                 <div class="row">
-                  <div style="font-weight: 900" class="col text-center mb-3 mt-2">
+                  <div style="font-weight: 700" class="col text-center mb-3 mt-2">
+                  <i class="fas fa-fire-alt" style="color: #ff8046cc; font-family: 'Font Awesome 6 Free' !important;"></i>
+
                     熱門商品
                   </div>
                 </div>
