@@ -33,7 +33,7 @@
 <body id="page-top">
     <%- include("admin_navbar.ejs") %>
         <!-- Main Content -->
-        <div class="fpop-main p-5">
+        <div class="fpop-main p-5" style="background-color: #fff;">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin/goods">首頁</a></li>
@@ -49,7 +49,7 @@
                             <div class="card-header">
                                 所有商品
                             </div>
-                            <div class="card-body" style="font-size:14px ;"> 
+                            <div class="card-body" style="font-size:14px ;">
                                 <button type="button" class="btn btn-dark mt-2" data-bs-toggle="modal"
                                     style="float:right" data-bs-target="#exampleModal">
                                     新增商品
@@ -108,14 +108,13 @@
                                                     <%= moment(item.product_upload).format(shortDataFormat) %>
                                                 </td>
                                                 <td>
-                                                
-                                                        <button class="btn btn-outline-info btn-sm "
-                                                            onclick="Edit( <%= item.product_id %> )"
-                                                            class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#myModal">編輯</button>
-                                                        <button class="btn btn-outline-danger btn-sm"
-                                                            onclick="Delete( <%= item.product_id %> )">刪除</button>
-                                                   
+
+                                                    <button class="btn btn-outline-info btn-sm "
+                                                        onclick="Edit( <%= item.product_id %> )" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#myModal">編輯</button>
+                                                    <button class="btn btn-outline-danger btn-sm"
+                                                        onclick="Delete( <%= item.product_id %> )">刪除</button>
+
                                                 </td>
 
                                             </tr>
@@ -232,7 +231,7 @@
                                     <div class="mx-5">
                                         <select class="custom-select col-7 mt-3" name="product_category"
                                             data-table="order-table">
-                                            <option data-content="<i class='bi bi-x'></i>">上衣</option>
+                                            <option>上衣</option>
                                             <option>下著</option>
                                             <option>鞋</option>
                                             <option>包</option>
@@ -252,6 +251,25 @@
                                     </div>
                                 </div>
                                 <div>
+                                    <!-- <label class="mx-5">選擇尺寸</label>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="radio" name="size_name" id="radioS" value="S">
+                                        <label class="form-check-label" for="radioS">S</label>
+                                    </div> -->
+                                    <!-- <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name">
+                                        <label class="form-check-label" >M</label>
+                                    </div>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name">
+                                        <label class="form-check-label" >L</label>
+                                    </div>
+                                    <div class="form-check mx-5">
+                                        <input class="form-check-input" type="checkbox" name="size_name">
+                                        <label class="form-check-label" >ONE SIZE</label>
+                                    </div> -->
+                                </div>
+                                <div class=" mt-2">
                                     <label class="mx-5">產品敘述</label>
                                     <div class="mx-5">
                                         <textarea class="col-7 mt-3" name="product_description" rows="5" cols="33"

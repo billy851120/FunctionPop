@@ -82,7 +82,7 @@ router.post('/item_all/delete', function (rqs, res) {
   var sql = `DELETE FROM products WHERE product_id = ?;`
   var data = [body.id]
   db.exec(sql, data, function (results, fields) {
-  
+
     if (results.affectedRows) {
       res.end(
         JSON.stringify(new Success('delete success'))
@@ -118,10 +118,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(express.static(path.join(__dirname, 'public')));
 router.use(fileUpload());
 
-// router.get('/item_all', function (rqs, res) {
-//   res.render('admin_item_all');
 
-// });
 
 router.get('/item_all', function (rqs, res) {
   var sql = `
@@ -166,15 +163,21 @@ router.post('/item_all', function (req, res) {
             if (err)
               return res.status(500).send(err);
             var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "')";
+            var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "')";
             var query = db.exec(sql, function (err, result) {
-              res.redirect('/admin/goods/item_all');
+              db.exec(sql1, function (err, result) {
+                console.log(sql)
+                console.log(sql1)
+                res.redirect('/admin/goods/item_all');
+
+              })
             });
           });
         });
       })
     } else {
       message = "'檔案格式錯誤,請上傳'.png','.gif','.jpg'";
-      res.render('/admin/goods/item_all', { message : message });
+      res.render('/admin/goods/item_all', { message: message });
     }
   } else {
 
@@ -194,7 +197,7 @@ router.get('/orderMgat_num', function (rqs, res) {
 router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
   var page = rqs.params.page
   if (page <= 0) {
-    res.redirect('/orderMgat_num/1')
+    res.redirect('/orderMgat_num')
     return
   }//每頁資料數
   var nums_per_page = 10       //定義資料偏移量
