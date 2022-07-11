@@ -16,6 +16,8 @@
     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
     <!-- <script src="/js/member/LeftNavBar.js"></script> -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
     <style>
     
     .product_info img {
@@ -199,8 +201,13 @@
                                         url:"http://localhost:3000/home/member/myFavourite",
                                         type:"post",
                                         data:{
-                                            size:$("#size").val()
+                                            size : $('input[name="size"]:checked').val(),
+                                            color : $('input[name="color"]:checked').val()
                                         },
+                                        success: function(data){
+                                            console.log('success');
+                                            alert('已加入購物車');
+                                        }
 
                                     })
                                 </script>

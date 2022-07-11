@@ -28,9 +28,16 @@ body {
 .push {
     height: 283px;
 }
-.modal-backdrop{
+
+.modal-backdrop {
     z-index: -1 !important;
-} 
-.breadcrumb{
+}
+
+.breadcrumb {
     background-color: #fff !important;
+}
+
+* {
+    font-family: 'Noto Sans TC', sans-serif;
+
 }
