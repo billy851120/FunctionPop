@@ -143,6 +143,7 @@ router.post('/item_all', function (req, res) {
       composition = post.product_composition,
       price = post.product_price,
       code = post.product_code;
+      size = post.size_name;
 
 
     if (!req.files) {
@@ -155,6 +156,9 @@ router.post('/item_all', function (req, res) {
     var file3 = req.files.product_image3;
     var img_name3 = file3.name;
 
+    console.log(size);
+    
+
     if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
 
       file.mv('public/img/product/' + file.name, function (err) {
@@ -163,15 +167,18 @@ router.post('/item_all', function (req, res) {
             if (err)
               return res.status(500).send(err);
             var sql = "INSERT INTO products (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "')";
-            var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "')";
-            var query = db.exec(sql, function (err, result) {
-              db.exec(sql1, function (err, result) {
-                console.log(sql)
-                console.log(sql1)
-                res.redirect('/admin/goods/item_all');
-
-              })
-            });
+            var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`,`size_name`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "','" + size + "')";
+            for(let i =0;i < size.length;i++){
+              console.log(i);
+              var query = db.exec(sql, function (err, result) {
+                db.exec(sql1, function (err, result) {
+                  console.log(sql)
+                  console.log(sql1)
+                  res.redirect('/admin/goods/item_all');
+  
+                })
+              });
+            }
           });
         });
       })
