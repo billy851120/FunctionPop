@@ -49,7 +49,7 @@
                             <div class="card-header">
                                 所有商品
                             </div>
-                            <div class="card-body" style="font-size:14px ;"> 
+                            <div class="card-body" style="font-size:14px ;">
                                 <button type="button" class="btn btn-dark mt-2" data-bs-toggle="modal"
                                     style="float:right" data-bs-target="#exampleModal">
                                     新增商品
@@ -108,14 +108,13 @@
                                                     <%= moment(item.product_upload).format(shortDataFormat) %>
                                                 </td>
                                                 <td>
-                                                
-                                                        <button class="btn btn-outline-info btn-sm "
-                                                            onclick="Edit( <%= item.product_id %> )"
-                                                            class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#myModal">編輯</button>
-                                                        <button class="btn btn-outline-danger btn-sm"
-                                                            onclick="Delete( <%= item.product_id %> )">刪除</button>
-                                                   
+
+                                                    <button class="btn btn-outline-info btn-sm "
+                                                        onclick="Edit( <%= item.product_id %> )" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#myModal">編輯</button>
+                                                    <button class="btn btn-outline-danger btn-sm"
+                                                        onclick="Delete( <%= item.product_id %> )">刪除</button>
+
                                                 </td>
 
                                             </tr>
