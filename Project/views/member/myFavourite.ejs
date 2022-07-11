@@ -195,14 +195,14 @@
                                             console.log($('input[name="size"]:checked').val());
                                             console.log($('input[name="color"]:checked').val());
                                         }
-                                    // $.ajax({
-                                    //     url:"http://localhost:3000/home/member/myFavourite",
-                                    //     type:"post",
-                                    //     data:{
-                                    //         size:$("#size").val()
-                                    //     },
+                                    $.ajax({
+                                        url:"http://localhost:3000/home/member/myFavourite",
+                                        type:"post",
+                                        data:{
+                                            size:$("#size").val()
+                                        },
 
-                                    // })
+                                    })
                                 </script>
                             </div>  <!-- row -->
                             
