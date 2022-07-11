@@ -199,8 +199,13 @@
                                         url:"http://localhost:3000/home/member/myFavourite",
                                         type:"post",
                                         data:{
-                                            size:$("#size").val()
+                                            size : $('input[name="size"]:checked').val(),
+                                            color : $('input[name="color"]:checked').val()
                                         },
+                                        success: function(data){
+                                            console.log('success');
+                                            alert('已加入購物車');
+                                        }
 
                                     })
                                 </script>
