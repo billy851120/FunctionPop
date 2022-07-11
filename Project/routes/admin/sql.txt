@@ -10,6 +10,8 @@ SELECT * FROM `order` where DATE_SUB(CURDATE(), INTERVAL 30 DAY) < date(order_ti
 4，查詢昨天的資料
 SELECT * FROM `order` WHERE TO_DAYS(NOW()) - TO_DAYS(order_time) = 1;
 
+  <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
+
 
 
 
