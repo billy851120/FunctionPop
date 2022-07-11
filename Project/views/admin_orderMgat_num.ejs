@@ -18,7 +18,7 @@
             height: 90px;
             text-align: center;
         }
-    
+
 
         .chart-box {
             width: 500px;
@@ -149,7 +149,8 @@
                             </svg></div>
                         <div class="col-8">
                             <p class="card-text p-1" style="font-size: 10px;">總銷售額</p>
-                            <p class="card-text">$ <%= allSumcount %></p>
+                            <p class="card-text">$ <%= allSumcount %>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +167,7 @@
                             <thead>
                                 <th class="col-4">訂單編號</th>
                                 <th class="col-3">名稱</th>
-                                <th class="col-5">信箱</th>
+                                <th class="col-5">下單時間</th>
                             </thead>
                             <tbody>
                                 <% orderToday.forEach((item ,index)=> { %>
@@ -178,7 +179,7 @@
                                             <%= item.user_name %>
                                         </td>
                                         <td>
-                                            <%= item.user_email %>
+                                            <%= moment(item.order_update).format(shortDataFormat) %>
                                         </td>
                                     </tr>
                                     <% }) %>
@@ -256,7 +257,7 @@
                                 <th class="col-1">信箱</th>
                                 <th class="col-1">電話</th>
                                 <th class="col-3">地址</th>
-                                <th class="col-2">下單時間</th>
+                                <th class="col-2">下單日期</th>
                                 <th class="col-1"></th>
                             </thead>
                             <tbody>
@@ -335,6 +336,14 @@
                                         <p name="modalInp5" type="text"></p>
                                     </div>
                                 </div>
+                                <div class="row content">
+                                    <div class="col-4 text-right">
+                                        <h6>總　　額: </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p name="modalInp6" type="text"></p>
+                                    </div>
+                                </div>
 
                             </div>
                         </form>
@@ -372,7 +381,6 @@
                     url: "http://localhost:3000/admin/goods/orderMgat_num/detail/" + id,
                     type: "GET",
                     success: function (res) {
-
                         var ress = JSON.parse(res)
 
                         $(".productName").remove();
@@ -384,7 +392,8 @@
                                 " 衣服編號: " + item.product_code + "<br>"
                                 + " 商品名稱: " + item.product_name + "<br>"
                                 + " 類　　別: " + item.product_category + "<br>"
-                                + " 尺　　寸: " + item.size_name + "<br>";
+                                + " 尺　　寸: " + item.size_name + "<br>"
+                                + " 價　　格: $" + item.UnitPrice + "<br>";
                             document.getElementById("mgatMod").appendChild(a);
                             console.log(a);
                             $("p[name='modalInp1']").text(item.order_list)
@@ -392,7 +401,9 @@
                             $("p[name='modalInp3']").text(item.user_email)
                             $("p[name='modalInp4']").text(item.user_phone)
                             $("p[name='modalInp5']").text(item.user_address)
+                            $("p[name='modalInp6']").text(ress.message[0].COUNT + "$")
                         });
+                      
                     },
                     error: function () {
                         console.log("err")

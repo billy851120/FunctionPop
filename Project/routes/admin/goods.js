@@ -64,8 +64,8 @@ router.post('/item_del/update', function (rqs, res) {
     }
   })
   function UPDATE(product_name, product_category, product_description, product_price, id) {
-    const sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? ,product_price = ? WHERE product_id = ?;`;
-    const data = [product_name, product_category, product_description, product_price, parseInt(body.id)];
+    var sql = `UPDATE products SET product_name = ?, product_category = ?, product_description = ? ,product_price = ? WHERE product_id = ?;`;
+    var data = [product_name, product_category, product_description, product_price, parseInt(body.id)];
     db.exec(sql, data, function (results, fields) {
       console.log("results1")
       console.log(results)
@@ -95,8 +95,8 @@ router.post('/item_all/delete', function (rqs, res) {
   })
 })
 function DELETE(id) {
-  const sql = `DELETE FROM products WHERE product_id = ?;`;
-  const data = [parseInt(body.id)];
+  var sql = `DELETE FROM products WHERE product_id = ?;`;
+  var data = [parseInt(body.id)];
   db.exec(sql, data, function (results, fields) {
     if (results.affectedRows) {
       console.log(JSON.stringify(new Success('delete success')));
@@ -173,13 +173,13 @@ router.post('/item_all', function (req, res) {
 
               for (let i = 0; i < size.length; i++) {
                 var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`,`size_name`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "','" + size[i] + "')";
-                  db.exec(sql1, function (err, result) {
-                    console.log(sql)
-                    console.log(sql1)
-                    
-                  })
-                }
-                res.redirect('/admin/goods/item_all');
+                db.exec(sql1, function (err, result) {
+                  console.log(sql)
+                  console.log(sql1)
+
+                })
+              }
+              res.redirect('/admin/goods/item_all');
             })
           });
         });
@@ -243,25 +243,32 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
 
   })
 })
+
 router.get('/orderMgat_num/detail/:id([0-9]+)', function (rqs, res) {
   var sql = `
   SELECT * FROM orders
   LEFT JOIN order_items
   ON orders.order_list = order_items.order_list AND orders.order_list = order_items.order_list
   LEFT JOIN products_all
-  ON order_items.product_id = products_all.product_all_id WHERE orders.order_list = ?;`
+  ON order_items.product_id = products_all.product_all_id WHERE orders.order_list = ?`;
   var data = [rqs.params.id]
   db.exec(sql, data, function (results, fields) {
-    console.log(sql)
-    if (results[0]) {
-      res.end(
-        JSON.stringify(new Success(results))
-      )
-    } else {
-      res.end(
-        JSON.stringify(new Error('no result'))
-      )
-    }
+    var sql1 = `SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE order_list = ? `;
+    db.exec(sql1, data, function (results1, fields) {
+
+      if (results[0]) {
+        console.log(results[0])
+        res.end(
+          JSON.stringify(new Success(results,results1)),
+        )
+      } else {
+        res.end(
+          JSON.stringify(new Error('no result'))
+        )
+      }
+    
+    })
+
   })
 })
 
