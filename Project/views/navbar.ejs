@@ -55,13 +55,38 @@
 
           </div>
           <div style="padding: 0 !important;" class="col-4 d-none d-md-block m-auto text-center">
-            <a class="d-inline-block" style="width: 100%;
+            <a class="d-inline-block" style="width: 100%; position: relative;
             height: 100%;" id="fpopnav_heart" href="/home/member/myFavourite">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" viewBox="0 0 16 16"
                 style="color: rgb(0, 0, 0)">
                 <path
                   d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
               </svg>
+              <div style="position: absolute; top: 0; left: 0; width: 200px; display: none;">
+                <%if(shopCart){ %>
+                  <% shopCart.forEach(function(item){ %>  
+                    <div class="d-flex" >
+                      <div style="
+                      margin: auto;
+                      max-height: 67px;
+                      max-width: 52px;
+                      height: 100%;
+                      width: 100%;
+                  ">
+                        <img style="width:100%; height:100%" src="/img/product/<%- item.image %>" alt="">
+                      </div>
+                      <div>
+                        <p><%- item.name %></p> 
+                        <p>尺寸:<%- item.size %></p> 
+                        <p>數量:<%- item.quantity %></p> 
+                      </div>
+
+                    </div>
+                    <%}) %>
+
+                <% } %>
+                
+              </div>
             </a>
           </div>
           <div style="padding: 1px 0 0 5px !important;" class="col-4 nav-item dropdown  ">

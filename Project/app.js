@@ -6,11 +6,11 @@ var app = express();
 var moment = require('moment');
 var shortDataFormat = 'YYYY-MM-DD hh:mm:ss';
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: true }));
+app.use(
+  session({ secret: 'keyboard cat', resave: false, saveUninitialized: true })
+);
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.isLogin = req.session.isLogin;
@@ -21,13 +21,10 @@ app.use((req, res, next) => {
   res.locals.moment = moment;
   res.locals.shortDataFormat = shortDataFormat;
   res.locals.cartCount = req.session.cartCount;
+  res.locals.shopCart = req.session.cart;
   res.locals.url = req.session.url;
   next();
 });
-
-
-
-
 
 //      前後台路徑
 //前台模組
@@ -35,7 +32,6 @@ var home = require('./routes/home.js');
 // 後台模組
 var admin = require('./routes/admin.js');
 //      前後台路徑
-
 
 // Web伺服器的靜態檔案置於 public 資料夾
 app.use(express.static('public'));
@@ -57,10 +53,9 @@ app.listen(3000, function () {
   console.log('run');
 });
 
-app.get('*', function (req, res) {  // 找不到路由時導向404 NOT FOUND
+app.get('*', function (req, res) {
+  // 找不到路由時導向404 NOT FOUND
   res.render('404', {
-    title: '404 NOT FOUND'
+    title: '404 NOT FOUND',
   });
 });
-
-

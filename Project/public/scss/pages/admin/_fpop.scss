@@ -296,6 +296,7 @@ body {
     font-size: small;
 
 }
+
 label,
 textarea {
     font-size: .9rem;
@@ -310,10 +311,10 @@ textarea {
     border: 1px solid #ccc;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-}
+// label {
+//     display: block;
+//     margin-bottom: 10px;
+// }
 
 .ellipsis {
     overflow: hidden;
