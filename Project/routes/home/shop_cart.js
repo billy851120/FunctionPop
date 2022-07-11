@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var db = require('../../dataBase');
 const { apply } = require('file-loader');
+const { async } = require('../../controller/shop_cartController');
 
 // 回到前頁
 function redirectBack(req, res, next) {
