@@ -741,7 +741,8 @@
             data: JSONData,
             success: function (res) {
               console.log("已購買")
-              var dot = document.createElement("div")
+              var dot = document.createElement("div");
+              $(dot).prop("class","dotGreen");
               $(dot).css({
                 "background": "#96ff6c",
                 "width": "8px",
@@ -751,8 +752,38 @@
                 "position": "absolute",
                 "left": "88%",
                 "top": "-3px",
+                "transition":".3s",
               })
               document.getElementById("fpopnav_cart").appendChild(dot);
+              var imgUrl = $("#mainImg").prop("src").substr(34);
+              var pSize = $(".sizeflexBox ").find(" .psize-active").val();
+              var nowCartCount = $('#cartCount').text();
+              var pName = $("#product_describe > h4").text();
+
+              var pidItem =document.createElement("div");
+              $(pidItem).prop("class","d-flex mb-2 smItem");
+              pidItem.innerHTML =` 
+                      <div style="
+                          margin-right: 20px;
+                          max-width: 37px;
+                          height: 100%;
+                          width: 100%;
+                  ">
+                        <img style="width:100%; height:100%" src="/img/product/${imgUrl}" alt="">
+                      </div>
+                      <div style="font-size: 0.7em; text-align: left; user-select: none;">
+                        <p class="m-0">
+                         ${pName}
+                        </p>
+                        <p class="m-0" style="color: #818181;">尺寸:${pSize}
+                        </p>
+                        <p class="m-0" style="color: #818181;">數量:${nowCartCount}
+                        </p>
+                      </div>
+
+              `;
+              $("#shopCartItttttem").append(pidItem);
+
               var res = JSON.parse(res);
 
             },
