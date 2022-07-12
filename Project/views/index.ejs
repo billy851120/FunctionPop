@@ -11,11 +11,12 @@
     <!-- <link rel="stylesheet" href="/scss/pages/home/bootstrap.scss"> -->
     <script src="/js/home/jquery.min.js"></script>
     <script src="/js/home/popper.min.js"></script>
-    
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
 
     <title>function.pop</title>
@@ -46,9 +47,17 @@
         }
 
         #status {
+            position: relative;
             width: 600px;
             height: 450px;
             margin: 150px auto;
+        }
+
+        @media screen and (max-width:750px) {
+            #status {
+                width: 300px;
+                height: 2250px;
+            }
         }
 
         #gotop {
@@ -100,12 +109,15 @@
 </head>
 
 <body class="page-container" style="text-align:center;">
+
     <div id="preloader">
         <div id="status"><img src="/img/home/loading2.gif" class="img-fluid" /></div>
     </div>
+
     <div id="gotop">
         <h1>˄</h1>
     </div>
+
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
@@ -140,9 +152,9 @@
                             Accessory
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Apple</a>
-                            <a class="dropdown-item" href="#">Bee</a>
-                            <a class="dropdown-item" href="#">Cat</a>
+                            <a class="dropdown-item" href="#">hat</a>
+                            <a class="dropdown-item" href="#">purse</a>
+                            <a class="dropdown-item" href="#">shoe</a>
                         </div>
                     </li>
                 </ul>
@@ -186,16 +198,16 @@
 
 
     <!-- 第一面 -->
-    <div class="pageone gg" id="pageone" >
+    <div class="pageone gg" id="pageone">
         <!-- <img class="chili" src="/img/home/bg_chili.png" alt=""> -->
-        <div class="mx-auto col-12 col-sm-10 col-md-7" style="border:1px red solid ;">
-            <img  src="/img/home/tsat1-03.svg" alt="" style="width:100%; border: yellow 1px solid;">
+        <div class="mx-auto col-12 col-sm-10 col-md-9 col-xl-7">
+            <img src="/img/home/tsat1-03v1.svg" alt="" style="width:95%;">
         </div>
-        
+
     </div>
 
     <div id="drag-container">
-        <div id="spin-container" class="mx-auto">
+        <div id="spin-container" class="">
 
             <img src="/img/home/fashion1.jpg" alt="" style="object-fit: cover;">
             <img src="/img/home/fashion2.jpg" alt="" style="object-fit: cover;">
@@ -316,7 +328,7 @@
 
 
         <div>
-            <section class="regular slider">
+            <section class="regular slider mb-5">
                 <div>
                     <img src="/img/home/Accessory/belt1.jpg">
                 </div>
@@ -338,24 +350,24 @@
             </section>
         </div>
 
-        <div style="position: relative; width: 85%; margin: 80px auto;" id="thirdmargin">
+        <div style="position: relative; width: 85%; margin: 90px auto;" id="thirdmargin">
             <div class="row zzz justify-content-center align-items-center">
-                <div class="col-2 " >
+                <div class="col-sm-2 ">
                     <img src="/img/home/icon/ico1.png" alt="" style="height: 50px;width:50px">
                     <h5 style="font-weight: 700;" class="mt-3">免運費</h5>
                     <p style="font-size: 15px;">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。 </p>
                 </div>
 
-                <div class="col-2" >
-                    <img src="/img/home/icon/ico2.png" alt="">
-                    <h6>運輸時效快</h6>
-                    <p>港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p>
+                <div class="col-sm-2">
+                    <img src="/img/home/icon/ico2.png" alt="" style="height: 50px;width:50px">
+                    <h6 style="font-weight: 700;" class="mt-3">運輸時效快</h6>
+                    <p style="font-size: 15px;">港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p>
                 </div>
 
-                <div class="col-2" >
-                    <img src="/img/home/icon/ico3.png" alt="">
-                    <h6>輕鬆退換貨</h6>
-                    <p>自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p>
+                <div class="col-sm-2">
+                    <img src="/img/home/icon/ico3.png" alt="" style="height: 50px;width:50px">
+                    <h6 style="font-weight: 700;" class="mt-3">輕鬆退換貨</h6>
+                    <p style="font-size: 15px;">自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p>
                 </div>
 
             </div>
@@ -379,8 +391,8 @@
     // console.log(document.documentElement.clientWidth);
 
     // 過場動畫
-    $("#status").delay(170).fadeOut(130); //delay --> 延遲幾秒才fadeOut
-    $("#preloader").delay(240).fadeOut(130);
+    $("#status").delay(1700).fadeOut(1300); //delay --> 延遲幾秒才fadeOut
+    $("#preloader").delay(2400).fadeOut(1300);
 
     $(document).ready(function () {
 
