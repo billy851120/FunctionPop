@@ -51,12 +51,12 @@
     </style>
 </head>
 
-<body>
+<body  style="background-color:white ;" >
    
     <!-- content -->
      <%- include("../navbar.ejs") %> 
 
-        <div class="container">
+        <div class="container" style="background-color:white ;">
 
             <%- include("../template/loginbar") %>
           
@@ -91,13 +91,22 @@
                                         <button type="submit" class="btn" style="font-size: 8px;">清空全部商品</button>
                                     </form>
                                 </div>
-                                <div class="col-sm-2 col-3 d-flex justify-content-end align-items-center text-secondary "><%- todos.length %> 件商品</div>
+                                <div class="col-sm-2 col-3 d-flex justify-content-end align-items-center text-secondary product_length "></div>
                             </div>
 
 
                     <!-- 我的最愛內容 -->
+                    <%   var x = ""; %>
                             <% for (var i=0; i<todos.length; i++) { %>
-                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius">
+
+                                <%   if(todos[i].product_id == x ){}else { %>
+                                    <% x = todos[i].product_id; %>
+                                    <script>
+                                       var product_length = document.querySelectorAll(".row_number").length;
+                                    //    console.log(x);
+                                       $(".product_length").text(`${product_length+1} 件商品`);
+                                    </script>
+                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" >
                                 <div class="col-4 col-lg-3 product_info py-3">
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
                                     src="/img/product/<%= todos[i].product_image %>" title="<%- todos[i].product_description %>"></a>
@@ -131,19 +140,20 @@
                                  </div>
                                  <div class="col-12 col-lg-2 mb-2">
                                     <!-- <button type="submit" id="addToCart" class="btn_GO px-1 d-block w-100 b_radius">移至購物車</button> -->
-                                    <button type="button" id="addToCart_<%- todos[i].product_id %>" class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose" onclick="addtoCart(this)">移至購物車</button>
-                                    <div class="modal fade" style="z-index: 50001;" id="choose"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <button type="submit" id="addToCart_<%- todos[i].product_id %>" class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id%>" onclick="addtoCart(this)">移至購物車</button>
+                                  
+                                    <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id%>"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="chooseLabel">請選擇尺寸及顏色</h5>
+                                              <h5 class="modal-title" id="choose_<%- todos[i].product_id%>Label">請選擇尺寸及顏色</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                     <div class="col-6 border">尺寸：<br>
+                                                     <div class="col-6">尺寸：<br>
                                                           <input type="radio" name="size" value="S">
                                                           <label for="size_S" class="mr-2">S</label>
                                                           
@@ -153,9 +163,7 @@
                                                           <input type="radio" name="size" value="L">
                                                           <label for="size_L"class="mr-2">L</label>
                                                       </div>
-                                                      <div class="col-6">
-                                                         顏色：<br>
-                                                      
+                                                      <div class="col-6"> 顏色：<br>
                                                          <input type="radio" name="color" value="BK">
                                                          <label for="c_black"class="mr-2">黑色</label>
                                                   
@@ -170,7 +178,7 @@
                                                 
                                             <div class="modal-footer">
                                               <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
-                                              <button type="submit" class="btn_GO" id="sendToCart" action="/home/member/myFavourite">確定</button>
+                                              <button type="submit" class="btn_GO" onclick="gotoCart(this)">確定</button>
                                               <!-- <button  class="btn_GO" id="get" >確定</button> -->
                                             </div>
                                           </div>
@@ -180,7 +188,7 @@
                                      <% var memid =0; %>
                                       <% if(memberprofile != null){ %>
                                          <% memid = memberprofile.id;}else{memid = 0;} %>
-       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none  btn">
+       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none btn">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
@@ -190,30 +198,31 @@
                                          </svg>
                                      </button>
                                      <script>
-                                        function addtoCart(obj){
-                                            console.log(obj.id);
-                                        }
-                                        sendToCart.onclick=function(){
-                                            console.log($('input[name="size"]:checked').val());
-                                            console.log($('input[name="color"]:checked').val());
-                                        }
-                                    $.ajax({
-                                        url:"http://localhost:3000/home/member/myFavourite",
-                                        type:"post",
-                                        data:{
-                                            size : $('input[name="size"]:checked').val(),
-                                            color : $('input[name="color"]:checked').val()
-                                        },
-                                        success: function(data){
-                                            console.log('success');
-                                            alert('已加入購物車');
-                                        }
+                                       
+                                        // function gotoCart(obj){
+                                        //     console.log(obj);
+                                        // }
+                                        // sendToCart.onclick=function(){
+                                        //     console.log($('input[name="size"]:checked').val());
+                                        //     console.log($('input[name="color"]:checked').val());
+                                        // }
+                                    // $.ajax({
+                                    //     url:"http://localhost:3000/home/member/myFavourite",
+                                    //     type:"post",
+                                    //     data:{
+                                    //         size : $('input[name="size"]:checked').val(),
+                                    //         color : $('input[name="color"]:checked').val()
+                                    //     },
+                                    //     success: function(data){
+                                    //         console.log('success');
+                                    //         alert('已加入購物車');
+                                    //     }
 
-                                    })
+                                    // })
                                 </script>
                             </div>  <!-- row -->
                             
-                            <%}%>
+                            <%}}%>
 
                         </div> <!-- col-10 -->
                         <% } else { %>
@@ -224,7 +233,7 @@
                 </div> <!-- row -->
                 <p class="text-center mt-5 font-weight-bold">新潮指標</p>
                 <hr>
-                <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+                <!-- <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <ol class="carousel-indicators mb-n4 ">
                         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleControls" data-slide-to="1"></li>
@@ -273,7 +282,7 @@
                         </button>
                     </div>
 
-                </div>
+                </div> -->
 
         </div> <!-- container -->
 
@@ -284,12 +293,15 @@
 
 <script>
     function formSubmit(obj) {
-        console.log();
+        console.log(obj);
         var pid = obj.children[0].value;
         var cid = obj.children[1].value;
+        // var size = $('input[name="size"]:checked').val();
+        // var color = $('input[name="color"]:checked').val();
         // var send = obj.id;
-        var send = document.querySelector(`#${obj.id}`);
-        console.log(send);
+        // var send = document.querySelector(`#${obj.id}`);
+        // console.log('send =');
+        // console.log(send);
         // const value = content.value;
         var xhr = new XMLHttpRequest();
         xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
@@ -300,6 +312,8 @@
         {
             pid: pid,
             cid: cid,
+            // size: size,
+            // color: color
         //   list: [1, 2, 3],
         },
       );
@@ -312,6 +326,57 @@
 
     function clearAll(){
       document.getElementById('clearFavor').submit();
+    };
+    // function gotoCart(obj){
+    //     sendToCart.onclick=function(){
+    //         console.log('obj');
+    //          console.log($('input[name="size"]:checked').val());
+    //          console.log($('input[name="color"]:checked').val());
+    //                                  }
+    // }
+
+    function addtoCart(obj){
+        console.log(obj.id);
+        var p_id = obj.id;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', '/home/member/myFavourite'); 
+      
+      // json 格式
+      xhr.setRequestHeader('Content-type', 'application/json');
+      var data = JSON.stringify(
+        { p_id: p_id },
+      );
+      xhr.send(data);
+      xhr.onload = function() {
+        console.log(JSON.parse(xhr.responseText));
+      }
+    }
+
+    function gotoCart(obj){
+        console.log('---------------'); 
+        //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
+         var p_id = (((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
+         console.log(`p_id = ${p_id}`);
+         var size = $('input[name="size"]:checked').val();
+         var color = $('input[name="color"]:checked').val();
+         console.log(`size : ${size} , color : ${color} `);
+         var xhr = new XMLHttpRequest();
+        xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
+        
+          // json 格式
+      xhr.setRequestHeader('Content-type', 'application/json');
+      var data = JSON.stringify(
+        {
+            p_id:p_id,
+            size: size,
+            color: color
+        },
+      );
+      xhr.send(data);
+      xhr.onload = function() {
+        console.log(JSON.parse(xhr.responseText));
+      }
     }
 </script>
 </html>

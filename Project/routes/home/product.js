@@ -24,8 +24,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json())
 
 var sqlpost = 'SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?';
-router.post('/:gender', function (rqs, res) {
-  // console.log("QQQQQ");
+router.post('/like', function (rqs, res) {
+  console.log("QQQQQ");
   // console.log(rqs.body.memid);
   db.exec(
     sqlpost,
@@ -61,7 +61,8 @@ router.post('/:gender', function (rqs, res) {
               // console.log(results);
               // console.log(err);
               // res.redirect('/');
-              res.redirect(`/home/product/${gender}`);
+              // res.redirect(`/home/product/${gender}`);
+              res.redirect(`back`);
               // if (err) return cb(err);
               // cb(null)
 
@@ -74,7 +75,9 @@ router.post('/:gender', function (rqs, res) {
               // console.log(results);
               // console.log(err);
               // res.redirect('/');
-              res.redirect(`/home/product/${gender}`);
+              // res.redirect(`/home/product/${gender}`);
+              res.redirect(`back`);
+
               // if (err) return cb(err);
               // cb(null)
             }
@@ -98,7 +101,8 @@ SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_
 
   router.get('/:gender', getUrl, function (rqs, res) {
     var url =rqs.url;
-    console.log("DDDD");
+    console.log("123");
+    console.log(url);
     var mem_customer_id = 0;
     // console.log(rqs.session.memberprofile.id);
     if(rqs.session.memberprofile == null){
@@ -211,7 +215,7 @@ SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_
 //   });
 // });
 
-// Gender
+// Single Product Page & Rating DESC
 router.get('/:gender/single_product/:id', getUrl, function (rqs, res) {
   var cartCount = rqs.session.cartCount;
   

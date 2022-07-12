@@ -114,6 +114,8 @@ var shop_cartController = {
 
       if (req.session.cart) {
         var cart = req.session.cart;
+        console.log('CART =');
+        console.log(cart);
         if (shop_cartModel.isProductInCart(cart, all_id)) {
           for (let i = 0; i < cart.length; i++) {
             let ct = 0;
@@ -124,6 +126,10 @@ var shop_cartController = {
             }
           }
         } else {
+          console.log('else --------->')
+          console.log(product);
+          console.log('else cart ------------>');
+          console.log(cart);
           cart.push(product);
           // console.log(cart);
         }
