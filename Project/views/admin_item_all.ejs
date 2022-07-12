@@ -41,6 +41,10 @@
                     <li class="breadcrumb-item active" aria-current="page">所有商品</li>
                 </ol>
             </nav>
+            <span id="pall_id" style="display: none;">
+                <%- pall_id.product_id %>
+                    <% console.log(pall_id.product_id) %>
+            </span>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
@@ -131,6 +135,7 @@
                 <form id="form" class="modal-content" style="width: 400px;">
                     <div class="text-center p-4">
                         <input type="hidden" name="id">
+
                         <h6 class="font-weight-bold">產品編號:<input class="modal-inp ml-3" type="text" name="product_code">
                         </h6><br>
                         <h6 class="font-weight-bold">產品名稱:<input class="modal-inp ml-3" type="text" name="product_name">
@@ -166,6 +171,17 @@
                             <form class="form-horizontal" role="form" method="post" action="/admin/goods/item_all"
                                 enctype="multipart/form-data">
                                 <div>
+                                    <div>
+
+                                        <div class="mx-5">
+                                            <input type="text" class="form-control col-7 mt-3" name="product_id"
+                                                style="display: none;" value="<%- pall_id.product_id %>">
+                                        </div>
+                                    </div>
+                                    <span id="pall_id" style="display: none;">
+                                        <%- pall_id.product_id %>
+                                            <% console.log(pall_id.product_id) %>
+                                    </span>
                                     <div class="mx-5 row">
                                         <div class="col-4 mx-5">
                                             <label class="btn btn-outline-dark">
@@ -253,19 +269,23 @@
                                 <div>
                                     <label class="mx-5">選擇尺寸</label>
                                     <div class="form-check mx-5">
-                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioS" value="S">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioS"
+                                            value="S">
                                         <label class="form-check-label" for="radioS">S</label>
                                     </div>
                                     <div class="form-check mx-5">
-                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioM" value="M">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioM"
+                                            value="M">
                                         <label class="form-check-label" for="radioM">M</label>
                                     </div>
                                     <div class="form-check mx-5">
-                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioL" value="L">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioL"
+                                            value="L">
                                         <label class="form-check-label" for="radioL">L</label>
                                     </div>
                                     <div class="form-check mx-5">
-                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioO" value="ONE SIZE">
+                                        <input class="form-check-input" type="checkbox" name="size_name" id="radioO"
+                                            value="ONE SIZE">
                                         <label class="form-check-label" for="radioO">ONE SIZE</label>
                                     </div>
                                 </div>
