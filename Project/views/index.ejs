@@ -72,6 +72,18 @@
             cursor: pointer;
             z-index: 1000;
         }
+        #godown {
+            position: fixed;
+            border-radius: 50px;
+            right: 30px;
+            bottom: 100px;
+            padding: 7px 20px;
+            font-size: 25px;
+            background: rgba(255, 234, 234, 0.36);
+            color: #ffffff;
+            cursor: pointer;
+            z-index: 1000;
+        }
 
         .slider {
             width: 50%;
@@ -114,6 +126,9 @@
         <div id="status"><img src="/img/home/loading2.gif" class="img-fluid" /></div>
     </div>
 
+    <div id="godown">
+        <h1>v</h1>
+    </div>
     <div id="gotop">
         <h1>˄</h1>
     </div>
@@ -122,10 +137,10 @@
 
         <div class="storytitle" id="story">
             <p class="stories">STORIES</p>
-            <hr width="130px" style="background-color: yellow; position: relative; top: -18px;left: 5px;">
+            <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;">
         </div>
         <div class="storytitle" id="history">
-            <h2>History</h2>
+            <h2 style="color: #ffffff;">History</h2>
             <!-- <hr width="130px" style="background-color: yellow; position: relative; top: -18px;left: 5px;"> -->
         </div>
 
@@ -227,13 +242,11 @@
         <img src="/img/home/smyipng.png" alt="" style="position:absolute; top:12%; left: 30%;z-index: 700;">
         <img src="/img/home/smyii.png" alt="" style="position:absolute; top:63%; right: 30%;z-index: 700;">
         <div style="text-align:center;margin-top: 140px;z-index: 701;">
-            <img class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-4" src="/img/home/smiley.png" alt="">
-            <h5 class="col-10 col-sm-7" style="margin:50px auto;">
-                Functionpop是於1921年成立的義大利奢華品牌，創辦人Bron Keil是生長自一般家庭的皮革製造商之子。
-                年少時的Bron Keil離家到倫敦及巴黎四處打工，他曾當過洗碗工與電梯服務員。
-                40歲時Bron Keil回到家鄉繼承其父親的事業。
-                時至今日，Functionpop已是全球非常受歡迎與令人渴望的奢華品牌。
-            </h5>
+            <img class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-5" src="/img/home/smiley.png" alt="">
+            <h6 class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-5" style="margin:50px auto;color: #ffffff;">
+                Functionpop是於1921年成立的義大利奢華品牌，
+                時至今日已是全球非常受歡迎與令人渴望的奢華品牌。
+            </h6>
         </div>
     </div>
 
@@ -330,22 +343,22 @@
         <div>
             <section class="regular slider mb-5">
                 <div>
-                    <img src="/img/home/Accessory/belt1.jpg">
+                    <img src="/img/product/<%-ranpro[0]%>">
                 </div>
                 <div>
-                    <img src="/img/home/Accessory/belt2.jpg">
+                    <img src="/img/product/<%-ranpro[1]%>">
                 </div>
                 <div>
-                    <img src="/img/home/Accessory/belt3.jpg">
+                    <img src="/img/product/<%-ranpro[2]%>">
                 </div>
                 <div>
-                    <img src="/img/home/Accessory/glasses1.jpg">
+                    <img src="/img/product/<%-ranpro[3]%>">
                 </div>
                 <div>
-                    <img src="/img/home/Accessory/glasses2.jpg">
+                    <img src="/img/product/<%-ranpro[4]%>">
                 </div>
                 <div>
-                    <img src="/img/home/Accessory/glasses3.jpg">
+                    <img src="/img/product/<%-ranpro[5]%>">
                 </div>
             </section>
         </div>
@@ -564,6 +577,10 @@
 
 </script>
 
+
+<script>
+
+</script>
 <!-- <script src="./mousescroll.js"></script> -->
 <script src="/js/home/scrollii.js"></script>
 <script src="/js/home/spin.js"></script>
