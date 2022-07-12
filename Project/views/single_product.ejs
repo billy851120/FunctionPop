@@ -445,139 +445,45 @@
         </div>
       </section>
 
+      <!-- 聯名照片 -->
+      <div class="container">
+        <div class="text-center mt-4 pt-2">
+          <hr class="mx-auto" />
+        </div>
+        <img src="/img/product/background.png" alt="">
+      </div>
+
       <!-- 4. Relative Product -->
       <section class="container" id="related-products" class="pt-5 mt-2">
         <div class="text-center mt-4 pt-2">
-          <h2>相關商品</h2>
+          <h2>最新上架</h2>
           <hr class="mx-auto" />
         </div>
         <div class="row mx-auto container-fluid">
           <!-- Featured List -->
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">人字拖</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
+          <% pro2.forEach(function(item){ %>
+          <div class="my_product text-center col-lg-3 col-md-4 col-sm-6 col-6">
+            <img class="img-fluid mb-3" src="/img/product/<%- item.product_image %>" alt="" />
+            <h5 class="p-name"><%- item.product_name %></h5>
+            <h4 class="p-price">$ <%- item.product_price %></h4>
+            <button class="my_button buy-btn" onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';">Buy Now</button>
           </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">休閒剪裁運動衫</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">平蚊洋裝</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">草帽</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
+          <% }); %>
         </div>
       </section>
 
-      <!-- 5. Hot Product -->
-      <section class="container" id="related-products" class="pt-5 mt-2">
-        <div class="text-center mt-4 pt-2">
-          <h2>熱銷商品</h2>
-          <hr class="mx-auto" />
-        </div>
-        <div class="row mx-auto container-fluid">
-          <!-- Featured List -->
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100001_beige_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">人字拖</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100002_black_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">休閒剪裁運動衫</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">平蚊洋裝</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-          <div class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-            <img class="img-fluid mb-3" src="assets/imgs/FP1_80100004_lightblue_0.jpg" alt="" />
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h5 class="p-name">草帽</h5>
-            <h4 class="p-price">$499</h4>
-            <button class="my_button buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </section>
 
       <!-- 6. Recommend -->
-      <hr style="border-top: 0.9px solid #000" />
+
       <div class="container">
+        <div class="text-center mt-4 pt-2">
+          <h2>好評商品</h2>
+          <hr class="mx-auto" />
+        </div>
         <div class="row">
-          <div style="font-weight: 900" class="col text-center mb-3 mt-2">
-            好評商品
-          </div>
+          <!-- <div style="font-weight: 900" class="col text-center mb-3 mt-2">
+            <h2>好評商品</h2>
+          </div> -->
         </div>
         <div class="row">
           <div class="col">
