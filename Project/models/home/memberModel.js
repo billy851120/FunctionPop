@@ -40,10 +40,13 @@ var memberModel = {
             })
     },
     getOrder:(member,cb)=>{
-        db.exec('SELECT * FROM orders where user_email = ?',
+        db.exec('select O.order_list, O.order_update, OI.product_id, OI.UnitPrice,OI.Quantity from orders AS O left join order_items AS OI on O.order_list = OI.order_list where O.user_email = ? order by O.order_update DESC',
         [member],
         (result,fields,err)=>{
+            var xx =JSON.stringify(result[0].order_update);
+            console.log(xx);
             cb(null,result);
+            
         })
     }
 
