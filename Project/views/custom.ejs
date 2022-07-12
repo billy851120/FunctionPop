@@ -7,16 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="/css/all.css" />
-  <script src="/js/index/jquery.min.js"></script>
-  <script src="/js/index/popper.min.js"></script>
-  <script src="/js/index/bootstrap.min.js"></script>
+  <!-- <script src="/js/index/bootstrap.min.js"></script> -->
+  <script src="/js/home/jquery.min.js"></script>
+  <script src="/js/home/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"></script>
   <script src="/js/index/html2canvas_min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
 
   <style>
-    .nav_class {
+    /* .nav_class {
       padding-left: 16.875%;
       padding-right: 16.875%;
       z-index: 5000;
@@ -27,14 +30,13 @@
     }
 
     .search_input {
-      /* width: 150px; */
       height: 35px;
       border-radius: 50px;
     }
 
     .search_button {
       font-size: 0.9em;
-    }
+    } */
 
     .middleboard {
       overflow: hidden;
@@ -53,9 +55,7 @@
 
 <body>
   <%- include("navbar.ejs") %>
-    <div class="container">
-      <%- include("./template/loginbar") %>
-    </div>
+
     <div>
       <% var memid=0; %>
         <% if(memberprofile !=null){ %>
