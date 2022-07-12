@@ -9,12 +9,10 @@
     <meta name=”viewport” content=”width=device-width”>
     <link rel="stylesheet" href="/css/all.css">
     <!-- <link rel="stylesheet" href="/scss/pages/home/bootstrap.scss"> -->
+    <script src="/js/admin/bootstrap.min.js"></script>
     <script src="/js/home/jquery.min.js"></script>
     <script src="/js/home/popper.min.js"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
@@ -72,11 +70,12 @@
             cursor: pointer;
             z-index: 1000;
         }
+
         #godown {
             position: fixed;
             border-radius: 50px;
             right: 30px;
-            bottom: 100px;
+            bottom: 110px;
             padding: 7px 20px;
             font-size: 25px;
             background: rgba(255, 234, 234, 0.36);
@@ -89,6 +88,21 @@
             width: 50%;
             margin: 70px auto;
         }
+
+        @media screen and (max-width:850px) {
+            .slider {
+                width: 70%;
+                margin: 40px auto;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .slider {
+                width: 85%;
+                margin: 40px auto;
+            }
+        }
+
 
         .slick-slide {
             margin: 0px 15px;
@@ -236,13 +250,12 @@
         <div id="ground"></div>
     </div>
 
-
     <!-- 新加一面 -->
     <div class="pagenewi gg" id="pagenewi">
         <img src="/img/home/smyipng.png" alt="" style="position:absolute; top:12%; left: 30%;z-index: 700;">
         <img src="/img/home/smyii.png" alt="" style="position:absolute; top:63%; right: 30%;z-index: 700;">
         <div style="text-align:center;margin-top: 140px;z-index: 701;">
-            <img class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-5" src="/img/home/smiley.png" alt="">
+            <img class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-5" src="/img/home/smiley.png" alt="" id="newi_img">
             <h6 class="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-5" style="margin:50px auto;color: #ffffff;">
                 Functionpop是於1921年成立的義大利奢華品牌，
                 時至今日已是全球非常受歡迎與令人渴望的奢華品牌。
@@ -317,24 +330,23 @@
 
     </div>
 
-
     <!-- 第三面 + footer -->
     <div class="pagethree gg" id="pagethree">
 
         <div class="row coupon row_class">
             <div class="col col-8 col-md-3 automid col_class colyy">
                 <figure class="figure">
-                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/couponblack.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
             <div class="col col-9 col-md-3 automid d-none d-md-block col_class colyy" style="margin:0 ;">
                 <figure class="figure ttt">
-                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/couponblack.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
             <div class="col col-9 col-md-3 automid  d-none d-md-block col_class colyy">
                 <figure class="figure ttt">
-                    <img src="/img/home/coupond.png" class="figure-img img-fluid threeimg">
+                    <img src="/img/home/couponblack.png" class="figure-img img-fluid threeimg">
                 </figure>
             </div>
         </div>
@@ -364,21 +376,40 @@
         </div>
 
         <div style="position: relative; width: 85%; margin: 90px auto;" id="thirdmargin">
-            <div class="row zzz justify-content-center align-items-center">
-                <div class="col-sm-2 ">
+            <div class="row zzz justify-content-center align-items-start">
+                <div class="col-md-2">
                     <img src="/img/home/icon/ico1.png" alt="" style="height: 50px;width:50px">
-                    <h5 style="font-weight: 700;" class="mt-3">免運費</h5>
+                    <!-- <h6 style="font-weight: 700;" class="mt-3">免運費</h6>
+                    <p style="font-size: 15px;">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。 </p> -->
+                </div>
+
+                <div class="col-md-2 d-none d-md-block">
+                    <img src="/img/home/icon/ico2.png" alt="" style="height: 40px;width:57px">
+                    <!-- <h6 style="font-weight: 700;" class="mt-3">運輸時效快</h6>
+                    <p style="font-size: 15px;">港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p> -->
+                </div>
+
+                <div class="col-md-2 d-none d-md-block">
+                    <img src="/img/home/icon/ico3.png" alt="" style="height: 50px;width:50px">
+                    <!-- <h6 style="font-weight: 700;" class="mt-3">輕鬆退換貨</h6>
+                    <p style="font-size: 15px;">自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p> -->
+                </div>
+
+            </div>
+            <div class="row zzz justify-content-center align-items-start">
+                <div class="col-md-2">
+                    <h6 style="font-weight: 700;" class="mt-3">免運費</h6>
                     <p style="font-size: 15px;">港澳-消費滿 HK$499.99 免運費。 台灣-消費滿HK$699.99免運費。 馬來西亞、新加坡-消費滿HK$599.99免運費。 </p>
                 </div>
 
-                <div class="col-sm-2">
-                    <img src="/img/home/icon/ico2.png" alt="" style="height: 50px;width:50px">
+                <div class="col-md-2">
+                    <img class=" d-md-none" src="/img/home/icon/ico2.png" alt="" style="height: 40px;width:57px">
                     <h6 style="font-weight: 700;" class="mt-3">運輸時效快</h6>
                     <p style="font-size: 15px;">港澳-順豐速運-3到5個工作日送達。 台灣、馬來西亞、新加坡-聯邦快遞-5到7個工作日送達。 </p>
                 </div>
 
-                <div class="col-sm-2">
-                    <img src="/img/home/icon/ico3.png" alt="" style="height: 50px;width:50px">
+                <div class="col-md-2">
+                    <img class=" d-md-none" src="/img/home/icon/ico3.png" alt="" style="height: 50px;width:50px">
                     <h6 style="font-weight: 700;" class="mt-3">輕鬆退換貨</h6>
                     <p style="font-size: 15px;">自發貨日起，21天內支持退換貨。 在線申請 | 48小時內處理 | 客服支持。 </p>
                 </div>
@@ -469,19 +500,30 @@
         }
         if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
             // $(".storytitle").css("top", "9%");
+            console.log(document.getElementById("newi_img").src);
+            document.getElementById("newi_img").src = "/img/home/tsat-06.png";
             $(".figure-img").css("margin-bottom", "0px");
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
             $("#pagetwoin").css("margin-top", "170px");
         } else if (window.innerWidth < 577) {
             // $(".storytitle").css("top", "8%");
+            console.log(document.getElementById("newi_img").src);
+            document.getElementById("newi_img").src = "/img/home/tsat-06.png";
             $(".figure-img").css("margin-bottom", "0px");
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
         }
+        if (window.innerWidth < 430) {
+            document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+        }
 
 
-        // if (window.innerWidth >= 577) {
-        //     $(".storytitle").css("top", "15px");
-        // }
+        if (window.innerWidth >= 430) {
+            // $(".storytitle").css("top", "15px");
+            document.getElementById("newi_img").src = "/img/home/smiley.png";
+        }
+        if (window.innerWidth >= 577) {
+            // $(".storytitle").css("top", "15px");
+        }
         if (window.innerWidth >= 768) {
             $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
         }
@@ -540,19 +582,30 @@
             }
             if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
                 // $(".storytitle").css("top", "9%");
+                // console.log(document.getElementById("newi_img").src);
+                // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
                 $(".figure-img").css("margin-bottom", "0px");
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
                 $("#pagetwoin").css("margin-top", "170px");
             } else if (window.innerWidth < 577) {
                 // $(".storytitle").css("top", "8%");
+                // console.log(document.getElementById("newi_img").src);
+                // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
                 $(".figure-img").css("margin-bottom", "0px");
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
             }
+            if (window.innerWidth < 430) {
+                document.getElementById("newi_img").src = "/img/home/tsat-06.png";
+            }
 
 
-            // if (window.innerWidth >= 577) {
-            //     $(".storytitle").css("top", "15px");
-            // }
+            if (window.innerWidth >= 430) {
+                // $(".storytitle").css("top", "15px");
+                document.getElementById("newi_img").src = "/img/home/smiley.png";
+            }
+            if (window.innerWidth >= 577) {
+                // $(".storytitle").css("top", "15px");
+            }
             if (window.innerWidth >= 768) {
                 $("#pagetwoin").css("height", `${pagetwopichei * 2}px`);
             }
