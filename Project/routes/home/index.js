@@ -17,7 +17,7 @@ router.get('/', getUrl, function (rqs, res) {
   var arrpro=[];
     // console.log(temp);
     db.exec(
-      'SELECT product_image FROM products ORDER BY product_upload DESC LIMIT 1,6;', [], (results,err ) => {
+      'SELECT product_image FROM products ORDER BY product_upload DESC LIMIT 0,6;', [], (results,err ) => {
         
         // console.log(err);
         console.log(results);
