@@ -124,12 +124,20 @@ router.get('/item_all', function (rqs, res) {
   var sql = `
   SELECT COUNT(*) AS COUNT FROM products;
   SELECT * FROM products ORDER BY products.product_upload DESC;
-  SELECT * FROM products_all order by product_id DESC limit 1;`;
+  SELECT * FROM products_all order by product_id DESC limit 1;
+  SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_image, products_all.product_image2, products_all.product_image3
+  FROM order_items
+  LEFT JOIN products_all
+  ON order_items.product_id = products_all.product_all_id
+  GROUP BY products_all.product_name
+  ORDER BY SUM(order_items.Quantity) DESC
+  LIMIT 3;`;
   db.exec(sql, [], function (results, fields) {
     res.render('admin_item_all', {
       total: results[0][0].COUNT,
       data2: results[1],
-      pall_id :results[2][0]
+      pall_id: results[2][0],
+      data3: results[3]
     })
   })
 })
@@ -148,10 +156,10 @@ router.post('/item_all', function (req, res) {
       size = post.size_name,
       pallId = post.product_id,
       bbb = parseInt(pallId),
-      padd = bbb+1;
-      console.log("pallId")
-      console.log(padd)
-      
+      padd = bbb + 1;
+    console.log("pallId")
+    console.log(padd)
+
 
 
     if (!req.files) {
@@ -180,7 +188,7 @@ router.post('/item_all', function (req, res) {
             db.exec(sql, function (result, err) {
 
               for (let i = 0; i < size.length; i++) {
-                var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`,`size_name`,`product_id`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "','" + size[i] + "','" + padd +"')";
+                var sql1 = "INSERT INTO products_all (`product_name`,`product_category`,`product_gender`,`product_description`, `product_composition` ,`product_price`,`product_image`,`product_image2`,`product_image3`,`product_code`,`size_name`,`product_id`) VALUES ('" + name + "','" + category + "','" + gender + "','" + description + "','" + composition + "','" + price + "','" + img_name + "','" + img_name2 + "','" + img_name3 + "','" + code + "','" + size[i] + "','" + padd + "')";
                 db.exec(sql1, function (err, result) {
                   console.log(sql)
                   console.log(sql1)
@@ -246,7 +254,7 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
       sale_today: results[4][0].COUNT,
       orderToday_count: results[5][0].COUNT,
       allSumcount: results[6][0].COUNT,
-      
+
 
 
     })
@@ -269,14 +277,14 @@ router.get('/orderMgat_num/detail/:id([0-9]+)', function (rqs, res) {
       if (results[0]) {
         console.log(results[0])
         res.end(
-          JSON.stringify(new Success(results,results1)),
+          JSON.stringify(new Success(results, results1)),
         )
       } else {
         res.end(
           JSON.stringify(new Error('no result'))
         )
       }
-    
+
     })
 
   })
