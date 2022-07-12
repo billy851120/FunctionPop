@@ -285,7 +285,7 @@ var shop_cartController = {
         item.all_id,
         to_price,
         item.quantity,
-        '',
+        '0',
         orderLise.email,
       ];
       db.exec(sql_order_item, data_order_item, function (result, fields) {
