@@ -156,10 +156,9 @@ var memberController = {
         //         });
         //     })
         // } else {
-        //     res.render('member/orderList', {
-        //         title: '會員資料｜訂單清單',
-        //         memberprofile: req.session.memberprofile
-        //     })
+            res.render('member/orderList', {
+                title: '會員資料｜訂單清單',
+            })
         // }
 
 
