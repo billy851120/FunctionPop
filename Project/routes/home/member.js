@@ -16,10 +16,10 @@ function redirectBack(req, res, next) {
 }
 
 router.use((req, res, next) => {
-  if(!req.originalUrl){
+  if (!req.originalUrl) {
     res.redirect('/home/product/male');
   }
-  return next(); 
+  return next();
 })
 
 function getUrl(req, res, next) {  // 登入後返回前頁
@@ -69,11 +69,12 @@ router.get('/myFavourite', getUrl, function (req, res) {
     var memid = req.session.memberprofile.id;
     // console.log(checkmem);
     db.exec(
-      'SELECT F.customer_id, F.product_id,P.product_gender, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
+      'SELECT F.customer_id, F.product_id,P.product_gender, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products_all AS P ON F.product_id = P.product_id WHERE F.customer_id = ?',
       memid,
       function (results, fields, error) {
+        // db.exec("SELECT * FROM products_all",[],)
         // console.log(error);
-        console.log(results);
+        // console.log(results);
         // console.log(fields);
         if (error) {
           throw error;
@@ -98,11 +99,11 @@ router.get('/myFavourite', getUrl, function (req, res) {
 });
 
 // ----------------------送出------------------------------
-router.post('/myFavourite', function(req, res) {
+router.post('/myFavourite', function (req, res) {
   console.log('post');
   console.log(req.body);
-  
-  if(req.body.clearallcontent != null){
+  //  -----全部送到垃圾桶-----------------------------------------
+  if (req.body.clearallcontent != null) {
     var memcontent = req.body.memcontent;
     db.exec(
       'DELETE FROM favorite WHERE customer_id = ?', [memcontent], (err, results) => {
@@ -112,20 +113,34 @@ router.post('/myFavourite', function(req, res) {
       }
     );
   }
-  var cid = parseInt(req.body.cid);
-  var pid = parseInt(req.body.pid);
-  db.exec(
-    'DELETE FROM favorite WHERE product_id = ? and customer_id = ?', [pid,cid], (results, err) => {
-      // console.log(results);
-      // console.log(err);
-      // res.redirect('/home/member/myFovourite');
-      // if (err) return cb(err);
-      // cb(null)
+  //  ---垃圾桶------------------------------------------------------
+  console.log(`pid : ${req.body.pid}`);
+  if (req.body.pid) {
+    var cid = parseInt(req.body.cid);
+    var pid = parseInt(req.body.pid);
+    console.log(typeof pid);
+    console.log(pid);
+    db.exec(
+      'DELETE FROM favorite WHERE product_id = ? and customer_id = ?', [pid, cid], (results, err) => {
+        // console.log(results);
+        // console.log(err);
+        // res.redirect('/home/member/myFovourite');
+        // if (err) return cb(err);
+        // cb(null)
 
-    }
-  );
+      }
+    );
+  }
+  //  ---送進購物車------------------------------------------------------
+  console.log('送進購物車');
+  console.log(req.body.p_id);
+  console.log(req.body.size);
+  console.log(req.body.color);
+
+
   // res.send(req.body);
-});
+}
+);
 
 
 
