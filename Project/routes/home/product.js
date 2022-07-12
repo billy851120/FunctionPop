@@ -97,7 +97,7 @@ router.post('/like', function (rqs, res) {
 
 // Female Product
 var sql = `
-SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
+SELECT * FROM products WHERE product_gender = ? ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
 
   router.get('/:gender', getUrl, function (rqs, res) {
     var url =rqs.url;
@@ -215,23 +215,69 @@ SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_
 // });
 
 // Single Product Page & Rating DESC
+// router.get('/:gender/single_product/:id', getUrl, function (rqs, res) {
+
+//   db.exec(
+//     'SELECT * from products_all WHERE product_id = ?',
+//     [rqs.params.id],
+//     (rows, fields) => {
+//       db.exec(`SELECT * FROM products ORDER BY product_rating DESC;`,
+//       [],(pro,sss)=>{
+//         res.render('single_product', { result: rows ,pro:pro});
+
+//       })
+
+//     }
+//   );
+// });
+
+
 router.get('/:gender/single_product/:id', getUrl, function (rqs, res) {
-  var cartCount = rqs.session.cartCount;
-  
 
   db.exec(
     'SELECT * from products_all WHERE product_id = ?',
     [rqs.params.id],
     (rows, fields) => {
-      db.exec(`SELECT * FROM products ORDER BY product_rating DESC;`,
-      [],(pro,sss)=>{
-        res.render('single_product', { result: rows ,pro:pro});
-
+      var sqlpro = `
+      SELECT * FROM products ORDER BY product_rating DESC;
+      SELECT * FROM products ORDER BY product_upload DESC LIMIT 4;`;
+      db.exec(sqlpro, [], function (pro, kkk) {
+        res.render('single_product', {
+          result: rows,
+          pro: pro[0],
+          pro2:pro[1]
+        })
+        // console.log(results);
       })
-
     }
-  );
-});
+  )
+
+
+//   var sql = `
+//   SELECT COUNT(*) AS COUNT FROM products;
+//   SELECT * FROM products ORDER BY products.product_upload DESC;
+//   SELECT * FROM products_all order by product_id DESC limit 1;`;
+//   db.exec(sql, [], function (results, fields) {
+//     res.render('admin_item_all', {
+//       total: results[0][0].COUNT,
+//       data2: results[1],
+//       pall_id :results[2][0]
+//     })
+//   })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

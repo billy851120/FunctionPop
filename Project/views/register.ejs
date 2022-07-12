@@ -7,7 +7,8 @@
     <script src="/js/admin/bootstrap.min.js"></script>
     <script src="/js/admin/jquery.min.js"></script>
     <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
     <title>function.pop</title>
     <style>
@@ -71,59 +72,73 @@
             <br>
             <br>
             <br>
-            <% if(!memberprofile){ %> 
-            <h2 style="font-weight: 600;text-align: center;">註冊新帳號</h2>
-            <p class="regText">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
-            <p class="regText">*星號欄位必填</p>
-            <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
-                <label>姓名*:</label>
-                <p class="inp_Err" style="visibility: hidden" id="nameErr">請填寫姓名欄位*</p>
-                <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
-                <label>生日*:</label>
-                <p class="inp_Err" style="visibility: hidden" id="birthErr">請填寫生日欄位*</p>
-                <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
-                <label>性別*:</label>
-                <p class="inp_Err" style="visibility: hidden" id="genderErr">請填寫性別欄位*</p>
-                <select class="fpop_inp" id="gender" name="cgender">
-                    <option name="gender" value="F">女性</option>
-                    <option name="gender" value="M">男性</option>
-                    <option name="gender" value="X">不說</option>
-                </select>
-                <label>電子郵件*:</label>
-                <p class="inp_Err" style="visibility:hidden" id="accountErr">請填寫電子郵件欄位*</p>
-                <p class="inp_Err" style="visibility:hidden" id="accountErr2">請輸入有效的郵箱地址*</p>
-                <p class="inp_Err" style="visibility:hidden" id="accountErr3">電子郵件已註冊過，麻煩重新輸入*</p>
-                <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
-                <label>連絡電話*：</label>
-                <p class="inp_Err" style="visibility:hidden" id="phoneErr">請填寫連絡電話欄位*</p>
-                <p class="inp_Err" style="visibility:hidden" id="phoneErr2">請填寫有效電話*</p>
-                <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*">
-                <label>通訊地址*：</label>
-                <p class="inp_Err" style="visibility:hidden" id="addrErr">請填寫連絡通訊欄位*</p>
-                <input class="fpop_inp" type="text" id="cAddr" name="cAddr" placeholder="通訊地址*"><br>
-                <label>密碼*：</label>
-                <p class="inp_Err" style="visibility:hidden" id="cpasswordErr">請填寫密碼欄位*</p>
-                <input class="fpop_inp" type="password" id="cPassword" name="cPassword" placeholder="密碼*"><br>
-                <button class="btn btn-dark" id="register">註冊</button>
-            </div>
-            <% } else {%>
-                <div id="timeBox"></div>
-                <script>
-                    // 設定秒數
-                    var count = 1;
-                    function countDown() {
-                        document.getElementById("timeBox").innerHTML = count;
-                        count -= 1;
-                        // 當 count = 0 時跳轉頁面
-                        if (count == 0) {
-                            location.href = history.back();
+            <% if(!memberprofile){ %>
+                <h2 style="font-weight: 600;text-align: center;">註冊新帳號</h2>
+                <p class="regText">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
+                <p class="regText">*星號欄位必填</p>
+                <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
+                    <div class="row justify-content-between">
+                        <label class="col-3">姓名*:</label>
+                        <label class="inp_Err col-5 " style="visibility:visible ;" id="nameErr">請填寫姓名欄位*</label>
+                        <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
+                    </div>
+                    <div class="row justify-content-between">
+                        <label class="col-3">生日*:</label>
+                        <label class="inp_Err col-5" style="visibility:visible" id="birthErr">請填寫生日欄位*</label>
+                        <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
+                    </div>
+                    <div class="row justify-content-between">
+                        <label class="inp_Err col-12" style="visibility: visible" id="genderErr">請填寫性別欄位*</label>
+                        <label class="col-3">性別*:</label>
+                        <select class="fpop_inp col-6" id="gender" name="cgender">
+                            <option name="gender" value="F">女性</option>
+                            <option name="gender" value="M">男性</option>
+                            <option name="gender" value="X">不說</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>電子郵件*:</label>
+                        <p class="inp_Err" style="visibility:visible" id="accountErr">請填寫電子郵件欄位*</p>
+                        <p class="inp_Err" style="visibility:visible" id="accountErr2">請輸入有效的郵箱地址*</p>
+                        <p class="inp_Err" style="visibility:visible" id="accountErr3">電子郵件已註冊過，麻煩重新輸入*</p>
+                        <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
+                    </div>
+                    <div>
+                        <label>連絡電話*：</label>
+                        <p class="inp_Err" style="visibility:visible" id="phoneErr">請填寫連絡電話欄位*</p>
+                        <p class="inp_Err" style="visibility:visible" id="phoneErr2">請填寫有效電話*</p>
+                        <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*">
+                    </div>
+                    <div>
+                        <label>通訊地址*：</label>
+                        <p class="inp_Err" style="visibility:visible" id="addrErr">請填寫連絡通訊欄位*</p>
+                        <input class="fpop_inp" type="text" id="cAddr" name="cAddr" placeholder="通訊地址*"><br>
+                    </div>
+                    <div>
+                        <label>密碼*：</label>
+                        <p class="inp_Err" style="visibility:visible" id="cpasswordErr">請填寫密碼欄位*</p>
+                        <input class="fpop_inp" type="password" id="cPassword" name="cPassword" placeholder="密碼*"><br>
+                    </div>
+                    <button class="btn btn-dark" id="register">註冊</button>
+                </div>
+                <% } else {%>
+                    <div id="timeBox"></div>
+                    <script>
+                        // 設定秒數
+                        var count = 1;
+                        function countDown() {
+                            document.getElementById("timeBox").innerHTML = count;
+                            count -= 1;
+                            // 當 count = 0 時跳轉頁面
+                            if (count == 0) {
+                                location.href = history.back();
+                            }
+                            setTimeout("countDown()", 0.1);
                         }
-                        setTimeout("countDown()", 0.1);
-                    }
-                    // 執行 countDown
-                    countDown();
-                </script>
-                <% } %>  
+                        // 執行 countDown
+                        countDown();
+                    </script>
+                    <% } %>
     </div>
     <script>
         $("#cName").on('input', function () {
