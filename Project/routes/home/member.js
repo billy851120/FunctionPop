@@ -49,10 +49,7 @@ router.post('/memberData_changePw', getUrl, memberController.handlechangePw, red
 
 
 // 訂單詳情-----------------------------------------------------
-router.get('/orderList', getUrl, function (req, res) {
-  var url = req.url;
-  res.render('member/orderList', { title: '會員資料｜訂單清單', url });
-});
+router.get('/orderList', getUrl, memberController.orderList);
 router.get('/orderDetail', getUrl, function (req, res) {
   var url = req.url;
   res.render('member/orderDetail', { title: '會員資料｜訂單內容', url });

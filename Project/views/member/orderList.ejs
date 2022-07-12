@@ -53,9 +53,9 @@
                                     <p>訂單&退貨紀錄</p>
                                 </div>
                             </div>
-
+                            <% result.forEach(function(orderList){ %>
                             <div class="row p-2 mx-1 border-bottom">
-                                <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單編號：TW8000201170592</div>
+                                <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單編號：<%-orderList.order_list%></div>
                                 <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">商品數量：2 件商品</div>
                                 <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單金額：＄2481.00</div>
                                 <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">訂單狀態：完成</div>
@@ -64,7 +64,7 @@
                                     <a href="/home/member/orderDetail" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
                                 </div>
                             </div>
-
+                       <% }) %>  
                             <div class="row p-2 mx-1 border-bottom">
                                 <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單編號：TW8000201170592</div>
                                 <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">商品數量：2 件商品</div>
@@ -101,7 +101,6 @@
                             <% } else { %>
                                 <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center"
                                     role="alert">請先登入</div>
-
                                 <% } %>
 
                         </div> <!-- col-10 -->
@@ -114,33 +113,33 @@
         <%- include("../footer.ejs") %>
             <script>
 
-                var xx = [{
-                    price: 1000
-                },
-                {
-                    price: 20
-                },
-                {
-                    price: 30
-                },
-                { price: 50 }];
+                // var xx = [{
+                //     price: 1000
+                // },
+                // {
+                //     price: 20
+                // },
+                // {
+                //     price: 30
+                // },
+                // { price: 50 }];
 
-                // xx.forEach(x=> {return x.price});
-                // var yy= xx.sort(function (a, b) {
-                //         return a.price - b.price;
+                // // xx.forEach(x=> {return x.price});
+                // // var yy= xx.sort(function (a, b) {
+                // //         return a.price - b.price;
+                // // });
+                // // console.log(yy);
+                // // aa.push(x.price)
+                // var aa = [];
+                // xx.forEach(x => {
+                //     aa.push(x.price);
+                //     console.log(aa)
+                // });
+
+                // var yy = aa.sort(function (a, b) {
+                //     return a - b;
                 // });
                 // console.log(yy);
-                // aa.push(x.price)
-                var aa = [];
-                xx.forEach(x => {
-                    aa.push(x.price);
-                    console.log(aa)
-                });
-
-                var yy = aa.sort(function (a, b) {
-                    return a - b;
-                });
-                console.log(yy);
 
 // var numbers = [4, 2, 5, 1,,1000, 3];
 // numbers.sort(function(a, b) {

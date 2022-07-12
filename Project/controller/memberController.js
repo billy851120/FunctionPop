@@ -140,9 +140,29 @@ var memberController = {
         // })
     },
     registerCheck: (req, res) => {
-        res.render('member/register_success',{
-            title:'註冊成功'
+        res.render('member/register_success', {
+            title: '註冊成功'
         })
+    },
+
+    orderList: (req, res) => {
+        // if (req.session.memberprofile.cAccount) {
+        //     memberModel.getOrder(req.session.memberprofile.cAccount, (err, result) => {
+        //         // console.log(result);
+        //         res.render('member/orderList', {
+        //             title: '會員資料｜訂單清單',
+        //             result: result,
+        //             memberprofile: req.session.memberprofile
+        //         });
+        //     })
+        // } else {
+        //     res.render('member/orderList', {
+        //         title: '會員資料｜訂單清單',
+        //         memberprofile: req.session.memberprofile
+        //     })
+        // }
+
+
     }
 
 }
