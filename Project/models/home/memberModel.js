@@ -38,6 +38,13 @@ var memberModel = {
             (result, fields, err) => {
                 cb(null, result[0]);
             })
+    },
+    getOrder:(member,cb)=>{
+        db.exec('SELECT * FROM orders where user_email = ?',
+        [member],
+        (result,fields,err)=>{
+            cb(null,result);
+        })
     }
 
 }

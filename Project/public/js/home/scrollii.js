@@ -151,3 +151,18 @@ $(window).scroll(function () {
         $('#gotop').stop().fadeOut("fast");
     }
 });
+
+console.log(document.documentElement.scrollHeight);
+$("#godown").click(function () {
+    jQuery("html,body").animate({
+        scrollTop: document.documentElement.scrollHeight
+    }, 1000);
+    curPage = 7;
+});
+$(window).scroll(function () {
+    if ($(this).scrollTop() < document.documentElement.scrollHeight-900) {
+        $('#godown').fadeIn("fast");
+    } else {
+        $('#godown').stop().fadeOut("fast");
+    }
+});
