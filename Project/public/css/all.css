@@ -9675,12 +9675,8 @@ body {
   #navbar_li {
     display: none;
   }
-<<<<<<< HEAD
   .topNav,
 .navContent {
-=======
-  .topNav, .navContent {
->>>>>>> 9d246e2647fb93262cd2535bfc879e1b6c9a43b5
     padding: 0 !important;
   }
 }
@@ -10328,13 +10324,6 @@ figcaption {
   }
 }
 @media screen and (max-width: 600px) {
-<<<<<<< HEAD
-  #drag-container,
-#spin-container {
-    right: 42%;
-  }
-=======
->>>>>>> 9d246e2647fb93262cd2535bfc879e1b6c9a43b5
   #ground {
     width: 450px;
   }

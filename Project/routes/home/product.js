@@ -97,7 +97,7 @@ router.post('/like', function (rqs, res) {
 
 // Female Product
 var sql = `
-SELECT * FROM products WHERE product_gender = ?;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
+SELECT * FROM products WHERE product_gender = ? ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
 
   router.get('/:gender', getUrl, function (rqs, res) {
     var url =rqs.url;
