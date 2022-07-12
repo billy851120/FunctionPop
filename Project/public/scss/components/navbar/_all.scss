@@ -62,10 +62,24 @@
   color: inherit;
 }
 
-.checkLink .ckLink:hover {
-  background-color: #000 !important;
+// .checkLink .ckLink:hover {
+//   background-color: rgb(153, 153, 153) !important;
+// }
+
+// .checkLink .ckLink:hover a {
+//   color: #fff;
+
+// }
+.checkLink .ckLink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(136, 132, 132);
 }
 
-.checkLink .ckLink:hover a {
-  color: #fff;
+#fpopnav_cart_down:hover .checkLink {
+  display: block !important;
+
 }
