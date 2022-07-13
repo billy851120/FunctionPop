@@ -647,7 +647,7 @@
             image: '1',
             size: sizee,
             color: '',
-            price: arr[i] * 450,
+            price:  450,
             quantity: arr[i]
 
           };
@@ -661,7 +661,7 @@
             image: '1',
             size: sizee,
             color: '',
-            price: arr[i] * 450,
+            price: 450,
             quantity: arr[i]
 
           };
@@ -675,12 +675,12 @@
             image: '1',
             size: sizee,
             color: '',
-            price: arr[i] * 450,
+            price: 450,
             quantity: arr[i]
 
           };
         }
-
+   
 
         $.ajax({
           url: "http://localhost:3000/home/shop_cart",
@@ -689,6 +689,55 @@
           async: false,
           success: function (res) {
             console.log("成功");
+            //  var Pic =arrayBufferToBase64(cartPic);
+            //  console.log(Pic);
+
+
+
+            var dot = document.createElement("div");
+              $(dot).prop("class","dotGreen");
+              $(dot).css({
+                "background": "#96ff6c",
+                "width": "8px",
+                "height": "8px",
+                "border-radius": "50%",
+                "color": "#fff",
+                "position": "absolute",
+                "left": "88%",
+                "top": "-3px",
+                "transition":".3s",
+              })
+              document.getElementById("fpopnav_cart").appendChild(dot);
+          
+
+              var pidItem =document.createElement("div");
+              $(pidItem).prop("class","d-flex mb-2 smItem");
+              $(pidItem).css("padding","0 30px");
+              
+
+
+              pidItem.innerHTML =` 
+                      <div style="
+                          margin-right: 20px;
+                          max-width: 37px;
+                          height: 100%;
+                          width: 100%;
+                          
+                  ">
+                        <img style="width:100%; height:100%" src="data:image/png;base64,${cartPic.toString("base64")}" alt="">
+                      </div>
+                      <div style="font-size: 0.7em; text-align: left; user-select: none;">
+                        <p class="m-0">
+                        ${cart.name}
+                        </p>
+                        <p class="m-0" style="color: #818181;">尺寸:${cart.size}
+                        </p>
+                        <p class="m-0" style="color: #818181;">數量:${cart.quantity}
+                        </p>
+                      </div>
+
+              `;
+              $("#shopCartItttttem").append(pidItem);
           },
           err: function () {
             console.log("錯誤");
@@ -701,8 +750,20 @@
   });
 </script>
 <script>
+       function arrayBufferToBase64(buffer){
+          var binary="";
+          var bytes = new Uint8Array(buffer);
+          var len = bytes.byteLength;
+          for(var i =0;i < len;i++ ){
+            binary += String.fromCharCode(bytes[i]);
+          };
+          console.log(bytes);
+          return window.btoa(binary);
+        };
+
 
   const file = document.getElementById("uploadfinal");
+  var cartPic = "";
   function uploadImg(e) {
     // 檔案位置
     // console.log(e.target.files[0]);
@@ -715,7 +776,8 @@
         'Content-Type': 'multipart/form-data',
       },
     }).then((response) => {
-      // console.log(response.data)
+      // console.log(response.data);
+      cartPic =arrayBufferToBase64(response.data.img.buffer.data);
     });
   }
   file.addEventListener('change', uploadImg);
