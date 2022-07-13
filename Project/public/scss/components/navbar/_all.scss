@@ -96,3 +96,12 @@
   width: 100%;
 
 }
+
+#fpopnav_cart_down:hover .dotGreen {
+  opacity: 0;
+  transition: .3s;
+}
+
+#fpopnav_cart_down .smItem:hover {
+  background-color: rgba(238, 238, 238, 0.48);
+}

@@ -4,6 +4,7 @@ var db = require('../../dataBase');
 var router = express.Router();
 var session = require('express-session');
 var bodyParser = require('body-parser');
+const { defaultFormatUtc } = require('moment');
 
 function getUrl(req, res, next) {  // 登入後返回前頁
   var url = req.originalUrl;
@@ -97,7 +98,8 @@ router.post('/like', function (rqs, res) {
 
 // Female Product
 var sql = `
-SELECT * FROM products WHERE product_gender = ? ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
+SELECT * FROM products WHERE product_gender = ? ORDER BY product_upload DESC;
+SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;`;
 
   router.get('/:gender', getUrl, function (rqs, res) {
     var url =rqs.url;
@@ -132,6 +134,19 @@ SELECT * FROM products WHERE product_gender = ? ORDER BY product_upload DESC;SEL
         // console.log(results[1]);
       })
   });
+  router.post("/ddddddd",function(req,res){
+    var sql = "";
+    if(req.body.sel == "DESC"){
+      sql = "SELECT * FROM products WHERE product_gender ='Male' ORDER BY product_upload DESC";
+
+    }else if(req.body.sel == "ASC"){
+      sql = "SELECT * FROM products WHERE product_gender ='Male' ORDER BY product_upload ";
+
+    }else{}
+    db.exec(sql,[],function(result,fields){
+      console.log(result);
+    })
+  })
 
 
 // New Gender Product
@@ -314,7 +329,7 @@ router.get('/Male/%E4%B8%8A%E8%A1%A3', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "上衣";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "上衣" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -356,7 +371,7 @@ router.get('/Male/%E4%B8%8B%E8%91%97', function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "下著";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "下著" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -397,7 +412,7 @@ router.get('/Male/%E5%8C%85', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "包";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "包" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -438,7 +453,7 @@ router.get('/Male/%E9%9E%8B', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "鞋";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Male" AND product_category = "鞋" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -479,7 +494,7 @@ router.get('/Female/%E4%B8%8A%E8%A1%A3', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "上衣";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "上衣" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -520,7 +535,7 @@ router.get('/Female/%E6%B4%8B%E8%A3%9D', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "洋裝";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "洋裝" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -561,7 +576,7 @@ router.get('/Female/%E8%A3%99%E5%AD%90', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "裙子";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "裙子" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -592,7 +607,7 @@ router.get('/Female/single_product/:id', getUrl, function (rqs, res) {
   );
 });
 
-// 2.4 Female Product skirts
+// 2.4 Female Product shoes
 router.get('/Female/%E9%9E%8B', getUrl, function (rqs, res) {
   var mem_customer_id = 0;
     // console.log(rqs.session.memberprofile.id);
@@ -602,7 +617,7 @@ router.get('/Female/%E9%9E%8B', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "鞋";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "鞋" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];
@@ -643,7 +658,7 @@ router.get('/Female/%E5%B8%BD%E5%AD%90', getUrl, function (rqs, res) {
       mem_customer_id = rqs.session.memberprofile.id;
     }
   db.exec(
-    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "帽子";SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
+    'SELECT * FROM products WHERE product_gender = "Female" AND product_category = "帽子" ORDER BY product_upload DESC;SELECT F.customer_id, F.product_id, P.product_name, P.product_image, P.product_description, P.product_price FROM favorite AS F INNER JOIN products AS P ON F.product_id = P.product_id WHERE F.customer_id = ?;',
     [mem_customer_id],
     (results, fields) => {
       var arr = [];

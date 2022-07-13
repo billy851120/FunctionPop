@@ -495,6 +495,10 @@
                                         </select>
                                     </label>
                                 </div>
+                                <div id="lab">
+                                    <input type="button" value="DESC">
+                                    <input type="button" value="ASC">
+                                </div>
                             </div>
                         </section>
                         <!-- Shop -->
@@ -729,17 +733,22 @@
         // Price Low to High
         function option_02() {
             var allproduct = [];
-            result.forEach(x => {allproduct.push(x.product_price);
-            console.log(allproduct)});
+            $(".row .ChangeCol").each((idx,ele) => {
+                var cost = $(ele).find("p").text().split(" ")[1];
+            allproduct.push(parseInt(cost));
+            // console.log($(ele).find("p").text());
+        });
+        // console.log(allproduct);
 
             var lowHigh = allproduct.sort(function (a, b) {
                 return a-b;
-            })
+            });
+            console.log(lowHigh);
         }
         
         function option_03() {
             // alert("選到 option_03");
-            console.log(result);
+            // console.log(result);
         }
         
         function option_04() {
@@ -908,6 +917,22 @@ for (var i = 0; i < btns.length; i++) {
             }
           }
         }
+        </script>
+        <script>
+            $("#lab input").click(function(){
+                console.log(this);
+                var sel= {};
+                 sel.sel =$(this).val();
+                
+                
+                $.ajax({
+                    url:"/home/product/ddddddd",
+                    type:"POST",
+                    data:sel,
+                    
+                })
+
+            })
         </script>
 
 
