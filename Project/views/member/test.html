@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        var x = [
+            {
+                order_list: '22071200040',
+                product_id: 116,
+                UnitPrice: 2097,
+                Quantity: 3
+            },
+            {
+                order_list: '22071200040',
+                product_id: 124,
+                UnitPrice: 3495,
+                Quantity: 5
+            },
+            {
+                order_list: '22070900022',
+                product_id: 151,
+                UnitPrice: 799,
+                Quantity: 1
+            },
+            {
+                order_list: '22070900022',
+                product_id: 6,
+                UnitPrice: 349,
+                Quantity: 1
+            },
+            {
+                order_list: '22070900022',
+                product_id: 50,
+                UnitPrice: 999,
+                Quantity: 1
+            },
+            {
+                order_list: '22070800019',
+                product_id: 169,
+                UnitPrice: 999,
+                Quantity: 1
+            },
+            {
+                order_list: '22070800019',
+                product_id: 145,
+                UnitPrice: 999,
+                Quantity: 1
+            },
+            {
+                order_list: '22070800018',
+                product_id: 163,
+                UnitPrice: 699,
+                Quantity: 1
+            },
+            {
+                order_list: '22070800018',
+                product_id: 166,
+                UnitPrice: 1499,
+                Quantity: 1
+            },
+            {
+                order_list: '22070800018',
+                product_id: 182,
+                UnitPrice: 699,
+                Quantity: 1
+            }
+        ];
+
+
+        // console.log(x.length);
+        var xx = x[0].order_list;
+        var quantity = 0;
+        var unitprice = 0;
+
+        x.forEach((aa, idx) => {
+            // console.log(x.length);
+            if (aa.order_list == xx) {
+                xx = aa.order_list;
+                quantity = quantity + aa.Quantity;
+                unitprice += aa.UnitPrice;
+                // console.log(x.length);
+                // console.log('idx=')
+                // console.log(idx);
+                if (idx == (x.length - 1)) {
+                    console.log('xxxxxxxxxxxxxxxxxx');
+                    console.log(xx);
+                    console.log(quantity);
+                    console.log(unitprice);
+                }
+            } else {
+                console.log('=========================');
+                console.log(xx);
+                console.log(quantity);
+                console.log(unitprice);
+
+
+                xx = aa.order_list;
+                quantity = aa.Quantity;
+                unitprice = aa.UnitPrice;
+                data = aa.order_update
+
+            }
+        })
+        //     var xx = 0;
+        // x.forEach((aa,idx)=>{
+        //     console.log('===========');
+        //     x[idx]
+        //     console.log();
+        // })
+
+    </script>
+</body>
+
+</html>

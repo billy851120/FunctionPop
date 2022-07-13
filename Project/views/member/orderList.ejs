@@ -67,6 +67,18 @@
                                 <%   quantity = quantity + orderList.Quantity; %>
                                 <%    unitprice += orderList.UnitPrice; %>
                                  <%   data = JSON.stringify(result[0].order_update).substring(1,11);%>
+                                 <% if(idx == (result.length-1)){ %>
+                                    <div class="row p-2 mx-1 border-bottom">
+                                        <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單編號：<%- x %></div>
+                                        <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">商品數量：<%- quantity %></div>
+                                        <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單金額：＄<%- unitprice %></div>
+                                        <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">訂單狀態：完成</div>
+                                        <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2 align-self-center">訂單日期：<%-data%></div>
+                                        <div class="col-12 mb-2 col-lg-3 col-sm-4 my-2">
+                                            <a href="/home/member/orderDetail" class="py-2 px-4 btn_GO">檢視訂單資訊</a>
+                                        </div>
+                                    </div>
+                                     <% } %> 
                             <%    } else{ %> 
                             <div class="row p-2 mx-1 border-bottom">
                                 <div class="col-12 mb-2 col-lg-9 col-sm-8 my-2">訂單編號：<%- x %></div>
