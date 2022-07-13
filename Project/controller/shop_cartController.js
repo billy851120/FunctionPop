@@ -16,6 +16,7 @@ var shop_cartController = {
           [],
           function (custPic, fields) {
             res.render('shop_cart', {
+              title: 'f.pop 購物車',
               cart: cart,
               total: total,
               result: result,
@@ -127,7 +128,7 @@ var shop_cartController = {
             }
           }
         } else {
-          console.log('else --------->')
+          console.log('else --------->');
           console.log(product);
           console.log('else cart ------------>');
           console.log(cart);
@@ -255,7 +256,7 @@ var shop_cartController = {
           oid = result[0].order_id;
         }
         res.render('orderCheck', {
-          title: '訂單確認',
+          title: 'f.pop 訂單確認',
           o_id: oid,
           cart: cart,
           total: total,
@@ -314,7 +315,7 @@ var shop_cartController = {
       [req.session.orderLise],
       (result, fields) => {
         res.render('orderFinish', {
-          title: '訂單確認',
+          title: 'f.pop 完成訂單',
           result: result,
         });
       }
