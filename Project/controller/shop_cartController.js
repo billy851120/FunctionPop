@@ -28,6 +28,7 @@ var shop_cartController = {
   },
 
   updateCart: (req, res) => {
+    console.log(req.body);
     if (req.body.name == '客製化T恤') {
       db.exec(
         'SELECT * FROM `custompic` order by id DESC LIMIT 1',
