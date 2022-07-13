@@ -156,22 +156,15 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                     <div class="col-6">尺寸：<br>
-                                                          <input type="radio" name="size" value="S">
-                                                          <label for="size_S" class="mr-2">S</label>
-                                                          
-                                                          <input type="radio" name="size" value="M">
-                                                          <label for="size_M"class="mr-2">M</label>
-                                                          
-                                                          <input type="radio" name="size" value="L">
-                                                          <label for="size_L"class="mr-2">L</label>
-                                                      </div>
-                                                      <div class="col-6"> 顏色：<br>
-                                                         <input type="radio" name="color" value="BK">
-                                                         <label for="c_black"class="mr-2">黑色</label>
-                                                  
-                                                         <input type="radio" name="color" value="WH">
-                                                         <label for="c_black"class="mr-2">白色</label>
+                                                    <%  console.log(todos[i]);%> 
+                                                    <div class="col-6">尺寸：<br>
+                                                        <% var ee = todos[i].product_id;%>
+                                                        <% for (var d=0; d<todos.length; d++) { %>
+                                                            <%   if(todos[d].product_id == ee ){%>
+                                                        <input type="radio" name="size<%-d%>" value="<%-todos[d].size_name%>">
+                                                        <label class="mr-2"><%-todos[d].size_name%></label>
+                                                        <%}}%>
+                                                        
                                                       </div>
                                                       <!-- <div class="col-12 text-center">
                                                          <button id="get">test</button>
@@ -359,7 +352,8 @@
     function gotoCart(obj){
         console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
-         var p_id = (((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
+         var p_id =(((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
+
          console.log(`p_id = ${p_id}`);
          var size = $('input[name="size"]:checked').val();
          var color = $('input[name="color"]:checked').val();
