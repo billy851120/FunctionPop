@@ -55,10 +55,12 @@
                             </div>
                             
                             <!-- 設定初值 -->
+                            <% if(result.length != 0){ %>
                             <% var x = result[0].order_list %>
                             <% var quantity = 0; %> 
                             <% var unitprice =0; %> 
                             <% var data = ""; %> 
+                                <% } %> 
                             <!-- 設定初值 -->
 
                             <% result.forEach((orderList,idx) => { %>
@@ -104,9 +106,11 @@
                                 <% } %>
 
                         </div> <!-- col-10 -->
-                        <br>
+                        
                 </div> <!-- row -->
-
+                <% if(result.length < 3){ %> 
+                <br><br><br><br><br><br><br>
+                <% } %> 
         </div> <!-- container -->
 
         <!-- footer -->

@@ -211,16 +211,19 @@
     }
 
     .al {
-      z-index: 9999;
-      border: 1px solid #000;
-      width: 30%;
-      text-align: center;
-      padding: 20px 0;
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
-      top: 0;
+      border-radius: 7px;
+    background-color: #fff;
+    z-index: 9999;
+    border: 1px solid #51AF30;
+    width: 16%;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    font-size: 0.9em;
     }
 
     .star5 {
@@ -261,6 +264,14 @@
       left: 0;
       width: 100%;
       height: 100%;
+    }
+    .colorPicker:hover{
+      transform: scale(0.9);
+      cursor: pointer;
+    }
+    .sizePicker{
+      background-color: #000;
+      color: #fff;
     }
 
     /* 聯名圖片 */
@@ -351,12 +362,12 @@
             <p>顏　色： <span id="cho_color">白</span><span>色</span></p>
             <span style="color: red">顏色選單</span>
             <span class="colorflexBox mx-auto px-2">
-              <label>
-                <input type="radio" value="WH" name="color_ch" style="width: 20px; height: 20px;" data-col="白"
-                  checked />白
+              <label class="mr-1">
+                <input type="radio" value="WH" name="color_ch" style="width: 20px; height: 20px; display: none;" data-col="白"
+                  checked /> <span class="colorPicker"  style="display: inline-block; width: 20px; height: 20px; background-color: #fff; border-radius: 50%; border: 1px solid #000;"></span>
               </label>
               <label>
-                <input type="radio" value="BK" name="color_ch" data-col="黑" style="width: 20px; height: 20px;" />黑
+                <input type="radio" value="BK" name="color_ch" data-col="黑" style="width: 20px; height: 20px; display: none;" /><span class="colorPicker" style="display: inline-block; width: 20px; height: 20px; background-color: #000; border-radius: 50%;"></span>
               </label>
 
             </span>
@@ -370,9 +381,9 @@
                 <% let ch="" %>
                   <% if(ch !=item.size_name){ %>
                     <label>
-                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="width: 20px; height: 20px" 
+                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="display: none;" 
                         data-allId="<%- item.product_all_id %>" />
-                      <span class="px mx-auto">
+                      <span class=" mx-auto" style="border: 1px solid #000; cursor: pointer; padding: 5px 13px;">
                         <%- item.size_name %>
                       </span>
                     </label>
@@ -611,9 +622,12 @@
 
     $(document).ready(function () {
 
+      $(".sizeflexBox span").click(function(x){
+        $(".sizeflexBox span").removeClass("sizePicker");
+        $(this).addClass("sizePicker");
+      });
 
-
-      $('#cartCount').html("<%- cartCount %>");
+  
 
 
       $(".colorflexBox ").find("input[checked]").addClass("pcolor-active");
@@ -721,7 +735,8 @@
           console.log(JSONData);
 
           var addTo_cart = document.createElement("div");
-          addTo_cart.innerHTML = "已加入購物車";
+          addTo_cart.innerHTML =  `  <span><img style="width:20px" src="/img/shop_cart/check2.png" alt=""></span>
+ 已加入購物車`;
           $(addTo_cart).attr("class", "al fadeInDown");
           document.querySelector(".sticky-top").appendChild(addTo_cart);
 

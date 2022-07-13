@@ -98,6 +98,8 @@
                     <!-- 我的最愛內容 -->
                     <%   var x = ""; %>
                             <% for (var i=0; i<todos.length; i++) { %>
+                                    <% console.log( todos[i].product_all_id)  %>
+
 
                                 <%   if(todos[i].product_id == x ){}else { %>
                                     <% x = todos[i].product_id; %>
@@ -108,6 +110,7 @@
                                     </script>
                             <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" >
                                 <div class="col-4 col-lg-3 product_info py-3">
+
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
                                     src="/img/product/<%= todos[i].product_image %>" title="<%- todos[i].product_description %>"></a>
                                     
@@ -223,7 +226,6 @@
                             </div>  <!-- row -->
                             
                             <%}}%>
-
                         </div> <!-- col-10 -->
                         <% } else { %>
                             <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center"
@@ -233,6 +235,7 @@
                 </div> <!-- row -->
                 <p class="text-center mt-5 font-weight-bold">新潮指標</p>
                 <hr>
+                <br><br> <br>   
                 <!-- <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <ol class="carousel-indicators mb-n4 ">
                         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
@@ -335,23 +338,23 @@
     //                                  }
     // }
 
-    function addtoCart(obj){
-        console.log(obj.id);
-        var p_id = obj.id;
+    // function addtoCart(obj){
+    //     console.log(obj.id);
+    //     var p_id = obj.id;
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('post', '/home/member/myFavourite'); 
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('post', '/home/member/myFavourite'); 
       
-      // json 格式
-      xhr.setRequestHeader('Content-type', 'application/json');
-      var data = JSON.stringify(
-        { p_id: p_id },
-      );
-      xhr.send(data);
-      xhr.onload = function() {
-        console.log(JSON.parse(xhr.responseText));
-      }
-    }
+    //   // json 格式
+    //   xhr.setRequestHeader('Content-type', 'application/json');
+    //   var data = JSON.stringify(
+    //     { p_id: p_id },
+    //   );
+    //   xhr.send(data);
+    //   xhr.onload = function() {
+    //     console.log(JSON.parse(xhr.responseText));
+    //   }
+    // }
 
     function gotoCart(obj){
         console.log('---------------'); 
@@ -361,22 +364,46 @@
          var size = $('input[name="size"]:checked').val();
          var color = $('input[name="color"]:checked').val();
          console.log(`size : ${size} , color : ${color} `);
-         var xhr = new XMLHttpRequest();
-        xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
-        
-          // json 格式
-      xhr.setRequestHeader('Content-type', 'application/json');
-      var data = JSON.stringify(
-        {
-            p_id:p_id,
+         var item = {
+            code: '',
+            all_id: '212',
+            id:"" ,
+            name: 'sss',
+            image: 'ajklxjal',
             size: size,
-            color: color
-        },
-      );
-      xhr.send(data);
-      xhr.onload = function() {
-        console.log(JSON.parse(xhr.responseText));
-      }
+            color:color,
+            price: "",
+            quantity: "",
+
+         }
+        $.ajax({
+            url:"/home/shop_cart/",
+            type:"POST",
+            data:item,
+            success:function(res){
+                console.log("AA");
+            },
+            error:function(){},
+        })
+
+
+    //      var xhr = new XMLHttpRequest();
+    //     xhr.open('post', '/home/shop_cart/'); // 搭配 app.js 中的 post 路由
+
+        
+    //       // json 格式
+    //   xhr.setRequestHeader('Content-type', 'application/json');
+    //   var data = JSON.stringify(
+    //     {
+    //         p_id:p_id,
+    //         size: size,
+    //         color: color
+    //     },
+    //   );
+    //   xhr.send(data);
+    //   xhr.onload = function() {
+    //     console.log(JSON.parse(xhr.responseText));
+    //   }
     }
 </script>
 </html>

@@ -47,6 +47,7 @@ var memberModel = {
             // console.log(xx);
             // console.log('here is orderList result---------')
             // console.log(result);
+            console.log(result.length);
             cb(null,result);
             
         })
