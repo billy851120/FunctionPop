@@ -364,15 +364,15 @@
             <br />
             <h6>尺　寸：<span id="cho_size"></span></h6>
             <span style="color: red">尺寸選單</span><img src="" alt="" />
-            <br>
-            <span class="sizeflexBox mx-auto py-3 col-4">
+            <br>  
+            <span class="sizeflexBox mx-auto col-6 ml-0 pl-0">
               <% result.forEach(function(item){ %>
                 <% let ch="" %>
                   <% if(ch !=item.size_name){ %>
                     <label>
-                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="width: 20px; height: 20px"
+                      <input type="radio" value="<%- item.size_name %>" name="size_ch" style="width: 20px; height: 20px" 
                         data-allId="<%- item.product_all_id %>" />
-                      <span class="px">
+                      <span class="px mx-auto">
                         <%- item.size_name %>
                       </span>
                     </label>
@@ -387,7 +387,7 @@
             <div class="d-flex flex-row"></div>
             <span>數　量：</span>
             <span>
-              <div class="col-2 css_tb pCount d-flex align-self-center">
+              <div class="col-2 css_tb pCount d-flex align-self-center ml-0 pl-0">
                 <a href="javascript:" class="q_sub my-2 py-1 mx-auto"
                   style="border: 1px solid #000; border-radius: 2px;"><i class="fa fa-minus px-2" aria-hidden="true"
                     style="width: 30px; "></i></a>
@@ -463,7 +463,7 @@
       <!-- 4. Relative Product -->
       <section class="container" id="related-products" class="pt-5 mt-2">
         <div class="text-center mt-4 pt-2">
-          <h2>最新上架</h2>
+          <h3>最新上架</h3>
           <hr class="mx-auto" />
         </div>
         <div class="row mx-auto container-fluid">
@@ -471,7 +471,7 @@
           <% pro2.forEach(function(item){ %>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-6 col-6">
             <img class="img-fluid mb-3" src="/img/product/<%- item.product_image %>" alt="" />
-            <h5 class="p-name"><%- item.product_name %></h5>
+            <h5 class="p-name" style="font-size: 1em;"><%- item.product_name %></h5>
             <h4 class="p-price">$ <%- item.product_price %></h4>
             <button class="my_button buy-btn" onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';">Buy Now</button>
           </div>
@@ -484,7 +484,7 @@
 
       <div class="container">
         <div class="text-center mt-4 pt-2">
-          <h2>好評商品</h2>
+          <h3>好評商品</h3>
           <hr class="mx-auto" />
         </div>
         <div class="row">
