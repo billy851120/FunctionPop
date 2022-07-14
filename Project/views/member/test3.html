@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .input-group {
+            position: relative;
+        }
+
+        .input {
+            padding: 10px;
+            border: 1px solid  black;
+            border-radius: 4px;
+            font: inherit;
+            color: #fff;
+            background-color: transparent;
+            outline: 2px solid #fff;
+        }
+
+        .input-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(10px, 10px);
+            transition:transform .25s;
+        }
+
+        .input:focus+.input-label,
+        .input:valid+.input-label {
+            transform:translate(10px, -14px) scale(.8);
+            color: #d1c5fc;
+            padding-inline: 5px;
+            background-color: #242329;
+        }
+
+        .input:is(:focus, :valid) {
+            outline-color:#d1c5fc
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="input-group">
+        <input type="text" id="name" required class="input">
+        <label for="name" class="input-label">Email address</label>
+        <div>
+</body>
+
+</html>
