@@ -10867,6 +10867,10 @@ body {
   background-color: rgba(238, 238, 238, 0.48);
 }
 
+.smItem:hover {
+  cursor: pointer;
+}
+
 #fp-Bnavbar {
   position: absolute;
   width: 600px;
