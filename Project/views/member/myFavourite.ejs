@@ -148,7 +148,7 @@
                                  </div>
                                  <div class="col-12 col-lg-2 mb-2">
                                     <!-- <button type="submit" id="addToCart" class="btn_GO px-1 d-block w-100 b_radius">移至購物車</button> -->
-                                    <button type="submit"  class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id %>">移至購物車</button>
+                                    <button type="submit"  class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id %>" onclick="vv()">移至購物車</button>
                                   
                                     <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" >
@@ -161,7 +161,7 @@
                                                      </button>
                                                 </div>  <!-- modal-header -->
 
-                                                <div class="modal-body border border-success">
+                                                <div class="modal-body">
                                                          <div class="row">
                                                             
                                                                  <div class="col-6"><p class="chooseSize"> 尺寸：</p>
@@ -182,7 +182,7 @@
                                                                        <input type="hidden" name="size_id"  value="<%- todos[d].product_all_id %>">
                                                                             <%}}%>
                                                                  </div> <!-- col-6 -->
-                                                                 <div class="col-6"><p> 顏色：</p>
+                                                                 <div class="col-6 chooseSize"><p> 顏色：</p>
                                                                          <input type="radio" id="color_b<%- row_num %>" name="color" value="黑色">
                                                                          <label class="mr-2" for="color_b<%- row_num %>">黑色</label>
                                                                          <input type="radio" id="color_w<%- row_num %>" name="color" value="白色">
@@ -192,7 +192,7 @@
                                                      
                                                                     <div class="row ">
                                                                             <div class="col-12"><p>數量：</p>
-                                                                                <button class="btn  text-danger font-width-blod" id="aa" onclick="num_desc()">-</button>
+                                                                                <button class="btn text-danger font-width-blod" id="aa" onclick="num_desc()">-</button>
                                                                                 <input type="text" name="quantity" id="" class="col-4 text-center border border-warning align-self-center" value="1"  >
                                                                                 <button class="btn text-success font-width-blod" id="num_increase" onclick="num_incr()">+</button>
                                                                              </div> <!-- col-12 -->
@@ -216,7 +216,7 @@
                                                            <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
                                                           
                               
-                                                            <button type="submit" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" data-dismiss="modal">確定</button>
+                                                            <button type="" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" >確定</button>
                                                             <% console.log(`row_num -----> ${row_num}`) %> 
                                                             <% row_num++ %> 
                                                             <!-- <button  class="btn_GO" id="get" >確定</button> -->
@@ -369,9 +369,15 @@
     };
    
 
+function vv(){
+    // $('input[name="job"][value="other"]').prop("checked", true);
+    $("input[name='size'][value='S']").prop('checked'.true);
+}
+    
     function gotoCart(row_num){
         console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
+   
 
         
          var id =$('input[name="p_id"]')[row_num].value;
@@ -386,13 +392,6 @@
          console.log(`all_id :`)    ;
          console.log(all_id);
 
-         if(!size){
-            $('.chooseSize').css({'color':'red'});
-            // $(`.${all_id}`).css({'color':'red'});
-         }else{
-            $('.chooseSize').css({'color':'black'});
-         }
-
          var code = $('input[name="p_code"]')[row_num].value;
          console.log(`code : ${code}`)
 
@@ -404,6 +403,12 @@
 
          var price = $('input[name="p_price"]')[row_num].value;
          console.log(`price : ${price}`)
+
+         if(!size){
+            $('.chooseSize').css({'background-color': '#FFCD55'})
+         }else{
+            $('.chooseSize').css({'color':'black'})
+         }
 
         //  $(`row_num${row_num}`).remove();
         console.log('=======JavaScript========');
