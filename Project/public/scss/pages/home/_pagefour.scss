@@ -11,7 +11,7 @@
     // overflow: hidden;
   }
 
-.accordion { height:300px;overflow: hidden;position:relative;width: 70%; margin: 220px auto; }
+.accordion { height:300px;overflow: hidden;position:relative;width: 70%; margin: 180px auto; }
 .accordion:after { content: "";display: block;position: absolute;top: 0;right: 0;bottom: 0;left: 0;background: #fff; }
 .accordion._create:after { display: none; }
 
