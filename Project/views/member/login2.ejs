@@ -25,6 +25,7 @@
             background-color: white;
             border-radius: 30px;
             box-shadow: 12px 12px 22px grey;
+
         }
         img{
             border-top-left-radius: 30px;
@@ -98,13 +99,13 @@
                     <img src="/img/index/f3.jpg" alt="">
                 </div>
                 <% if(!memberprofile) {%>
-                <div class="col-12 col-lg-6 px-5 pt-5 mb-5 ">
+                <div class="col-12 col-lg-6 px-5 pt-5 mb-2 ">
                      
                     <!-- <h1 class="font-weight-blod py-3">FunctionPOP</h1> -->
-                    <div class="row my-2">
-                        <img src="/img/admin/logo_text_black.svg" class="col-6">
+                    <div class="row my-2 ">
+                        <img src="/img/admin/logo_text_black.svg" class="col-7">
                     </div>
-                    <h4 class="my-2">登入您的帳戶</h4>
+                    <h4 class="mb-2">登入您的帳戶</h4>
                     <% if (errorMessage.length > 0) { %>
                         <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
                           <%= errorMessage %>
@@ -114,7 +115,7 @@
                         <div class="form-row">
                             <div class="col-lg-7 input-group">
                                 <input type="text"  name="cAccount" id="email" required class="form-control my-3 p-4 input">
-                                <label for="email" class="input-label">Email-Address</label>
+                                <label for="email" class="input-label">Email_Address</label>
                             </div>
                          
                         </div>
