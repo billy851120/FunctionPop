@@ -6,9 +6,11 @@ var memberController = require('../../controller/memberController');
 const { apply } = require('file-loader');
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({
-  extended: false,
-}));
+router.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
 // 中介程式-------------------------------------------------
 function redirectBack(req, res, next) {
@@ -20,15 +22,14 @@ router.use((req, res, next) => {
     res.redirect('/home/product/male');
   }
   return next();
-})
+});
 
-function getUrl(req, res, next) {  // 登入後返回前頁
+function getUrl(req, res, next) {
+  // 登入後返回前頁
   // var url = req.originalUrl;
   req.session.url = req.originalUrl;
   return next();
 }
-
-
 
 // 會員登入/登出/註冊-------------------------------------------------
 router.get('/login', memberController.login);
@@ -37,16 +38,20 @@ router.get('/logout', memberController.logout);
 
 router.get('/register', memberController.register);
 
-router.post("/register", memberController.handleregister);
+router.post('/register', memberController.handleregister);
 router.get('/register_success', memberController.registerCheck);
 
 // 會員資料頁面------------以下登入才看得到-------------------------
 router.get('/memberData', getUrl, memberController.memberData);
 router.post('/memberData', getUrl, memberController.updateMemberData);
 
-router.get('/memberData_changePw', getUrl, memberController.changePw)
-router.post('/memberData_changePw', getUrl, memberController.handlechangePw, redirectBack);
-
+router.get('/memberData_changePw', getUrl, memberController.changePw);
+router.post(
+  '/memberData_changePw',
+  getUrl,
+  memberController.handlechangePw,
+  redirectBack
+);
 
 // 訂單詳情-----------------------------------------------------
 router.get('/orderList', getUrl, memberController.orderList);
@@ -58,7 +63,7 @@ router.get('/orderDetail', getUrl, function (req, res) {
 
 // ----------------------載入------------------------------
 router.get('/myFavourite', getUrl, function (req, res) {
-  console.log("GGG");
+  console.log('GGG');
   // console.log(req.session.memberprofile);
   var checkmem = req.session.memberprofile;
   console.log(checkmem != 'null');
@@ -75,7 +80,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
         // console.log(fields);
         if (error) {
           throw error;
-          console.log("SSSSSSSSSSSSSSSSSSSSSSSSS");
+          console.log('SSSSSSSSSSSSSSSSSSSSSSSSS');
         }
         var arr = [];
         for (var i = 0; i < results.length; i++) {
@@ -86,10 +91,10 @@ router.get('/myFavourite', getUrl, function (req, res) {
           title: '會員資料｜我的最愛',
           // result: results,
           todos: results,
-          favorArr: arr
+          favorArr: arr,
         });
-
-      })
+      }
+    );
   } else {
     res.render('member/myFavourite', { title: '會員資料｜我的最愛' });
   }
@@ -103,7 +108,9 @@ router.post('/myFavourite', function (req, res) {
   if (req.body.clearallcontent != null) {
     var memcontent = req.body.memcontent;
     db.exec(
-      'DELETE FROM favorite WHERE customer_id = ?', [memcontent], (err, results) => {
+      'DELETE FROM favorite WHERE customer_id = ?',
+      [memcontent],
+      (err, results) => {
         // if (err) return cb(err);
         // cb(null)
         res.redirect(`/home/member/myFavourite`);
@@ -118,13 +125,14 @@ router.post('/myFavourite', function (req, res) {
     console.log(typeof pid);
     console.log(pid);
     db.exec(
-      'DELETE FROM favorite WHERE product_id = ? and customer_id = ?', [pid, cid], (results, err) => {
+      'DELETE FROM favorite WHERE product_id = ? and customer_id = ?',
+      [pid, cid],
+      (results, err) => {
         // console.log(results);
         // console.log(err);
         // res.redirect('/home/member/myFovourite');
         // if (err) return cb(err);
         // cb(null)
-
       }
     );
   }
@@ -134,13 +142,7 @@ router.post('/myFavourite', function (req, res) {
   console.log(req.body.size);
   console.log(req.body.color);
 
-
   // res.send(req.body);
-}
-);
+});
 
-
-
-
-
-module.exports = router; 
+module.exports = router;
