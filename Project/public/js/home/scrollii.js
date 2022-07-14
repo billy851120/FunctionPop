@@ -8,7 +8,7 @@ const $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') 
 var dd = $(".gg")
 
 // console.log($section.eq(curPage));
-var numOfPages = 7, //取得section的數量
+var numOfPages = 9, //取得section的數量
     curPage = 0, //初始頁
     scrollLock = false;
 
@@ -39,16 +39,16 @@ function scrollPage() {
 function pagination() {
     scrollLock = true;
     // console.log(dd.eq(parseInt(curPage / 2)));
-    if ((curPage == 0) || (curPage == 2) || (curPage == 4)|| (curPage == 6)) {
+    if ((curPage == 0) || (curPage == 2) || (curPage == 4)|| (curPage == 6)|| (curPage == 8)) {
         $body.stop().animate({
             scrollTop: dd.eq(parseInt(curPage / 2)).offset().top
-        }, 1000, 'swing', function () {
+        }, 800, 'swing', function () {
             scrollLock = false;
         });
     } else {
         $body.stop().animate({
             scrollTop: dd.eq(parseInt(curPage / 2)).offset().top + (document.documentElement.clientHeight / 2)
-        }, 1000, 'swing', function () {
+        }, 800, 'swing', function () {
             scrollLock = false;
         });
 
@@ -157,7 +157,7 @@ $("#godown").click(function () {
     jQuery("html,body").animate({
         scrollTop: document.documentElement.scrollHeight
     }, 1000);
-    curPage = 7;
+    curPage = 9;
 });
 $(window).scroll(function () {
     if ($(this).scrollTop() < document.documentElement.scrollHeight-900) {
