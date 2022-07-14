@@ -113,7 +113,7 @@
                                     //    console.log(x);
                                        $(".product_length").text(`${product_length + 1} 件商品`);
                                     </script>
-                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" >
+                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" id="row_num<%- row_num %> " >
                                 <div class="col-4 col-lg-3 product_info py-3">
 
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
@@ -164,8 +164,8 @@
                                                 <div class="modal-body border border-success">
                                                          <div class="row">
                                                             
-                                                                 <div class="col-6"><p> 尺寸：</p>
-                                                                    <input type="hidden" name="p_id" value="<%- todos[i].product_id %> ">
+                                                                 <div class="col-6"><p class="chooseSize"> 尺寸：</p>
+                                                                    <input type="hidden" name="p_id" value="<%- todos[i].product_id %>">
                                                                     <input type="hidden" name="p_price" value="<%- todos[i].product_price %>">
                                                                     <input type="hidden" name="p_name" value="<%- todos[i].product_name %>">
                                                                     <input type="hidden" name="p_img" value="<%- todos[i].product_image %>">
@@ -177,35 +177,37 @@
                                                                        <% console.log(ee) %> 
                                                                       <% for (var d = 0; d < todos.length; d++) { %>
                                                                         <% if(todos[d].product_id == ee ){ %>
-                                                                       <input type="radio" id="size_<% -d %>" name="size" value="<%- todos[d].size_name %>">
-                                                                       <label class="mr-2" for="size_<%-d%>"><%-todos[d].size_name%></label>
+                                                                       <input type="radio" id="<%- todos[d].product_all_id %>" name="size" value="<%- todos[d].size_name %>">
+                                                                       <label class="mr-2" for="<%- todos[d].product_all_id %>"><%-todos[d].size_name%></label>
                                                                        <input type="hidden" name="size_id"  value="<%- todos[d].product_all_id %>">
                                                                             <%}}%>
                                                                  </div> <!-- col-6 -->
                                                                  <div class="col-6"><p> 顏色：</p>
-                                                                         <input type="radio" id="color_b" name="color" value="黑色">
-                                                                         <label class="mr-2" for="color_b">黑色</label>
-                                                                         <input type="radio" id="color_w" name="color" value="白色">
-                                                                         <label class="mr-2" for="color_w">白色</label>
+                                                                         <input type="radio" id="color_b<%- row_num %>" name="color" value="黑色">
+                                                                         <label class="mr-2" for="color_b<%- row_num %>">黑色</label>
+                                                                         <input type="radio" id="color_w<%- row_num %>" name="color" value="白色">
+                                                                         <label class="mr-2" for="color_w<%- row_num %>">白色</label>
                                                                  </div> <!-- col-6 -->
                                                         </div>  <!-- row -->
                                                      
                                                                     <div class="row ">
                                                                             <div class="col-12"><p>數量：</p>
-                                                                                <button class="btn border text-danger bb" id="aa" onclick="num_desc(this)">-</button>
+                                                                                <button class="btn  text-danger font-width-blod" id="aa" onclick="num_desc()">-</button>
                                                                                 <input type="text" name="quantity" id="" class="col-4 text-center border border-warning align-self-center" value="1"  >
-                                                                                <button class="btn border" id="num_increase" onclick="num_incr()">+</button>
+                                                                                <button class="btn text-success font-width-blod" id="num_increase" onclick="num_incr()">+</button>
                                                                              </div> <!-- col-12 -->
                                                                      <script>
-                                                                         function num_desc (obj){
-                                                                            // console.log(obj.parentNode);
-                                                                             var desc = obj.parentNode.children[2].value -1;
-                                                                            //  console.log(desc);
-                                                                             obj.parentNode.children[2].value = desc;
+                                                                         function num_desc (){
+                                                                            var p_quantity = parseInt( $('input[name="quantity"]').val());
+                                                                              if( p_quantity > 1 ){
+                                                                              $('input[name="quantity"]').val(p_quantity - 1);
+                                                                              }
+                                                                              console.log(p_quantity);
                                                                              }
-                                                                         function num_incr (obj){
-                                                                             var incr =parseInt( obj.parentNode.children[2].value )+1;
-                                                                             obj.parentNode.children[2].value = incr;
+                                                                         function num_incr (){
+                                                                            var p_quantity = parseInt( $('input[name="quantity"]').val());
+                                                                              $('input[name="quantity"]').val(p_quantity + 1);
+                                                                            console.log(p_quantity);
                                                                          }
                                                                      </script>
                                                                     </div>  <!--row -->
@@ -214,7 +216,7 @@
                                                            <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
                                                           
                               
-                                                            <button type="button" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" id="" >確定</button>
+                                                            <button type="submit" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" data-dismiss="modal">確定</button>
                                                             <% console.log(`row_num -----> ${row_num}`) %> 
                                                             <% row_num++ %> 
                                                             <!-- <button  class="btn_GO" id="get" >確定</button> -->
@@ -365,50 +367,34 @@
     function clearAll(){
       document.getElementById('clearFavor').submit();
     };
-    // function gotoCart(obj){
-    //     sendToCart.onclick=function(){
-    //         console.log('obj');
-    //          console.log($('input[name="size"]:checked').val());
-    //          console.log($('input[name="color"]:checked').val());
-    //                                  }
-    // }
-
-    // function addtoCart(obj){
-    //     console.log(obj.id);
-    //     var p_id = obj.id;
-
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('post', '/home/member/myFavourite'); 
-      
-    //   // json 格式
-    //   xhr.setRequestHeader('Content-type', 'application/json');
-    //   var data = JSON.stringify(
-    //     { p_id: p_id },
-    //   );
-    //   xhr.send(data);
-    //   xhr.onload = function() {
-    //     console.log(JSON.parse(xhr.responseText));
-    //   }
-    // }
+   
 
     function gotoCart(row_num){
         console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
+
+        
          var id =$('input[name="p_id"]')[row_num].value;
          console.log(`id : ${id}`)
 
-         var size = $('input[name="size"]:checked');
-         var color = $('input[name="color"]:checked')
-         var quantity = $('input[name="quantity"]');
+         var size = $('input[name="size"]:checked').val();
+         var color = $('input[name="color"]:checked').val();
+         var quantity = $('input[name="quantity"]').val();
          console.log(`quantity = ${quantity}`);
 
-         
+         var all_id = $('input[name="size"]:checked').attr('id');
+         console.log(`all_id :`)    ;
+         console.log(all_id);
+
+         if(!size){
+            $('.chooseSize').css({'color':'red'});
+            // $(`.${all_id}`).css({'color':'red'});
+         }else{
+            $('.chooseSize').css({'color':'black'});
+         }
 
          var code = $('input[name="p_code"]')[row_num].value;
          console.log(`code : ${code}`)
-
-         var all_id = $('input[name="size_id"]')[row_num].value;
-         console.log(`all_id : ${all_id}`)
 
          var name = $(`input[name='p_name']`)[row_num].value;
          console.log(`name : ${name}`)
@@ -419,24 +405,20 @@
          var price = $('input[name="p_price"]')[row_num].value;
          console.log(`price : ${price}`)
 
-         var p_id = (((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
-         console.log(`p_id = ${p_id}`);
-         var size = $('input[name="size"]:checked').val();
-         var color = $('input[name="color"]:checked').val();
-         console.log(`size : ${size} , color : ${color} `);
+        //  $(`row_num${row_num}`).remove();
         console.log('=======JavaScript========');
         // console.log($(`input[name='p_name']`)[row_num].value);
         // console.log(`row_num = ${row_num}`);
          var item = {
-            code: '',
-            all_id: '212',
-            id:id ,
-            name: 'sss',
-            image: 'ajklxjal',
-            size: size,
-            color:color,
-            price: "",
-            quantity:quantity
+            code : code,
+            all_id : all_id,
+            id : id ,
+            name : name,
+            image : image,
+            size : size,
+            color : color,
+            price: price,
+            quantity : quantity
 
          }
         $.ajax({
