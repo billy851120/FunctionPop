@@ -153,7 +153,6 @@
                                     <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" >
                                           <div class="modal-content">
-<<<<<<< HEAD
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="choose_Label">請選擇尺寸及顏色</h5>
                                                     <button type="button" class="close" data-dismiss="modal">
@@ -224,48 +223,6 @@
                                             </div>  <!-- modal-dialog -->
                                       </div>  <!-- modal fade -->
                                 </div >  <!-- col-12 -->
-=======
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="choose_<%- todos[i].product_id%>Label">請選擇尺寸及顏色</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                     <div class="col-6">尺寸：<br>
-                                                          <input type="radio" name="size" value="S">
-                                                          <label for="size_S" class="mr-2">S</label>
-                                                          
-                                                          <input type="radio" name="size" value="M">
-                                                          <label for="size_M"class="mr-2">M</label>
-                                                          
-                                                          <input type="radio" name="size" value="L">
-                                                          <label for="size_L"class="mr-2">L</label>
-                                                      </div>
-                                                      <div class="col-6"> 顏色：<br>
-                                                         <input type="radio" name="color" value="BK">
-                                                         <label for="c_black"class="mr-2">黑色</label>
-                                                  
-                                                         <input type="radio" name="color" value="WH">
-                                                         <label for="c_black"class="mr-2">白色</label>
-                                                      </div>
-                                                      <!-- <div class="col-12 text-center">
-                                                         <button id="get">test</button>
-                                                      </div> -->
-                                                </div>
-                                            </div>                                              
-                                                
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
-                                              <button type="submit" class="btn_GO" onclick="gotoCart(this)">確定</button>
-                                              <!-- <button  class="btn_GO" id="get" >確定</button> -->
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </div >
->>>>>>> 7e395b1ab4fcbfff3406c226333a229b6c86ce2d
                                      <% var memid =0; %>
                                       <% if(memberprofile != null){ %>
                                          <% memid = memberprofile.id;}else{memid = 0;} %>
@@ -437,7 +394,6 @@
     function gotoCart(row_num){
         console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
-<<<<<<< HEAD
          var id =$('input[name="p_id"]')[row_num].value;
          console.log(`id : ${id}`)
 
@@ -463,12 +419,10 @@
          var price = $('input[name="p_price"]')[row_num].value;
          console.log(`price : ${price}`)
 
-=======
          var p_id = (((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
          console.log(`p_id = ${p_id}`);
          var size = $('input[name="size"]:checked').val();
          var color = $('input[name="color"]:checked').val();
->>>>>>> 7e395b1ab4fcbfff3406c226333a229b6c86ce2d
          console.log(`size : ${size} , color : ${color} `);
         console.log('=======JavaScript========');
         // console.log($(`input[name='p_name']`)[row_num].value);

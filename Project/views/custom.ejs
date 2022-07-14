@@ -161,6 +161,8 @@
                   <br><br><br>
                   <p>請上傳65kb以下的檔案</p>
                   <input type="file" id="uploadfinal" style="margin-left: 100px;">
+                  <div id="seefinal" style=" width: 100px;height: 70px;margin: 20px auto;"></div>
+                  <br>
                 </div>
 
                 <div class="col-6" style="text-align: center">
@@ -760,6 +762,28 @@
           console.log(bytes);
           return window.btoa(binary);
         };
+
+
+
+    uploadfinal.onchange = function () {
+      const readeri = new FileReader();
+      readeri.readAsDataURL(uploadfinal.files[0]);
+      // console.log(myFile.files);
+      readeri.onload = function () {
+
+        const seeup = new Image(); // document.createElement('img'); // <img>
+        seeup.src = readeri.result; // <img src='data....'>
+        seeup.style.zIndex = 1000;
+        seeup.style.margin = '5px 0';
+        seeup.onload = function () {
+          // 　　a. 透過 <img>
+          seeup.style.width = '100px';
+          document.getElementById('seefinal').append(seeup);
+        }
+      }
+    }
+
+
 
 
   const file = document.getElementById("uploadfinal");
