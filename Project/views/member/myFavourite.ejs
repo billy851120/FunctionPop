@@ -97,16 +97,21 @@
 
                     <!-- 我的最愛內容 -->
                     <%   var x = ""; %>
-                            <% for (var i=0; i<todos.length; i++) { %>
-                                    <% console.log( todos[i].product_all_id)  %>
-
-
+                            <% var qq=[]; %> 
+                            <% var row_num = 0; %> 
+                            <% for (var i = 0; i<todos.length; i++) { %>
+                               
                                 <%   if(todos[i].product_id == x ){}else { %>
+
                                     <% x = todos[i].product_id; %>
+                                    <%   qq.push(i);
+                                    console.log(qq.length) ;
+                                    console.log(`row_num = ${row_num}`);
+                                    %> 
                                     <script>
                                        var product_length = document.querySelectorAll(".row_number").length;
                                     //    console.log(x);
-                                       $(".product_length").text(`${product_length+1} 件商品`);
+                                       $(".product_length").text(`${product_length + 1} 件商品`);
                                     </script>
                             <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" >
                                 <div class="col-4 col-lg-3 product_info py-3">
@@ -143,48 +148,85 @@
                                  </div>
                                  <div class="col-12 col-lg-2 mb-2">
                                     <!-- <button type="submit" id="addToCart" class="btn_GO px-1 d-block w-100 b_radius">移至購物車</button> -->
-                                    <button type="submit" id="addToCart_<%- todos[i].product_id %>" class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id%>" onclick="addtoCart(this)">移至購物車</button>
+                                    <button type="submit"  class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id %>">移至購物車</button>
                                   
-                                    <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id%>"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
+                                    <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" >
                                           <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="choose_<%- todos[i].product_id%>Label">請選擇尺寸及顏色</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <%  console.log(todos[i]);%> 
-                                                    <div class="col-6">尺寸：<br>
-                                                        <% var ee = todos[i].product_id;%>
-                                                        <% for (var d=0; d<todos.length; d++) { %>
-                                                            <%   if(todos[d].product_id == ee ){%>
-                                                        <input type="radio" name="size<%-d%>" value="<%-todos[d].size_name%>">
-                                                        <label class="mr-2"><%-todos[d].size_name%></label>
-                                                        <%}}%>
-                                                        
-                                                      </div>
-                                                      <!-- <div class="col-12 text-center">
-                                                         <button id="get">test</button>
-                                                      </div> -->
-                                                </div>
-                                            </div>                                              
-                                                
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
-                                              <button type="submit" class="btn_GO" onclick="gotoCart(this)">確定</button>
-                                              <!-- <button  class="btn_GO" id="get" >確定</button> -->
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                </div >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="choose_Label">請選擇尺寸及顏色</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <!-- x&times; -->
+                                                         <span aria-hidden="true" style="color: red;">&times;</span>
+                                                     </button>
+                                                </div>  <!-- modal-header -->
+
+                                                <div class="modal-body border border-success">
+                                                         <div class="row">
+                                                            
+                                                                 <div class="col-6"><p> 尺寸：</p>
+                                                                    <input type="hidden" name="p_id" value="<%- todos[i].product_id %> ">
+                                                                    <input type="hidden" name="p_price" value="<%- todos[i].product_price %>">
+                                                                    <input type="hidden" name="p_name" value="<%- todos[i].product_name %>">
+                                                                    <input type="hidden" name="p_img" value="<%- todos[i].product_image %>">
+                                                                    <input type="hidden" name="p_code" value="<%- todos[i].product_code %>">
+
+                                                                       <% var ee = todos[i].product_id; %>
+                                                                       <% console.log('----------------------'); %> 
+                                                                      
+                                                                       <% console.log(ee) %> 
+                                                                      <% for (var d = 0; d < todos.length; d++) { %>
+                                                                        <% if(todos[d].product_id == ee ){ %>
+                                                                       <input type="radio" id="size_<% -d %>" name="size" value="<%- todos[d].size_name %>">
+                                                                       <label class="mr-2" for="size_<%-d%>"><%-todos[d].size_name%></label>
+                                                                       <input type="hidden" name="size_id"  value="<%- todos[d].product_all_id %>">
+                                                                            <%}}%>
+                                                                 </div> <!-- col-6 -->
+                                                                 <div class="col-6"><p> 顏色：</p>
+                                                                         <input type="radio" id="color_b" name="color" value="黑色">
+                                                                         <label class="mr-2" for="color_b">黑色</label>
+                                                                         <input type="radio" id="color_w" name="color" value="白色">
+                                                                         <label class="mr-2" for="color_w">白色</label>
+                                                                 </div> <!-- col-6 -->
+                                                        </div>  <!-- row -->
+                                                     
+                                                                    <div class="row ">
+                                                                            <div class="col-12"><p>數量：</p>
+                                                                                <button class="btn border text-danger bb" id="aa" onclick="num_desc(this)">-</button>
+                                                                                <input type="text" name="quantity" id="" class="col-4 text-center border border-warning align-self-center" value="1"  >
+                                                                                <button class="btn border" id="num_increase" onclick="num_incr()">+</button>
+                                                                             </div> <!-- col-12 -->
+                                                                     <script>
+                                                                         function num_desc (obj){
+                                                                            // console.log(obj.parentNode);
+                                                                             var desc = obj.parentNode.children[2].value -1;
+                                                                            //  console.log(desc);
+                                                                             obj.parentNode.children[2].value = desc;
+                                                                             }
+                                                                         function num_incr (obj){
+                                                                             var incr =parseInt( obj.parentNode.children[2].value )+1;
+                                                                             obj.parentNode.children[2].value = incr;
+                                                                         }
+                                                                     </script>
+                                                                    </div>  <!--row -->
+                                                         </div>  <!-- modal-body -->
+                                                        <div class="modal-footer">
+                                                           <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
+                                                          
+                              
+                                                            <button type="button" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" id="" >確定</button>
+                                                            <% console.log(`row_num -----> ${row_num}`) %> 
+                                                            <% row_num++ %> 
+                                                            <!-- <button  class="btn_GO" id="get" >確定</button> -->
+                                                        </div>  <!--modal-footer -->
+                                                </div>  <!--modal-content -->
+                                            </div>  <!-- modal-dialog -->
+                                      </div>  <!-- modal fade -->
+                                </div >  <!-- col-12 -->
                                      <% var memid =0; %>
                                       <% if(memberprofile != null){ %>
                                          <% memid = memberprofile.id;}else{memid = 0;} %>
-       <!-- < xl disappear -->           <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none btn">
+       <!-- < xl disappear -->      <button type="submit" id="inputSend<%-i%>" onclick=" formSubmit(this)"  class="col-lg-2 d-lg-block d-none btn">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- todos[i].product_id%>">
                                          <input type="hidden" name="inputText<%-i%>" id="inputText<%-i%>" value="<%- memid%>">
                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
@@ -217,8 +259,8 @@
                                     // })
                                 </script>
                             </div>  <!-- row -->
-                            
-                            <%}}%>
+                           
+                            <%} }%>
                         </div> <!-- col-10 -->
                         <% } else { %>
                             <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center"
@@ -349,25 +391,48 @@
     //   }
     // }
 
-    function gotoCart(obj){
+    function gotoCart(row_num){
         console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
-         var p_id =(((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children[0].id;
+         var id =$('input[name="p_id"]')[row_num].value;
+         console.log(`id : ${id}`)
 
-         console.log(`p_id = ${p_id}`);
-         var size = $('input[name="size"]:checked').val();
-         var color = $('input[name="color"]:checked').val();
+         var size = $('input[name="size"]:checked');
+         var color = $('input[name="color"]:checked')
+         var quantity = $('input[name="quantity"]');
+         console.log(`quantity = ${quantity}`);
+
+         
+
+         var code = $('input[name="p_code"]')[row_num].value;
+         console.log(`code : ${code}`)
+
+         var all_id = $('input[name="size_id"]')[row_num].value;
+         console.log(`all_id : ${all_id}`)
+
+         var name = $(`input[name='p_name']`)[row_num].value;
+         console.log(`name : ${name}`)
+
+         var image = $('input[name="p_img"]')[row_num].value;
+         console.log(`image : ${image}`)
+
+         var price = $('input[name="p_price"]')[row_num].value;
+         console.log(`price : ${price}`)
+
          console.log(`size : ${size} , color : ${color} `);
+        console.log('=======JavaScript========');
+        // console.log($(`input[name='p_name']`)[row_num].value);
+        // console.log(`row_num = ${row_num}`);
          var item = {
             code: '',
             all_id: '212',
-            id:"" ,
+            id:id ,
             name: 'sss',
             image: 'ajklxjal',
             size: size,
             color:color,
             price: "",
-            quantity: "",
+            quantity:quantity
 
          }
         $.ajax({
