@@ -254,8 +254,8 @@ router.get('/:gender/single_product/:id', getUrl, function (rqs, res) {
     [rqs.params.id],
     (rows, fields) => {
       var sqlpro = `
-      SELECT * FROM products ORDER BY product_rating DESC;
-      SELECT * FROM products ORDER BY product_upload DESC LIMIT 4;`;
+      SELECT * FROM products ORDER BY product_price LIMIT 7;
+      SELECT * FROM products ORDER BY Rand() LIMIT 4;`;
       db.exec(sqlpro, [], function (pro, kkk) {
         res.render('single_product', {
           result: rows,
