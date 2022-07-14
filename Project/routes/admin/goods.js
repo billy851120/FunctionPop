@@ -124,7 +124,7 @@ router.get('/item_all', function (rqs, res) {
   var sql = `
   SELECT COUNT(*) AS COUNT FROM products;
   SELECT * FROM products ORDER BY products.product_upload DESC;
-  SELECT * FROM products_all order by product_id DESC limit 1;
+  SELECT * FROM products order by product_id DESC limit 1;
   SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_image, products_all.product_image2, products_all.product_image3
   FROM order_items
   LEFT JOIN products_all
@@ -230,10 +230,10 @@ router.get('/orderMgat_num/:page([0-9]+)', function (rqs, res) {
   var sql = `
   SELECT * FROM orders ORDER BY orders.order_list DESC LIMIT ${offset}, ${nums_per_page};
   SELECT COUNT(*) AS COUNT FROM orders;
-  SELECT * FROM orders WHERE to_days(order_update) = to_days(now()) ORDER BY orders.order_update DESC LIMIT 4;
+  SELECT * FROM orders WHERE to_days(order_update) = to_days(now()) ORDER BY orders.order_upload DESC LIMIT 4;
   SELECT COUNT(*) AS COUNT FROM orders WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(order_update);
   SELECT SUM(UnitPrice) AS COUNT FROM order_items WHERE to_days(order_date) = to_days(now());
-  SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_update) = to_days(now());
+  SELECT COUNT(*) AS COUNT FROM orders WHERE to_days(order_upload) = to_days(now());
   SELECT SUM(UnitPrice) AS COUNT FROM order_items;`;
 
 
