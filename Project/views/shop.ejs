@@ -232,13 +232,13 @@
             
         }
 
-        a {
+        .alink {
             text-decoration: none;
             color: #1d1d1d;
             text-align:left;
         }
 
-        a:link {
+        .alink:link {
             /* text-decoration: none; */
             color: black;
         }
@@ -398,14 +398,14 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <p><%= result[0].product_gender %></p>
                                                 <div id="categoryButton" style="width: 150px;">
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8A%E8%A1%A3">上衣</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下著</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋裝</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙子</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E4%B8%8A%E8%A1%A3">上衣</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下著</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋裝</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙子</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
                                                 </div>
 
 
@@ -488,17 +488,17 @@
                                     <label>
                                         <span class="ml-3">排序: </span>
                                         <select name="" id="selectMode" style="height: 30px;">
-                                            <option value="1">價格：高到低</option>
-                                            <option value="2">價格：低到高</option>
+                                            <option value="1">上架日期：新到舊</option>
+                                            <option value="2">上架日期：舊到新</option>
                                             <option value="3">評價：高到低</option>
                                             <option value="4">評價：低到高</option>  
                                         </select>
                                     </label>
                                 </div>
-                                <div id="lab">
+                                <!-- <div id="lab">
                                     <input type="button" value="DESC">
                                     <input type="button" value="ASC">
-                                </div>
+                                </div> -->
                             </div>
                         </section>
                         <!-- Shop -->
@@ -530,7 +530,8 @@
 
                                 <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-6 align-items-center justify-content-center">
                                     
-                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt="">
+                                    <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
+                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
                                     <div>
                                         <svg style="display:none;" class="star5" width="20" height="20">
                                             <defs class="star5 mx-auto d-flex justify-content-center">
@@ -934,6 +935,14 @@ for (var i = 0; i < btns.length; i++) {
 
             })
         </script>
+
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+    <script>
+        $( ".loadimg").lazyload();
+    </script>
+
 
 
 </body>

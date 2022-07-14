@@ -24,6 +24,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "jquery": "^3.6.0",
+    "lazyload": "^2.0.0-rc.2",
     "moment": "^2.29.3",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
