@@ -386,10 +386,10 @@
               <% result.forEach(function(item){ %>
                 <% let ch="" %>
                   <% if(ch !=item.size_name){ %>
-                    <label>
+                    <label style="width: 85px;" class="text-center px-1 mx-0">
                       <input type="radio" value="<%- item.size_name %>" name="size_ch" style="display: none;" 
                         data-allId="<%- item.product_all_id %>" />
-                      <span class=" mx-auto px-4 pt-0" style="border: 1px solid #000; cursor: pointer; padding: 5px 13px; border-radius: 5px;">
+                      <span class=" mx-auto px-4 pt-0" style="display: block; border: 1px solid #000; cursor: pointer; padding: 5px 13px; border-radius: 5px;">
                         <%- item.size_name %>
                       </span>
                     </label>
