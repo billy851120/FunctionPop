@@ -357,7 +357,7 @@
             <hr style="background-color: #545454; height: 2px" />
             <h6 style="color: gray">時尚</h6>
             <br />
-            <h5 style="font-weight: 700;">
+            <h5 class="pdName" style="font-weight: 700;">
               <%= result[0].product_name %>
             </h5>
             <p>商品編號  <%= result[0].product_code %>
@@ -783,8 +783,8 @@
               document.getElementById("fpopnav_cart").appendChild(dot);
               var imgUrl = $("#mainImg").prop("src").substr(34);
               var pSize = $(".sizeflexBox ").find(" .psize-active").val();
-              var nowCartCount = $('#cartCount').text();
-              var pName = $("#product_describe > h6").text();
+              var nowCartCount = $('#number').val();
+              var pName = $("#product_describe > .pdName").text();
 
               var pidItem =document.createElement("div");
               $(pidItem).prop("class","d-flex mb-2 smItem");
