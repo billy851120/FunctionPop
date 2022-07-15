@@ -52,7 +52,11 @@
         }
 
         .inp_Err {
-            text-align: right;
+            visibility: hidden;
+            position: absolute;
+            top: 0px;
+            right: 6px;
+            transform: translateY(-19px);
             font-size: 5px;
             color: #d83838;
         }
@@ -77,65 +81,81 @@
             <br>
             <br>
             <br>
-            <br>
-            <br>
             <% if(!memberprofile){ %>
                 <h4 style="font-weight: 600;text-align: center;">註冊新帳號</h4>
                 <p class="regText">儲存您的資料,享有快速結帳流程、建立願望清單、查看訂單紀錄、查詢退貨紀錄。</p>
-                <div class="inputbox" style="margin: 0px auto 100px; width: 300px;">
-                    <div class="row justify-content-between">
-                        <label class="col-12" style="color:rgb(163, 163, 163)">*星號欄位必填</label>
-                        <label class="col-3">姓名*:</label>
-                        <label class="inp_Err col-5 " style="visibility:hidden;" id="nameErr">請填寫姓名欄位*</label>
-                        <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
-                    </div>
-                    <div class="row justify-content-between">
-                        <label class="col-3">生日*:</label>
-                        <label class="inp_Err col-5" style="visibility:hidden" id="birthErr">請填寫生日欄位*</label>
-                        <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
-                    </div>
-                    <div class="row justify-content-between">
-                        <label class="inp_Err col-12" style="visibility:hidden" id="genderErr">請填寫性別欄位*</label>
-                        <label class="col-3" style="align-self: center;
-                        margin: 0;">性別*:</label>
-                        <div class="col-6 p-0">
-                            <select class="fpop_inp " id="gender" name="cgender">
-                                <option name="gender" value="F">女性</option>
-                                <option name="gender" value="M">男性</option>
-                                <option name="gender" value="X">不說</option>
-                            </select>
+                <div class="container  inputbox" style="">
+                    <div class=" registerContent" style="width: 400px; margin: 76px auto;">
+                        <div class="row">
+                            <label class="col-12" style="color:rgb(163, 163, 163); transform: translateX(-7px);">*星號欄位必填</label>
                         </div>
-
+                        <div class="row mb-3" style="position:relative;">
+                            <label class="col-4 align-self-center registerLab">姓名*:</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="text" id="cName" name="cName" placeholder="名字*">
+                            </div>
+                            <label class="inp_Err" id="nameErr">請填寫姓名欄位*</label>
+                        </div>
+                        <div class="row mb-3" style="position:relative;">
+                            <label class="col-4 align-self-center registerLab">生日*:</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="date" id="cBirth" name="cBirth">
+                            </div>
+                                <label class="inp_Err " style="visibility:hidden" id="birthErr">請填寫生日欄位*</label>
+                        </div>
+                        <div class="row mb-3" style="position:relative;">
+                            <label class="col-4 align-self-center registerLab">性別*:</label>
+                            <div class="col ">
+                                <select class="fpop_inp " id="gender" name="cgender">
+                                    <option name="gender" value="F">女性</option>
+                                    <option name="gender" value="M">男性</option>
+                                    <option name="gender" value="X">不說</option>
+                                </select>
+                            </div>
+                            <label class="inp_Err col-12" style="visibility:hidden" id="genderErr">請填寫性別欄位*</label>
+    
+                        </div>
+                        <div class="row mb-3" style="position:relative;" >
+                            <label class="col-4 align-self-center registerLab">電子郵件*:</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
+                            </div>
+                            <label class="inp_Err " style="visibility:hidden; "
+                                id="accountErr">請填寫電子郵件欄位*</label>
+                            <label class="inp_Err " style="visibility:hidden ;"
+                                id="accountErr2">請輸入有效的郵箱地址*</label>
+                            <label class="inp_Err" style="visibility:hidden ;"
+                                id="accountErr3">電子郵件已註冊過，麻煩重新輸入*</label>
+                        </div>
+                        <div class="row mb-3" style="position:relative;" >
+                            <label class="col-4 align-self-center registerLab">連絡電話*：</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*">
+                            </div>
+                            <label class="inp_Err" style="visibility:hidden;"
+                                id="phoneErr">請填寫連絡電話欄位*</label>
+                            <label class="inp_Err" style="visibility:hidden;"
+                                id="phoneErr2">請填寫有效電話*</label>
+                        </div>
+                        <div class="row mb-3" style="position:relative;">
+                            <label class="col-4 align-self-center registerLab">通訊地址*：</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="text" id="cAddr" name="cAddr" placeholder="通訊地址*"><br>
+                            </div>
+                            <label class="inp_Err" style="visibility:hidden" id="addrErr">請填寫連絡通訊欄位*</label>
+                        </div>
+                        <div class="row mb-3" style="position:relative;">
+                            <label class="col-4 align-self-center registerLab">密碼*：</label>
+                            <div class="col">
+                                <input class="fpop_inp" type="password" id="cPassword" name="cPassword" placeholder="密碼*"><br>
+                            </div>
+                            <label class="inp_Err" style="visibility:hidden" id="cpasswordErr">請填寫密碼欄位*</label>
+                        </div>
+                        <div class="mt-4" style="text-align:center ;">
+                                <button style="padding: 7px 75px;" class="btn btn-dark" id="register">註冊</button>
+                        </div>
                     </div>
-                    <div class="row justify-content-between" style="position: relative;">
-                        <label class="col-4">電子郵件*:</label>
-                        <label class="inp_Err " style="visibility:hidden; position: absolute; right: 0;"
-                            id="accountErr">請填寫電子郵件欄位*</label>
-                        <label class="inp_Err " style="visibility:hidden ; position: absolute; right: 0;"
-                            id="accountErr2">請輸入有效的郵箱地址*</label>
-                        <label class="inp_Err" style="visibility:hidden ; position: absolute; right: 0;"
-                            id="accountErr3">電子郵件已註冊過，麻煩重新輸入*</label>
-                        <input class="fpop_inp" type="email" id="cAccount" name="cAccount" placeholder="電子郵件*">
-                    </div>
-                    <div class="row justify-content-between" style="position: relative;">
-                        <label class="col-4">連絡電話*：</label>
-                        <label class="inp_Err" style="visibility:hidden; position: absolute; right: 0;"
-                            id="phoneErr">請填寫連絡電話欄位*</label>
-                        <label class="inp_Err" style="visibility:hidden; position: absolute; right: 0;"
-                            id="phoneErr2">請填寫有效電話*</label>
-                        <input class="fpop_inp" type="tel" id="cPhone" name="cPhone" placeholder="連絡電話*">
-                    </div>
-                    <div class="row justify-content-between">
-                        <label class="col-4">通訊地址*：</label>
-                        <label class="inp_Err" style="visibility:hidden" id="addrErr">請填寫連絡通訊欄位*</label>
-                        <input class="fpop_inp" type="text" id="cAddr" name="cAddr" placeholder="通訊地址*"><br>
-                    </div>
-                    <div class="row justify-content-between">
-                        <label class="col-4">密碼*：</label>
-                        <label class="inp_Err" style="visibility:hidden" id="cpasswordErr">請填寫密碼欄位*</label>
-                        <input class="fpop_inp" type="password" id="cPassword" name="cPassword" placeholder="密碼*"><br>
-                    </div>
-                    <button class="btn btn-dark" id="register">註冊</button>
+                    
                 </div>
                 <% } else {%>
                     <div id="timeBox"></div>

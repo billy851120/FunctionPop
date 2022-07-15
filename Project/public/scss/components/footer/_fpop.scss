@@ -39,12 +39,20 @@ label {
 
 #gender {
     border-radius: 5px;
-    width: 200px;
-    right: 5%;
+    // width: 200px;
+    // right: 5%;
     font-size: 15px;
-    height: 35px;
-    margin: 5px;
-    float: right;
+    // height: 35px;
+    // margin: 5px;
+    // float: right;
+}
+
+.registerContent .row {
+    margin: 0;
+}
+
+.registerContent .registerLab {
+    font-size: 0.9em;
 }
 
 .invalid-feedback {

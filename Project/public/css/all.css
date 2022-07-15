@@ -10908,12 +10908,15 @@ label {
 
 #gender {
   border-radius: 5px;
-  width: 200px;
-  right: 5%;
   font-size: 15px;
-  height: 35px;
-  margin: 5px;
-  float: right;
+}
+
+.registerContent .row {
+  margin: 0;
+}
+
+.registerContent .registerLab {
+  font-size: 0.9em;
 }
 
 .invalid-feedback {
@@ -11148,6 +11151,12 @@ body {
   font-size: small;
 }
 
+@media (max-width: 540px) {
+  .fallow_content .flo_icon {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
 .pageone {
   background-image: url(../img/home/background.png);
   background-repeat: no-repeat;
@@ -14281,12 +14290,7 @@ a.ui-button:active,
 
 #gender {
   border-radius: 5px;
-  width: 200px;
-  right: 5%;
   font-size: 15px;
-  height: 35px;
-  margin: 5px;
-  float: right;
 }
 
 .invalid-feedback {
