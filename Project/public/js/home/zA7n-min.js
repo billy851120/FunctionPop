@@ -22,7 +22,7 @@
 			var $item = $(this),
 				item_width;
 
-			item_width = $item.width()*0.8;
+			item_width = $item.width();
 
 			$item.on({
 				'mouseover': function (event) {

@@ -132,6 +132,14 @@
         .slick-current {
             opacity: 1;
         }
+        .handwind img{
+            width: 600px;
+        }
+        @media screen and (max-width:600px) {
+            .handwind img{
+            height: 300px;
+        }
+        }
     </style>
 
 </head>
@@ -422,18 +430,18 @@
     </div>
     <!-- 手風琴那頁 -->
     <div class="pagefour gg" id="pagefour">
-        <br><br>
+        
         <div class="accordion" id="zA7n">
-            <ul class="accordion__ul">
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/1.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/2.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/3.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/4.jpg" alt="" /></li>
-                <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/5.jpg" alt="" /></li>
+            <ul class="accordion__ul handwind">
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-07.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-09.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-08.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-10.jpg" alt="" /></li>
+                <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-11.jpg" alt="" /></li>
                 <!-- <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/6.jpg" alt="" /></li> -->
             </ul>
         </div>
-        <br><br> <br>
+        
         <%- include("footer.ejs") %>
     </div>
 
