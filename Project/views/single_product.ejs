@@ -48,11 +48,12 @@
 
     /* 24. Featured Design */
     .my_product .buy-btn {
-      color: #ffe200;
+      color: #ffffff;
       transform: translateY(50px);
       opacity: 0;
       transition: 0.3s all;
-      background-color: #395d6c;
+      background-color: #000000;
+      border-radius: 5px;
     }
 
     .my_product:hover .buy-btn {
@@ -74,7 +75,8 @@
     }
 
     .my_button:hover {
-      background-color: coral;
+      background-color: rgb(255, 223, 80);
+      border-radius: 5px;
     }
 
     /*  */
@@ -349,16 +351,16 @@
 
 
           <div class="col-lg-4 col-md-12 col-sm-12 py-3 px-5" id="product_describe">
-            <h3>
-              <%= result[0].product_gender %> | <%= result[0].product_category %>
-            </h3>
-            <hr style="background-color: #395d6c; height: 2px" />
-            <h5 style="color: gray">時尚</h5>
-            <br />
             <h4>
-              <%= result[0].product_name %>
+              <%= result[0].product_gender %> | <%= result[0].product_category %>
             </h4>
-            <p>商品編號 <%= result[0].product_code %>
+            <hr style="background-color: #545454; height: 2px" />
+            <h6 style="color: gray">時尚</h6>
+            <br />
+            <h5 style="font-weight: 700;">
+              <%= result[0].product_name %>
+            </h5>
+            <p>商品編號  <%= result[0].product_code %>
             </p>
             <p>價　格： $ <span>
                 <%= result[0].product_price %>
@@ -432,13 +434,13 @@
             <br />
 
             <div>
-              <h3 style="
+              <h5 style="
                   border-bottom: 1px solid #000;
                   padding-bottom: 10px;
                   margin-bottom: 10px;
                 ">
                 商品描述
-              </h3>
+              </h5>
             </div>
             <div>
               <p>&emsp;&emsp;<%= result[0].product_description %>
@@ -448,9 +450,9 @@
             <br />
 
             <div>
-              <h3 style="border-bottom: 1px solid #000; padding-bottom: 10px">
+              <h5 style="border-bottom: 1px solid #000; padding-bottom: 10px">
                 商品資訊
-              </h3>
+              </h5>
             </div>
             <ul>
               <li>
@@ -467,9 +469,8 @@
       <div class="container mt-3 pt-3">
         <div class="row">
           <div class="col-12">
-            <div id="" class="my-0 py-0 w-100 mx-auto ">
+            <div id="" class="my-0 py-0 w-100 mx-auto mt-5">
               <img src="/img/product/photo2.jpg" alt="" style="max-width:100%">
-              
             </div>
           </div>
       </div>
@@ -478,16 +479,18 @@
       <!-- 4. Relative Product -->
       <section class="container" id="related-products" class="pt-5 mt-2">
         <div class="text-center mt-4 pt-2">
-          <h3>推薦商品</h3>
-          <hr class="mx-auto" />
+          <h5><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-up mr-2" viewBox="0 0 16 16">
+            <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
+          </svg>推薦商品</h5>
+          <hr class="mx-auto m-5" />
         </div>
         <div class="row mx-auto container-fluid">
           <!-- Featured List -->
           <% pro2.forEach(function(item){ %>
           <div class="my_product text-center col-lg-3 col-md-4 col-sm-6 col-6">
             <img class="img-fluid mb-3" src="/img/product/<%- item.product_image %>" alt="" />
-            <h5 class="p-name" style="font-size: 1em;"><%- item.product_name %></h5>
-            <h4 class="p-price">$ <%- item.product_price %></h4>
+            <h6 class="p-name" style="font-size: 1em;"><%- item.product_name %></h5>
+            <h6 class="p-price">$ <%- item.product_price %></h4>
             <button class="my_button buy-btn" onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';">Buy Now</button>
           </div>
           <% }); %>
@@ -499,7 +502,9 @@
 
       <div class="container">
         <div class="text-center mt-4 pt-2">
-          <h3>實惠商品</h3>
+          <h5><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gem m-2" viewBox="0 0 16 16">
+            <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
+          </svg>實惠商品</h5>
           <hr class="mx-auto" />
         </div>
         <div class="row">
@@ -516,13 +521,13 @@
                     <div>
                       <a href="/home/product/<%- item.product_gender %>/single_product/<%- item.product_id %>">
                         <div class="img" style="margin:auto; height: 550px; background-color: white;">
-                          <p class="mx-auto d-flex justify-content-center" style="font-size: 0.8em;">
+                          <p class="mx-auto d-flex justify-content-center" style="font-size: 0.6em;">
                             <%- item.product_name %>
                           </p>
-                          <img style=" width: 100%; height: 80%; border-radius: 2px"
+                          <img style=" width: 100%; height: 70%; border-radius: 2px"
                             src="/img/product/<%- item.product_image %>" class="mx-auto d-flex justify-content-center"
                             alt="" />
-                          <p class="mx-auto d-flex justify-content-center"><%- item.product_price %> 元 </p>
+                          <p class="mx-auto d-flex justify-content-center mt-3" style="font-size: 0.6em;"><%- item.product_price %> 元 </p>
                           <!-- <div>
                             <svg style="display:none;" class="star5" width="20" height="20">
                               <defs class="star5 mx-auto d-flex justify-content-center">
@@ -779,7 +784,7 @@
               var imgUrl = $("#mainImg").prop("src").substr(34);
               var pSize = $(".sizeflexBox ").find(" .psize-active").val();
               var nowCartCount = $('#cartCount').text();
-              var pName = $("#product_describe > h4").text();
+              var pName = $("#product_describe > h6").text();
 
               var pidItem =document.createElement("div");
               $(pidItem).prop("class","d-flex mb-2 smItem");
@@ -795,7 +800,7 @@
                   ">
                         <img style="width:100%; height:100%" src="/img/product/${imgUrl}" alt="">
                       </div>
-                      <div style="font-size: 0.7em; text-align: left; user-select: none;">
+                      <div style="font-size: 0.5em; text-align: left; user-select: none;">
                         <p class="m-0">
                          ${pName}
                         </p>
