@@ -160,7 +160,7 @@ $("#godown").click(function () {
     curPage = 9;
 });
 $(window).scroll(function () {
-    if ($(this).scrollTop() < document.documentElement.scrollHeight-900) {
+    if ($(this).scrollTop() < document.documentElement.scrollHeight-800) {
         $('#godown').fadeIn("fast");
     } else {
         $('#godown').stop().fadeOut("fast");

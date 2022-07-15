@@ -44,11 +44,41 @@
 
     .uploadA,
     .uploadB {
+      margin: 0 1px;
       border: #363B36 solid 1px;
-      width: 50%;
+      border-radius: 10px;
+      background-color: #e4e4e4;
+      width: 49%;
       height: 100%;
       float: left;
       overflow: hidden;
+    }
+
+    .button{
+      /* text-decoration: none; */
+      /* text-transform: uppercase; */
+      color: rgb(0, 0, 0);
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.8s;
+    }
+    .button:hover{
+      background-color: #ffffff;
+    }
+    .button::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50px;
+      width: 0;
+      height: 100%;
+      background-color: #FFE200;
+      transform: skewX(60deg);
+      z-index: -1;
+      transition: width 0.8s;
+    }
+    .button:hover::before{
+      width: 185%;
     }
   </style>
 </head>
@@ -62,14 +92,14 @@
           <% console.log(memberprofile.id);memid=memberprofile.id; }%>
 
             <!-- 小連結 -->
-            <div style="position:relative; width: 50%; top: 180px; left: 16.875%;">
-              <a href="" style="left: 16.875%;"> <b>首頁</b> </a>|
+            <div style="position:relative; width: 50%; top: 150px; left: 15%;">
+              <a href=""> <b>首頁</b> </a>|
               <b>我的設計</b>
             </div>
 
             <!-- 客製化T  -->
             <div
-              style="position:relative; top: 250px;margin: 0 auto; border-bottom: 1px black solid; min-height: 700px;"
+              style="position:relative; top: 250px;margin: 0 auto; border-bottom: 1px black solid; min-height: 1550px;"
               id="customdiv">
               <h4 style="text-align: center; margin-bottom: 40px;"> <b>客製化T恤</b> </h4>
               <span style="font-size: 15px;">STEP</span><b style="font-size: 18px;">1. 選擇顏色</b>
@@ -130,7 +160,7 @@
                 <div class="col-6" style="text-align: center">
                   <span style="font-size: 15px">STEP</span><b style="font-size: 18px">2. 上傳圖片</b>
                   <br /><br /><br /><br />
-                  <input id="myFile" type="file" style="border: black solid 1px; width: 33%; font-size: 15px" />
+                  <input  class="btn font-width-blod border border-secondary px-1 py-1" id="myFile" type="file" style="border: black solid 1px; width: 38%; font-size: 15px" />
                 </div>
 
                 <div class="col-6" style="text-align: center">
@@ -138,7 +168,6 @@
                   <div style="
                 width: 320px;
                 height: 180px;
-                background-color: #d4d4d4;
                 margin: 20px auto;
                 border-radius: 10px;
               ">
@@ -153,14 +182,14 @@
                   <span style="font-size: 15px">STEP</span><b style="font-size: 18px">4. 儲存&上傳檔案</b>
                   <br /><br /><br /><br />
                   <a href="#">
-                    <button onclick="divtoimg()" style="background-color: white; border-radius: 5px">
+                    <button class="button btn font-width-blod border border-secondary px-3 py-1" onclick="divtoimg()" style="border-radius: 5px">
                       儲存設計
                     </button>
 
                   </a>
                   <br><br><br>
                   <p>請上傳65kb以下的檔案</p>
-                  <input type="file" id="uploadfinal" style="margin-left: 100px;">
+                  <input class="btn font-width-blod border border-secondary px-1 py-1" type="file" id="uploadfinal" style=" width: 40%;">
                   <div id="seefinal" style=" width: 100px;height: 70px;margin: 20px auto;"></div>
                   <br>
                 </div>
@@ -207,7 +236,7 @@
                       <td></td>
                       <td></td>
                       <td style="margin-top: 20px">
-                        <button id="addprod" style="background-color: white; border-radius: 5px">
+                        <button class="button btn font-width-blod border border-secondary px-1 py-1" id="addprod" style="border-radius: 5px">
                           加入購物車
                         </button>
                       </td>
