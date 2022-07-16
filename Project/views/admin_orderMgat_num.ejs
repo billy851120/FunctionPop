@@ -392,11 +392,11 @@
                             var a = document.createElement("p");
                             $(a).prop("class", 'productName');
                             a.innerHTML =
-                                " 衣服編號: " + item.product_code + "<br>"
+                                  " 衣服編號: " + item.product_code + "<br>"
                                 + " 商品名稱: " + item.product_name + "<br>"
                                 + " 類　　別: " + item.product_category + "<br>"
                                 + " 尺　　寸: " + item.size_name + "<br>"
-                                + " 價　　格: $" + item.UnitPrice + "<br>";
+                                + " 價　　格: $ " + item.UnitPrice + "<br>";
                             document.getElementById("mgatMod").appendChild(a);
                             console.log(a);
                             $("p[name='modalInp1']").text(item.order_list)
@@ -404,7 +404,7 @@
                             $("p[name='modalInp3']").text(item.user_email)
                             $("p[name='modalInp4']").text(item.user_phone)
                             $("p[name='modalInp5']").text(item.user_address)
-                            $("p[name='modalInp6']").text(ress.message[0].COUNT + "$")
+                            $("p[name='modalInp6']").text("$ " + ress.message[0].COUNT)
                         });
                       
                     },
