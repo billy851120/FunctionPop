@@ -232,13 +232,13 @@
             
         }
 
-        a {
+        .alink {
             text-decoration: none;
             color: #1d1d1d;
             text-align:left;
         }
 
-        a:link {
+        .alink:link {
             /* text-decoration: none; */
             color: black;
         }
@@ -286,6 +286,9 @@
     <!-- <link rel="stylesheet" href="./assets/css/Nice-breadcrumb.css"> -->
 </head>
 <body>
+
+    <!-- Back to Top -->
+    <button class="js-back-to-top back-to-top" title="回到最上側">&#65085;</button>
 
     <!-- 0. Navbar -->
     <div class="wrapper">
@@ -341,13 +344,12 @@
         </section> -->
 
 
-        <!-- Back to Top -->
-        <button class="js-back-to-top back-to-top" title="回到最上側">&#65085;</button>
+        
 
         <!-- 3. banner -->
 
         <div class="container mt-3 pt-3">
-            <%- include("template/loginbar.ejs") %>
+            
             <section id="banner" class="my-0 py-0 w-100 mx-auto mt-2">
                 <div class="container">
                     
@@ -396,14 +398,14 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <p><%= result[0].product_gender %></p>
                                                 <div id="categoryButton" style="width: 150px;">
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8A%E8%A1%A3">上衣</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下著</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋裝</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙子</button>
-                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>">顯示全部</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E4%B8%8A%E8%A1%A3">上衣</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E4%B8%8B%E8%91%97">下著</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%8C%85">包</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E9%9E%8B">鞋</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E6%B4%8B%E8%A3%9D">洋裝</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E8%A3%99%E5%AD%90">裙子</button>
+                                                    <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
                                                 </div>
 
 
@@ -486,13 +488,17 @@
                                     <label>
                                         <span class="ml-3">排序: </span>
                                         <select name="" id="selectMode" style="height: 30px;">
-                                            <option value="1">價格：高到低</option>
-                                            <option value="2">價格：低到高</option>
+                                            <option value="1">上架日期：新到舊</option>
+                                            <option value="2">上架日期：舊到新</option>
                                             <option value="3">評價：高到低</option>
                                             <option value="4">評價：低到高</option>  
                                         </select>
                                     </label>
                                 </div>
+                                <!-- <div id="lab">
+                                    <input type="button" value="DESC">
+                                    <input type="button" value="ASC">
+                                </div> -->
                             </div>
                         </section>
                         <!-- Shop -->
@@ -524,7 +530,8 @@
 
                                 <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-6 align-items-center justify-content-center">
                                     
-                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt="">
+                                    <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
+                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
                                     <div>
                                         <svg style="display:none;" class="star5" width="20" height="20">
                                             <defs class="star5 mx-auto d-flex justify-content-center">
@@ -583,10 +590,11 @@
                                     
                                     <div id="productOuter" class="row justify-content-around">
                                         <div class="col-6">
-                                            <form method="POST" action="<%= url%>" id="form<%=item.product_id%>" name="form<%=item.product_id%>">
+                                            <form method="post" action="/home/product/like" id="form<%=item.product_id%>" name="form<%=item.product_id%>">
                                                 <input type="hidden" name="content" value="<%-item.product_id %>" />
                                                 <input type="hidden" name="memid" value="<%-memid %>" />
                                                 <button type="submit" id="aa" onclick="formSubmit(this)" class="pIconbtn" <%= disabled%> >
+                                                <!-- <button type="submit" id="aa"   > -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="<%-red %>"
                                                         viewBox="0 0 16 16">
                                                         <path d="<%= Hpath %>" />
@@ -627,21 +635,40 @@
                 </div>
             </div>
 
-            <p>Click the button to sort the list alphabetically:</p>
+            <!-- <p>Click the button to sort the list alphabetically:</p>
             <button onclick="sortList()">Sort</button>
             <span id="filterQ">
 
-                
-                
-                <% result.forEach(function(item){ %>
-                <tr>
-                    <td><%= result[0].product_gender %></td>
-                    <td><%= result[0].product_price %></td>
-                </tr>
-                <% }) %>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>School</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                        
+                                <tr>
+                                    <% result.forEach(function(item){ %>
+                                    <td><%= item.product_price %></td>
+                                    <td><%= item.product_name %></td>
+                                    <% }) %>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
                 
 
-            </span>
+            </span> -->
 
         </section>
         <div class="push"></div>
@@ -707,17 +734,22 @@
         // Price Low to High
         function option_02() {
             var allproduct = [];
-            result.forEach(x => {allproduct.push(x.product_price);
-            console.log(allproduct)});
+            $(".row .ChangeCol").each((idx,ele) => {
+                var cost = $(ele).find("p").text().split(" ")[1];
+            allproduct.push(parseInt(cost));
+            // console.log($(ele).find("p").text());
+        });
+        // console.log(allproduct);a
 
             var lowHigh = allproduct.sort(function (a, b) {
                 return a-b;
-            })
+            });
+            console.log(lowHigh);
         }
         
         function option_03() {
             // alert("選到 option_03");
-            console.log(result);
+            // console.log(result);
         }
         
         function option_04() {
@@ -887,6 +919,30 @@ for (var i = 0; i < btns.length; i++) {
           }
         }
         </script>
+        <script>
+            $("#lab input").click(function(){
+                console.log(this);
+                var sel= {};
+                 sel.sel =$(this).val();
+                
+                
+                $.ajax({
+                    url:"/home/product/ddddddd",
+                    type:"POST",
+                    data:sel,
+                    
+                })
+
+            })
+        </script>
+
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+    <script>
+        $( ".loadimg").lazyload();
+    </script>
+
 
 
 </body>

@@ -13,7 +13,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* New Product */
+        /* All */
+        /* * {
+            border: 1px red solid;
+        } */
 
         /* My hr tag */
         .my_hr {
@@ -29,11 +32,30 @@
 
         .my_product img {
             transition: 0.3s all;
+            width: 100%;
+            opacity: 1;       
         }
 
         .my_product:hover img{
-            opacity: 0.7;
+            opacity: 0;
         }
+
+        .my_product .rear_img{
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .my_product .rear_img:hover{
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
 
 
         /* Banner */
@@ -70,34 +92,6 @@
             color: azure;
         }
 
-
-
-        /* 24. Featured Design */
-        /* .my_product .buy-btn {
-            color: #FFE200;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.3s all;
-            background-color: #395D6C;
-        }
-
-        .my_product:hover .buy-btn {
-            transform: translateY(0px);
-            opacity: 1;
-        }
-
-        .my_product .favo-btn {
-            color: #395D6C;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.3s all;
-            background-color: #FFE200;
-        }
-
-        .my_product:hover .favo-btn {
-            transform: translateY(0px);
-            opacity: 1;
-        } */
 
         .my_button {
             font-size: 0.8rem;
@@ -243,21 +237,7 @@
             color: black;
         }
 
-        /* My stick */
-        /* .mystick {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            border: 2px solid yellow;
-            border-radius: 5px;
-            width: 220px;
-            outline: none;
-            background-color: #fff;
-            color: rgb(82, 51, 161);
-            padding: 10px 15px 10px 15px;
-            list-style-type: none;
-            top: 620px;
-        } */
+
 
         /* Back to Top */
         .back-to-top {
@@ -294,57 +274,6 @@
     <div class="wrapper">
         <%- include("navbar.ejs") %>
         
-        <!-- 1. Location -->
-        <!-- <section class="mt-2 pt-2">
-            <div class="container my-2 py-2">
-                <span>Home Page</span> | <span><a href="#">男裝</a></span>
-            </div>
-            <div class="container mt-2 pt-2">
-                <p>icon</p>
-            </div>
-        </section> -->
-
-
-        <!-- 2. New Product -->
-        <!-- <section id="new_product" class="mt-2 pt-2 mx-auto w-50">
-            <div class="container mt-2 pt-2 mx-auto">
-                <h3 class="text-center">新品上市</h3>
-                <hr class="my_hr mx-auto">
-                <p class="text-center">本月新品</p>
-            </div>
-            <div class="row mx-auto container">
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="img/product/FP1_80100001_beige_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100002_black_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100003_lightgreen_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            
-                <div onclick="window.location.href='single_product.html';" class="my_product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="./assets/imgs/FP1_80100004_lightblue_0.jpg" alt="">
-                    <h5>條紋T-shirt</h5>
-                    <p>$499</p>
-                    <button class="my_button buy-btn">Buy Now</button>
-                </div>
-            </div>
-        </section> -->
-
-
-        
 
         <!-- 3. banner -->
 
@@ -367,17 +296,6 @@
         </div>
 
         
-
-        <!-- 1. Breadcrumb -->
-        <!-- <section>
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="homepage"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="#"></a></li>
-                </ol>
-            </div>
-        </section> -->
-
         <!-- 4. Left side || Right Side -->
         <section>
             <div class="container mt-2 pt-2">
@@ -408,57 +326,9 @@
                                                     <button class="categorybtn active col-lg-10 listBtn w-50 <%= result[0].product_gender %>"><a class="alink" href="/home/product/<%= result[0].product_gender %>/%E5%B8%BD%E5%AD%90">帽子</button>
                                                 </div>
 
-
-                                                
-
-
-                                                <!-- <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="productType">
-                                                    <label class="form-check-label" for="allProduct_checkbox">All</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="clothes_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label" for="clothes_checkbox">Clothes</label>
-                                                </div>
-                                                <div class="form-check" onclick="">
-                                                    <input class="form-check-input" type="checkbox" id="shoes_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label" for="shoes_checkbox">pants</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="acessories_checkbox"
-                                                        name="productType">
-                                                    <label class="form-check-label"
-                                                        for="acessories_checkbox">Accessories</label>
-                                                </div> -->
                                             </div>
                                         </div>
-                                        <br><hr>
-                                        <!-- Price -->
-                                        <!-- <div class="row mx-auto container">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <p>價格</p>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="allPrice_checkbox">
-                                                    <label class="form-check-label" for="allPrice_checkbox">All</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="up1000_checkbox">
-                                                    <label class="form-check-label" for="up1000_checkbox">$1,000 以上</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="from999to500_checkbox">
-                                                    <label class="form-check-label" for="from999to500_checkbox">$500 ~
-                                                        $999</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="down499_checkbox">
-                                                    <label class="form-check-label" for="down499_checkbox">$499 以下</label>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                        
                                     </form>
                                 </section>
                             </div>
@@ -495,10 +365,7 @@
                                         </select>
                                     </label>
                                 </div>
-                                <!-- <div id="lab">
-                                    <input type="button" value="DESC">
-                                    <input type="button" value="ASC">
-                                </div> -->
+
                             </div>
                         </section>
                         <!-- Shop -->
@@ -518,7 +385,7 @@
                                         </svg>
                                     </button>
                                 </span>
-
+                            </div>
                                 <hr class="mx-auto w-100" style="background-color: gray; height: 2px;">
 
                             <div class="row mx-auto container">
@@ -529,19 +396,15 @@
                                 
 
                                 <div class="ChangeCol my_product text-center col-lg-3 col-md-4 col-6 align-items-center justify-content-center">
-                                    
-                                    <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
-                                    <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
+                                    <div style="position: relative;">
+                                        <!-- <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" src="/img/product/<%= item.product_image %>" alt=""> -->
+                                        <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="pro_img loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image %>" alt="">
+                                        <img onclick="window.location.href='/home/product/<%= item.product_gender %>/single_product/<%= item.product_id %>';" class="pro_img rear_img loadimg img-fluid mb-3 productAll <%= item.product_gender %> <%= item.product_category %>" data-src="/img/product/<%= item.product_image2 %>" alt="">
+                                    </div>
                                     <div>
                                         <svg style="display:none;" class="star5" width="20" height="20">
                                             <defs class="star5 mx-auto d-flex justify-content-center">
                                             <symbol id="fivestars" class="star5 mx-auto d-flex justify-content-center">
-                                                <!-- <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(72)"/>
-                                                <path class="star5" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"  transform="translate(96)"/> -->
-
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd"/>
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(24)"/>
                                                 <path class="star5" d="M9.5 14.25l-5.584 2.936 1.066-6.218L.465 6.564l6.243-.907L9.5 0l2.792 5.657 6.243.907-4.517 4.404 1.066 6.218 M0 0 h24 v24 h-24 v-24" fill="white" fill-rule="evenodd" transform="translate(48)"/>
@@ -562,19 +425,6 @@
 
                                         <p>$ <%= item.product_price %></p> 
 
-                                    <!-- <% if(item.product_special_offer){ %>
-
-                                        <span>$<strong style="color: red;"> <%= item.product_special_offer %></strong></span>
-                                        <span style="text-decoration: line-through;">$<strong><%= item.product_price %></strong> </span>
-
-                                    <% }else{ %>
-                                        <p>$<strong><%= item.product_price %></strong> </p>
-
-                                    <% } %> -->
-                                    
-
-
-                                    
                                     <% var disabled = " "; %>
                                     <% if(memberprofile != null){ %>
                                             <% var memid = memberprofile.id; %>
@@ -635,40 +485,6 @@
                 </div>
             </div>
 
-            <!-- <p>Click the button to sort the list alphabetically:</p>
-            <button onclick="sortList()">Sort</button>
-            <span id="filterQ">
-
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>School</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        
-                        <tbody>
-                        
-                                <tr>
-                                    <% result.forEach(function(item){ %>
-                                    <td><%= item.product_price %></td>
-                                    <td><%= item.product_name %></td>
-                                    <% }) %>
-                                </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-
-            </span> -->
 
         </section>
         <div class="push"></div>
@@ -684,10 +500,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- <script src="./assets/js/jquery.min.js"></script> -->
-    <!-- <script src="./assets/js/myJs.js"></script> -->
-    <!-- <script src="js/product/myJs.js"></script> -->
-    <!-- <script src="js/product/jquery.min.js"></script> -->
+
 
     <script>
         
@@ -719,17 +532,7 @@
             }
         }
 
-        // Price High To Low
-        // function option_01() {
-        //     var item = "<% result.forEach(function(item) { %>  <% }); %>
-        //     item.sort(function(a,b) {
-        //         return a.product_price > b.product_price;
-        //     })
-        //     alert(item);
-        //     var allproduct = [];
-        //     // document.getElementById('filterQ') forEach(x => {allproduct.push(allproduct.product_price);
-        //     console.log(allproduct)});
-        // }
+ 
         
         // Price Low to High
         function option_02() {
@@ -739,7 +542,7 @@
             allproduct.push(parseInt(cost));
             // console.log($(ele).find("p").text());
         });
-        // console.log(allproduct);
+        // console.log(allproduct);a
 
             var lowHigh = allproduct.sort(function (a, b) {
                 return a-b;
@@ -757,59 +560,6 @@
         }
     </script>
 
-    <!-- Filter ALL -->
-    <!-- <script>
-        filterSelection("all")
-        function filterSelection(c) {
-        var x, i;
-        x = document.getElementsByClassName("productAll");
-        if (c == "all") c = "";
-        for (i = 0; i < x.length; i++) {
-            w3RemoveClass(x[i], "show");
-            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-        }
-        }
-
-        function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-} -->
-
-
-<!-- var btnContainer = document.getElementById("categoryButton");
-var btns = btnContainer.getElementsByClassName("categorybtn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-} -->
-    <!-- </script> -->
-
-    <!-- Change Column of Number (X) Can't Use this way because DOM-->
-    <!-- <script>
-        function function4col(){
-            document.getElementById("ChangeCol").classList.add("col-lg-3");
-            document.getElementById("ChangeCol").classList.remove("col-lg-4");
-        }
-    </script> -->
 
     <script>
         $(document).ready(function(){
@@ -946,40 +696,5 @@ for (var i = 0; i < btns.length; i++) {
 
 
 </body>
-
-<!-- <script>
-    function formSubmit(obj) {
-      // console.log(this.children[0].getAttribute("d"));
-      // console.log((this.parentNode).children[0].getAttribute("id"))
-      console.log(obj.parentNode.id)
-      
-      var thisform = obj.parentNode.id;
-      console.log(document.getElementById(`${thisform}`));
-  
-      if (obj.getAttribute("fill") == "red") {
-        obj.children[0].setAttribute("d", "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
-        obj.setAttribute("fill", "currentColor");
-        document.getElementById(`${thisform}`).submit();
-        // console.log("yes");
-      } else {
-        obj.children[0].setAttribute("d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z");
-        obj.setAttribute("fill", "red");
-        document.getElementById(`${thisform}`).submit();
-        // console.log("no");
-      }
-  
-    };
-  
-    function clearAll(){
-      document.getElementById('clearFavor').submit();
-    } -->
-<!-- 
- 
-
-  </script> -->
-
-  
-  <!-- genderCategory -->
-  
 
 </html>
