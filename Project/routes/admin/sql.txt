@@ -12,8 +12,36 @@ SELECT * FROM `order` WHERE TO_DAYS(NOW()) - TO_DAYS(order_time) = 1;
 
   <script src="https://kit.fontawesome.com/93e1c8f0af.js" crossorigin="anonymous"></script>
 
+5. all product Top 3
+SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_category, products_all.product_image, products_all.product_image2, products_all.product_image3, products_all.product_gender
+  FROM order_items
+  LEFT JOIN products_all
+  ON order_items.product_id = products_all.product_all_id
+  GROUP BY products_all.product_name
+  ORDER BY SUM(order_items.Quantity) DESC
+  LIMIT 3;
+  
 
 
+6. Female Product Top 3
+SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_category, products_all.product_image, products_all.product_image2, products_all.product_image3, products_all.product_gender
+  FROM order_items
+  LEFT JOIN products_all
+  ON order_items.product_id = products_all.product_all_id
+  WHERE products_all.product_gender = 'Female'
+  GROUP BY products_all.product_name
+  ORDER BY SUM(order_items.Quantity) DESC
+  LIMIT 3;
+
+7. Male Product Top 3
+SELECT order_items.product_id,SUM(order_items.Quantity), products_all.product_name, products_all.product_category, products_all.product_image, products_all.product_image2, products_all.product_image3, products_all.product_gender
+  FROM order_items
+  LEFT JOIN products_all
+  ON order_items.product_id = products_all.product_all_id
+  WHERE products_all.product_gender = 'Male'
+  GROUP BY products_all.product_name
+  ORDER BY SUM(order_items.Quantity) DESC
+  LIMIT 3;
 
 
 
