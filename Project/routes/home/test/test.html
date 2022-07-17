@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <label for="get">輸入：</label>
+    <input type="text" id="get" name="xx" value="">
+    <button onclick="qq()">送出</button>
+    <br>
+    <br><br>
+    <button class="btn" id="xx" onclick="btn_click(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart"
+            viewBox="0 0 16 16">
+            <path
+                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+        </svg>
+    </button><br><br>
+<div id="qq">
+    <button class="btn" id="yy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+        </svg>
+    </button>
+</div>
+
+    <button class="btn" id="changeBTN">CHANGE</button>
+    <script>
+        function btn_click(obj) {
+            var heart = $('svg')[0];
+            var heart_fill = $('svg')[1];
+            console.log($('#xx'));
+            console.log(obj.innerHTML);
+            
+        }
+       
+
+        var heart_ed = [101, 102, 103];
+
+        function qq() {
+
+            var content = parseInt(document.getElementById('get').value);
+
+            console.log(typeof content);
+
+
+            console.log('目前有的愛心');
+
+            console.log(heart_ed);
+            if (!heart_ed.includes(content)) {  // 按的愛心如果不在陣列就加入陣列
+
+                console.log('--------pushHeart result----------');
+                heart_ed.push(content);
+                console.log(heart_ed);
+
+            } else {
+                console.log('--------delHeart result----------')
+                heart_ed = heart_ed.filter(function (item) { return item !== content });
+                console.log(heart_ed);
+            }
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

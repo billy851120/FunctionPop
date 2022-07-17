@@ -69,7 +69,7 @@ var memberController = {
         // 資料庫撈資料
         memberModel.handlelogin(cAccount, (err, result) => {
             console.log('result.........');
-            console.log(result);
+            // console.log(result);
             if (!result) {
                 req.flash('errorMessage', '無此使用者');
                 return next();
@@ -86,9 +86,9 @@ var memberController = {
                 }
 
                 // 將撈到的資料存入memberprofile session之中
-                console.log('寫入session');
+                // console.log('寫入session');
                 req.session.memberprofile = result;
-                console.log(req.session.url);
+                // console.log(req.session.url);
                 res.redirect(req.session.url);
 
             })
@@ -100,7 +100,7 @@ var memberController = {
     },
 
     register: (req, res) => {
-        console.log(req.session.url);
+        // console.log(req.session.url);
         res.render('register', {
 
         });
@@ -115,7 +115,7 @@ var memberController = {
             return res.end("電子郵件已有人使用");    //    向前臺返回資料
         });
 
-        console.log(`body.cPassword: ${cPassword}`);
+        // console.log(`body.cPassword: ${cPassword}`);
 
         bcrypt.hash(cPassword, saltRounds, (err, hash) => {
             if (err) {
