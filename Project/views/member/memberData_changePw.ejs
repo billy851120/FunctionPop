@@ -2,108 +2,131 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
-    <title><%- title %></title>
-    <link rel="stylesheet" href="/css/all.css">
-    <link rel="stylesheet" href="/js/member/member.css">
-    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+  <title>
+    <%- title %>
+  </title>
+  <link rel="stylesheet" href="/css/all.css">
+  <link rel="stylesheet" href="/js/member/member.css">
+  <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
-    <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
-    <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
-    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
-    <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
-   <!-- <script src="/js/member/LeftNavBar.js"></script> -->
-   <style>
-    
-    </style>
+  <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
+  <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
+  <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
+  <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+  <!-- <script src="/js/member/LeftNavBar.js"></script> -->
+  <style>
+
+  </style>
 </head>
 
 <body>
-        <!-- content -->
-                <%- include("../navbar.ejs") %>
-        <div class="container">
-        
-                <!-- 左邊選單列 -->
-                <div class="row mt-4 ">
-                  <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
-                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
-                              class="nav-link text-dark font-weight-bold memberData d-inline d-lg-block">個人資料</a></p>
-                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
-                              class="nav-link text-dark d-inline d-lg-block">訂單&退貨</a></p>
-                      <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
-                              class="nav-link text-dark  orderList myFavourite d-inline d-lg-block">我的最愛</a>
-                      </p>
+  <!-- content -->
+  <%- include("../navbar.ejs") %>
+    <div class="container">
+
+      <!-- 左邊選單列 -->
+      <div class="row mt-4 ">
+        <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
+          <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/memberData"
+              class="nav-link text-dark font-weight-bold memberData d-inline d-lg-block">個人資料</a></p>
+          <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/orderList"
+              class="nav-link text-dark d-inline d-lg-block">訂單&退貨</a></p>
+          <p class="mb-3 col-4 col-lg-12 d-xl-block d-inline"><a href="/home/member/myFavourite"
+              class="nav-link text-dark  orderList myFavourite d-inline d-lg-block">我的最愛</a>
+          </p>
+        </div>
+
+        <!-- 右邊資訊欄 -->
+        <% if(memberprofile) { %>
+          <div class="col-12 col-lg-10 p-3 ">
+            <div class="row mb-4">
+              <a href="/home/member/memberData" class="col-6 text-center p-2 title_2">
+                <p>個人資料</p>
+              </a>
+              <a href="/home/member/memberData" class="col-6 text-center p-2 title_1">
+                <p>變更密碼</p>
+              </a>
+            </div>
+
+            <p class="p-2 mt-4 title_3 mx-1" style="font-weight:700">修改密碼：</p>
+
+            <form action="/home/member/memberData_changePw" method="POST" class="row p-2 mx-1">
+              <div class="row offset-1 col-11 ">
+                <% if (errorMessage.length> 0) { %>
+                  <div class="alert alert-danger col-7 mt-3 p-3" role="alert">
+                    <%= errorMessage %>
                   </div>
+                  <% } %>
+              </div>
+              <div class="col-sm-3 col-6 my-3 text-right ">請輸入舊密碼</div>
+              <div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberoldPw" name="oldpw"
+                  class="form-control form-control-sm col-sm-7" placeholder="請輸入舊密碼" value=""></div>
+              <div class="col-sm-3 col-6 my-3 text-right">輸入新密碼</div>
+              <div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberNewPw" name="newpw"
+                  class="form-control form-control-sm col-sm-7" placeholder="請輸入新密碼" value=""> </div>
+              <div class="col-sm-3 col-6 my-3 text-right">再次輸入新密碼</div>
+              <div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberNewPwAgain" name="newpwAgain"
+                  class="form-control form-control-sm col-sm-7" placeholder="請再次輸入新密碼" value=""> </div>
 
-                    <!-- 右邊資訊欄 -->
-                    <% if(memberprofile) { %> 
-                      <div class="col-12 col-lg-10 p-3 ">
-                        <div class="row mb-4">
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 title_2"><p>個人資料</p></a>
-                            <a href="/home/member/memberData" class="col-6 text-center p-2 title_1"><p>變更密碼</p></a>
-                         </div>
-                        
-                        <p class="p-2 mt-4 title_3 mx-1" style="font-weight:700">修改密碼：</p>
+              <div class="col-6 my-3 text-right"> <a href="/home/member/memberData" id="changeCancel" class="btn_cancel"
+                  type="button">取消</a></div>
+              <script>
+                changeCancel.onclick = function () {
 
-                         <form action="/home/member/memberData_changePw" method="POST" class="row p-2 mx-1">
-                            <div class="row offset-1 col-11 ">
-                            <% if (errorMessage.length > 0) { %>
-                                <div class="alert alert-danger col-7 mt-3 p-3" role="alert">
-                                  <%= errorMessage %>
-                                </div>
-                                <% } %>
-                            </div>
-                            <div class="col-sm-3 col-6 my-3 text-right ">請輸入舊密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberoldPw" name="oldpw" class="form-control form-control-sm col-sm-7" placeholder="請輸入舊密碼" value=""></div>
-                            <div class="col-sm-3 col-6 my-3 text-right">輸入新密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberNewPw" name="newpw" class="form-control form-control-sm col-sm-7" placeholder="請輸入新密碼" value="">  </div>
-                            <div class="col-sm-3 col-6 my-3 text-right">再次輸入新密碼</div><div class="col-sm-9 col-6 my-3 text-left"><input type="password" id="memberNewPwAgain" name="newpwAgain" class="form-control form-control-sm col-sm-7" placeholder="請再次輸入新密碼" value="">  </div>
-                           
-                            <div class="col-6 my-3 text-right"> <a href="/home/member/memberData" id="changeCancel" class="btn_cancel" type="button">取消</a></div>
-                            <script>
-                              changeCancel.onclick = function(){
-                                
-                            }
-                            </script>
+                }
+              </script>
 
-                            <div class="col-6 my-3 text-left"> <button type="button" class="btn_GO"  data-toggle="modal" data-target="#staticBackdrop">儲存</button></div>
-              
-                             <!-- Modal -->
-                             
-                             <div class="modal fade" style="z-index: 50001;" id="staticBackdrop"data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                               <div class="modal-dialog">
-                                 <div class="modal-content">
-                                   <div class="modal-header">
-                                     <h5 class="modal-title" id="staticBackdropLabel">變更個人資料</h5>
-                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                       <span aria-hidden="true">&times;</span>
-                                     </button>
-                                   </div>
-                                   <div class="modal-body">
-                                    確定要變更密碼嗎？
-                                   </div>
-                                   <div class="modal-footer">
-                                     <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
-                                     <button type="submit" class="btn_GO">確定</button>
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                         </form>
-                        <% } else { %>
-                          <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
-                        <%   } %> 
-                    </div>  <!-- col-10 -->
-                </div>  <!-- row --> 
-        </div>  <!-- container -->
-      
-         <!-- footer --> 
+              <div class="col-6 my-3 text-left"> <button type="button" class="btn_GO" data-toggle="modal"
+                  data-target="#staticBackdrop">儲存</button></div>
 
-            <%- include("../footer.ejs") %>
+              <!-- Modal -->
 
-         
+              <div class="modal fade" style="z-index: 50001;" id="staticBackdrop" data-backdrop="static"
+                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">變更個人資料</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      確定要變更密碼嗎？
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn_cancel" data-dismiss="modal">取消</button>
+                      <button type="submit" class="btn_GO">確定</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <% } else { %>
+              <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
+              <% } %>
+          </div> <!-- col-10 -->
+      </div> <!-- row -->
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div> <!-- container -->
+
+    <!-- footer -->
+
+    <%- include("../footer.ejs") %>
+
+
 
 </body>
 
