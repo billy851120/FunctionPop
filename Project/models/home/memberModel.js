@@ -23,7 +23,21 @@ var memberModel = {
                 cb(null);
             });
     },
-    memberPwChange: (user, cb) => {
+    memberPwCheck: (s_cAccount, cb) => {
+        db.exec('select * from customer_id where cAccount = ?',
+            [s_cAccount],
+            (result, fields, err) => {
+                cb(null, result[0]);
+            })
+        // db.exec('update customer_id set cPassword = ? where cAccount = ? ',
+        //     [user.newpw, user.s_cAccount],
+        //     (result, fields, err) => {
+        //         console.log('pass database')
+        //         if (err) return cb(err);
+        //         cb(null);
+        //     })
+    },
+    updateMemberPw: (user, cb) => {
         db.exec('update customer_id set cPassword = ? where cAccount = ? ',
             [user.newpw, user.s_cAccount],
             (result, fields, err) => {
@@ -39,18 +53,25 @@ var memberModel = {
                 cb(null, result[0]);
             })
     },
-    getOrder:(member,cb)=>{
+    getOrder: (member, cb) => {
         db.exec('select O.order_list, O.order_update, OI.product_id, OI.UnitPrice,OI.Quantity from orders AS O left join order_items AS OI on O.order_list = OI.order_list where O.user_email = ? order by O.order_update DESC',
-        [member],
-        (result,fields,err)=>{
-            // var xx =JSON.stringify(result[0].order_update);
-            // console.log(xx);
-            // console.log('here is orderList result---------')
-            // console.log(result);
-            console.log(result.length);
-            cb(null,result);
-            
-        })
+            [member],
+            (result, fields, err) => {
+                // var xx =JSON.stringify(result[0].order_update);
+                // console.log(xx);
+                // console.log('here is orderList result---------')
+                // console.log(result);
+                cb(null, result);
+                // console.log(result)
+
+            })
+    },
+    getDetail: (order_number, cb) => {
+        db.exec('SELECT O.order_list,O.product_id,O.UnitPrice,O.Quantity,O.order_date,P.product_image,P.product_name,P.size_name,P.product_gender,P.product_id from order_items AS O left join products_all AS P on P.product_all_id = O.product_id where order_list = ?',
+            [order_number],
+            (result, fields, err) => {
+                cb(null, result);
+            })
     }
 
 }

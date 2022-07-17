@@ -46,19 +46,11 @@ router.get('/memberData', getUrl, memberController.memberData);
 router.post('/memberData', getUrl, memberController.updateMemberData);
 
 router.get('/memberData_changePw', getUrl, memberController.changePw);
-router.post(
-  '/memberData_changePw',
-  getUrl,
-  memberController.handlechangePw,
-  redirectBack
-);
+router.post('/memberData_changePw', getUrl,memberController.handlechangePw,redirectBack);
 
 // 訂單詳情-----------------------------------------------------
 router.get('/orderList', getUrl, memberController.orderList);
-router.get('/orderDetail', getUrl, function (req, res) {
-  var url = req.url;
-  res.render('member/orderDetail', { title: '會員資料｜訂單內容', url });
-});
+router.get('/orderDetail/:order_number', getUrl,memberController.orderDetail);
 // 我的最愛-------------------------------------------------
 
 // ----------------------載入------------------------------
@@ -107,22 +99,22 @@ router.post('/myFavourite', function (req, res) {
   //  -----全部送到垃圾桶-----------------------------------------
 
   // if (req.body.clearallcontent != null) {
-    var memcontent = req.body.memcontent;
-    console.log('post ?');
-    db.exec(
-      'DELETE FROM favorite WHERE customer_id = ?',
-      [memcontent],
-      (results, err) => {
-        // if (err) {return console.log(err.message);
-        // }else{
-        //   return (console.log('success delAll'),
-        //   res.send(results))
-        // }
-        
-        // res.redirect('back');
-        res.send(JSON.stringify('OK'));
-      }
-    );
+  var memcontent = req.body.memcontent;
+  console.log('post ?');
+  db.exec(
+    'DELETE FROM favorite WHERE customer_id = ?',
+    [memcontent],
+    (results, err) => {
+      // if (err) {return console.log(err.message);
+      // }else{
+      //   return (console.log('success delAll'),
+      //   res.send(results))
+      // }
+
+      // res.redirect('back');
+      res.send(JSON.stringify('OK'));
+    }
+  );
   // }
   //  ---垃圾桶------------------------------------------------------
   // console.log(`pid : ${req.body.pid}`);
@@ -144,7 +136,7 @@ router.post('/myFavourite', function (req, res) {
     );
   }
   //  ---送進購物車------------------------------------------------------
- 
+
 });
 
 module.exports = router;

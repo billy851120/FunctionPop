@@ -155,8 +155,8 @@
                                     <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" >
                                           <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="choose_Label">請選擇尺寸及顏色</h5>
+                                                <div class="modal-header" style="">
+                                                    <h5 class="modal-title " id="choose_Label">請選擇尺寸及顏色</h5>
                                                     <button type="button" class="close" data-dismiss="modal">
                                                         <!-- x&times; -->
                                                          <span aria-hidden="true" style="color: red;">&times;</span>
@@ -164,6 +164,14 @@
                                                 </div>  <!-- modal-header -->
 
                                                 <div class="modal-body">
+                                                          <div class="row justify-content-center " >
+                                                            <div class="col-9">
+                                                                <h5 class="border-bottom border-warning border-blod pb-2 mb-2"><%- todos[i].product_name %></h5>
+                                                            </div>
+                                                               
+                                                          </div>
+
+
                                                          <div class="row align-items-center">
                                                                  <div class="col-6"><p class="chooseSize"> 尺寸：</p>
                                                                     <input type="hidden" name="p_id" value="<%- todos[i].product_id %>">
@@ -194,9 +202,11 @@
                                                                     <div class="row ">
                                                                             <div class="col-12">
                                                                                 <p>數量：</p>
-                                                                                     <button class="btn text-danger font-width-blod border border-secondary px-3 py-1" onclick="num_desc()">-</button>
-                                                                                     <input type="text" name="quantity" id="" class="col-4 text-center border border-warning form-control-sm pb-2" value="1"  >
-                                                                                     <button class="btn text-success font-width-blod border border-secondary px-3 py-1" onclick="num_incr()">+</button>
+                                                                                <div class="">
+                                                                                     <button class="button_desc " onclick="num_desc()"> - </button>
+                                                                                     <input type="text" name="quantity" id="" class="col-4 text-center border border-warning form-control-sm " value="1"  >
+                                                                                     <button class="button_incr" onclick="num_incr()"> + </button>
+                                                                                </div>
                                                                              </div> <!-- col-12 -->
                                                                      <script>
                                                                          function num_desc (){
@@ -240,7 +250,7 @@
                                          </svg>
                                      </button>
                             </div>  <!-- row -->
-                           
+
                             <%} }%>
                         </div> <!-- col-10 -->
                         <% } else { %>
@@ -249,9 +259,12 @@
 
                             <% } %>
                 </div> <!-- row -->
+
+                <br><br><br><br><br><br><br>
+
                 <!-- <p class="text-center mt-5 font-weight-bold">新潮指標</p>
                 <hr> -->
-                <br><br> <br>   
+
                 <!-- <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <ol class="carousel-indicators mb-n4 ">
                         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>

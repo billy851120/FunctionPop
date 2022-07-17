@@ -99,6 +99,80 @@
 }
 
 
+.button_desc{
+    /* text-decoration: none; */
+    /* text-transform: uppercase; */
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: red;
+    border: 1px solid black;
+    padding: 4px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.6s;
+    background-color: transparent;
+    border-radius: 4px;
+
+  }
+  .button_desc:hover{
+    background-color: white;
+    color:white;
+
+  }
+  .button_desc::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0;
+    height: 100%;
+    background-color: red;
+    outline: 1px solid black;
+    transform: skewX(35deg);
+    z-index: -1 ;
+    transition: width 1s;
+  }
+  .button_desc:hover::before{
+    width: 185%;
+  }
+ /* ＋號碼按鈕 */
+ .button_incr{
+    /* text-decoration: none; */
+    /* text-transform: uppercase; */
+    letter-spacing: 2px;
+    color: green;
+    border: 1px solid black;
+    padding: 4px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.6s;
+    background-color: transparent;
+    border-radius: 4px;
+
+  }
+  .button_incr:hover{
+    background-color: white;
+    color:white;
+
+  }
+  .button_incr::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 0;
+    height: 100%;
+    background-color: green;
+    outline: 1px solid black;
+    transform: skewX(35deg);
+    z-index: -1 ;
+    transition: width 1s;
+  }
+  .button_incr:hover::before{
+    width: 185%;
+  }
+
+
 @media screen and (max-width: 767px){
     *{
         font-size: 10px;
