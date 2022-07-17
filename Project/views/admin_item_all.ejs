@@ -34,6 +34,48 @@
             margin: 5px 0;
             padding: 0 10px;
         }
+
+        .cardfpop {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            /* background-color: #fff; */
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.25rem;
+        }
+
+        .btn-warning {
+            color: #212529;
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-warning:hover {
+            color: #212529;
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+        .btn-warning:focus,
+        .btn-warning.focus {
+            color: #212529;
+            background-color: #e0a800;
+            border-color: #d39e00;
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+        }
+
+        .btn-warning.disabled,
+        .btn-warning:disabled {
+            color: #212529;
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
     </style>
 </head>
 
@@ -52,18 +94,38 @@
                 <%- pall_id.product_id %>
                     <% console.log(pall_id.product_id) %>
             </span>
-            <h6 class="text-center"><i id="h6_fire" class="fas fa-fire" ></i>  最熱銷商品 TOP3</h6>
-            <div class="row justify-content-center align-items-center mb-4 text-center">
-                <% data3.forEach((item ,index)=> { %>
-                    <div class="card m-4 fpopCard">
-                        <div class="card-body ">
-                            <img  style="height: 150px;" src="/img/product/<%= item.product_image %>" alt="">
-                            <p  style="font-size:10px ;">
-                                <%= item.product_name %>
-                            </p>
-                        </div>
+            <div class="row mb-5">
+
+                <div class="col-6">
+                    <h6 class="text-center"><i id="h6_fire" class="fas fa-fire"></i> 女裝熱銷商品 TOP3</h6>
+                    <div class="row justify-content-center align-items-center text-center ">
+                        <% data3.forEach((item ,index)=> { %>
+                            <div class="cardfpop col-3 m-2">
+                                <img class="mt-3" src="/img/product/<%= item.product_image %>" alt="">
+                                <p style="font-size:10px ;">
+                                    <%= item.product_name %>
+                                        <%= console.log(item.product_name) %>
+                                </p>
+
+                            </div>
+                            <% }) %>
                     </div>
-                    <% }) %>
+                </div>
+                <div class="col-6">
+                    <h6 class="text-center"><i id="h6_fire" class="fas fa-fire"></i> 男裝熱銷商品 TOP3</h6>
+                    <div class="row justify-content-center align-items-center text-center ">
+                        <% data4.forEach((item ,index)=> { %>
+                            <div class="cardfpop col-3 m-2">
+                                <img class="mt-3" src="/img/product/<%= item.product_image %>" alt="">
+                                <p style="font-size:10px ;">
+                                    <%= item.product_name %>
+                                        <%= console.log(item.product_name) %>
+                                </p>
+
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
             </div>
             <div id="layoutSidenav_content">
                 <div class="container-fluid px-4">
@@ -85,10 +147,10 @@
                                         <th class="col-2" style="vertical-align:text-top;">產品名稱</th>
                                         <th class="col-2" style="vertical-align:text-top;">圖片</th>
                                         <th class="col-1" style="vertical-align:text-top;">類別</th>
-                                        <th class="col-2" style="vertical-align:text-top;">敘述</th>
+                                        <th class="col-3" style="vertical-align:text-top;">敘述</th>
                                         <th class="col-1" style="vertical-align:text-top;">價格</th>
                                         <th class="col-1" style="vertical-align:text-top;">上架日期</th>
-                                        <th class="col-2" style="vertical-align:text-top;">操作</th>
+                                        <th class="col-1" style="vertical-align:text-top;">操作</th>
                                     </tr>
                                 </thead>
 
@@ -130,12 +192,15 @@
                                                 <%= moment(item.product_upload).format(shortDataFormat) %>
                                             </td>
                                             <td>
+                                                <div class="row">
 
-                                                <button class="btn btn-outline-info btn-sm "
-                                                    onclick="Edit( <%= item.product_id %> )" class="btn btn-primary"
-                                                    data-toggle="modal" data-target="#myModal">編輯</button>
-                                                <button class="btn btn-outline-danger btn-sm"
-                                                    onclick="Delete( <%= item.product_id %> )">刪除</button>
+                                                    <button class="btn btn-outline-info btn-sm mr-1"
+                                                        onclick="Edit( <%= item.product_id %> )" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#myModal">編輯</button>
+                                                    <button class="btn btn-outline-danger btn-sm "
+                                                        onclick="Delete( <%= item.product_id %> )">刪除</button>
+
+                                                </div>
 
                                             </td>
 
@@ -332,11 +397,10 @@
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label for="product_price" class="mx-5">產品編號</label>
+                                <div style="display:none;">
                                     <div class="mx-5 ">
                                         <input type="text" class="form-control col-7 mt-3" name="product_code"
-                                            placeholder="產品編號">
+                                            value="FP2_80500799" placeholder="產品編號">
                                     </div>
                                 </div>
 
