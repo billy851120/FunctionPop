@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop Login</title>
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/js/member/member.css">
 <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
@@ -21,13 +22,14 @@
         body{
             background-color: white
         }
+     
         .row-box{
             background-color: white;
             border-radius: 30px;
             box-shadow: 12px 12px 22px grey;
 
         }
-        img{
+        .index_left_img{
             border-top-left-radius: 30px;
             border-bottom-left-radius: 30px;
         }
@@ -47,39 +49,7 @@
             border: 1px solid;
         }
 
-        .input-group {
-            position: relative;
-        }
-
-        .input {
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            color: black;
-            background-color: transparent;
-            outline: 2px solid wheat;
-        }
-
-        .input-label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: translate(20px, 20px);
-            transition:transform .5s;
-        }
-
-        .input:focus+.input-label,
-        .input:valid+.input-label {
-            transform:translate(10px, -14px) scale(.8);
-            border: 2px solid black ;
-            color: #FFE200;
-            padding-inline: 5px;
-            background-color: #242329;
-        }
-
-        .input:is(:focus, :valid) {
-            outline-color:grey
-        }
+      
         @media screen and (max-width: 990px){
          .aa img{
         border-radius: 30px;
@@ -96,16 +66,16 @@
         <div class="container">            
             <div class="row row-box no-gutters">
                 <div class="col-12 col-lg-6 aa">
-                    <img src="/img/index/f3.jpg" alt="">
+                    <img src="/img/index/f3.jpg" alt="" class="index_left_img">
                 </div>
                 <% if(!memberprofile) {%>
-                <div class="col-12 col-lg-6 px-5 pt-5 mb-2 ">
+                <div class="col-12 col-lg-6 px-5 pt-3 mb-2 ">
                      
                     <!-- <h1 class="font-weight-blod py-3">FunctionPOP</h1> -->
-                    <div class="row my-2 ">
-                        <img src="/img/admin/logo_text_black.svg" class="col-7">
+                    <div class="row my-2 mb-3">
+                        <img src="/img/admin/logo_text_black.svg" class="col-7" >
                     </div>
-                    <h4 class="mb-2">登入您的帳戶</h4>
+                    <h4 class="mb-3">登入您的帳戶</h4>
                     <% if (errorMessage.length > 0) { %>
                         <div class="alert alert-danger col-lg-7 mt-3 p-3" role="alert">
                           <%= errorMessage %>

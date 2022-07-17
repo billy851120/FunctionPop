@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
     <title>
         <%- title %>
     </title>
     <link rel="stylesheet" href="/css/all.css">
     <link rel="stylesheet" href="/js/member/member.css">
-<link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/js/member/bootstrap-4.6.1-dist/css/bootstrap.css">
     <script src="/js/member/bootstrap-4.6.1-dist/js/jquery.min.js"></script>
     <!-- <script src="/bootstrap-4.6.1-dist/js/popper.min.js"></script> -->
     <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.js" ></script> -->
@@ -37,16 +38,17 @@
     }
     
     @media screen and (max-width: 768px){
-       .product_aa {font-size: 10px;} 
-       .product_name{font-size: 13px;}
-    }
-     .product_desc{
+
+    .product_name{font-size: 13px;}
+   
+    .product_desc{
         font-size: 8px;
         overflow :hidden;
          display: -webkit-box;
         -webkit-line-clamp: 4; 
         -webkit-box-orient: vertical;
         }
+    }
 
     </style>
 </head>
@@ -59,7 +61,7 @@
         <div class="container" style="background-color:white ;">
 
 
-          
+
                 <!-- 左邊選單列 -->
                 <div class="row mt-4">
                     <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
@@ -85,18 +87,18 @@
                      <!-- 小功能列 -->    
                             <div class="row pt-1 pb-1 pl-1 mx-1" style="font-size: 8px;"> 
                                 <div  id="clearFavor" class="offset-sm-7 offset-5 col-sm-3 col-4 text-right border-right">
-                                    <form method="POST" action="/home/member/myFavourite" id="clearAll" name="clearAll">
+                                    <div  id="clearAll" name="clearAll" >
                                         <input type="hidden" name="clearallcontent" value="0912383555">
                                         <input type="hidden" name="memcontent" value="<%- memberprofile.id %>">
-                                        <button type="submit" class="btn" style="font-size: 8px;">清空全部商品</button>
-                                    </form>
+                                        <button  class="btn" onclick="clearAll(this)" style="font-size: 8px;" onclick="clearAll(this)">清空全部商品</button>
+                                    </div>
                                 </div>
                                 <div class="col-sm-2 col-3 d-flex justify-content-end align-items-center text-secondary product_length "></div>
                             </div>
 
 
                     <!-- 我的最愛內容 -->
-                    <%   var x = ""; %>
+                            <%   var x = ""; %>
                             <% var qq=[]; %> 
                             <% var row_num = 0; %> 
                             <% for (var i = 0; i<todos.length; i++) { %>
@@ -105,15 +107,15 @@
 
                                     <% x = todos[i].product_id; %>
                                     <%   qq.push(i);
-                                    console.log(qq.length) ;
-                                    console.log(`row_num = ${row_num}`);
+                                    // console.log(qq.length) ;
+                                    // console.log(`row_num = ${row_num}`);
                                     %> 
                                     <script>
                                        var product_length = document.querySelectorAll(".row_number").length;
                                     //    console.log(x);
                                        $(".product_length").text(`${product_length + 1} 件商品`);
                                     </script>
-                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" id="row_num<%- row_num %> " >
+                            <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" id="row_num<%- row_num %>" >
                                 <div class="col-4 col-lg-3 product_info py-3">
 
                                     <a href="/home/product/<%- todos[i].product_gender %>/single_product/<%- todos[i].product_id %>"><img class=""
@@ -122,7 +124,7 @@
                                     
                                 </div>
 
-                                <div class="col-5 col-lg-2 text-left align-items-lg-start product_aa py-2">
+                                <div class="col-5 col-lg-2 text-left align-items-py-2">
                                      <p class="font-weight-bold product_name" ><%- todos[i].product_name %> </p>
        <!-- < lg disappear -->       <p class="d-lg-block d-none text-secondary product_desc "><%- todos[i].product_description  %> </p>
        <!-- < lg display -->         <p class="d-lg-none"><%- todos[i].product_gender %></p>
@@ -148,7 +150,7 @@
                                  </div>
                                  <div class="col-12 col-lg-2 mb-2">
                                     <!-- <button type="submit" id="addToCart" class="btn_GO px-1 d-block w-100 b_radius">移至購物車</button> -->
-                                    <button type="submit"  class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id %>" onclick="vv()">移至購物車</button>
+                                    <button type="submit"  class="btn_GO px-1 d-block w-100 b_radius" data-toggle="modal" data-target="#choose_<%- todos[i].product_id %>">移至購物車</button>
                                   
                                     <div class="modal fade" style="z-index: 50001;" id="choose_<%- todos[i].product_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" >
@@ -162,8 +164,7 @@
                                                 </div>  <!-- modal-header -->
 
                                                 <div class="modal-body">
-                                                         <div class="row">
-                                                            
+                                                         <div class="row align-items-center">
                                                                  <div class="col-6"><p class="chooseSize"> 尺寸：</p>
                                                                     <input type="hidden" name="p_id" value="<%- todos[i].product_id %>">
                                                                     <input type="hidden" name="p_price" value="<%- todos[i].product_price %>">
@@ -172,9 +173,9 @@
                                                                     <input type="hidden" name="p_code" value="<%- todos[i].product_code %>">
 
                                                                        <% var ee = todos[i].product_id; %>
-                                                                       <% console.log('----------------------'); %> 
+                                                                       <!-- <% console.log('----------------------'); %>  -->
                                                                       
-                                                                       <% console.log(ee) %> 
+                                                                       <!-- <% console.log(ee) %>  -->
                                                                       <% for (var d = 0; d < todos.length; d++) { %>
                                                                         <% if(todos[d].product_id == ee ){ %>
                                                                        <input type="radio" id="<%- todos[d].product_all_id %>" name="size" value="<%- todos[d].size_name %>">
@@ -186,15 +187,16 @@
                                                                          <input type="radio" id="color_b<%- row_num %>" name="color" value="黑色">
                                                                          <label class="mr-2" for="color_b<%- row_num %>">黑色</label>
                                                                          <input type="radio" id="color_w<%- row_num %>" name="color" value="白色">
-                                                                         <label class="mr-2" for="color_w<%- row_num %>">白色</label>
+                                                                         <label class="mr-2" for="color_w<%- row_num %>" >白色</label>
                                                                  </div> <!-- col-6 -->
                                                         </div>  <!-- row -->
                                                      
                                                                     <div class="row ">
-                                                                            <div class="col-12"><p>數量：</p>
-                                                                                <button class="btn text-danger font-width-blod" id="aa" onclick="num_desc()">-</button>
-                                                                                <input type="text" name="quantity" id="" class="col-4 text-center border border-warning align-self-center" value="1"  >
-                                                                                <button class="btn text-success font-width-blod" id="num_increase" onclick="num_incr()">+</button>
+                                                                            <div class="col-12">
+                                                                                <p>數量：</p>
+                                                                                     <button class="btn text-danger font-width-blod border border-secondary px-3 py-1" onclick="num_desc()">-</button>
+                                                                                     <input type="text" name="quantity" id="" class="col-4 text-center border border-warning form-control-sm pb-2" value="1"  >
+                                                                                     <button class="btn text-success font-width-blod border border-secondary px-3 py-1" onclick="num_incr()">+</button>
                                                                              </div> <!-- col-12 -->
                                                                      <script>
                                                                          function num_desc (){
@@ -202,12 +204,12 @@
                                                                               if( p_quantity > 1 ){
                                                                               $('input[name="quantity"]').val(p_quantity - 1);
                                                                               }
-                                                                              console.log(p_quantity);
+                                                                            //   console.log(p_quantity);
                                                                              }
                                                                          function num_incr (){
                                                                             var p_quantity = parseInt( $('input[name="quantity"]').val());
                                                                               $('input[name="quantity"]').val(p_quantity + 1);
-                                                                            console.log(p_quantity);
+                                                                            // console.log(p_quantity);
                                                                          }
                                                                      </script>
                                                                     </div>  <!--row -->
@@ -217,7 +219,7 @@
                                                           
                               
                                                             <button type="" class="btn_GO" onclick="gotoCart(`<%-row_num %>`)" >確定</button>
-                                                            <% console.log(`row_num -----> ${row_num}`) %> 
+                                                            <!-- <% console.log(`row_num -----> ${row_num}`) %>  -->
                                                             <% row_num++ %> 
                                                             <!-- <button  class="btn_GO" id="get" >確定</button> -->
                                                         </div>  <!--modal-footer -->
@@ -237,29 +239,6 @@
                                                  d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                          </svg>
                                      </button>
-                                     <script>
-                                       
-                                        // function gotoCart(obj){
-                                        //     console.log(obj);
-                                        // }
-                                        // sendToCart.onclick=function(){
-                                        //     console.log($('input[name="size"]:checked').val());
-                                        //     console.log($('input[name="color"]:checked').val());
-                                        // }
-                                    // $.ajax({
-                                    //     url:"http://localhost:3000/home/member/myFavourite",
-                                    //     type:"post",
-                                    //     data:{
-                                    //         size : $('input[name="size"]:checked').val(),
-                                    //         color : $('input[name="color"]:checked').val()
-                                    //     },
-                                    //     success: function(data){
-                                    //         console.log('success');
-                                    //         alert('已加入購物車');
-                                    //     }
-
-                                    // })
-                                </script>
                             </div>  <!-- row -->
                            
                             <%} }%>
@@ -270,8 +249,8 @@
 
                             <% } %>
                 </div> <!-- row -->
-                <p class="text-center mt-5 font-weight-bold">新潮指標</p>
-                <hr>
+                <!-- <p class="text-center mt-5 font-weight-bold">新潮指標</p>
+                <hr> -->
                 <br><br> <br>   
                 <!-- <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <ol class="carousel-indicators mb-n4 ">
@@ -333,9 +312,10 @@
 
 <script>
     function formSubmit(obj) {
-        console.log(obj);
+        // console.log(obj);
         var pid = obj.children[0].value;
         var cid = obj.children[1].value;
+        $(".product_length").text(`${product_length} 件商品`);
         // var size = $('input[name="size"]:checked').val();
         // var color = $('input[name="color"]:checked').val();
         // var send = obj.id;
@@ -343,66 +323,103 @@
         // console.log('send =');
         // console.log(send);
         // const value = content.value;
-        var xhr = new XMLHttpRequest();
-        xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('post', '/home/member/myFavourite'); // 搭配 app.js 中的 post 路由
       
-      // json 格式
-      xhr.setRequestHeader('Content-type', 'application/json');
-      var data = JSON.stringify(
-        {
-            pid: pid,
-            cid: cid,
-            // size: size,
-            // color: color
-        //   list: [1, 2, 3],
+    //   // json 格式
+    //   xhr.setRequestHeader('Content-type', 'application/json');
+    //   var data = JSON.stringify(
+    //     {
+    //         pid: pid,
+    //         cid: cid,
+    //         // size: size,
+    //         // color: color
+    //     //   list: [1, 2, 3],
+    //     },
+    //   );
+    //   xhr.send(data);
+    //   xhr.onload = function() {
+    //     // console.log(JSON.parse(xhr.responseText));
+    //   }
+    $.ajax({
+        url:'/home/member/myFavourite',
+        type:"POST",
+        data:{
+            pid:pid,
+            cid:cid
         },
-      );
-      xhr.send(data);
-      xhr.onload = function() {
-        console.log(JSON.parse(xhr.responseText));
-      }
+        success:function(data){
+            console.log('success post');
+        },
+        error:function(){},
+    })
       $(obj).parent().remove();
+
     };
 
-    function clearAll(){
-      document.getElementById('clearFavor').submit();
-    };
-   
+    function clearAll(obj){  // 清空所有購物車
+    //   document.getElementById('clearFavor').submit();
 
-function vv(){
-    // $('input[name="job"][value="other"]').prop("checked", true);
-    $("input[name='size'][value='S']").prop('checked'.true);
-}
+    var memcontent = $('input[name="memcontent"]').val();
+    console.log('memcontent');
+    console.log('on click');
+    $.ajax({
+            url:"/home/member/myFavourite",
+            type:"POST",
+            dataType:'json',
+            data: {memcontent:memcontent},
+            success:function(data){
+                console.log("run clearAll");
+                console.log(data);
+                $('.row_number').remove();
+                $(".product_length").text(`0 件商品`);
+            },
+            error:function(){
+                console.log('?????');
+            },
+        })
+       
+    };
     
+
+// function vv(){
+//     // $('input[name="job"][value="other"]').prop("checked", true);
+//     $("input[name='size'][value='S']").prop('checked'.true);
+// }
+    
+    
+
     function gotoCart(row_num){
-        console.log('---------------'); 
+        // console.log('---------------'); 
         //  console.log((((((obj.parentNode).parentNode).parentNode).parentNode).parentNode).children);
    
 
         
-         var id =$('input[name="p_id"]')[row_num].value;
-         console.log(`id : ${id}`)
+         var id = $('input[name="p_id"]')[row_num].value;
+        //  console.log(`id : ${id}`)
 
          var size = $('input[name="size"]:checked').val();
          var color = $('input[name="color"]:checked').val();
          var quantity = $('input[name="quantity"]').val();
-         console.log(`quantity = ${quantity}`);
+        //  console.log(`quantity = ${quantity}`);
 
          var all_id = $('input[name="size"]:checked').attr('id');
-         console.log(`all_id :`)    ;
-         console.log(all_id);
+        //  console.log(`all_id :`)    ;
+        //  console.log(all_id);
 
          var code = $('input[name="p_code"]')[row_num].value;
-         console.log(`code : ${code}`)
+        //  console.log(`code : ${code}`)
 
          var name = $(`input[name='p_name']`)[row_num].value;
-         console.log(`name : ${name}`)
+        //  console.log(`name : ${name}`)
 
          var image = $('input[name="p_img"]')[row_num].value;
-         console.log(`image : ${image}`)
+        //  console.log(`image : ${image}`)
 
          var price = $('input[name="p_price"]')[row_num].value;
-         console.log(`price : ${price}`)
+        //  console.log(`price : ${price}`)
+
+        
 
         //  if(!size){
         //     $('.chooseSize').css({'color':'red'})
@@ -414,6 +431,7 @@ function vv(){
         console.log('=======JavaScript========');
         // console.log($(`input[name='p_name']`)[row_num].value);
         // console.log(`row_num = ${row_num}`);
+        
          var item = {
             code : code,
             all_id : all_id,
@@ -426,15 +444,22 @@ function vv(){
             quantity : quantity
 
          }
+         if(size && color){
+            $(`#choose_${id}`).modal('hide');
+            // console.log('addTocaert success');
+            
         $.ajax({
             url:"/home/shop_cart/",
             type:"POST",
             data:item,
             success:function(res){
-                console.log("AA");
+                // console.log("AA");
             },
             error:function(){},
         })
+        }else{
+            // console.log('Please choose the color or size');
+         }
 
 
     //      var xhr = new XMLHttpRequest();

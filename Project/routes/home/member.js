@@ -63,7 +63,7 @@ router.get('/orderDetail', getUrl, function (req, res) {
 
 // ----------------------載入------------------------------
 router.get('/myFavourite', getUrl, function (req, res) {
-  console.log('GGG');
+  // console.log('GGG');
   // console.log(req.session.memberprofile);
   var checkmem = req.session.memberprofile;
   console.log(checkmem != 'null');
@@ -80,7 +80,7 @@ router.get('/myFavourite', getUrl, function (req, res) {
         // console.log(fields);
         if (error) {
           throw error;
-          console.log('SSSSSSSSSSSSSSSSSSSSSSSSS');
+          // console.log('SSSSSSSSSSSSSSSSSSSSSSSSS');
         }
         var arr = [];
         for (var i = 0; i < results.length; i++) {
@@ -100,30 +100,37 @@ router.get('/myFavourite', getUrl, function (req, res) {
   }
 });
 
-// ----------------------送出------------------------------
+// ----------------------按愛心------------------------------
 router.post('/myFavourite', function (req, res) {
-  console.log('post');
-  console.log(req.body);
+  // console.log('post');
+  // console.log(req.body);
   //  -----全部送到垃圾桶-----------------------------------------
-  if (req.body.clearallcontent != null) {
+
+  // if (req.body.clearallcontent != null) {
     var memcontent = req.body.memcontent;
+    console.log('post ?');
     db.exec(
       'DELETE FROM favorite WHERE customer_id = ?',
       [memcontent],
-      (err, results) => {
-        // if (err) return cb(err);
-        // cb(null)
-        res.redirect(`/home/member/myFavourite`);
+      (results, err) => {
+        // if (err) {return console.log(err.message);
+        // }else{
+        //   return (console.log('success delAll'),
+        //   res.send(results))
+        // }
+        
+        // res.redirect('back');
+        res.send(JSON.stringify('OK'));
       }
     );
-  }
+  // }
   //  ---垃圾桶------------------------------------------------------
-  console.log(`pid : ${req.body.pid}`);
+  // console.log(`pid : ${req.body.pid}`);
   if (req.body.pid) {
     var cid = parseInt(req.body.cid);
     var pid = parseInt(req.body.pid);
-    console.log(typeof pid);
-    console.log(pid);
+    // console.log(typeof pid);
+    // console.log(pid);
     db.exec(
       'DELETE FROM favorite WHERE product_id = ? and customer_id = ?',
       [pid, cid],
@@ -137,12 +144,7 @@ router.post('/myFavourite', function (req, res) {
     );
   }
   //  ---送進購物車------------------------------------------------------
-  console.log('送進購物車');
-  console.log(req.body.p_id);
-  console.log(req.body.size);
-  console.log(req.body.color);
-
-  // res.send(req.body);
+ 
 });
 
 module.exports = router;
