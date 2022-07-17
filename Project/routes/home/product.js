@@ -130,7 +130,7 @@ router.post('/like', (req, res) => {
           })
        
         
-      } else {
+      } else {  // 把已存在的愛心刪除
         db.exec('DELETE FROM favorite WHERE product_id = ? and customer_id = ?',
         [content, memid],
         (delHeart, fields, error) => {

@@ -18,21 +18,33 @@
     <script src="/js/member/bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-
     <style>
-        .subTitle{
+        .subTitle {
             background-color: #FBEAAD;
 
         }
+        .row_quantity:hover{
+            background-color: rgb(255, 215, 0,0.2)	;
+            border-radius: 8px;
+
+        }
+        .p_name,.p_name:hover {
+            text-decoration: none;
+            color: black;
+            }
+        .p_name:hover{
+            color: green;
+            font-weight: 500;
+            }
     </style>
 </head>
 
 <body>
     <%- include("../navbar.ejs") %>
-    
-    <!-- 產品分類導覽列 -->
-    <div class="container">
-        
+
+        <!-- 產品分類導覽列 -->
+        <div class="container">
+
             <!-- 左邊選單列 -->
             <div class="row mt-4 ">
                 <div class="col-12 col-lg-2 text-lg-left text-center mb-4 ">
@@ -45,71 +57,70 @@
                     </p>
                 </div>
                 <!-- 右邊資訊欄 -->
-                <% if(memberprofile) { %> 
-                <div class="col-12 col-lg-10 p-3 mb-5">
-                    <div class="row mb-4">
-                        <a href="/home/member/memberData" class="col-12 text-center p-2 title_1">
-                            <p>訂單資訊</p>
-                        </a>
-                    </div>
+                <% if(memberprofile) { %>
+                    <div class="col-12 col-lg-10 p-3 mb-5">
+                        <div class="row mb-4">
+                            <a href="/home/member/memberData" class="col-12 text-center p-2 title_1">
+                                <p>訂單資訊</p>
+                            </a>
+                        </div>
+                        <% var date = JSON.stringify(result[0].order_date).substring(1,11); %> 
+                       
+                        <p class="mx-1">訂單編號：<%-result[0].order_list%><span class="px-3 py-1 ml-2 border border-success text-success rounded">完成</span></p>
+                        <p class="mx-1">訂單日期：<%-date%></p>
+                        <p class="p-3 mx-1 subTitle font-weight-bold b_radius">商品明細</p>
 
-                    <p class="mx-1">訂單編號：TW8000201170592 <span
-                            class="px-3 py-1 ml-2 border border-success text-success rounded">完成</span></p>
-                    <p class="mx-1">訂單日期：2022/4/1 10:08</p>
-                    <p class="p-3 mx-1 subTitle font-weight-bold b_radius">商品明細</p>
-                    <hr>
-                    <div class="row mx-1">
-                        <div class="col-4">商品名稱</div>
-                        <div class="col-3">金額</div>
-                        <div class="col-2">數量</div>
-                        <div class="col-3">小計</div>
-                    </div>
-                    <hr>
-                    <div class="row row-cols-4 py-3">
-                        <div class="col-4">
-                           <p>Micah 草編真皮厚底涼鞋</p> 
-                            <p>石灰白 36碼</p>
-                            
-                    </div>
-                        <div class="col-3">NT$891.00</div>
-                        <div class="col-2">數量: 1</div>
-                        <div class="col-3">NT$891.00</div>
-                    </div>
-                    <div class="row row-cols-4 py-3">
-                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
-                        <div class="col">NT$891.00</div>
-                        <div class="col">數量: 1</div>
-                        <div class="col">NT$891.00</div>
-                    </div>
-                    <div class="row row-cols-4 py-3">
-                        <div class="col">Micah 草編真皮厚底涼鞋,石灰白,36碼</div>
-                        <div class="col">NT$891.00</div>
-                        <div class="col">數量: 1</div>
-                        <div class="col">NT$891.00</div>
-                    </div>
-                    <p class="p-3 subTitle font-weight-bold b_radius">商品總結</p>
-                    <div class="row">
-                        <div class="col-2 py-2">商品數量：</div>
-                        <div class="col-10 py-2">3件商品</div>
-                        <div class="col-2 py-2">小計：</div>
-                        <div class="col-10 py-2">2673元</div>
-                    </div>
-                    <div class="text-center my-5"> <a href="/home/member/orderlist" class="px-3 py-2 btn_GO">檢視所有訂單資訊</a>
-                    </div>
-                    <% } else { %>
-                        <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center" role="alert">請先登入</div>
-                     
-                        <%   } %> 
-                </div> <!-- col-10 -->
+                        <div class="row mx-1 mb-4">
+                            <div class="col-4">商品名稱</div>
+                            <div class="col-2">顏色</div>
+                            <div class="col-2">尺寸</div>
+                            <div class="col-2 ">數量</div>
+                            <div class="col-2">價格</div>
+                        </div>
+
+
+                        <% var TotalPrice = 0 %>
+                        <% result.map(detail=>{ %>
+                        <div class="row py-3 mx-1  border-top row_quantity">
+                            <a href="/home/product/<%- detail.product_gender %>/single_product/<%- detail.product_id %>  " class="col-4 p_name"><%-detail.product_name%></a>
+                            <!-- <div class="col-4"><%-detail.product_name%></div> -->
+                            <div class="col-2">白</div>
+                            <div class="col-2"><%-detail.size_name%></div>
+                            <div class="col-2 "><%-detail.Quantity%></div>
+                            <div class="col-2">NT $<%-detail.UnitPrice%></div>
+                        </div>
+                        <%  TotalPrice = TotalPrice + detail.UnitPrice;   %> 
+                        <% }) %> 
+                              
+                             <p class="p-3 mx-1 subTitle font-weight-bold b_radius">總計</p>
+                             <div class="row mx-1">
+                             <div class="col-6 p_quantity"></div>
+                             <div class="col-6  text-right pr-5">總計：NT $<%- TotalPrice %></div>
+                            </div>
+
+                            <script>
+                                var p_quantity = $('.row_quantity').length;
+                                $('.p_quantity').text(`商品數量：${p_quantity}`);
+                            </script>
+
+                        <div class="text-center my-5"> <a href="/home/member/orderlist"
+                                class="px-3 py-2 btn_GO">檢視所有訂單資訊</a>
+                        </div>
+                        <% } else { %>
+                            <div class="alert alert-warning col-12 col-lg-10 text-center align-self-center"
+                                role="alert">請先登入</div>
+
+                            <% } %>
+                    </div> <!-- col-10 -->
             </div> <!-- row -->
-    </div> <!-- container -->
+        </div> <!-- container -->
 
 
 
 
-    <footer class="footer">
-        <%- include("../footer.ejs") %>
-    </footer>
+        <footer class="footer">
+            <%- include("../footer.ejs") %>
+        </footer>
 </body>
 
 </html>
