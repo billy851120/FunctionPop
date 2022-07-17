@@ -48,7 +48,6 @@ var memberController = {
         } else if (oldpw) {
             console.log('舊密碼錯誤？')
             memberModel.memberPwCheck(s_cAccount, (err, result) => {
-
                 bcrypt.compare(oldpw, result.cPassword, (err, isSuccess) => {
                     console.log(oldpw);
                     console.log(result.cPassword);
@@ -231,8 +230,8 @@ var memberController = {
         // })
     },
     registerCheck: (req, res) => {
-        res.render('member/register_success', {
-            title: '註冊成功'
+        res.render('member/login2', {
+            title: '登入'
         })
     },
 
