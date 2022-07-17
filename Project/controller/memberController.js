@@ -231,8 +231,8 @@ var memberController = {
         // })
     },
     registerCheck: (req, res) => {
-        res.render('member/register_success', {
-            title: '註冊成功'
+        res.render('member/login2', {
+            title: '登入'
         })
     },
 
