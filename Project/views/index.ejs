@@ -13,14 +13,14 @@
     <script src="/js/home/jquery.min.js"></script>
     <script src="/js/home/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
 
-        <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
-        <title>f.pop 官方網站</title>
+    <link rel="icon" href="/img/admin/black_icon.png" type="image/gif" sizes="16x16">
+    <title>f.pop 官方網站</title>
     <style>
         * {
             margin: 0;
@@ -63,12 +63,8 @@
 
         #gotop {
             position: fixed;
-            border-radius: 50px;
             right: 30px;
-            bottom: 30px;
-            padding: 7px 20px;
-            font-size: 25px;
-            background: rgba(255, 234, 234, 0.36);
+            bottom: 450px;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -76,12 +72,8 @@
 
         #godown {
             position: fixed;
-            border-radius: 50px;
             right: 30px;
-            bottom: 110px;
-            padding: 7px 20px;
-            font-size: 25px;
-            background: rgba(255, 234, 234, 0.36);
+            bottom: 400px;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -133,13 +125,48 @@
         .slick-current {
             opacity: 1;
         }
-        .handwind img{
+
+        .handwind img {
             width: 600px;
         }
+
         @media screen and (max-width:600px) {
-            .handwind img{
-            height: 300px;
+            .handwind img {
+                height: 300px;
+            }
         }
+
+        .search__input1 {
+            width: 100%;
+            padding: 12px 24px;
+            background-color: transparent;
+            transition: transform 250ms ease-in-out;
+            font-size: 14px;
+            line-height: 15px;
+            color: #ffffff;
+            /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' style='color: #ffffff' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E"); */
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: 95% center;
+            border-radius: 50px;
+            border: 1px solid #ffffff;
+            transition: all 250ms ease-in-out;
+            backface-visibility: hidden;
+        }
+
+        .search__input1::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .search__input1:hover,
+        .search__input1:focus {
+            padding: 8px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #ffffff;
+            border-radius: 0;
         }
     </style>
 
@@ -151,18 +178,22 @@
         <div id="status"><img src="/img/home/loading2.gif" class="img-fluid" /></div>
     </div>
 
-    <div id="godown">
-        <h1>v</h1>
+    <div  id="godown">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+          </svg></h5>
     </div>
-    <div id="gotop">
-        <h1>˄</h1>
+    <div  id="gotop">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+          </svg></h5>
     </div>
 
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
-            <p class="stories">STORIES</p>
-            <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;">
+            <h2 class="stories"  style="color: #ffffff;">STORIES</h2>
+            <!-- <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;"> -->
         </div>
         <div class="storytitle" id="history">
             <h2 style="color: #ffffff;">History</h2>
@@ -207,9 +238,13 @@
 
     </nav>
     <div class="pr-2 icondiv" id="navbar_li">
-        <form class=" my-2 ml-auto">
-            <input class="form-control mr-sm-2 tysearch_input" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn  my-2 my-sm-0 search_button" type="submit"></button>
+        <form class=" my-2 ml-auto" id="search__input1">
+            <input class="search__input1 mr-sm-2" type="search" placeholder="搜尋" style=" width: 150px;
+            position: relative;
+            height: 40px;
+            margin-left: 82px;
+            transform: translateY(2px);" />
+
         </form>
         <div class="mt-4 icon_posi">
             <p style="text-align: right;">
@@ -319,7 +354,8 @@
                 </div>
                 <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
-                        <img class="figure-img img-fluid" src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
+                        <img class="figure-img img-fluid"
+                            src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
                         <figcaption class="d-none d-md-block">
                             <p>Fashioning Masculinities
                                 THE ART OF MENSWEAR </p>
@@ -430,8 +466,8 @@
         </div>
     </div>
     <!-- 手風琴那頁 -->
-    <div class="pagefour gg" id="pagefour">
-        
+    <div class="pagefour gg " id="pagefour">
+
         <div class="accordion" id="zA7n">
             <ul class="accordion__ul handwind">
                 <li class="accordion__li"><img class="accordion__img" src="/img/home/tsat-07.jpg" alt="" /></li>
@@ -442,18 +478,20 @@
                 <!-- <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/6.jpg" alt="" /></li> -->
             </ul>
         </div>
-        
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
         <%- include("footer.ejs") %>
     </div>
 
 
 
 
-        
 
 
-
-    
 
 
 </body>
@@ -471,11 +509,11 @@
     $("#status").delay(1700).fadeOut(1300); //delay --> 延遲幾秒才fadeOut
     $("#preloader").delay(2400).fadeOut(1300);
     // $(window).load(function () {
-			
-	// 	});
+
+    // 	});
     $(document).ready(function () {
 
-        $('#zA7n').zA7n({});    
+        $('#zA7n').zA7n({});
         // 最下方輪播圖
         $(".regular").slick({
             dots: true,
