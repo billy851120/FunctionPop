@@ -75,21 +75,23 @@ var shop_cartController = {
               // console.log('結束');
             }
           } else {
+            // console.log('A');
             req.session.cart = [product];
             var cart = req.session.cart;
           }
 
           //計算總數量
-          shop_cartModel.updateCartCount(cart, req);
+          var a = shop_cartModel.updateCartCount(cart, req);
           // 計算總額
-          shop_cartModel.calculateTotal(cart, req);
+          var b = shop_cartModel.calculateTotal(cart, req);
+          // console.log(a);
+          // console.log(b);
 
           // return to cart page
 
           res.redirect('back');
         }
       );
-      console.log(req.session);
     } else {
       var cart = req.session.cart;
       var code = req.body.code;
@@ -117,8 +119,8 @@ var shop_cartController = {
 
       if (req.session.cart) {
         var cart = req.session.cart;
-        console.log('CART =');
-        console.log(cart);
+        // console.log('CART =');
+        // console.log(cart);
         if (shop_cartModel.isProductInCart(cart, all_id)) {
           for (let i = 0; i < cart.length; i++) {
             let ct = 0;
@@ -134,10 +136,10 @@ var shop_cartController = {
           // console.log('else cart ------------>');
           // console.log(cart);
 
-          console.log('我在這');
+          // console.log('我在這');
 
           cart.push(product);
-          console.log(cart);
+          // console.log(cart);
         }
       } else {
         req.session.cart = [product];
@@ -154,7 +156,7 @@ var shop_cartController = {
       res.redirect('back');
     }
 
-    console.log(req.session.cart);
+    // console.log(req.session.cart);
   },
 
   productAdd: (req, res) => {
@@ -206,13 +208,15 @@ var shop_cartController = {
       if (shop_cartModel.isProductInCart(cart, del_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == del_id) {
-            console.log('aaaaa');
+            // console.log('aaaaa');
+            // console.log(req.session.cart.length);
 
-            console.log(i);
+            // console.log(i);
             // console.log(cart.splice(i, i + 1));
             cart.splice(i, i + 1);
             req.session.cart = cart;
             console.log('已刪除all_id:' + del_id + ' 商品');
+            // console.log(req.session.cart.length);
           } else {
             console.log(' ');
           }
