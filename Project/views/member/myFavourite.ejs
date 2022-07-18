@@ -112,7 +112,7 @@
                                     %> 
                                     <script>
                                        var product_length = document.querySelectorAll(".row_number").length;
-                                    //    console.log(x);
+                                       console.log(product_length);
                                        $(".product_length").text(`${product_length + 1} 件商品`);
                                     </script>
                             <div class="row align-items-lg-center text-center border mb-4 p-1 mx-1 b_radius row_number" id="row_num<%- row_num %>" >
@@ -329,6 +329,7 @@
         var pid = obj.children[0].value;
         var cid = obj.children[1].value;
         $(".product_length").text(`${product_length} 件商品`);
+        product_length --;
         // var size = $('input[name="size"]:checked').val();
         // var color = $('input[name="color"]:checked').val();
         // var send = obj.id;
