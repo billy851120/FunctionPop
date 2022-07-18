@@ -227,6 +227,11 @@ var shop_cartController = {
       if (shop_cartModel.isProductInCart(cart, del_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == del_id) {
+            console.log('aaaaa');
+            console.log(cart);
+
+            console.log(i);
+            console.log(cart.splice(i, i + 1));
             cart.splice(i, i + 1);
             req.session.cart = cart;
             console.log('已刪除all_id:' + del_id + ' 商品');
