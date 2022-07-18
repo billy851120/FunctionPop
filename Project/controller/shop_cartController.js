@@ -29,7 +29,6 @@ var shop_cartController = {
   },
 
   updateCart: (req, res) => {
-    console.log(req.body);
     if (req.body.name == '客製化T恤') {
       db.exec(
         'SELECT * FROM `custompic` order by id DESC LIMIT 1',
@@ -71,11 +70,13 @@ var shop_cartController = {
               }
             } else {
               cart.push(product);
-              // console.log(cart);
+              // console.log('我在這');
+              // req.session.cart = cart;
+              // console.log(req.session);
+              // console.log('結束');
             }
           } else {
             req.session.cart = [product];
-
             var cart = req.session.cart;
           }
           //計算總數量
@@ -84,8 +85,7 @@ var shop_cartController = {
           shop_cartModel.calculateTotal(cart, req);
 
           // return to cart page
-          // res.redirect('back');
-          // next();
+
           res.redirect('back');
         }
       );
@@ -128,12 +128,15 @@ var shop_cartController = {
             }
           }
         } else {
-          console.log('else --------->');
-          console.log(product);
-          console.log('else cart ------------>');
-          console.log(cart);
-          cart.push(product);
+          // console.log('else --------->');
+          // console.log(product);
+          // console.log('else cart ------------>');
           // console.log(cart);
+
+          console.log('我在這');
+
+          cart.push(product);
+          console.log(cart);
         }
       } else {
         req.session.cart = [product];
@@ -149,35 +152,10 @@ var shop_cartController = {
       // next();
       res.redirect('back');
     }
+
     // console.log(req.session.cart);
   },
-  // sss: (req, res) => {
-  //   console.log(req.session.cart);
-  //   var cart = req.session.cart;
-  //   var code = req.body.code;
-  //   var all_id = req.body.all_id;
-  //   var id = req.body.id;
-  //   var name = req.body.name;
-  //   var color = req.body.color;
-  //   var size = req.body.size;
-  //   var image = req.body.image;
-  //   var price = req.body.price;
-  //   var quantity = req.body.quantity;
-  //   var product = {
-  //     code: code,
-  //     all_id: all_id,
-  //     id: id,
-  //     name: name,
-  //     color: color,
-  //     size: size,
-  //     image: image,
-  //     price: price,
-  //     quantity: quantity,
-  //   };
-  //   console.log(product);
 
-  //   res.redirect('back');
-  // },
   productAdd: (req, res) => {
     if (req.body.allId) {
       var cart = req.session.cart;
