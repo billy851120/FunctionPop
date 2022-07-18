@@ -64,7 +64,8 @@
         #gotop {
             position: fixed;
             right: 30px;
-            bottom: 450px;
+            /* bottom: 450px; */
+            top: 47%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -73,7 +74,8 @@
         #godown {
             position: fixed;
             right: 30px;
-            bottom: 400px;
+            /* bottom: 400px; */
+            top: 53%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -178,25 +180,21 @@
         <div id="status"><img src="/img/home/loading2.gif" class="img-fluid" /></div>
     </div>
 
-    <div id="godown">
-        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
-            </svg></h5>
+    <div  id="godown">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+          </svg></h5>
     </div>
-    <div id="gotop">
-        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
-            </svg></h5>
+    <div  id="gotop">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+          </svg></h5>
     </div>
 
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark fixed-top nav_class">
 
         <div class="storytitle" id="story">
-            <h2 class="stories" style="color: #ffffff;">STORIES</h2>
+            <h2 class="stories"  style="color: #ffffff;">STORIES</h2>
             <!-- <hr width="130px" style="background-color: yellow; position: relative; top: -10px;left: 5px;"> -->
         </div>
         <div class="storytitle" id="history">
@@ -316,14 +314,14 @@
 
 
     <!-- 第二面 STORIES -->
-    <!-- <div class="pagetwo gg" id="pagetwo">
+    <div class="pagetwo gg" id="pagetwo">
 
 
-        <div style="position: relative; width: 74%; margin:auto;" id="pagetwoin">
+        <div style="position: relative; width: 74%; margin:150px auto;" id="pagetwoin">
 
-            <div class="row border border-danger" style="display: flex; flex-wrap: wrap;">
+            <div class="row" style="display: flex; flex-wrap: wrap;">
 
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy border border-success" id="rowtwo"
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" id="rowtwo"
                     style="flex-grow: 1; margin: 10px auto;">
 
                     <figure class="figure">
@@ -345,7 +343,7 @@
                     </figure>
                 </div>
 
-                <div class="col col-3 d-none d-xl-block midpic yy colyy border border-info" style="flex-grow: 1; margin: 10px auto;">
+                <div class="col col-3 d-none d-xl-block midpic yy colyy" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
                         <img class="figure-img img-fluid" src="/img/home/661.png" alt="" style="height: 100%;">
                         <figcaption>
@@ -356,7 +354,7 @@
                     </figure>
 
                 </div>
-                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy border border-warning" style="flex-grow: 1; margin: 10px auto;">
+                <div class="col col-9 col-sm-7 col-md-6 col-lg-5 col-xl-3 yy" style="flex-grow: 1; margin: 10px auto;">
                     <figure class="figure">
                         <img class="figure-img img-fluid"
                             src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
@@ -380,73 +378,6 @@
 
         </div>
 
-    </div> -->
-    <div class="pagetwo gg my-auto" id="pagetwo">
-        <div class="row border border-danger w-75 mx-auto ">
-            <div class="col-4">
-                <div class="border" style="height:224 ;">
-                    <figure class="figure" style="height:158;">
-                        <img class="figure-img img-fluid" src="/img/home/fashion1.jpg" alt="" id="getpagetwoimg">
-                        <figcaption class="d-none d-md-block">
-                            <p>Guests Attending Exquisite Gucci
-                                A PHOTO GALLERY ></p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div>
-                    <figure class="figure downpic">
-                        <div style="height:158 ;">
-                            <img class="figure-img img-fluid" src="/img/home/fashion4.jpg" alt="">
-                        </div>
-                        <figcaption class="d-none d-md-block">
-                            <p>Exquisite Beauty of neputon
-                                THE MAKEUP AT THE SHOW </p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <figure class="figure">
-                        <img class="figure-img img-fluid" src="/img/home/661.png" alt="" style="height: 100%;">
-                        <figcaption>
-                            <p>Fashioning Masculinities
-                                THE ART OF MENSWEAR </p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="border"  style="height:224 ;">
-                    <figure class="figure" style="height:158;">
-                        <img class="figure-img img-fluid"
-                            src="https://www.go2tec.it/sec-content/uploads/2016/12/FASHION.jpg" alt="">
-                        <figcaption class="d-none d-md-block">
-                            <p>Fashioning Masculinities
-                                THE ART OF MENSWEAR </p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="">
-                    <figure class="figure downpic">
-                        <div style="height:158 ;">
-                            <img class="figure-img img-fluid" src="/img/home/fashion5.jpg" alt="">
-                        </div>
-                        <figcaption class="d-none d-md-block">
-                            <p>Magical Mirrors Lucas develope
-                                EXQUISITE GUCCI</p>
-                            <p style="font-size: 10px;">打敗濕悶熱,夏季必備涼感穿搭</p>
-                        </figcaption>
-                    </figure>
-                </div>
-
-
-            </div>
-        </div>
     </div>
 
     <!-- 第三面 + footer -->
@@ -549,13 +480,11 @@
                 <!-- <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/6.jpg" alt="" /></li> -->
             </ul>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <%- include("footer.ejs") %>
+
+        <div style="margin-bottom: 0px; margin-top: 150px;">
+            <%- include("footer.ejs") %>
+        </div>
+        
     </div>
 
 
@@ -599,8 +528,10 @@
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
         $("#pagenewi").css("top", `${hei}px`);
-        $("#pagenewi").css("height", `${hei}px`);
-        $("#pagetwo").css("top", `${hei * 2}px`);
+        $("#pagenewi").css("min-height", `${hei}px`);
+        var nwihei=parseInt($("#pagenewi").css("height"));
+
+        $("#pagetwo").css("top", `${nwihei+hei}px`);
         $("#pagetwo").css("min-height", `${hei}px`);
         $("#pagethree").css("min-height", `${hei}px`);
         // $("#pagefour").css("top", `${hei}px`);
@@ -621,16 +552,16 @@
         $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`);
 
         // console.log((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850))
-        if (window.innerWidth < 1600) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-            $("#pagetwoin").css("margin-top", "220px");
-        }
+        // if (window.innerWidth < 1600) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+        //     $("#pagetwoin").css("margin-top", "220px");
+        // }
         if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
             $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
             $(".downpic").css("left", "15px");
-            $("#pagetwoin").css("margin-top", "120px");
+            // $("#pagetwoin").css("margin-top", "120px");
         }
         else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
             $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 150}px`);
@@ -641,7 +572,7 @@
             $("#pagetwoin").css("height", `${pagetwopichei * 4.5}px`);
         } else if ((window.innerWidth < 768) && (document.documentElement.clientHeight >= 850)) {
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-            $("#pagetwoin").css("margin-top", "150px");
+            // $("#pagetwoin").css("margin-top", "150px");
         }
         if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
             // $(".storytitle").css("top", "9%");
@@ -649,7 +580,7 @@
             document.getElementById("newi_img").src = "/img/home/tsat-06.png";
             $(".figure-img").css("margin-bottom", "0px");
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-            $("#pagetwoin").css("margin-top", "170px");
+            // $("#pagetwoin").css("margin-top", "170px");
         } else if (window.innerWidth < 577) {
             // $(".storytitle").css("top", "8%");
             console.log(document.getElementById("newi_img").src);
@@ -675,12 +606,12 @@
         if (window.innerWidth >= 1200) {
             $("#pagetwoin").css("height", `${pagetwopichei}px`);
         }
-        if (window.innerWidth >= 1450) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-            $("#pagetwoin").css("margin-top", "100px");
-        }
+        // if (window.innerWidth >= 1450) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+        //     $("#pagetwoin").css("margin-top", "100px");
+        // }
         if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
             $("#thirdmargin").css("margin-top", "0px");
         }
@@ -705,16 +636,16 @@
             // $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
             // $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
 
-            if (window.innerWidth < 1600) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-                $("#pagetwoin").css("margin-top", "220px");
-            }
+            // if (window.innerWidth < 1600) {
+            //     $("#pagetwoin").css("margin-top", "130px");
+            // }
+            // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+            //     $("#pagetwoin").css("margin-top", "220px");
+            // }
             if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
                 $(".downpic").css("left", "15px");
-                $("#pagetwoin").css("margin-top", "120px");
+                // $("#pagetwoin").css("margin-top", "120px");
             }
             else if (window.innerWidth < 1200) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 150}px`);
@@ -724,7 +655,7 @@
                 $("#pagetwoin").css("height", `${pagetwopichei * 4.5}`);
             } else if (window.innerWidth < 768) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-                $("#pagetwoin").css("margin-top", "150px");
+                // $("#pagetwoin").css("margin-top", "150px");
             }
             if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
                 // $(".storytitle").css("top", "9%");
@@ -732,7 +663,7 @@
                 // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
                 $(".figure-img").css("margin-bottom", "0px");
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-                $("#pagetwoin").css("margin-top", "170px");
+                // $("#pagetwoin").css("margin-top", "170px");
             } else if (window.innerWidth < 577) {
                 // $(".storytitle").css("top", "8%");
                 // console.log(document.getElementById("newi_img").src);
@@ -758,12 +689,12 @@
             if (window.innerWidth >= 1200) {
                 $("#pagetwoin").css("height", `${pagetwopichei}px`);
             }
-            if (window.innerWidth >= 1450) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-                $("#pagetwoin").css("margin-top", "100px");
-            }
+            // if (window.innerWidth >= 1450) {
+            //     $("#pagetwoin").css("margin-top", "130px");
+            // }
+            // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+            //     $("#pagetwoin").css("margin-top", "100px");
+            // }
             if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
                 $("#thirdmargin").css("margin", "10px auto");
             }

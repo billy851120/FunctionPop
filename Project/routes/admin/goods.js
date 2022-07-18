@@ -36,14 +36,14 @@ router.get('/item_del/detail/:id([0-9]+)', function (rqs, res) {
 })
 router.get('/item_del', function (req, res) {
   var message = '';
-  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`);";
+  var sql = "SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`);SELECT * FROM `products` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) < date(`product_upload`) LIMIT 5;";
   db.exec(sql, function (err, result) {
     if (result.length <= 0)
       message = "Profile not found!";
     res.render('admin_item_del', {
-
       message: message,
-      data2: result,
+      data2: result[0],
+      data3: result[1],
     });
   });
 
