@@ -13,11 +13,10 @@ var shop_cartModel = {
   },
 
   updateCartCount: (cart, req) => {
-    console.log('我在這');
-    console.log(cart);
+    console.log('B');
+    // console.log(cart);
     // console.log(req.body);
-    console.log(req.session);
-    console.log('結束');
+    // console.log(req.session);
     let count = 0;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].quantity) {
@@ -31,6 +30,7 @@ var shop_cartModel = {
   },
 
   calculateTotal: (cart, req) => {
+    console.log('C');
     total = 0;
     for (let i = 0; i < cart.length; i++) {
       // if we are offering a discounted price

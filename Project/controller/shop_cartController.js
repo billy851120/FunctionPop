@@ -28,7 +28,7 @@ var shop_cartController = {
     );
   },
 
-  updateCart: (req, res) => {
+  updateCart: async (req, res) => {
     if (req.body.name == '客製化T恤') {
       db.exec(
         'SELECT * FROM `custompic` order by id DESC LIMIT 1',
@@ -56,9 +56,9 @@ var shop_cartController = {
             quantity: quantity,
           };
 
-          // shop_cartModel.addToCart(cart, req, all_id, quantity, product);
           if (req.session.cart) {
-            var cart = req.session.cart;
+            // console.log(req.session.cart);
+            cart = req.session.cart;
             if (shop_cartModel.isProductInCart(cart, all_id)) {
               for (let i = 0; i < cart.length; i++) {
                 let ct = 0;
@@ -70,7 +70,6 @@ var shop_cartController = {
               }
             } else {
               cart.push(product);
-              // console.log('我在這');
               // req.session.cart = cart;
               // console.log(req.session);
               // console.log('結束');
@@ -79,6 +78,7 @@ var shop_cartController = {
             req.session.cart = [product];
             var cart = req.session.cart;
           }
+
           //計算總數量
           shop_cartModel.updateCartCount(cart, req);
           // 計算總額
@@ -89,6 +89,7 @@ var shop_cartController = {
           res.redirect('back');
         }
       );
+      console.log(req.session);
     } else {
       var cart = req.session.cart;
       var code = req.body.code;
@@ -153,7 +154,7 @@ var shop_cartController = {
       res.redirect('back');
     }
 
-    // console.log(req.session.cart);
+    console.log(req.session.cart);
   },
 
   productAdd: (req, res) => {
@@ -197,19 +198,18 @@ var shop_cartController = {
     }
   },
   productDel: (req, res) => {
+    // console.log(req.session);
     if (req.session.cart) {
       var cart = req.session.cart;
       var del_id = req.body.allId;
 
-      console.log(cart);
       if (shop_cartModel.isProductInCart(cart, del_id)) {
         for (let i = 0; i < cart.length; i++) {
           if (cart[i].all_id == del_id) {
             console.log('aaaaa');
-            console.log(cart);
 
             console.log(i);
-            console.log(cart.splice(i, i + 1));
+            // console.log(cart.splice(i, i + 1));
             cart.splice(i, i + 1);
             req.session.cart = cart;
             console.log('已刪除all_id:' + del_id + ' 商品');
