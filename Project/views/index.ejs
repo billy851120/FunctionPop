@@ -64,7 +64,8 @@
         #gotop {
             position: fixed;
             right: 30px;
-            bottom: 450px;
+            /* bottom: 450px; */
+            top: 47%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -73,7 +74,8 @@
         #godown {
             position: fixed;
             right: 30px;
-            bottom: 400px;
+            /* bottom: 400px; */
+            top: 53%;
             color: #ffffff;
             cursor: pointer;
             z-index: 1000;
@@ -315,7 +317,7 @@
     <div class="pagetwo gg" id="pagetwo">
 
 
-        <div style="position: relative; width: 74%; margin:auto;" id="pagetwoin">
+        <div style="position: relative; width: 74%; margin:150px auto;" id="pagetwoin">
 
             <div class="row" style="display: flex; flex-wrap: wrap;">
 
@@ -478,13 +480,11 @@
                 <!-- <li class="accordion__li"><img class="accordion__img" src="/img/home/hand/6.jpg" alt="" /></li> -->
             </ul>
         </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-        <%- include("footer.ejs") %>
+
+        <div style="margin-bottom: 0px; margin-top: 150px;">
+            <%- include("footer.ejs") %>
+        </div>
+        
     </div>
 
 
@@ -528,8 +528,10 @@
         console.log(hei);
         $("#pageone").css("height", `${hei}px`);
         $("#pagenewi").css("top", `${hei}px`);
-        $("#pagenewi").css("height", `${hei}px`);
-        $("#pagetwo").css("top", `${hei * 2}px`);
+        $("#pagenewi").css("min-height", `${hei}px`);
+        var nwihei=parseInt($("#pagenewi").css("height"));
+
+        $("#pagetwo").css("top", `${nwihei+hei}px`);
         $("#pagetwo").css("min-height", `${hei}px`);
         $("#pagethree").css("min-height", `${hei}px`);
         // $("#pagefour").css("top", `${hei}px`);
@@ -550,16 +552,16 @@
         $(".downpic").css("top", `${parseInt($(".midpic img").css("height")) - parseInt($(".downpic img").css("height"))}px`);
 
         // console.log((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850))
-        if (window.innerWidth < 1600) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-            $("#pagetwoin").css("margin-top", "220px");
-        }
+        // if (window.innerWidth < 1600) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+        //     $("#pagetwoin").css("margin-top", "220px");
+        // }
         if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
             $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 120}px`);
             $(".downpic").css("left", "15px");
-            $("#pagetwoin").css("margin-top", "120px");
+            // $("#pagetwoin").css("margin-top", "120px");
         }
         else if ((window.innerWidth < 1200) && (document.documentElement.clientHeight >= 850)) {
             $(".downpic").css("top", `${parseInt($("#getpagetwoimg").css("height")) + 150}px`);
@@ -570,7 +572,7 @@
             $("#pagetwoin").css("height", `${pagetwopichei * 4.5}px`);
         } else if ((window.innerWidth < 768) && (document.documentElement.clientHeight >= 850)) {
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-            $("#pagetwoin").css("margin-top", "150px");
+            // $("#pagetwoin").css("margin-top", "150px");
         }
         if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
             // $(".storytitle").css("top", "9%");
@@ -578,7 +580,7 @@
             document.getElementById("newi_img").src = "/img/home/tsat-06.png";
             $(".figure-img").css("margin-bottom", "0px");
             $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-            $("#pagetwoin").css("margin-top", "170px");
+            // $("#pagetwoin").css("margin-top", "170px");
         } else if (window.innerWidth < 577) {
             // $(".storytitle").css("top", "8%");
             console.log(document.getElementById("newi_img").src);
@@ -604,12 +606,12 @@
         if (window.innerWidth >= 1200) {
             $("#pagetwoin").css("height", `${pagetwopichei}px`);
         }
-        if (window.innerWidth >= 1450) {
-            $("#pagetwoin").css("margin-top", "130px");
-        }
-        if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-            $("#pagetwoin").css("margin-top", "100px");
-        }
+        // if (window.innerWidth >= 1450) {
+        //     $("#pagetwoin").css("margin-top", "130px");
+        // }
+        // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+        //     $("#pagetwoin").css("margin-top", "100px");
+        // }
         if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
             $("#thirdmargin").css("margin-top", "0px");
         }
@@ -634,16 +636,16 @@
             // $(".third_tit").css("height", `${$(".ooo")[0].clientHeight}px`);
             // $(".thirdhei").css("height", `${($(".ooo")[0].clientHeight) * 2 + 2}px`);
 
-            if (window.innerWidth < 1600) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
-                $("#pagetwoin").css("margin-top", "220px");
-            }
+            // if (window.innerWidth < 1600) {
+            //     $("#pagetwoin").css("margin-top", "130px");
+            // }
+            // if ((window.innerWidth < 1450) && (document.documentElement.clientHeight >= 850)) {
+            //     $("#pagetwoin").css("margin-top", "220px");
+            // }
             if ((window.innerWidth < 1200) && (document.documentElement.clientHeight < 850)) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 120}px`);
                 $(".downpic").css("left", "15px");
-                $("#pagetwoin").css("margin-top", "120px");
+                // $("#pagetwoin").css("margin-top", "120px");
             }
             else if (window.innerWidth < 1200) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) + 150}px`);
@@ -653,7 +655,7 @@
                 $("#pagetwoin").css("height", `${pagetwopichei * 4.5}`);
             } else if (window.innerWidth < 768) {
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 90}px`);
-                $("#pagetwoin").css("margin-top", "150px");
+                // $("#pagetwoin").css("margin-top", "150px");
             }
             if ((window.innerWidth < 577) && (document.documentElement.clientHeight < 850)) {
                 // $(".storytitle").css("top", "9%");
@@ -661,7 +663,7 @@
                 // document.getElementById("newi_img").src = "/img/home/tsat-06.png";
                 $(".figure-img").css("margin-bottom", "0px");
                 $(".downpic").css("top", `${parseInt($(".figure img").css("height")) * 2 + 70}px`);
-                $("#pagetwoin").css("margin-top", "170px");
+                // $("#pagetwoin").css("margin-top", "170px");
             } else if (window.innerWidth < 577) {
                 // $(".storytitle").css("top", "8%");
                 // console.log(document.getElementById("newi_img").src);
@@ -687,12 +689,12 @@
             if (window.innerWidth >= 1200) {
                 $("#pagetwoin").css("height", `${pagetwopichei}px`);
             }
-            if (window.innerWidth >= 1450) {
-                $("#pagetwoin").css("margin-top", "130px");
-            }
-            if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
-                $("#pagetwoin").css("margin-top", "100px");
-            }
+            // if (window.innerWidth >= 1450) {
+            //     $("#pagetwoin").css("margin-top", "130px");
+            // }
+            // if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight < 850)) {
+            //     $("#pagetwoin").css("margin-top", "100px");
+            // }
             if ((window.innerWidth >= 1600) && (document.documentElement.clientHeight >= 850)) {
                 $("#thirdmargin").css("margin", "10px auto");
             }
