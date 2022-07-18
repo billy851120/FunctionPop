@@ -20,7 +20,7 @@
 
     <style>
         .subTitle {
-            background-color: #FBEAAD;
+            background-color: #efecec;
 
         }
         .row_quantity:hover{
@@ -72,10 +72,9 @@
 
                         <div class="row mx-1 mb-4">
                             <div class="col-4">商品名稱</div>
-                            <div class="col-2">顏色</div>
                             <div class="col-2">尺寸</div>
-                            <div class="col-2 ">數量</div>
-                            <div class="col-2">價格</div>
+                            <div class="col-3 ">數量</div>
+                            <div class="col-3">價格</div>
                         </div>
 
 
@@ -84,18 +83,17 @@
                         <div class="row py-3 mx-1  border-top row_quantity">
                             <a href="/home/product/<%- detail.product_gender %>/single_product/<%- detail.product_id %>  " class="col-4 p_name"><%-detail.product_name%></a>
                             <!-- <div class="col-4"><%-detail.product_name%></div> -->
-                            <div class="col-2">白</div>
                             <div class="col-2"><%-detail.size_name%></div>
-                            <div class="col-2 "><%-detail.Quantity%></div>
-                            <div class="col-2">NT $<%-detail.UnitPrice%></div>
+                            <div class="col-3 "><%-detail.Quantity%></div>
+                            <div class="col-3">NT $<%-detail.UnitPrice%></div>
                         </div>
                         <%  TotalPrice = TotalPrice + detail.UnitPrice;   %> 
                         <% }) %> 
                               
                              <p class="p-3 mx-1 subTitle font-weight-bold b_radius">總計</p>
                              <div class="row mx-1">
-                             <div class="col-6 p_quantity"></div>
-                             <div class="col-6  text-right pr-5">總計：NT $<%- TotalPrice %></div>
+                             <div class="col-8 p_quantity"></div>
+                             <div class="col-4 text-center pr-5">總計：NT $<%- TotalPrice %></div>
                             </div>
 
                             <script>
