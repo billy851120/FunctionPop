@@ -85,7 +85,7 @@ var shop_cartController = {
           // 計算總額
           shop_cartModel.calculateTotal(cart, req);
 
-          // return to cart page
+          //return to cart page
 
           res.redirect('back');
         }
