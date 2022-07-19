@@ -81,11 +81,9 @@ var shop_cartController = {
           }
 
           //計算總數量
-          var a = shop_cartModel.updateCartCount(cart, req);
+          shop_cartModel.updateCartCount(cart, req);
           // 計算總額
-          var b = shop_cartModel.calculateTotal(cart, req);
-          // console.log(a);
-          // console.log(b);
+          shop_cartModel.calculateTotal(cart, req);
 
           // return to cart page
 
