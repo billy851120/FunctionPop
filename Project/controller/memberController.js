@@ -35,9 +35,15 @@ var memberController = {
     handlechangePw: (req, res, next) => {
         var { oldpw, newpw, newpwAgain } = req.body;
         var s_cAccount = req.session.memberprofile.cAccount;
+        console.log('-----------start handlechangePW--------');
+        console.log('oldpw')
         console.log(oldpw);
+        console.log("newpw");
         console.log(newpw);
+        console.log("newpwAgain");
         console.log(newpwAgain);
+        console.log("s_cAccount");
+        console.log(s_cAccount);
 
         if (!oldpw) {
             req.flash('errorMessage', '舊密碼不可為空')
@@ -46,109 +52,39 @@ var memberController = {
             req.flash('errorMessage', '新密碼不可為空')
             return next();
         } else if (oldpw) {
-            console.log('舊密碼錯誤？')
+
             memberModel.memberPwCheck(s_cAccount, (err, result) => {
                 bcrypt.compare(oldpw, result.cPassword, (err, isSuccess) => {
-                    console.log(oldpw);
-                    console.log(result.cPassword);
-                    console.log(err);
+                    console.log('--------in bcrypt check pw-----------');
+                    // console.log('lodpw');
+                    // console.log(oldpw);
+                    // console.log('result.pw')
+                    // console.log(result.cPassword);
+                    // console.log(err);
+                    // console.log(isSuccess);
                     if (err || !isSuccess) {
                         req.flash('errorMessage', '密碼錯誤');
                         return next();
+                    } else {
+                        bcrypt.hash(newpw, saltRounds, (err, hash) => {
+                            console.log('--------in bcrypt hash-----------')
+                            if (err) {
+                                req.flash('errorMessage', err.toString());
+                            }
+                            memberModel.updateMemberPw({ newpw: hash, s_cAccount },
+                                (err) => {
+                                    if (err) {
+                                        console.log(err);    //    輸出資料庫錯誤資訊
+                                        console.log('PW change error')
+                                    } else {
+                                        console.log('PW update SUCCESS');                                    }
+                                });
+                        });
+                        res.redirect('/home/member/memberData_changePw');
                     }
                 })
-
-
             })
-        } else {
-            console.log('寫入新密碼');
-
-            bcrypt.hash(newpw, saltRounds, (err, hash) => {
-                if (err) {
-                    req.flash('errorMessage', err.toString());
-                    return next();
-                }
-
-                memberModel.updateMemberPw({ newpw: hash, s_cAccount },
-                    (err) => {
-                        if (err) {
-                            console.log(err);    //    輸出資料庫錯誤資訊
-                            console.log('PW change error')
-                            emitter.emit("false");    //    返回失敗
-                        } else {
-                            console.log('PW update SUCCESS');
-                            emitter.emit("ok");    //    返回成功
-                            console.log()
-                        }
-                    })
-            });
-            res.redirect('/home/member/memberData_changePw');
-
-
         }
-
-
-        // else {
-        //     memberModel.memberPwChange({ newpw, s_cAccount }, (err, result) => {
-        //         console.log('already change pw');
-        //         res.redirect('/home/member/memberData_changePw');
-        //     })
-        // }
-
-
-        // else if (req.session.memberprofile.cPassword != oldpw) {
-        //     req.flash('errorMessage', '舊密碼不正確')
-        //     return next();
-        // } else if (newpw != newpwAgain) {
-        //     req.flash('errorMessage', '新密碼必須為一致')
-        //     return next();
-        // }
-        // ---------------------------登入-------------------------------------------
-        // memberModel.handlelogin(cAccount, (err, result) => {
-        //     console.log('result.........');
-        //     // console.log(result);
-        //     if (!result) {
-        //         req.flash('errorMessage', '無此使用者');
-        //         return next();
-        //     }
-
-        //     //    驗證密碼是否正確，三個參數代表: 明碼, 雜湊密碼, 方法
-        //     bcrypt.compare(cPassword, result.cPassword, (err, isSuccess) => {
-        //         if (err || !isSuccess) {
-        //             req.flash('errorMessage', '密碼錯誤');
-        //             return next();
-        //         }
-
-        //         // 將撈到的資料存入memberprofile session之中
-        //         // console.log('寫入session');
-        //         req.session.memberprofile = result;
-        //         // console.log(req.session.url);
-        //         res.redirect(req.session.url);
-
-        //     })
-        // })
-        // // ---------------------------註冊-------------------------------------------
-        // bcrypt.hash(cPassword, saltRounds, (err, hash) => {
-        //     if (err) {
-        //         req.flash('errorMessage', err.toString());
-        //         return next();
-        //     }
-
-        //     memberModel.add_member({ cName, cBirth, cgender, cAccount, cPhone, cAddr, cPassword: hash },
-        //         (err) => {
-        //             if (err) {
-        //                 console.log(err);    //    輸出資料庫錯誤資訊
-        //                 console.log('register ERROR')
-        //                 emitter.emit("false");    //    返回失敗
-        //             } else {
-        //                 console.log('register SUCCESS');
-        //                 emitter.emit("ok");    //    返回成功
-        //                 req.session.regi_cAccount = cAccount;
-        //                 console.log(`req.session.regi_cAccount : ${req.session.regi_cAccount}`);
-        //             }
-        //         })
-        // });
-
     },
 
     login: (req, res) => {
