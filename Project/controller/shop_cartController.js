@@ -154,7 +154,7 @@ var shop_cartController = {
       res.redirect('back');
     }
 
-    // console.log(req.session.cart);
+    // console.log(req.session.cart) ;
   },
 
   productAdd: (req, res) => {
