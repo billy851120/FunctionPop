@@ -9,18 +9,14 @@ FunctionPop 品牌服飾網站
 
 功能介紹 :
 ----------------------------------------------------------------------------------------------------------------
+
 ### 前台
-1. 載入頁面動畫
-2. 會員註冊
-3. 會員登入登出
-4. 商品列表頁、商品瀏覽頁
-5. 商品追蹤
-6. 輪播圖
-7. 客製化團服
-8. 加入購物車
-9. 收藏商品
-10. 訂單資訊
-11. RWD響應式設計
+1. 會員註冊、會員登入登出
+2. 商品列表頁、商品瀏覽頁、商品追蹤
+3. 加入購物車、收藏商品、訂單資訊
+4. RWD響應式設計
+<img width="90%" src="https://github.com/billy851120/FunctionPop/blob/main/img/222222.png" alt="">
+
 
 
 ### 後台 
@@ -29,10 +25,10 @@ FunctionPop 品牌服飾網站
 3. 資料分析
 4. 訂單資訊管理
 
-![image](https://github.com/billy851120/FunctionPop/blob/main/img/%E6%88%AA%E5%9C%96%202022-07-21%20%E4%B8%8A%E5%8D%889.55.34.png)
+<img width="100%" src="https://github.com/billy851120/FunctionPop/blob/main/img/Frame%201.png" alt="">
 
 
-![image](https://github.com/billy851120/FunctionPop/blob/main/img/Frame%201.png)
+
 
 
 
