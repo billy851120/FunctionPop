@@ -26,6 +26,7 @@ FunctionPop 品牌服飾網站
 2. 商品CRUD
 3. 資料分析
 4. 訂單資訊管理
+
 ![gif](https://github.com/billy851120/FunctionPop/blob/main/img/5qy5m-ehhw4.gif)
 
 
