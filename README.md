@@ -15,8 +15,10 @@ FunctionPop 品牌服飾網站
 2. 商品列表頁、商品瀏覽頁、商品追蹤
 3. 加入購物車、收藏商品、訂單資訊
 4. RWD響應式設計
-<img width="90%" src="https://github.com/billy851120/FunctionPop/blob/main/img/222222.png" alt="">
-
+<div>
+<img width="75%" src="https://github.com/billy851120/FunctionPop/blob/main/img/b3y0u-xjpgn.gif" alt="">
+<img width="20%" src="https://github.com/billy851120/FunctionPop/blob/main/img/cartRWD.png" alt="">
+</div>
 
 
 ### 後台 
@@ -24,8 +26,7 @@ FunctionPop 品牌服飾網站
 2. 商品CRUD
 3. 資料分析
 4. 訂單資訊管理
-
-<img width="100%" src="https://github.com/billy851120/FunctionPop/blob/main/img/Frame%201.png" alt="">
+![gif](https://github.com/billy851120/FunctionPop/blob/main/img/5qy5m-ehhw4.gif)
 
 
 
